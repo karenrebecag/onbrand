@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/scroll-area.schema.json",
+  "title": "Scroll area",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "x-undocumented": true
+    },
+    "orientation": {
+      "description": "Axes that scroll.",
+      "type": "string",
+      "enum": [
+        "vertical",
+        "horizontal",
+        "both"
+      ]
+    },
+    "fade": {
+      "description": "Length of the edge fade in px. 0 turns the fades off.",
+      "type": "number"
+    },
+    "scrollbars": {
+      "description": "\"auto\" shows scrollbars while scrolling or hovering; \"always\" keeps them visible when content overflows.",
+      "type": "string",
+      "enum": [
+        "auto",
+        "always"
+      ]
+    },
+    "hideDelay": {
+      "description": "How long scrollbars linger after scrolling stops, in ms.",
+      "type": "number"
+    },
+    "maxHeight": {
+      "description": "Maximum viewport height, for vertical areas that grow with their content.",
+      "type": "object"
+    },
+    "snap": {
+      "description": "Passed to the viewport's scroll-snap-type, for example \"x mandatory\". Children set their own scroll-snap-align.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name. The viewport becomes a labelled region.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "wheelToHorizontal": {
+      "description": "Turns vertical wheel movement into horizontal scrolling for horizontal areas.",
+      "type": "boolean"
+    },
+    "viewportClassName": {
+      "description": "Extra class on the scrolling viewport.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "viewportStyle": {
+      "description": "Inline style on the viewport.",
+      "type": "object"
+    },
+    "viewportRef": {
+      "description": "The scrolling element, for programmatic scrolling.",
+      "type": "object"
+    },
+    "onScroll": {
+      "description": "Viewport scroll handler.",
+      "type": "object"
+    },
+    "onEdgeChange": {
+      "description": "Called when content starts or stops extending past an edge: { top, bottom, left, right }.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

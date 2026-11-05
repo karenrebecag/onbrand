@@ -1,0 +1,32 @@
+/* Valores de .editor_dark en el CSS de producción de Stitch (index-CdPkDNrP.css), mapeados a los tokens de Arc para que
+   los componentes portados hereden la piel sin tocar su código. Google Sans no se carga: cae en Inter si no está local. */
+:root[data-skin="stitch"] {
+  --stitch-canvas: rgb(22 23 24);
+  --stitch-surface: rgb(32 33 36);
+  --stitch-state-enabled: rgb(39 41 42);
+  --stitch-state-hover: rgb(66 69 71);
+  --stitch-state-active: rgb(60 64 67);
+  --stitch-dot: rgb(218 220 224 / .16);
+  --stitch-accent: rgb(113 104 246);
+
+  --background: var(--stitch-canvas);
+  --surface: var(--stitch-surface);
+  --surface-raised: var(--stitch-surface);
+  --surface-muted: var(--stitch-state-enabled);
+  --foreground: rgb(241 243 244);
+  --text-secondary: rgb(189 193 198);
+  --text-muted: rgb(128 134 139);
+  --border: rgb(218 220 224 / .15);
+  --border-subtle: rgb(218 220 224 / .1);
+  --border-strong: rgb(218 220 224 / .25);
+  --accent: rgb(241 243 244);
+  --accent-strong: rgb(255 255 255);
+  --accent-subtle: rgb(218 220 224 / .1);
+  --accent-foreground: rgb(32 33 36);
+  --hover: rgb(218 220 224 / .05);
+  --press: rgb(218 220 224 / .15);
+  --shadow-floating: 0 8px 24px rgb(0 0 0 / .4);
+  --font-display: "Google Sans", var(--font-inter, "Inter Variable"), sans-serif;
+  --font-body: "Google Sans", var(--font-inter, "Inter Variable"), sans-serif;
+  color-scheme: dark;
+}

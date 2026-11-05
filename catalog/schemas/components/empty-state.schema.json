@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/empty-state.schema.json",
+  "title": "Empty state",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Headline. A new title rises in while the old one leaves.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One or two sentences on why it is empty and what to do.",
+      "type": "string",
+      "format": "description"
+    },
+    "action": {
+      "description": "Call to action, usually a button."
+    },
+    "icon": {
+      "description": "Leading icon. A different icon component crossfades in."
+    },
+    "label": {
+      "description": "Accessible name for the section region.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "description"
+  ]
+}

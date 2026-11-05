@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/cta-section.schema.json",
+  "title": "Cta Section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "centered closes a page, split sits beside a setup card that completes itself, banner is one line with an action.",
+      "type": "string",
+      "enum": [
+        "centered",
+        "split",
+        "banner"
+      ]
+    },
+    "title": {
+      "description": "Heading. Each variant has sample copy.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One sentence under the heading.",
+      "type": "string",
+      "format": "description"
+    },
+    "primaryAction": {
+      "description": "{ label, href?, onClick?, confirmedLabel? }. With href it renders a link; with neither href nor onClick it confirms in place.",
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "onClick": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "confirmedLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "secondaryAction": {
+      "x-nullable": true,
+      "description": "Second action in centered and split. Pass null to hide it.",
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "onClick": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "confirmedLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "note": {
+      "description": "Small print under the actions in centered.",
+      "type": "string",
+      "format": "description"
+    },
+    "faces": {
+      "description": "Up to four avatar URLs beside the note in centered. Pass [] to hide them.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "person"
+      },
+      "maxItems": 1,
+      "x-empty": []
+    },
+    "points": {
+      "description": "Benefit lines with checks in split.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "tag"
+      }
+    },
+    "visual": {
+      "description": "Replaces the split variant's setup card, for your own screenshot or component.",
+      "x-slot": {
+        "accepts": [
+          "illustration"
+        ],
+        "cardinality": "one"
+      },
+      "x-empty": null
+    },
+    "setup": {
+      "x-undocumented": true,
+      "type": "object",
+      "properties": {
+        "workspace": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "steps": {
+          "x-undocumented": true,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "faces": {
+          "x-undocumented": true,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "person"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "workspace",
+        "steps"
+      ]
+    },
+    "labels": {
+      "x-undocumented": true,
+      "type": "object",
+      "properties": {
+        "settingUp": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "ready": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "dismiss": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    },
+    "onDismiss": {
+      "description": "Banner only. Shows the dismiss button and is called after the banner has closed.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "faces",
+    "setup"
+  ],
+  "examples": [
+    {
+      "faces": [],
+      "setup": {
+        "workspace": "Northwind",
+        "steps": [
+          "Create workspace",
+          "Import 214 issues",
+          "Invite 4 teammates"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/multi-select.schema.json",
+  "title": "Multi-select",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label, also names the listbox.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "disabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "{ value, label, disabled? } in list order."
+    },
+    "value": {
+      "description": "Controlled selected values.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultValue": {
+      "description": "Initial values when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onValueChange": {
+      "description": "Called with the full new selection.",
+      "type": "object"
+    },
+    "placeholder": {
+      "description": "Shown when nothing is selected.",
+      "type": "string",
+      "format": "label"
+    },
+    "description": {
+      "description": "Helper copy under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "maxVisible": {
+      "description": "Chips shown in the trigger before the rest collapse into +N.",
+      "type": "number"
+    },
+    "disabled": {
+      "description": "Disables the trigger and hides the clear button.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "options"
+  ]
+}

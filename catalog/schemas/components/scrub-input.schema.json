@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/scrub-input.schema.json",
+  "title": "Scrub input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Text or a 16px icon. It is the scrub handle. Icon labels need aria-label."
+    },
+    "value": {
+      "description": "Controlled value.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Starting value when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Fires for every change, including each scrub step. details is { source: \"scrub\" | \"type\" | \"key\" | \"reset\", unit }.",
+      "type": "object"
+    },
+    "onValueCommit": {
+      "description": "Fires once when a change settles: a scrub ends, Enter or blur commits typing, or a key step lands.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lower limit.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Upper limit.",
+      "type": "number"
+    },
+    "step": {
+      "description": "One step for arrows and scrubbing.",
+      "type": "number"
+    },
+    "fineStep": {
+      "description": "Step with Alt held.",
+      "type": "number"
+    },
+    "coarseStep": {
+      "description": "Step with Shift held. Coarse steps snap to the coarse grid.",
+      "type": "number"
+    },
+    "precision": {
+      "description": "Decimal places kept. Defaults to the precision of step or fineStep.",
+      "type": "number"
+    },
+    "pixelsPerStep": {
+      "description": "Pointer travel in px for one step while scrubbing.",
+      "type": "number"
+    },
+    "wrap": {
+      "description": "Wraps from max to min, as rotation does. Needs both limits.",
+      "type": "boolean"
+    },
+    "unit": {
+      "description": "Controlled unit shown after the number. With more than one entry in units it becomes a button that cycles them.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultUnit": {
+      "description": "Starting unit when uncontrolled. Defaults to unit or the first of units.",
+      "type": "string"
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Units a typed value may carry, such as [\"px\", \"%\"]. Defaults to the current unit."
+    },
+    "onUnitChange": {
+      "description": "Called when a typed unit or the unit button changes the unit.",
+      "type": "object"
+    },
+    "resetValue": {
+      "description": "Double click the label to return here.",
+      "type": "number"
+    },
+    "track": {
+      "description": "Shows where the value sits between min and max as a quiet fill.",
+      "type": "boolean"
+    },
+    "size": {
+      "description": "Field height: 30px, or the small control height.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md"
+      ]
+    },
+    "pointerLock": {
+      "description": "Locks the mouse pointer while scrubbing when the browser allows it.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-title-playback-hero.schema.json",
+  "title": "Animated Text Hero Section, Motion, React",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Opening line, such as \"A new way to\". Lifts away after the intro.",
+      "type": "string",
+      "format": "heading"
+    },
+    "headline": {
+      "description": "Line that stays under the opening, with a smile sticker.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "phrases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Phrases that rotate under the headline, one every 2.75 seconds. The loop length follows their count."
+    },
+    "description": {
+      "description": "Supporting text under the animated title.",
+      "type": "string",
+      "format": "description"
+    },
+    "primaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "secondaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    }
+  },
+  "x-formats-version": 2
+}

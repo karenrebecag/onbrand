@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/expandable-text.schema.json",
+  "title": "Expandable text",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "The text. Strings, paragraphs, and inline links all work. The whole text stays in the accessibility tree while clamped."
+    },
+    "lines": {
+      "description": "Lines shown while collapsed, measured in the text's own line height.",
+      "type": "number"
+    },
+    "expanded": {
+      "description": "Controlled open state.",
+      "type": "boolean"
+    },
+    "defaultExpanded": {
+      "description": "Starts open when uncontrolled.",
+      "type": "boolean"
+    },
+    "onExpandedChange": {
+      "description": "Called when the toggle, or focus moving to a hidden link, opens or closes the text.",
+      "type": "object"
+    },
+    "moreLabel": {
+      "description": "Toggle label while collapsed.",
+      "type": "string",
+      "format": "label"
+    },
+    "lessLabel": {
+      "description": "Toggle label while open.",
+      "type": "string",
+      "format": "label"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

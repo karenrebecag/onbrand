@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/file-upload.schema.json",
+  "title": "File upload",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "accept": {
+      "description": "Comma-separated extensions or MIME types, including wildcards like image/*. Rejected files stay listed with an error.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "disabled": {
+      "description": "Disables the dropzone and input.",
+      "type": "boolean"
+    },
+    "label": {
+      "description": "Dropzone heading.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "description": {
+      "description": "Helper text, linked with aria-describedby.",
+      "type": "string",
+      "format": "description"
+    },
+    "multiple": {
+      "description": "Allows several files. When false a new file replaces the old one.",
+      "type": "boolean"
+    },
+    "maxSize": {
+      "description": "Maximum size in bytes. Larger files are listed with an error.",
+      "type": "number"
+    },
+    "value": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "file": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "error": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "file"
+        ]
+      },
+      "description": "Controlled file list."
+    },
+    "onChange": {
+      "description": "Called when files are added or removed.",
+      "type": "object"
+    },
+    "onUpload": {
+      "description": "Uploads each valid file. Report 0-100 through onProgress, resolve when done, reject to mark it failed. Removing a file aborts its signal.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/hover-card.schema.json",
+  "title": "Hover card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "The trigger, such as a mention button or link. Must accept a ref and be focusable.",
+      "type": "object"
+    },
+    "content": {
+      "description": "The preview. HoverCardProfile covers people."
+    },
+    "side": {
+      "description": "Preferred side of the trigger.",
+      "type": "string",
+      "enum": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ]
+    },
+    "align": {
+      "description": "Alignment against the trigger.",
+      "type": "string",
+      "enum": [
+        "start",
+        "center",
+        "end"
+      ]
+    },
+    "openDelay": {
+      "description": "Milliseconds of hover before the first card opens.",
+      "type": "number"
+    },
+    "closeDelay": {
+      "description": "Grace in milliseconds after the pointer leaves.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children",
+    "content"
+  ]
+}

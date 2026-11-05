@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/countdown.schema.json",
+  "title": "Countdown",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "target": {
+      "description": "The moment to count to. Numbers are epoch ms; ISO strings with Z or an offset are exact; strings without an offset are wall time in timeZone, or UTC.",
+      "type": "string"
+    },
+    "timeZone": {
+      "description": "IANA zone for a target string without an offset, such as \"America/Los_Angeles\". Daylight saving is resolved for the target date.",
+      "type": "string"
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Units to show, sorted largest first. The largest unit absorbs the rest, so hours can pass 24 when days are left out."
+    },
+    "variant": {
+      "description": "Large digits with unit labels, or one compact line for banners and table cells.",
+      "type": "string",
+      "enum": [
+        "large",
+        "compact"
+      ]
+    },
+    "completeLabel": {
+      "description": "Shown once the target passes, with a pulsing live dot. The digits morph into it."
+    },
+    "onComplete": {
+      "description": "Fires once when the countdown reaches zero while mounted, on time even in a hidden tab.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name, such as \"Keynote starts in\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "clock": {
+      "description": "Clock source in epoch ms. Pass a server-synced clock when device time cannot be trusted.",
+      "type": "object"
+    },
+    "ref": {
+      "description": "The root element.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "target"
+  ],
+  "x-variants": [
+    "large",
+    "compact"
+  ]
+}

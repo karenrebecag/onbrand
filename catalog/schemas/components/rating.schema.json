@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/rating.schema.json",
+  "title": "Rating",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label and accessible name of the group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled value. 0 means not rated.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "number"
+    },
+    "onChange": {
+      "description": "Receives the committed value; 0 means cleared.",
+      "type": "object"
+    },
+    "max": {
+      "description": "Number of stars.",
+      "type": "number"
+    },
+    "readOnly": {
+      "description": "Renders a static image with an aria-label instead of radios.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables interaction.",
+      "type": "boolean"
+    },
+    "description": {
+      "description": "Hint under the stars, linked with aria-describedby.",
+      "type": "string",
+      "format": "description"
+    },
+    "size": {
+      "description": "Star size.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "allowHalf": {
+      "description": "Pointer, touch, and arrow keys move in half stars.",
+      "type": "boolean"
+    },
+    "allowClear": {
+      "description": "Choosing the current value again clears it; Backspace and Delete clear from the keyboard.",
+      "type": "boolean"
+    },
+    "showValue": {
+      "description": "Shows the word or number for the previewed value beside the stars.",
+      "type": "boolean"
+    },
+    "valueLabels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "One word per whole star. Five whole stars default to Poor through Excellent."
+    },
+    "emptyLabel": {
+      "description": "Shown when the value is 0.",
+      "type": "string",
+      "format": "label"
+    },
+    "name": {
+      "description": "Submits the value with a surrounding form via a hidden input.",
+      "type": "string",
+      "format": "person"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

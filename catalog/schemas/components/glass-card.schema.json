@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/glass-card.schema.json",
+  "title": "Glass card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "image": {
+      "description": "Photo behind the glass.",
+      "type": "string",
+      "format": "image"
+    },
+    "imageAlt": {
+      "description": "Alt text for the photo. Pass an empty string when it is decorative.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "title": {
+      "description": "Main line in the glass panel, such as a name or a product.",
+      "type": "string",
+      "format": "heading"
+    },
+    "subtitle": {
+      "description": "Second line under the title."
+    },
+    "aside": {
+      "description": "Small element at the end of the header, such as a price, a rating, or a status."
+    },
+    "children": {
+      "description": "Detail content revealed when the card expands. Buttons inside stay interactive and do not toggle the card."
+    },
+    "open": {
+      "description": "Controlled expanded state.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Initial expanded state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called when the card expands or collapses.",
+      "type": "object"
+    },
+    "tilt": {
+      "description": "Maximum tilt in degrees. 0 turns tilt off.",
+      "type": "number"
+    },
+    "style": {
+      "description": "Inline style on the card.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "image",
+    "imageAlt",
+    "title"
+  ]
+}

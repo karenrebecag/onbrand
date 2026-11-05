@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pigmento.dev/brandpack.schema.json",
+  "title": "BrandPack",
+  "description": "Capa de identidad sobre el contrato de tokens de Arc (contract/foundation.css). accent/surface/fonts son atajos tipados; el bloque tokens ancla cualquier otro token del contrato (radii, type scale, motion, gradientes). Lo no declarado se hereda del contrato.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "accent"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Ruta a este schema, para que el editor valide y autocomplete brand.json."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nombre de la marca."
+    },
+    "logo": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*\\.\\.).+\\.(svg|png|webp)$",
+      "description": "Ruta relativa al pack del logo (svg|png|webp). Se copia a public/brand/logo.<ext>."
+    },
+    "logoDark": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*\\.\\.).+\\.(svg|png|webp)$",
+      "description": "Logo para zonas oscuras (cierre inverse, footer oscuro); misma regla que logo."
+    },
+    "logoKind": {
+      "enum": [
+        "wordmark",
+        "mark"
+      ],
+      "description": "wordmark: el archivo ya contiene el nombre y header/footer no lo repiten al lado. Sin el campo, mark."
+    },
+    "accent": {
+      "description": "Acento: un preset del contrato por nombre, o colores propios.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "violet",
+            "blue",
+            "green",
+            "amber",
+            "orange",
+            "coral",
+            "rose"
+          ],
+          "description": "Preset de contract/foundation.css (data-accent). No genera override."
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "base",
+            "strong",
+            "subtle"
+          ],
+          "properties": {
+            "base": {
+              "type": "string",
+              "description": "--accent"
+            },
+            "strong": {
+              "type": "string",
+              "description": "--accent-strong"
+            },
+            "subtle": {
+              "type": "string",
+              "description": "--accent-subtle (con alpha)"
+            },
+            "foreground": {
+              "type": "string",
+              "description": "--accent-foreground; omitir cae a --background"
+            }
+          }
+        }
+      ]
+    },
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Tinte de marca sobre los neutros. Cualquier campo omitido hereda el contrato.",
+      "properties": {
+        "background": {
+          "type": "string",
+          "description": "--background"
+        },
+        "surface": {
+          "type": "string",
+          "description": "--surface"
+        },
+        "foreground": {
+          "type": "string",
+          "description": "--foreground"
+        },
+        "textSecondary": {
+          "type": "string",
+          "description": "--text-secondary"
+        }
+      }
+    },
+    "fonts": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Tipografía de marca. display -> --font-geist (--font-display); body -> --font-inter (--font-body).",
+      "properties": {
+        "display": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "import": {
+          "type": "string",
+          "description": "URL de @import de las fuentes (p.ej. Google Fonts)."
+        }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Sesgo determinista de composición (ADR 0003). La intención del brief gana sobre la marca en conflicto. Todo opcional.",
+      "properties": {
+        "roles": {
+          "type": "object",
+          "description": "Sesgo por rol (hero, features, cta, ...). Ajusta el deseo, no toca los tags de los bloques.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "desiredTags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "undesiredTags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "allowedCategories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Solo candidatos de estas categorías; pool vacío -> rol omitido."
+              }
+            }
+          }
+        },
+        "density": {
+          "enum": [
+            "compact",
+            "default",
+            "spacious"
+          ],
+          "description": "Tope de strips y perfil de ritmo; el brief gana si fija maxStrips."
+        },
+        "styleSet": {
+          "type": "string",
+          "description": "Nombre de set de estilo/tokens (F3)."
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Token map: ancla cualquier token del contrato Arc por su nombre (--x) a un valor CSS. La clave debe existir en contract/foundation.css (se rechaza si no); gana sobre accent/surface/fonts. Emite bajo :root (light).",
+      "propertyNames": {
+        "pattern": "^--[a-z0-9-]+$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "tokensDark": {
+      "type": "object",
+      "description": "Igual que tokens pero emite bajo :root[data-theme=\"dark\"]: la identidad de la marca en oscuro. Mismo allowlist y guard.",
+      "propertyNames": {
+        "pattern": "^--[a-z0-9-]+$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "inherit": {
+      "type": "object",
+      "description": "Tokens del contrato que la marca NO redefine y deja en el default del contrato, cada uno con su MOTIVO (no un valor). Cerrar el contrato exige que cada token esté definido por un canal/tokens o declarado aquí.",
+      "propertyNames": {
+        "pattern": "^--[a-z0-9-]+$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requires": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ds"
+      ],
+      "properties": {
+        "ds": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Pin del registry del DS contra el que se validaron las variantes de components."
+        }
+      },
+      "description": "Solo con components: el pin del DS con el que se validó el pack."
+    },
+    "components": {
+      "type": "object",
+      "description": "Variantes de marca por componente, sobre las ranuras (extension points) que publica el pin de requires.ds. Las valida el loader contra ese pin; sin requires.ds falla.",
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

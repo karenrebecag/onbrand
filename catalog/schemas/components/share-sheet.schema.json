@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/share-sheet.schema.json",
+  "title": "Share sheet",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Name of the thing being shared, shown in the panel title as Share \"title\".",
+      "type": "string",
+      "format": "heading"
+    },
+    "link": {
+      "description": "The URL shown in the link row and written to the clipboard by Copy.",
+      "type": "string",
+      "format": "link"
+    },
+    "people": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "avatar"
+        ]
+      },
+      "description": "Recent people: { id, name, avatar }. Picking one flies its avatar up into the Send to row."
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "doneLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "icon",
+          "doneLabel"
+        ]
+      },
+      "description": "Channel buttons: { id, label, icon, doneLabel }. doneLabel is shown once onChannel resolves; keep it about as long as label."
+    },
+    "access": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "icon": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label",
+          "description",
+          "icon"
+        ]
+      },
+      "description": "Access levels: { value, label, description, icon } (the type was ShareAccess, kept as a deprecated alias). Shown in a listbox under the link."
+    },
+    "defaultAccess": {
+      "description": "Starting access value. Defaults to the first entry in access.",
+      "type": "string"
+    },
+    "onSend": {
+      "description": "Receives { people, access }. A returned promise holds the sending state; a rejection keeps the panel open with an error.",
+      "type": "object"
+    },
+    "onChannel": {
+      "description": "Called with the channel id. A promise holds that button's pending state; a rejection shows Failed on it.",
+      "type": "object"
+    },
+    "onCopy": {
+      "description": "Called after the link is copied, with the access level it was copied under.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Trigger button text.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "align": {
+      "description": "Which edge of the button stays put while the panel grows. center grows it evenly around the button and folds it back the same way.",
+      "type": "string",
+      "enum": [
+        "start",
+        "end",
+        "center"
+      ]
+    },
+    "sheetOnPhones": {
+      "description": "Up to 520px wide the panel opens as a bottom sheet over a dimmed backdrop: it slides up, drags down from its grabber, and closes on Esc, a tap outside or Done.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "link",
+    "people",
+    "access"
+  ]
+}

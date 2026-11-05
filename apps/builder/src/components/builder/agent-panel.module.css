@@ -1,0 +1,111 @@
+/* Anatomía del panel del agente y del registro de Stitch (re-iteracion/stitch-ui: g-13, g-33, d-04). */
+.body { display: flex; min-height: 0; flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
+.head { display: flex; align-items: center; padding: var(--space-1) var(--space-1) 0; }
+.agentPill { display: inline-flex; align-items: center; justify-content: center; gap: 4px; width: 44px; height: 22px; border-radius: 11px; background: var(--foreground); }
+.agentPill i { width: 6px; height: 6px; border-radius: 50%; background: var(--surface); }
+
+.promptChip { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3); border: 1px solid var(--border-subtle); border-radius: 12px; background: color-mix(in oklab, var(--surface) 70%, var(--background)); color: var(--text-muted); }
+.promptAvatar { color: var(--text-secondary); }
+.promptText { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: var(--text-sm); }
+/* Stitch abre el prompt entero al pasar el mouse (dinamico-rail.md); el chevron lo deja fijo para teclado y touch. */
+.promptChip[data-open], .promptChip:hover { align-items: start; }
+.promptChip[data-open] .promptText, .promptChip:hover .promptText { white-space: pre-wrap; color: var(--foreground); line-height: var(--leading-body); }
+.chipButton { display: grid; width: 28px; height: 28px; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); cursor: pointer; }
+.chipButton:hover { background: var(--hover); color: var(--foreground); }
+.chevron { transition: transform var(--duration-fast) var(--ease-standard); }
+[aria-expanded="true"] > .chevron { transform: rotate(180deg); }
+
+.scroll { min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-3); padding: 0 var(--space-1) var(--space-1); }
+.markdown { color: var(--foreground); font-size: 15px; line-height: 1.65; overflow-wrap: anywhere; }
+.markdown p { margin: 0 0 var(--space-3); }
+.markdown .mdHeading { font-weight: 500; }
+.markdown ul { margin: 0 0 var(--space-3); padding-left: 18px; }
+.markdown li { margin: 0 0 var(--space-2); }
+.markdown li[data-depth="1"] { margin-left: 16px; }
+.markdown li[data-depth="2"] { margin-left: 32px; }
+.markdown strong { font-weight: 500; }
+.markdown code { font-family: var(--font-mono); font-size: .92em; }
+.markdown > :last-child { margin-bottom: 0; }
+
+.status { display: flex; align-items: center; gap: var(--space-2); margin: 0; padding-left: var(--space-3); color: var(--text-secondary); font-size: var(--text-sm); }
+.spin { animation: wt-agent-spin 1s linear infinite; }
+@keyframes wt-agent-spin { to { transform: rotate(360deg); } }
+.iconError { color: var(--danger); }
+/* MgComponent de Stitch: filas de 20 px a 4 px de distancia, ícono de 14 px, texto sm en itálica secundario. */
+.updates { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; padding: 0 0 0 var(--space-3); list-style: none; color: var(--text-secondary); font-size: var(--text-sm); line-height: 20px; }
+.update { display: flex; align-items: center; gap: var(--space-2); padding: 2px 0; }
+.update svg, .updateIcon { flex: none; width: 14px; height: 14px; }
+.updateDone { color: var(--success); }
+/* Clase en de Lovable y fila Od: xs en color terciario, gap 12 px entre reloj y créditos, 6 px entre ícono y número. */
+.runCost { display: flex; flex-shrink: 0; align-items: center; gap: var(--space-3); padding: 0 var(--space-3); color: var(--text-muted); font-size: var(--text-xs); }
+.runCost > span { display: inline-flex; align-items: center; gap: 6px; }
+/* El gasto del día va al final de la fila, con una barra corta; al tope cambia a peligro y no solo de color: el texto lo dice. */
+.spend { margin-inline-start: auto; white-space: nowrap; }
+.spend[data-reached] { color: var(--danger); }
+.spendBar { position: relative; width: 40px; height: 4px; overflow: hidden; border-radius: 2px; background: var(--border-subtle); }
+.spendFill { position: absolute; inset: 0 auto 0 0; background: var(--text-muted); }
+.spend[data-reached] .spendFill { background: var(--danger); }
+.tabular { font-variant-numeric: tabular-nums; }
+.updateCount { margin-left: var(--space-1); }
+.phases { display: flex; flex-direction: column; gap: var(--space-1); margin: 0 0 var(--space-2); padding: 0 0 0 var(--space-3); list-style: none; color: var(--text-secondary); font-size: var(--text-sm); line-height: 20px; }
+.phase { display: flex; align-items: center; gap: var(--space-2); padding: 2px 0; }
+.phase svg, .phase .updateIcon { flex: none; width: 14px; height: 14px; }
+.phase[data-state='pending'] { color: var(--text-muted); }
+.phaseTime { margin-left: auto; padding-right: var(--space-3); color: var(--text-muted); font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
+
+.stepsToggle { display: inline-flex; align-self: flex-start; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-2); border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); font: inherit; font-size: var(--text-xs); cursor: pointer; }
+.stepsToggle:hover:not(:disabled) { background: var(--hover); color: var(--foreground); }
+
+.log { position: absolute; z-index: 2; left: var(--gap); bottom: var(--gap); width: var(--agent-w); display: flex; flex-direction: column; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); color: var(--foreground); }
+.logList { max-height: 240px; overflow-y: auto; margin: 0; padding: var(--space-2) var(--space-2) var(--space-1); list-style: none; }
+.logRow { display: flex; align-items: center; border-radius: 20px; }
+.logRow[data-selected] { background: color-mix(in oklab, var(--foreground) 9%, transparent); }
+.logPick { display: flex; flex: 1; min-width: 0; align-items: center; gap: var(--space-2); height: 40px; padding: 0 var(--space-3); border: 0; border-radius: 20px; background: transparent; color: inherit; font: inherit; font-size: 15px; text-align: left; cursor: pointer; }
+.logPick:hover { background: var(--hover); }
+.logText { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.logCancel { display: grid; width: 32px; height: 32px; margin-right: var(--space-1); place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--text-secondary); }
+.logHeader { display: flex; height: 52px; align-items: center; gap: var(--space-3); padding: 0 var(--space-4) 0 var(--space-5); border: 0; border-radius: 12px; background: transparent; color: inherit; font: inherit; font-size: 15px; cursor: pointer; }
+.log[data-open] .logHeader { margin: 0 var(--space-2); padding: 0 var(--space-2) 0 var(--space-3); border-top: 1px solid var(--border-subtle); border-radius: 0; }
+.logHeader span { flex: 1; text-align: left; }
+.logChevron { transition: transform var(--duration-fast) var(--ease-standard); }
+.logHeader[aria-expanded="true"] .logChevron { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; }
+}
+
+/* Movimiento copiado de Stitch (static-rail-tools.md 6-8; surface: X.emphasized [.2,0,0,1], emphasizedDecelerate
+   [.05,.7,.1,1], standardDecelerate [0,0,0,1]; transition-glass .15s [.4,0,.2,1]). */
+.agentPill { transition: width .3s cubic-bezier(.2, 0, 0, 1); }
+.agentPill[data-thinking] { width: 54px; }
+.agentPill[data-thinking] i { animation: wt-agent-dot 1.05s ease-in-out infinite; }
+.agentPill[data-thinking] i:nth-child(2) { animation-delay: .18s; }
+.agentPill[data-thinking] i:nth-child(3) { animation: wt-agent-dot-in .3s cubic-bezier(.05, .7, .1, 1) both, wt-agent-dot 1.05s ease-in-out .36s infinite; }
+@keyframes wt-agent-dot { 0%, 100% { opacity: .5; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2.5px); } }
+@keyframes wt-agent-dot-in { from { opacity: 0; scale: 0; } }
+.promptChip[data-rise] { animation: wt-rise .3s cubic-bezier(.2, 0, 0, 1) both; }
+@keyframes wt-rise { from { opacity: 0; transform: translateY(100px); } }
+.word { display: inline-block; animation: wt-word 1s cubic-bezier(0, 0, 0, 1) var(--d, 0s) both; }
+@keyframes wt-word { from { opacity: 0; transform: translateY(5px); filter: blur(4px); } }
+.extra { display: flex; flex-direction: column; animation: wt-word .3s cubic-bezier(.05, .7, .1, 1) var(--d, 0s) both; }
+.status { animation: wt-word .3s cubic-bezier(.05, .7, .1, 1) both; }
+.logList { transform-origin: bottom center; transition: opacity .15s cubic-bezier(.4, 0, .2, 1), scale .15s cubic-bezier(.4, 0, .2, 1); }
+@starting-style { .logList { opacity: 0; scale: .9; } }
+.logText[data-marquee] { display: flex; gap: 40px; text-overflow: clip; mask-image: linear-gradient(to right, transparent, #000 8px, #000 calc(100% - 12px), transparent); }
+.logText[data-marquee] .marqueeTrack { flex-shrink: 0; animation: wt-marquee-run var(--marquee-s) linear infinite; }
+@keyframes wt-marquee-run { to { transform: translateX(calc(-100% - 40px)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .agentPill, .agentPill i, .promptChip[data-rise], .word, .extra, .status, .logList, .logText[data-marquee] .marqueeTrack { animation: none; transition: none; }
+}
+
+/* Shimmer del título activo de v0: CSS module Q2XpNG (chunk 02ksgu-9hleom.css de v0.app, bajado en
+   re-iteracion/re-css-18-19/v0-get/) con la duración de 0.65 s que fija el componente (v0-design-mode deob l.40211).
+   Solo con background-clip, sin reduced-motion y sin forced-colors, como el original. */
+.shimmer { display: inline-block; position: relative; --shimmer-duration: .65s; }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+    .shimmer { background: linear-gradient(90deg, var(--shimmer-base, currentColor) 10%, var(--shimmer-highlight, var(--border)) 55%, var(--shimmer-base, currentColor) 80%); background-repeat: repeat-x; background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation: wt-title-shimmer var(--shimmer-duration) linear infinite; }
+  }
+}
+@keyframes wt-title-shimmer { 0% { background-position: 150%; } to { background-position: -50%; } }

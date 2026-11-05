@@ -1,0 +1,202 @@
+/* Contrato de tokens del DS base (B9 §2.1): los mismos nombres que clasifica src/theme/contract-roles.json, con valores
+   neutrales, para que un brand pack de brands/ aplique igual sobre el base que sobre otro scaffold. Sin fuentes propias ni
+   motion: la marca o la distro los traen. Cualquier elemento con data-theme vuelve a declarar el tema, así una sección
+   puede ser oscura dentro de una página clara; por eso los derivados (var()) se repiten en cada zona. */
+:root,
+[data-theme] {
+  color-scheme: light;
+  --neutral-0: #ffffff;
+  --neutral-1: #fcfcfc;
+  --neutral-2: #f7f7f7;
+  --neutral-3: #f0f0f0;
+  --neutral-4: #e5e5e5;
+  --neutral-5: #d1d1d1;
+  --neutral-6: #adadad;
+  --neutral-7: #737373;
+  --neutral-8: #666666;
+  --neutral-9: #474747;
+  --neutral-10: #2b2b2b;
+  --neutral-11: #171717;
+  --background: var(--neutral-0);
+  --surface: var(--neutral-0);
+  --surface-raised: var(--neutral-0);
+  --surface-muted: var(--neutral-2);
+  --surface-band: color-mix(in oklab, var(--background), var(--foreground) 4%);
+  --brand-highlight: var(--accent);
+  --foreground: var(--neutral-11);
+  --text-secondary: var(--neutral-8);
+  --text-muted: var(--neutral-7);
+  --border: var(--neutral-4);
+  --border-subtle: var(--neutral-3);
+  --border-strong: var(--neutral-7); /* borde de input y botón secundario (ui.css:8,43): 3:1, WCAG 1.4.11 */
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-subtle: rgb(37 99 235 / 0.1);
+  --accent-foreground: #ffffff;
+  --control-on: var(--accent);
+  --control-glyph: #ffffff;
+  --control-track: var(--neutral-4);
+  --control-track-hover: var(--neutral-5);
+  --control-thumb: #ffffff;
+  --control-thumb-on: #ffffff;
+  --control-thumb-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  --control-on-subtle: color-mix(in oklab, var(--control-on) 10%, transparent);
+  --control-fill: var(--control-on);
+  --focus-ring: transparent;
+  --tone-teal: #0f766e;
+  --tone-sky: #0369a1;
+  --tone-orchid: #a21caf;
+  --tone-violet: #6d28d9;
+  --tone-rose: #be123c;
+  --tone-amber: #b45309;
+  --tone-green: #15803d;
+  --success: var(--tone-green);
+  --warning: var(--tone-amber);
+  --danger: var(--tone-rose);
+  --info: var(--tone-sky);
+  --series-1: var(--accent);
+  --series-2: #7c3aed;
+  --series-3: #d97706;
+  --series-4: #059669;
+  --shadow-resting: 0 1px 2px rgb(0 0 0 / 0.05);
+  --shadow-raised: 0 4px 12px rgb(0 0 0 / 0.08);
+  --shadow-floating: 0 16px 40px rgb(0 0 0 / 0.12);
+  /* Palancas globales de forma: el brand pack escala radio, espaciado, texto y controles sin tocar token por token. */
+  --scaling: 1;
+  --radius-factor: 1;
+  --space-1: calc(0.25rem * var(--scaling));
+  --space-2: calc(0.5rem * var(--scaling));
+  --space-3: calc(0.75rem * var(--scaling));
+  --space-4: calc(1rem * var(--scaling));
+  --space-5: calc(1.25rem * var(--scaling));
+  --space-6: calc(1.5rem * var(--scaling));
+  --space-8: calc(2rem * var(--scaling));
+  --space-10: calc(2.5rem * var(--scaling));
+  --space-12: calc(3rem * var(--scaling));
+  --space-16: calc(4rem * var(--scaling));
+  --space-20: calc(5rem * var(--scaling));
+  --space-24: calc(6rem * var(--scaling));
+  --radius-control: calc(0.5rem * var(--scaling) * var(--radius-factor));
+  --radius-panel: calc(0.75rem * var(--scaling) * var(--radius-factor));
+  --radius-surface: calc(1rem * var(--scaling) * var(--radius-factor));
+  --radius-pill: 9999px;
+  --control-height-sm: calc(2rem * var(--scaling));
+  --control-height-md: calc(2.5rem * var(--scaling));
+  --control-height-lg: calc(3rem * var(--scaling));
+  --font-display: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Escala modular 1.25 sobre 1rem. */
+  --text-xs: calc(0.75rem * var(--scaling));
+  --text-sm: calc(0.875rem * var(--scaling));
+  --text-base: calc(1rem * var(--scaling));
+  --text-lg: calc(1.25rem * var(--scaling));
+  --text-xl: calc(1.5625rem * var(--scaling));
+  --text-2xl: calc(1.953rem * var(--scaling));
+  --text-3xl: calc(2.441rem * var(--scaling));
+  --text-4xl: calc(3.052rem * var(--scaling));
+  --text-5xl: calc(3.815rem * var(--scaling));
+  --tracking-display: -0.02em;
+  --tracking-body: 0;
+  --leading-display: 1.15;
+  --leading-body: 1.5;
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-standard: 250ms;
+  --duration-considered: 400ms;
+  --duration-spring: 500ms;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #121212;
+  --surface: #1a1a1a;
+  --surface-raised: #222222;
+  --surface-muted: #262626;
+  --foreground: #f2f2f2;
+  --text-secondary: #bdbdbd;
+  --text-muted: #9e9e9e;
+  --border: #333333;
+  --border-subtle: #2a2a2a;
+  --border-strong: #9e9e9e;
+  --accent: #60a5fa;
+  --accent-strong: #93c5fd;
+  --accent-subtle: rgb(96 165 250 / 0.15);
+  --accent-foreground: #0b1220;
+  --control-glyph: #0b1220;
+  --control-track: #3a3a3a;
+  --control-track-hover: #474747;
+  --control-thumb-on: #0b1220;
+  --tone-teal: #5eead4;
+  --tone-sky: #7dd3fc;
+  --tone-orchid: #f0abfc;
+  --tone-violet: #c4b5fd;
+  --tone-rose: #fda4af;
+  --tone-amber: #fcd34d;
+  --tone-green: #86efac;
+  --series-2: #a78bfa;
+  --series-3: #fbbf24;
+  --series-4: #34d399;
+  --shadow-resting: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-raised: 0 6px 18px rgb(0 0 0 / 0.35);
+  --shadow-floating: 0 18px 48px rgb(0 0 0 / 0.45);
+}
+
+/* Presets de acento (theme.preset de un brand pack: neutral, violet, blue, green, amber, orange, coral, rose). Solo tocan
+   los tokens de acento y de control; presets-from-css los lee de aquí y presets.json no cambia (B9 paso 4). */
+[data-accent="neutral"], [data-accent="neutral"] [data-theme] { --accent: oklch(33% 0 0); --accent-strong: oklch(24% 0 0); --accent-subtle: oklch(33% 0 0 / .1); }
+[data-accent="violet"], [data-accent="violet"] [data-theme] { --accent: #7747ff; --accent-strong: #5528ce; --accent-subtle: rgb(119 71 255 / .13); }
+[data-accent="blue"], [data-accent="blue"] [data-theme] { --accent: #0562ef; --accent-strong: #074db7; --accent-subtle: rgb(5 98 239 / .12); }
+[data-accent="green"], [data-accent="green"] [data-theme] { --accent: #0db879; --accent-strong: #087c54; --accent-subtle: rgb(13 184 121 / .13); --accent-foreground: #102016; }
+[data-accent="amber"], [data-accent="amber"] [data-theme] { --accent: #f3ad20; --accent-strong: #9c6300; --accent-subtle: rgb(243 173 32 / .16); --accent-foreground: #20190d; }
+[data-accent="orange"], [data-accent="orange"] [data-theme] { --accent: #f48120; --accent-strong: #aa4700; --accent-subtle: rgb(244 129 32 / .13); --accent-foreground: #17130f; }
+[data-accent="coral"], [data-accent="coral"] [data-theme] { --accent: #f15f55; --accent-strong: #b92c27; --accent-subtle: rgb(241 95 85 / .14); --accent-foreground: #21110f; }
+[data-accent="rose"], [data-accent="rose"] [data-theme] { --accent: #ed4e9d; --accent-strong: #ae2570; --accent-subtle: rgb(237 78 157 / .14); --accent-foreground: #250f1b; }
+[data-accent="neutral"][data-theme="dark"], [data-accent="neutral"] [data-theme="dark"] { --accent: oklch(80% 0 0); --accent-strong: oklch(91% 0 0); --accent-subtle: oklch(80% 0 0 / .13); }
+[data-accent="violet"][data-theme="dark"], [data-accent="violet"] [data-theme="dark"] { --accent: #a78bff; --accent-strong: #c7b7ff; --accent-subtle: rgb(119 71 255 / .22); }
+[data-accent="blue"][data-theme="dark"], [data-accent="blue"] [data-theme="dark"] { --accent: #6ba3ff; --accent-strong: #a4c7ff; --accent-subtle: rgb(5 98 239 / .22); }
+[data-accent="green"][data-theme="dark"], [data-accent="green"] [data-theme="dark"] { --accent: #53dca6; --accent-strong: #93efd0; --accent-subtle: rgb(13 184 121 / .2); }
+[data-accent="amber"][data-theme="dark"], [data-accent="amber"] [data-theme="dark"] { --accent: #ffcb62; --accent-strong: #ffe0a1; --accent-subtle: rgb(243 173 32 / .2); }
+[data-accent="orange"][data-theme="dark"], [data-accent="orange"] [data-theme="dark"] { --accent: #ffad5e; --accent-strong: #ffd0a0; --accent-subtle: rgb(244 129 32 / .2); --accent-foreground: #17130f; }
+[data-accent="coral"][data-theme="dark"], [data-accent="coral"] [data-theme="dark"] { --accent: #ff9386; --accent-strong: #ffc1ba; --accent-subtle: rgb(241 95 85 / .2); }
+[data-accent="rose"][data-theme="dark"], [data-accent="rose"] [data-theme="dark"] { --accent: #ff8bc5; --accent-strong: #ffc0df; --accent-subtle: rgb(237 78 157 / .2); }
+[data-accent="neutral"], [data-accent="neutral"] [data-theme] { --control-on: oklch(23% 0 0); --control-thumb-on: oklch(100% 0 0); --control-glyph: oklch(100% 0 0); }
+[data-accent="violet"], [data-accent="violet"] [data-theme] { --control-on: #7747ff; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="blue"], [data-accent="blue"] [data-theme] { --control-on: #0562ef; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="green"], [data-accent="green"] [data-theme] { --control-on: #10a870; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="amber"], [data-accent="amber"] [data-theme] { --control-on: #eda11a; --control-thumb-on: #fff; --control-glyph: #2a1c03; }
+[data-accent="orange"], [data-accent="orange"] [data-theme] { --control-on: #f07818; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="coral"], [data-accent="coral"] [data-theme] { --control-on: #ec564b; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="rose"], [data-accent="rose"] [data-theme] { --control-on: #e64494; --control-thumb-on: #fff; --control-glyph: #fff; }
+[data-accent="neutral"][data-theme="dark"], [data-accent="neutral"] [data-theme="dark"] { --control-on: oklch(93% 0 0); --control-thumb-on: oklch(19% 0 0); --control-glyph: oklch(19% 0 0); }
+[data-accent="violet"][data-theme="dark"], [data-accent="violet"] [data-theme="dark"] { --control-on: #8a66ff; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #8a66ff; }
+[data-accent="blue"][data-theme="dark"], [data-accent="blue"] [data-theme="dark"] { --control-on: #3b82f6; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #3b82f6; }
+[data-accent="green"][data-theme="dark"], [data-accent="green"] [data-theme="dark"] { --control-on: #1fae78; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #1fae78; }
+[data-accent="amber"][data-theme="dark"], [data-accent="amber"] [data-theme="dark"] { --control-on: #e8a52a; --control-thumb-on: #fff; --control-glyph: #241803; --control-fill: #e8a52a; }
+[data-accent="orange"][data-theme="dark"], [data-accent="orange"] [data-theme="dark"] { --control-on: #ef873a; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #ef873a; }
+[data-accent="coral"][data-theme="dark"], [data-accent="coral"] [data-theme="dark"] { --control-on: #ec6a60; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #ec6a60; }
+[data-accent="rose"][data-theme="dark"], [data-accent="rose"] [data-theme="dark"] { --control-on: #e457a0; --control-thumb-on: #fff; --control-glyph: #fff; --control-fill: #e457a0; }
+
+/* La zona se pinta sola; :where() deja la especificidad en 0 para que el fondo propio de un bloque siga mandando. */
+:where([data-theme]:not(:root)) { background-color: var(--background); color: var(--foreground); }
+
+/* Superficie de sección (data-wt-surface del contrato de página): los bloques pintan var(--background), así que se
+   remapea ese token en el wrapper. En claro --surface-raised es igual al fondo y no separaría la sección. El muted de la
+   rampa da 4.31:1 sobre la banda clara (bajo 4.5, WCAG 1.4.3): dentro de la banda clara el texto apagado es el
+   secundario. En oscuro el muted ya pasa (6.56 y 5.94:1) y se conserva el del tema o el del pack. */
+[data-wt-surface="muted"],
+[data-wt-surface="raised"] { --background: var(--surface-band); background-color: var(--background); }
+/* HACK: "claro" = sin ancestro oscuro; una zona clara dentro de una página oscura no recibe el remap. Pasar a un token por
+   tema si el base anida claro dentro de oscuro. */
+[data-wt-surface="muted"]:not([data-theme="dark"], [data-theme="dark"] *),
+[data-wt-surface="raised"]:not([data-theme="dark"], [data-theme="dark"] *) { --text-muted: var(--text-secondary); }
+[data-theme="dark"] [data-wt-surface="raised"],
+[data-wt-surface="raised"][data-theme="dark"] { --background: var(--surface-raised); }
+
+/* Foco: solo el de teclado dibuja contorno (WCAG 2.4.7). */
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 2px solid color-mix(in oklab, var(--accent-strong) 72%, transparent); outline-offset: 2px; }

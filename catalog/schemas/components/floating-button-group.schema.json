@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/floating-button-group.schema.json",
+  "title": "Floating button group",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "The buttons in order. A separator draws a short rule between logical clusters. label is the visible text and the accessible name; iconOnly moves it into a tooltip. pressed marks an action that switches a mode on, such as Present, with aria-pressed and a quiet tint. shortcut is shown in the tooltip only; the component does not bind the key. reserveLabels lists the other labels an item can switch to, such as [\"Share\", \"Copied\"]: the button always has the width of the widest, so a label change never resizes the button, its neighbours or the tray."
+    },
+    "label": {
+      "description": "Accessible name of the toolbar, such as \"Board actions\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "variant": {
+      "description": "muted sits quietly on a page on the muted surface. floating raises the tray with a hairline edge and the floating shadow, for overlays such as a selection or canvas toolbar.",
+      "type": "string",
+      "enum": [
+        "muted",
+        "floating"
+      ]
+    },
+    "size": {
+      "description": "Button height of 30 or 36px, with matching tray padding, gaps and corner radius.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md"
+      ]
+    },
+    "orientation": {
+      "description": "A row or a column, such as a tools rail. Arrow keys follow the orientation.",
+      "type": "string",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "iconOnly": {
+      "description": "Shows every item with an icon as an icon only. An item's own iconOnly wins, so a toolbar can mix icon buttons with labelled ones.",
+      "type": "boolean"
+    },
+    "tooltipSide": {
+      "description": "Where item tooltips open. Top and bottom use the library Tooltip; left and right open beside a column without covering its neighbours.",
+      "type": "string",
+      "enum": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ]
+    },
+    "onAction": {
+      "description": "Called with the item id after the item's own onSelect, for handling every action in one place.",
+      "type": "object"
+    },
+    "style": {
+      "description": "Inline styles on the tray.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "label"
+  ],
+  "x-variants": [
+    "muted",
+    "floating"
+  ]
+}

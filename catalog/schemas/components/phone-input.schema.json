@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/phone-input.schema.json",
+  "title": "Phone input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Field label.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "hideLabel": {
+      "description": "Keeps the label for screen readers only.",
+      "type": "boolean"
+    },
+    "value": {
+      "description": "Controlled number in E.164, such as \"+14155550132\". An empty string clears the field.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Starting number when uncontrolled.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Fires on every edit with the E.164 number (empty without digits) and { country, formatted, status, valid }.",
+      "type": "object"
+    },
+    "country": {
+      "description": "Controlled ISO code of the selected country.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultCountry": {
+      "description": "ISO code used until someone picks a country or enters an international number.",
+      "type": "string"
+    },
+    "onCountryChange": {
+      "description": "Called when the country changes, including from a pasted number.",
+      "type": "object"
+    },
+    "countries": {
+      "description": "Limit the picker to these ISO codes.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "preferredCountries": {
+      "description": "Pinned at the top of the picker under Suggested.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "description": {
+      "description": "Hint under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "error": {
+      "description": "Replaces the built-in validation message.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "validate": {
+      "description": "Show a message after blur when the number has the wrong length.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables the number and the picker.",
+      "type": "boolean"
+    },
+    "required": {
+      "description": "Marks the number input required.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Adds a hidden input carrying the E.164 value for native form submission.",
+      "type": "string",
+      "format": "person"
+    },
+    "id": {
+      "description": "Id of the number input.",
+      "type": "string"
+    },
+    "onBlur": {
+      "description": "Called when the number input loses focus.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

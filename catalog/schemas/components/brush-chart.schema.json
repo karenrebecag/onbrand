@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/brush-chart.schema.json",
+  "title": "Brush chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "date"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "value"
+        ]
+      },
+      "description": "Points in ascending time order."
+    },
+    "label": {
+      "description": "Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after values in the tooltip and table.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "formatValue": {
+      "description": "Formats values in the tooltip and table.",
+      "type": "object"
+    },
+    "formatTick": {
+      "description": "Formats the value axis. Defaults to a compact number.",
+      "type": "object"
+    },
+    "formatDate": {
+      "description": "Formats dates in the tooltip and announcements.",
+      "type": "object",
+      "format": "date"
+    },
+    "annotations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "date"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "label"
+        ]
+      },
+      "description": "Events drawn as markers on both charts; labels show where they fit."
+    },
+    "range": {
+      "description": "Controlled window as epoch milliseconds. A new value glides the window there.",
+      "type": "object"
+    },
+    "defaultRange": {
+      "description": "Initial window when uncontrolled. Defaults to the whole series.",
+      "type": "object"
+    },
+    "onRangeChange": {
+      "description": "Called while the window is dragged, resized, stepped, or reset.",
+      "type": "object"
+    },
+    "minSpan": {
+      "description": "Smallest window in milliseconds.",
+      "type": "number"
+    },
+    "height": {
+      "description": "Main plot height in pixels.",
+      "type": "number"
+    },
+    "overviewHeight": {
+      "description": "Overview strip height in pixels.",
+      "type": "number"
+    },
+    "emptyLabel": {
+      "description": "Shown with fewer than two points.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label"
+  ]
+}

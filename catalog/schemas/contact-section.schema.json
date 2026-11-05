@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/contact-section.schema.json",
+  "title": "Contact Section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "Layout.",
+      "type": "string",
+      "enum": [
+        "form",
+        "channels",
+        "offices"
+      ]
+    },
+    "title": {
+      "description": "Section heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One line under the heading.",
+      "type": "string",
+      "format": "description"
+    },
+    "topics": {
+      "description": "Topics offered in the form as a radio group of chips.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "tag"
+      },
+      "x-empty": "omit"
+    },
+    "onSubmit": {
+      "description": "Called with a valid message. Reject to keep the form and show an error; resolve to show the confirmation.",
+      "type": "object"
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "meta": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tag"
+          },
+          "icon": {
+            "x-undocumented": true,
+            "x-slot": {
+              "accepts": [
+                "icon"
+              ],
+              "cardinality": "list"
+            },
+            "x-empty": ""
+          },
+          "detail": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label",
+          "meta",
+          "detail"
+        ]
+      },
+      "description": "Ways to reach you for the channels variant."
+    },
+    "channel": {
+      "description": "Selected channel (controlled).",
+      "type": "string"
+    },
+    "defaultChannel": {
+      "description": "Initial channel when uncontrolled.",
+      "type": "string"
+    },
+    "onChannelChange": {
+      "description": "Called when the channel changes.",
+      "type": "object"
+    },
+    "offices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "timeZone": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "address": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          },
+          "email": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "hours": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "city",
+          "timeZone",
+          "address"
+        ]
+      },
+      "description": "Offices. timeZone is an IANA zone; hours default to 9 to 18 local time."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "topics",
+    "channels",
+    "offices"
+  ]
+}

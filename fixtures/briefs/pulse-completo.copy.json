@@ -1,0 +1,232 @@
+{
+  "navbar": {
+    "brand": "Acme Pulse",
+    "links": [
+      "Producto",
+      "Cómo funciona",
+      "Precios"
+    ],
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Iniciar sesión"
+  },
+  "hero": {
+    "heading": "La IA que responde tu WhatsApp y recupera cada venta",
+    "description": "Acme Pulse contesta al instante, recupera carritos abandonados y convierte las conversaciones de tu tienda en pedidos, las 24 horas.",
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Ver cómo funciona"
+  },
+  "logos": {
+    "heading": "Tiendas que ya venden más con Acme Pulse",
+    "brands": [
+      "Shopify",
+      "Tiendanube",
+      "VTEX",
+      "WooCommerce",
+      "Mercado Shops",
+      "Magento"
+    ]
+  },
+  "features": {
+    "heading": "Convierte cada chat de tu tienda en una venta",
+    "description": "Un solo agente atiende, retoma el carrito abandonado y lleva al cliente hasta el pago, sin plantillas rígidas ni esperas.",
+    "items": [
+      {
+        "title": "Responde al instante",
+        "description": "Cada mensaje de tu tienda recibe respuesta en segundos, con el contexto del cliente y tu catálogo."
+      },
+      {
+        "title": "Recupera carritos",
+        "description": "Detecta el carrito abandonado y retoma la conversación antes de que se enfríe."
+      },
+      {
+        "title": "Cierra la venta",
+        "description": "Resuelve dudas, comparte el link de pago y confirma el pedido sin que tu equipo intervenga."
+      },
+      {
+        "title": "Un solo agente, todo el embudo",
+        "description": "De la primera pregunta al pedido confirmado, sin saltar entre herramientas."
+      },
+      {
+        "title": "Tu marca, tus reglas",
+        "description": "Tono, horarios y respuestas bajo tu control."
+      },
+      {
+        "title": "Cada pedido, rastreado",
+        "description": "Del primer mensaje al pago, sin perder el hilo."
+      }
+    ]
+  },
+  "steps": {
+    "heading": "Cómo funciona",
+    "steps": [
+      {
+        "tagline": "Paso 1",
+        "title": "Conecta tu WhatsApp y tu tienda",
+        "description": "Vincula el número de tu negocio y tu catálogo en minutos. Acme Pulse aprende tus productos, precios y políticas sin plantillas."
+      },
+      {
+        "tagline": "Paso 2",
+        "title": "Acme Pulse responde y retoma carritos",
+        "description": "Contesta cada mensaje al instante y vuelve a escribir a quien dejó un carrito, con el contexto de lo que miraba."
+      },
+      {
+        "tagline": "Paso 3",
+        "title": "Cierra la venta con el link de pago",
+        "description": "Resuelve dudas, comparte el link de pago y confirma el pedido. Si hace falta una persona, pasa la conversación a tu equipo."
+      },
+      {
+        "tagline": "Paso 4",
+        "title": "Mide lo que recuperaste",
+        "description": "Un panel con conversaciones atendidas, carritos recuperados y ventas cerradas, semana a semana."
+      }
+    ]
+  },
+  "stats": {
+    "heading": "Los números de vender con un agente que no duerme",
+    "stats": [
+      {
+        "value": 3,
+        "suffix": "×",
+        "label": "Conversaciones resueltas",
+        "detail": "más al mes"
+      },
+      {
+        "value": 24,
+        "suffix": "/7",
+        "label": "Atención",
+        "detail": "sin filas ni esperas"
+      },
+      {
+        "value": 35,
+        "prefix": "+",
+        "suffix": "%",
+        "label": "Ventas recuperadas",
+        "detail": "de carritos abandonados"
+      }
+    ]
+  },
+  "testimonials": {
+    "heading": "Tiendas que dejaron de perder ventas en el chat",
+    "description": "Equipos de e-commerce que pusieron a Acme Pulse a responder su WhatsApp y vieron el cambio en el mismo mes.",
+    "items": [
+      {
+        "quote": "Antes contestábamos al día siguiente y el cliente ya había comprado en otro lado. Ahora Acme Pulse responde en segundos y cierra el pedido con el link de pago.",
+        "name": "Mariana López",
+        "role": "Directora de e-commerce",
+        "company": "Casa Verde"
+      },
+      {
+        "quote": "Los carritos abandonados eran nuestro mayor agujero. Acme Pulse retoma la conversación sola y recuperamos un tercio de esas ventas sin sumar gente al equipo.",
+        "name": "Diego Ferreira",
+        "role": "Fundador",
+        "company": "Ritmo Store"
+      },
+      {
+        "quote": "Lo que más nos sorprendió fue el tono: habla como nuestra marca y sabe cuándo pasar la conversación a una persona. El equipo de soporte respira.",
+        "name": "Valeria Castro",
+        "role": "Head de Customer Care",
+        "company": "Nómada Outdoor"
+      }
+    ]
+  },
+  "pricing": {
+    "tagline": "Planes",
+    "heading": "Un plan para cada tamaño de tienda",
+    "description": "Empieza con lo esencial y crece cuando tu WhatsApp venda más. Sin permanencia.",
+    "periodLabel": "/mes",
+    "plans": [
+      {
+        "name": "Starter",
+        "monthlyPrice": "$49",
+        "yearlyNote": "o $490 al año",
+        "features": [
+          "Hasta 1.000 conversaciones al mes",
+          "Recuperación de carritos",
+          "Catálogo conectado",
+          "Soporte por chat"
+        ],
+        "cta": "Empezar con Starter"
+      },
+      {
+        "name": "Growth",
+        "monthlyPrice": "$149",
+        "yearlyNote": "o $1.490 al año",
+        "features": [
+          "Conversaciones ilimitadas",
+          "Recuperación de carritos",
+          "Link de pago en el chat",
+          "Transferencia a tu equipo",
+          "Panel de ventas recuperadas",
+          "Soporte prioritario"
+        ],
+        "cta": "Agendar demo"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Preguntas frecuentes",
+    "description": "Lo que las tiendas preguntan antes de poner a Acme Pulse a responder su WhatsApp.",
+    "items": [
+      {
+        "question": "¿Necesito cambiar mi número de WhatsApp?",
+        "answer": "No. Acme Pulse se conecta al número de WhatsApp Business que ya usa tu tienda; tus clientes siguen escribiendo al mismo lugar."
+      },
+      {
+        "question": "¿Qué pasa si el cliente pide hablar con una persona?",
+        "answer": "Acme Pulse detecta la intención y pasa la conversación a tu equipo con todo el contexto. Tú defines cuándo y a quién."
+      },
+      {
+        "question": "¿Con qué plataformas de e-commerce funciona?",
+        "answer": "Shopify, Tiendanube, VTEX, WooCommerce, Mercado Shops y Magento. Si usas otra, te decimos en la demo cómo conectarla."
+      },
+      {
+        "question": "¿Cuánto tarda la implementación?",
+        "answer": "La conexión del número y el catálogo toma minutos. La mayoría de las tiendas responde con Acme Pulse el mismo día."
+      },
+      {
+        "question": "¿Puedo cancelar cuando quiera?",
+        "answer": "Sí. Los planes son mensuales y sin permanencia; el anual se cobra una vez y puedes no renovarlo."
+      }
+    ],
+    "contact": {
+      "heading": "¿Todavía tienes dudas?",
+      "description": "Agenda una demo y te mostramos Acme Pulse respondiendo en tu propio WhatsApp.",
+      "cta": "Agendar demo"
+    }
+  },
+  "cta": {
+    "heading": "¿Listo para recuperar las ventas que se te escapan?",
+    "description": "Agenda una demo y ve a Acme Pulse responder, recuperar carritos y cerrar pedidos en tu propio WhatsApp.",
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Hablar por WhatsApp",
+    "note": "Sin tarjeta. Listo en minutos."
+  },
+  "footer": {
+    "brand": "Acme Pulse",
+    "tagline": "La IA que vende por WhatsApp.",
+    "columns": [
+      {
+        "title": "Producto",
+        "links": [
+          "Acme Pulse",
+          "Integraciones",
+          "Precios",
+          "Seguridad"
+        ]
+      },
+      {
+        "title": "Empresa",
+        "links": [
+          "Sobre Pulse",
+          "Casos de éxito",
+          "Blog",
+          "Contacto"
+        ]
+      }
+    ],
+    "legal": [
+      "Política de Privacidad",
+      "Términos del Servicio"
+    ]
+  }
+}

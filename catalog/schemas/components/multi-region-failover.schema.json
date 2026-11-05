@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/multi-region-failover.schema.json",
+  "title": "Multi-region failover",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "hostname": {
+      "description": "The hostname the balancer answers for, shown under it and in the default description.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "requestsPerSecond": {
+      "description": "Total requests per second from users. Each region's counter shows its share of it.",
+      "type": "number"
+    },
+    "latencyMs": {
+      "description": "Median latency of the primary region while the split is even. The secondary runs 4 ms slower and climbs as it takes the whole load.",
+      "type": "number"
+    },
+    "speed": {
+      "description": "Multiplies the pace. One outage and recovery cycle takes 21 seconds at 1. 0 holds still.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Holds the animation, easing to rest. Paused from the start, it shows the moment traffic shifts away from the unhealthy region.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Any CSS color for the requests, lit routes, the weight dial, the split bar and the scrubber. Defaults to the theme accent. Errors and health always use the status colors.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "controls": {
+      "description": "Shows the step scrubber with a pause button. Each step is a button that jumps to that stage; arrow keys move between them.",
+      "type": "boolean"
+    },
+    "caption": {
+      "description": "Shows the current stage title and one line that narrates it under the scrubber.",
+      "type": "boolean"
+    },
+    "label": {
+      "description": "Accessible description. Defaults to a sentence built from the hostname and the region names.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "style": {
+      "description": "Inline styles on the root figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

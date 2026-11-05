@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/number-field.schema.json",
+  "title": "Number field",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label; also names the stepper buttons.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled value.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Called on every committed step, scrub, or valid typed draft.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lower bound.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Upper bound.",
+      "type": "number"
+    },
+    "step": {
+      "description": "Increment; its precision also sets default fraction digits.",
+      "type": "number"
+    },
+    "largeStep": {
+      "description": "Distance for PageUp, PageDown, and Shift with an arrow.",
+      "type": "number"
+    },
+    "description": {
+      "description": "Helper copy under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "disabled": {
+      "description": "Disables the input and buttons.",
+      "type": "boolean"
+    },
+    "id": {
+      "description": "Input id. Generated when omitted.",
+      "type": "string"
+    },
+    "prefix": {
+      "description": "Text before the number, such as \"$\".",
+      "type": "object"
+    },
+    "suffix": {
+      "description": "Text after the number; a function can pluralize, e.g. n => n === 1 ? \" seat\" : \" seats\".",
+      "type": "object"
+    },
+    "scrub": {
+      "description": "Drag the label sideways to change the value.",
+      "type": "boolean"
+    },
+    "locale": {
+      "description": "Formatting locale, fixed so server and client match.",
+      "type": "string"
+    },
+    "formatOptions": {
+      "description": "Fraction digits and grouping.",
+      "type": "object"
+    },
+    "size": {
+      "description": "Control height, type size, and default width (164, 196, or 228px).",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "limitHint": {
+      "description": "Note beside the label when a press meets a limit (about 1.5s) or a typed value passes one. Defaults to \"Max 10 seats\" using the prefix and suffix; false hides it.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

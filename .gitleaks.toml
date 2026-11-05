@@ -1,0 +1,34 @@
+# gitleaks git . sobre el historial: cada excepción nombra el hallazgo (archivo:línea @commit) y por qué no es un secreto.
+# Van por valor exacto y ruta (condition AND), no por archivo entero: un secreto real nuevo en esos archivos sigue saltando.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "tests/ds-registry.test.ts:28,37,40,41,48,53,55 @41d38518/0648d540: fixtures del detector secretHits; el test necesita cadenas con forma de secreto para comprobar que las marca"
+condition = "AND"
+paths = ['''^tests/ds-registry\.test\.ts$''']
+regexes = ['''^abcdefgh12345678$''', '''^eyJhbGciOiJIUzI1NiJ9\.eyJzdWIiOiIxMjM0NTYifQ\.abcdefghijklmnop$''']
+
+[[allowlists]]
+description = "tests/agent-context.test.ts:139 @8dd8eed2/21bf0520 y tests/memory-tool.test.ts:22 @101f84d8/27fc06b5: token inventado (alfabeto seguido, 26 caracteres frente a los ~100 de uno real) para probar que remember lo rechaza"
+condition = "AND"
+paths = ['''^tests/(agent-context|memory-tool)\.test\.ts$''']
+regexes = ['''^sk_live_51HxYzAbCdEfGhIjKlMnOp$''']
+
+[[allowlists]]
+description = "registry/r/env-variables@42c251e81d256173.json:1 @072383d0/679eb692: SAMPLE_DOTENV de la demo del bloque (texto de ejemplo del import de .env, junto a un shippo_test_), no la config de nadie"
+condition = "AND"
+paths = ['''^registry/r/env-variables@[0-9a-f]+\.json$''']
+regexes = ['''^phc_Rk2mT8vLq4xW9nZcB7pD1sF6hJ3yG5aE$''', '''^b7e2a9c41d06f8e3a5c2b9d7e14f6a08$''']
+
+[[allowlists]]
+description = "tests/wa-sensors.test.ts:5 @99b0e90f: companyToken inventado (los últimos 12 hex son 1c2d3e4f5a6b); el sensor solo valida que sea un UUID"
+condition = "AND"
+paths = ['''^tests/wa-sensors\.test\.ts$''']
+regexes = ['''^3f2a9c1e-0b7d-4e5f-9a8b-1c2d3e4f5a6b$''']
+
+[[allowlists]]
+description = "tests/runtime-runs.test.ts:494 @8d9568f7/b9cbe072, tests/v0-transport.test.ts:296 y tests/wa-sdk.test.ts:10 @9a6d463e/bcf0b2df: companyToken de tracking de un cliente; no es credencial (va público en data-company-token del HTML servido), y desde este cambio los tests usan uno inventado. Solo en esos commits: si vuelve a entrar, salta"
+condition = "AND"
+commits = ["8d9568f7ac2a7d8dca2236fe14dd8facfa8c6263", "b9cbe072815dc4adcf3ef4ab9593472e7d2887a7", "9a6d463ea2b2613b59053307e338f4eafcbe7bdf", "bcf0b2df83817d3be6394b70d5603f9bb333bd94"]
+regexes = ['''^2461fbb8-911f-c77b-5ba1-aef91156d512$''']

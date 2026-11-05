@@ -1,0 +1,50 @@
+{
+  "navbar": {
+    "brand": "Nimbus",
+    "links": ["Producto", "Cómo funciona", "Early access"],
+    "primaryCta": "Unirme a la lista",
+    "secondaryCta": "Iniciar sesión"
+  },
+  "hero": {
+    "heading": "El copiloto de IA para tu equipo de producto",
+    "description": "Nimbus resume research, redacta specs y conecta los puntos entre Linear, Figma y Notion. Súmate a la lista de espera del early access.",
+    "primaryCta": "Unirme a la lista de espera",
+    "secondaryCta": "Ver cómo funciona"
+  },
+  "features": {
+    "heading": "De la señal al spec, sin cambiar de pestaña",
+    "description": "Nimbus vive donde ya trabaja tu equipo y convierte el ruido de research en decisiones de producto.",
+    "items": [
+      { "title": "Resume el research", "description": "Entrevistas, tickets y encuestas condensados en los temas que importan." },
+      { "title": "Redacta el spec", "description": "Un borrador de PRD con contexto real, listo para editar." },
+      { "title": "Conecta tus tools", "description": "Linear, Figma y Notion en un solo hilo de contexto." },
+      { "title": "Prioriza con datos", "description": "Señales de uso y feedback ponderadas, no corazonadas." },
+      { "title": "Tu proceso, tu lenguaje", "description": "Se adapta a cómo tu equipo nombra y mide las cosas." },
+      { "title": "Memoria del producto", "description": "Cada decisión queda trazada y buscable." }
+    ]
+  },
+  "stats": {
+    "heading": "Lo que ven los equipos en la beta privada",
+    "stats": [
+      { "value": 6, "suffix": "h", "label": "Ahorradas por semana", "detail": "en síntesis de research" },
+      { "value": 3, "suffix": "×", "label": "Specs más rápidos", "detail": "del insight al PRD" },
+      { "value": 200, "prefix": "+", "label": "Equipos en lista", "detail": "esperando el early access" }
+    ]
+  },
+  "cta": {
+    "heading": "Entra al early access de Nimbus",
+    "description": "Déjanos tu correo y te avisamos en cuanto abramos tu cupo. Sin spam, solo el lanzamiento.",
+    "primaryCta": "Unirme a la lista de espera",
+    "secondaryCta": "Hablar con el equipo",
+    "note": "Cupos limitados por semana."
+  },
+  "footer": {
+    "brand": "Nimbus",
+    "tagline": "El copiloto de IA para equipos de producto.",
+    "columns": [
+      { "title": "Producto", "links": ["Nimbus", "Integraciones", "Early access", "Seguridad"] },
+      { "title": "Empresa", "links": ["Sobre nosotros", "Blog", "Changelog", "Contacto"] }
+    ],
+    "legal": ["Política de Privacidad", "Términos del Servicio"]
+  }
+}

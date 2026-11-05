@@ -1,0 +1,63 @@
+{
+  "role": "pricing",
+  "width": "content",
+  "surface": "muted",
+  "padding": "lg",
+  "children": [
+    {
+      "layout": "stack",
+      "gap": "xl",
+      "align": "center",
+      "children": [
+        {
+          "layout": "stack",
+          "gap": "sm",
+          "align": "center",
+          "children": [
+            { "text": "title", "value": "Un plan para cada tamaño de tienda", "align": "center" },
+            { "text": "subtitle", "value": "Empieza con lo esencial y crece cuando tu WhatsApp venda más. Sin permanencia.", "align": "center" }
+          ]
+        },
+        {
+          "layout": "grid",
+          "cols": { "base": 1, "md": 2 },
+          "gap": "lg",
+          "children": [
+            {
+              "component": "card",
+              "props": {
+                "title": "Starter",
+                "description": "o $490 al año",
+                "meta": { "$slot": { "text": "title", "value": "$49/mes" } },
+                "children": { "$slot": { "layout": "stack", "gap": "xs", "children": [
+                  { "text": "body", "value": "Hasta 1.000 conversaciones al mes" },
+                  { "text": "body", "value": "Recuperación de carritos" },
+                  { "text": "body", "value": "Catálogo conectado" },
+                  { "text": "body", "value": "Soporte por chat" }
+                ] } },
+                "action": { "$slot": { "component": "button", "props": { "variant": "secondary", "children": "Empezar con Starter" } } }
+              }
+            },
+            {
+              "component": "card",
+              "props": {
+                "title": "Growth",
+                "description": "o $1.490 al año",
+                "meta": { "$slot": { "text": "title", "value": "$149/mes" } },
+                "children": { "$slot": { "layout": "stack", "gap": "xs", "children": [
+                  { "text": "body", "value": "Conversaciones ilimitadas" },
+                  { "text": "body", "value": "Recuperación de carritos" },
+                  { "text": "body", "value": "Link de pago en el chat" },
+                  { "text": "body", "value": "Transferencia a tu equipo" },
+                  { "text": "body", "value": "Panel de ventas recuperadas" },
+                  { "text": "body", "value": "Soporte prioritario" }
+                ] } },
+                "action": { "$slot": { "component": "button", "props": { "variant": "primary", "children": "Agendar demo" } } }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

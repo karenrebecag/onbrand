@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/faq-section.schema.json",
+  "title": "FAQ Section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "Layout.",
+      "type": "string",
+      "enum": [
+        "accordion",
+        "columns",
+        "search"
+      ]
+    },
+    "title": {
+      "description": "Section heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One line under the heading.",
+      "type": "string",
+      "format": "description"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "question": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "answer": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "category": {
+            "x-undocumented": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "answer"
+        ]
+      },
+      "description": "Questions. answer is plain text and is what search matches. category groups the columns variant."
+    },
+    "multiple": {
+      "description": "Allow several answers open at once.",
+      "type": "boolean"
+    },
+    "value": {
+      "description": "Open item ids (controlled). Ids default to the question.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultValue": {
+      "description": "Initially open ids when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onValueChange": {
+      "description": "Called when answers open or close.",
+      "type": "object"
+    },
+    "category": {
+      "description": "Active category in the columns variant (controlled).",
+      "type": "string"
+    },
+    "onCategoryChange": {
+      "description": "Called when the category changes.",
+      "type": "object"
+    },
+    "query": {
+      "description": "Search text in the search variant (controlled).",
+      "type": "string"
+    },
+    "onQueryChange": {
+      "description": "Called as the search text changes.",
+      "type": "object"
+    },
+    "contact": {
+      "x-nullable": true,
+      "description": "A way to reach a person when the answer isn't here. Pass null to hide it.",
+      "type": "object",
+      "x-empty": null
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "contact"
+  ]
+}

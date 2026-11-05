@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/tooltip.schema.json",
+  "title": "Tooltip",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "content": {
+      "description": "Tooltip content. Strings and numbers crossfade and resize when they change while open."
+    },
+    "children": {
+      "description": "The trigger. Rendered with asChild, so it must accept a ref and be focusable.",
+      "type": "object"
+    },
+    "side": {
+      "description": "Preferred side of the trigger.",
+      "type": "string",
+      "enum": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "content",
+    "children"
+  ]
+}

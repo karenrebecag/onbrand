@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/wallet-stack.schema.json",
+  "title": "Wallet stack",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "issuer": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "product": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "lastFour": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "holder": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "variant": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "metal",
+              "black",
+              "glass",
+              "color"
+            ]
+          },
+          "tint": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "expires": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "network": {
+            "x-undocumented": true
+          },
+          "finish": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "paper",
+              "photo",
+              "clay",
+              "graphite"
+            ]
+          },
+          "image": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          },
+          "balance": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "balanceLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "transactions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "issuer",
+          "product",
+          "lastFour",
+          "holder",
+          "balance",
+          "balanceLabel",
+          "transactions"
+        ]
+      },
+      "description": "Cards in stack order, the first in front. variant picks the material (metal by default); tint is any CSS color for the color variant; expires shows as Valid thru; network replaces the built-in fictional Halo mark, or null hides it; image is optional artwork under the finish. Amounts are negative for spending and positive for money in; avatar replaces the icon for transfers between people. The older finish field still works: paper maps to metal, graphite to black, clay and photo to color."
+    },
+    "label": {
+      "description": "Heading above the stack, also its accessible name.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "currency": {
+      "description": "ISO currency code for balances and amounts.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "Locale for number formatting.",
+      "type": "string"
+    },
+    "onSelectedChange": {
+      "description": "Called with the opened card, or null when it goes back into the stack.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "cards"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/json-viewer.schema.json",
+  "title": "JSON viewer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "description": "Any JSON-like value.",
+      "type": "object"
+    },
+    "rootName": {
+      "description": "Name of the root in paths, as in root.users[0].name.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultExpandDepth": {
+      "description": "Levels open on first render when defaultExpanded is not set. 1 opens the root.",
+      "type": "number"
+    },
+    "expanded": {
+      "description": "Controlled paths of open branches.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultExpanded": {
+      "description": "Open branch paths on first render when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onExpandedChange": {
+      "description": "Called when branches open or close.",
+      "type": "object"
+    },
+    "searchable": {
+      "description": "Shows the search field.",
+      "type": "boolean"
+    },
+    "query": {
+      "description": "Controlled search text.",
+      "type": "string"
+    },
+    "defaultQuery": {
+      "description": "Starting search text when uncontrolled.",
+      "type": "string"
+    },
+    "onQueryChange": {
+      "description": "Called as the search text changes.",
+      "type": "object"
+    },
+    "pageSize": {
+      "description": "Children shown per page in a long array or object.",
+      "type": "number"
+    },
+    "copyable": {
+      "description": "Shows copy value and copy path actions.",
+      "type": "boolean"
+    },
+    "onCopy": {
+      "description": "Called after a copy with { kind: \"value\" | \"path\", path, text }.",
+      "type": "object"
+    },
+    "onSelect": {
+      "description": "Called when a row becomes the current one.",
+      "type": "object"
+    },
+    "showPath": {
+      "description": "Shows the current row's path under the tree.",
+      "type": "boolean"
+    },
+    "maxHeight": {
+      "description": "Height of the scrolling tree area. Numbers are pixels.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the tree.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data"
+  ]
+}

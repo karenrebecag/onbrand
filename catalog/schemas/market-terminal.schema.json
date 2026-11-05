@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/market-terminal.schema.json",
+  "title": "Market terminal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "symbols": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "exchange": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "price": {
+            "x-undocumented": true,
+            "type": "number",
+            "x-format-confidence": "low"
+          },
+          "prevClose": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "vol": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "avgVolume": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "ticker",
+          "name",
+          "exchange",
+          "price",
+          "prevClose",
+          "vol",
+          "avgVolume"
+        ]
+      },
+      "description": "Watchlist symbols in order: ticker, name, exchange, price, previous close, daily volatility (a fraction such as .02) and average daily volume. Candles are generated from these, deterministically per ticker and range.",
+      "maxItems": 8,
+      "x-empty": "omit"
+    },
+    "holdings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "ticker": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "shares": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "ticker",
+          "shares"
+        ]
+      },
+      "description": "Shares held per ticker. The ticket shows the position and blocks selling more than is held.",
+      "maxItems": 5,
+      "x-empty": "omit"
+    },
+    "buyingPower": {
+      "description": "Cash available for buys. The ticket blocks a buy that costs more, and fills update it.",
+      "type": "number"
+    },
+    "orders": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "side": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "buy",
+              "sell"
+            ]
+          },
+          "type": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "market",
+              "limit"
+            ]
+          },
+          "ticker": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "shares": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "price": {
+            "x-undocumented": true,
+            "type": "number",
+            "x-format-confidence": "low"
+          },
+          "status": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "filled",
+              "working",
+              "canceled"
+            ]
+          },
+          "time": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "side",
+          "type",
+          "ticker",
+          "shares",
+          "price",
+          "status",
+          "time"
+        ]
+      },
+      "description": "Orders in the ticket's list, newest first: side, type, ticker, shares, price, status (filled, working or canceled) and time.",
+      "maxItems": 2,
+      "x-empty": "omit"
+    },
+    "defaultTicker": {
+      "description": "Ticker charted on first render. Defaults to the first symbol.",
+      "type": "string"
+    },
+    "defaultRange": {
+      "description": "Time range on first render. 1D and 5D use 5 and 30 minute candles; the rest are daily.",
+      "type": "string",
+      "enum": [
+        "1D",
+        "5D",
+        "1M",
+        "6M",
+        "1Y"
+      ]
+    },
+    "defaultAverages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Moving averages drawn on first render. Viewers toggle them in the toolbar.",
+      "maxItems": 2
+    },
+    "live": {
+      "description": "Streams simulated ticks. Viewers can still pause and resume them with the Live button.",
+      "type": "boolean"
+    },
+    "tickInterval": {
+      "description": "Milliseconds between simulated ticks.",
+      "type": "number"
+    },
+    "onPlaceOrder": {
+      "description": "Called when an order is submitted with its side, type, ticker, shares and price. Return a promise to keep the button pending; a rejection leaves the order unplaced and says so under the button.",
+      "type": "object"
+    },
+    "onCancelOrder": {
+      "description": "Called when a working order is canceled from the list.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "symbols",
+    "holdings",
+    "buyingPower",
+    "orders"
+  ],
+  "examples": [
+    {
+      "symbols": [
+        {
+          "ticker": "NVDA",
+          "name": "NVIDIA",
+          "exchange": "Nasdaq",
+          "price": 186.42,
+          "prevClose": 182.97,
+          "vol": 0.024,
+          "avgVolume": 182000000
+        },
+        {
+          "ticker": "AAPL",
+          "name": "Apple",
+          "exchange": "Nasdaq",
+          "price": 238.15,
+          "prevClose": 239.02,
+          "vol": 0.014,
+          "avgVolume": 52000000
+        },
+        {
+          "ticker": "MSFT",
+          "name": "Microsoft",
+          "exchange": "Nasdaq",
+          "price": 514.6,
+          "prevClose": 509.88,
+          "vol": 0.012,
+          "avgVolume": 21000000
+        },
+        {
+          "ticker": "AMZN",
+          "name": "Amazon",
+          "exchange": "Nasdaq",
+          "price": 226.34,
+          "prevClose": 228.1,
+          "vol": 0.018,
+          "avgVolume": 41000000
+        },
+        {
+          "ticker": "GOOGL",
+          "name": "Alphabet",
+          "exchange": "Nasdaq",
+          "price": 251.73,
+          "prevClose": 248.66,
+          "vol": 0.016,
+          "avgVolume": 31000000
+        },
+        {
+          "ticker": "META",
+          "name": "Meta Platforms",
+          "exchange": "Nasdaq",
+          "price": 768.2,
+          "prevClose": 772.45,
+          "vol": 0.02,
+          "avgVolume": 12000000
+        },
+        {
+          "ticker": "TSLA",
+          "name": "Tesla",
+          "exchange": "Nasdaq",
+          "price": 412.88,
+          "prevClose": 401.3,
+          "vol": 0.035,
+          "avgVolume": 94000000
+        },
+        {
+          "ticker": "JPM",
+          "name": "JPMorgan Chase",
+          "exchange": "NYSE",
+          "price": 301.12,
+          "prevClose": 299.64,
+          "vol": 0.013,
+          "avgVolume": 9000000
+        }
+      ],
+      "holdings": [
+        {
+          "ticker": "NVDA",
+          "shares": 120
+        },
+        {
+          "ticker": "AAPL",
+          "shares": 45
+        },
+        {
+          "ticker": "MSFT",
+          "shares": 18
+        },
+        {
+          "ticker": "TSLA",
+          "shares": 12
+        },
+        {
+          "ticker": "JPM",
+          "shares": 30
+        }
+      ],
+      "buyingPower": 24860.35,
+      "orders": [
+        {
+          "side": "sell",
+          "type": "limit",
+          "ticker": "MSFT",
+          "shares": 4,
+          "price": 516,
+          "status": "working",
+          "time": "11:18"
+        },
+        {
+          "side": "buy",
+          "type": "market",
+          "ticker": "NVDA",
+          "shares": 20,
+          "price": 183.64,
+          "status": "filled",
+          "time": "10:42"
+        }
+      ],
+      "defaultAverages": [
+        {
+          "period": 20,
+          "label": "MA 20"
+        },
+        {
+          "period": 50,
+          "label": "MA 50"
+        }
+      ]
+    }
+  ]
+}

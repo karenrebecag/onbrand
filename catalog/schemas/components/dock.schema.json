@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/dock.schema.json",
+  "title": "Dock",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "shortcut": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "badge": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "icon"
+        ]
+      },
+      "description": "Items in order. shortcut is a display-only key hint, badge a rolling count that leaves at 0, and items turns the entry into a group with a tray."
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Id of the selected item or group member.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called when an item or group member is chosen.",
+      "type": "object"
+    },
+    "onItemsChange": {
+      "description": "Enables drag to reorder and Alt with the arrow keys. Receives the next list and what moved.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the toolbar.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items"
+  ]
+}

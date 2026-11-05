@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/date-picker.schema.json",
+  "title": "Date picker",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label tied to the trigger.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Selected date.",
+      "type": "object"
+    },
+    "onChange": {
+      "description": "Called on pick and with undefined from the Clear button.",
+      "type": "object"
+    },
+    "description": {
+      "description": "Helper copy under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "placeholder": {
+      "description": "Shown with no value.",
+      "type": "string",
+      "format": "label"
+    },
+    "minDate": {
+      "description": "Earliest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "maxDate": {
+      "description": "Latest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "disabledDates": {
+      "description": "Return true to block a day.",
+      "type": "object"
+    },
+    "locale": {
+      "description": "Formatting and calendar locale.",
+      "type": "string"
+    },
+    "format": {
+      "description": "How the value is shown.",
+      "type": "object"
+    },
+    "showToday": {
+      "description": "Adds a Today button to the calendar header.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

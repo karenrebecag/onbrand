@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/filter-toolbar.schema.json",
+  "title": "Filter toolbar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "filters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Applied filters, shown as chips."
+    },
+    "onRemove": {
+      "description": "Called when a chip's remove button is pressed.",
+      "type": "object"
+    },
+    "onClearAll": {
+      "description": "Called by Clear all, which appears while any filter is applied.",
+      "type": "object"
+    },
+    "children": {
+      "description": "Extra actions next to the Add filter trigger."
+    },
+    "label": {
+      "description": "Accessible name for the toolbar group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "addFilter": {
+      "description": "Adds an Add filter trigger that opens a two step field and value menu.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "filters",
+    "onRemove"
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "$schema": "../facts.schema.json",
+  "domain": "example.com"
+}

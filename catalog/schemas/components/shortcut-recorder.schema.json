@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/shortcut-recorder.schema.json",
+  "title": "Shortcut recorder",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Field label.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "hideLabel": {
+      "description": "Keeps the label for screen readers only.",
+      "type": "boolean"
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Controlled shortcut, such as \"mod+shift+k\". mod is Command on Apple platforms and Ctrl elsewhere.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Starting shortcut when uncontrolled.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called with the new shortcut; replaced is the binding it was taken from after Use anyway.",
+      "type": "object"
+    },
+    "resetValue": {
+      "x-nullable": true,
+      "description": "What the reset button restores. Defaults to defaultValue.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "shortcut": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "shortcut",
+          "label"
+        ]
+      },
+      "description": "Shortcuts already in use: { shortcut, label }. Recording one asks before taking it."
+    },
+    "warnReserved": {
+      "description": "Also warn about combinations the browser or system keeps, such as ⌘W and ⌘C.",
+      "type": "boolean"
+    },
+    "requireModifier": {
+      "description": "Require ⌘, Ctrl, or ⌥. Function keys are always allowed.",
+      "type": "boolean"
+    },
+    "platform": {
+      "description": "Overrides the detected platform.",
+      "type": "string",
+      "enum": [
+        "mac",
+        "other"
+      ]
+    },
+    "placeholder": {
+      "description": "Shown when there is no shortcut.",
+      "type": "string",
+      "format": "label"
+    },
+    "description": {
+      "description": "Hint under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "disabled": {
+      "description": "Disables recording.",
+      "type": "boolean"
+    },
+    "id": {
+      "description": "Id of the recorder button.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/photo-grid.schema.json",
+  "title": "Photo grid",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "photos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "src": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "srcSet": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "alt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "width": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "height": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "detail": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "src",
+          "alt",
+          "width",
+          "height",
+          "title"
+        ]
+      },
+      "description": "Photos in order. width and height are the intrinsic size; detail is a short line in the viewer, such as the date."
+    },
+    "title": {
+      "description": "Names the library, such as a month or album.",
+      "type": "string",
+      "format": "heading"
+    },
+    "zoomLevels": {
+      "description": "Column counts the zoom steps between.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "defaultColumns": {
+      "description": "Initial column count.",
+      "type": "number"
+    },
+    "onColumnsChange": {
+      "description": "Called when the zoom level changes.",
+      "type": "object"
+    },
+    "defaultFavorites": {
+      "description": "Ids favorited at mount.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onFavoriteChange": {
+      "description": "Called when a photo is favorited or unfavorited.",
+      "type": "object"
+    },
+    "onViewerChange": {
+      "description": "Called with the photo id when the viewer opens and null as it starts to close.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "photos",
+    "title"
+  ]
+}

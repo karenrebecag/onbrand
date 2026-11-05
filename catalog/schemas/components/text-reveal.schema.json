@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/text-reveal.schema.json",
+  "title": "Text reveal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "text": {
+      "description": "The copy to reveal. Use \\n for a deliberate line break.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "as": {
+      "description": "Rendered element. p uses a softer blur.",
+      "type": "string",
+      "enum": [
+        "h1",
+        "h2",
+        "h3",
+        "p"
+      ]
+    },
+    "id": {
+      "description": "Forwarded to the rendered element, e.g. for aria-labelledby.",
+      "type": "string"
+    },
+    "delay": {
+      "description": "Seconds before the first word rises.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "text"
+  ]
+}

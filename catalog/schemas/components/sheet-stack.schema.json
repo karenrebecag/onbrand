@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sheet-stack.schema.json",
+  "title": "Sheet stack",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "Page content, triggers, and Sheet declarations."
+    },
+    "stack": {
+      "description": "Controlled ids of open sheets, bottom first. Leave undefined for uncontrolled use.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultStack": {
+      "description": "Sheets open at first when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onStackChange": {
+      "description": "Called when sheets are pushed or popped.",
+      "type": "object"
+    },
+    "mode": {
+      "description": "auto picks bottom sheets below breakpoint and centered dialogs above it.",
+      "type": "string",
+      "enum": [
+        "auto",
+        "sheet",
+        "dialog"
+      ]
+    },
+    "breakpoint": {
+      "description": "Width in px of the viewport, or the container when contained, where auto switches to dialogs.",
+      "type": "number"
+    },
+    "contained": {
+      "description": "Fill the nearest positioned ancestor instead of the viewport.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

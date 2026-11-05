@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sunburst.schema.json",
+  "title": "Sunburst",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "description": "The root: { id, label, value?, children? }. A branch's value is the sum of its children.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "value": {
+          "x-undocumented": true,
+          "type": "number"
+        },
+        "children": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "label": {
+      "description": "Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "formatValue": {
+      "description": "Formats the centre value, legend, tooltip, and table.",
+      "type": "object"
+    },
+    "depth": {
+      "description": "Rings shown around the centre at once. Fewer levels below a zoomed node fill the full radius.",
+      "type": "number"
+    },
+    "size": {
+      "description": "Largest diameter in pixels. The chart scales down to fit its container.",
+      "type": "number"
+    },
+    "focus": {
+      "description": "Controlled id of the node in the centre.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultFocus": {
+      "description": "Initial centre when uncontrolled. Defaults to the root.",
+      "type": "string"
+    },
+    "onFocusChange": {
+      "description": "Called when a segment, breadcrumb, legend row, or the centre zooms.",
+      "type": "object"
+    },
+    "legend": {
+      "description": "Lists the children of the centre with values and shares, synced with the arcs.",
+      "type": "boolean"
+    },
+    "emptyLabel": {
+      "description": "Shown in the centre when the total is zero.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label"
+  ]
+}

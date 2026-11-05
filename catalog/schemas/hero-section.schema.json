@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/hero-section.schema.json",
+  "title": "Hero Section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "Which design to render.",
+      "type": "string",
+      "enum": [
+        "centered",
+        "split",
+        "minimal"
+      ]
+    },
+    "animateIn": {
+      "description": "Plays the entrance once on mount.",
+      "type": "boolean"
+    },
+    "primaryAction": {
+      "x-nullable": true,
+      "description": "The main call to action: { label, href?, onClick?, external?, doneLabel? }. With href it renders a link; without, a button that shows `doneLabel` for a moment after a press.",
+      "type": "object",
+      "format": "cta"
+    },
+    "secondaryAction": {
+      "x-nullable": true,
+      "description": "The second call to action, same shape.",
+      "type": "object",
+      "format": "cta"
+    },
+    "title": {
+      "description": "Your own headline. When set, the hero renders your content (HeroContent) in the chosen layout.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Your own content: one or two sentences under the title.",
+      "type": "string",
+      "format": "description"
+    },
+    "announcement": {
+      "x-nullable": true,
+      "description": "Your own content: a short link above the title for real news.",
+      "type": "object"
+    },
+    "install": {
+      "x-nullable": true,
+      "description": "Your own content: the first command is shown with a copy button.",
+      "type": "object"
+    },
+    "media": {
+      "description": "Your own content: a visual beside the copy in the split layout.",
+      "x-slot": {
+        "accepts": [
+          "media"
+        ],
+        "cardinality": "one"
+      },
+      "x-empty": null
+    },
+    "meta": {
+      "description": "Your own content: small facts under the actions.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "tag"
+      }
+    },
+    "highlight": {
+      "x-undocumented": true,
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2
+}

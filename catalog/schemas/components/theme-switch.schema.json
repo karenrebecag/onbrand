@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/theme-switch.schema.json",
+  "title": "Theme switcher",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "theme": {
+      "description": "The current theme. Drives the icon and aria-pressed.",
+      "type": "string",
+      "enum": [
+        "light",
+        "dark"
+      ]
+    },
+    "variant": {
+      "description": "Names the page transition and sets the small icon nudge that matches it.",
+      "type": "string",
+      "enum": [
+        "reveal",
+        "eclipse",
+        "split",
+        "rise"
+      ]
+    },
+    "onThemeChange": {
+      "description": "Called on press with the opposite theme, the variant, and the button, so the page transition can start from it.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name. Defaults to \"Switch to dark mode\" or \"Switch to light mode\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "iconOnly": {
+      "description": "Hides the \"Switch theme\" text and renders a 38px square button.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "theme",
+    "onThemeChange"
+  ],
+  "x-variants": [
+    "reveal",
+    "eclipse",
+    "split",
+    "rise"
+  ]
+}

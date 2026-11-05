@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/voice-orb.schema.json",
+  "title": "Voice orb",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "state": {
+      "description": "Current voice state. Every shape parameter springs toward the new state, so changes blend mid-motion.",
+      "type": "string",
+      "enum": [
+        "idle",
+        "listening",
+        "thinking",
+        "speaking"
+      ]
+    },
+    "inputLevel": {
+      "description": "Microphone level from 0 to 1, read every frame while listening, such as useMicLevel().level. Simulated when omitted.",
+      "type": "object"
+    },
+    "outputLevel": {
+      "description": "Voice level from 0 to 1 while speaking. A deterministic speech envelope is used when omitted.",
+      "type": "object"
+    },
+    "muted": {
+      "description": "Calms and desaturates the orb while listening and ignores the input level.",
+      "type": "boolean"
+    },
+    "size": {
+      "description": "Rendered width and height in px. The sphere fills about 60% of it; the rest holds its light and ripples. Colours follow --accent, or --voice-orb-tint and --voice-orb-tint-2 on any ancestor.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Accessible description. Defaults to a sentence about the state, or \"Muted\" while listening muted.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "state"
+  ]
+}

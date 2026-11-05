@@ -1,0 +1,6 @@
+# commitAll versiona el ws con este archivo: sin él cada versión guardaba el install y el build.
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store

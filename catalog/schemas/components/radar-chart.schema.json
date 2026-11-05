@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/radar-chart.schema.json",
+  "title": "Radar chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "axes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "max": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Measures around the web, clockwise from the top: { key, label, max? }. At least three."
+    },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Up to three profiles: { key, label, values }. They take the series hues in order, the first derived from the accent; replacing the series at a position morphs that shape."
+    },
+    "label": {
+      "description": "What is compared. Names the chart, the summary, and the table.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "max": {
+      "description": "Default top of every axis.",
+      "type": "number"
+    },
+    "rings": {
+      "description": "Concentric guides.",
+      "type": "number"
+    },
+    "size": {
+      "description": "Largest web diameter in pixels. It shrinks to fit narrow containers.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats values in the tooltip and table.",
+      "type": "object"
+    },
+    "activeAxis": {
+      "x-nullable": true,
+      "description": "Controlled axis in focus.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "onActiveAxisChange": {
+      "description": "Called as the axis in focus changes.",
+      "type": "object"
+    },
+    "legend": {
+      "description": "Profile names with a line key. Hovering or pressing one brings its shape forward.",
+      "type": "boolean"
+    },
+    "emptyLabel": {
+      "description": "Message with fewer than three axes or no series.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "description": "Forwarded to the figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "axes",
+    "series",
+    "label"
+  ]
+}

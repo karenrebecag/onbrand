@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/otp-input.schema.json",
+  "title": "OTP input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "length": {
+      "description": "Number of slots.",
+      "type": "number"
+    },
+    "value": {
+      "description": "Current code. Controlled: update it from onChange.",
+      "type": "string"
+    },
+    "onChange": {
+      "description": "Called with the full code after every edit or paste.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Visible label and group name; each slot is labelled with it plus its position.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "description": {
+      "description": "Helper text below the slots.",
+      "type": "string",
+      "format": "description"
+    },
+    "error": {
+      "description": "Error text. Sets aria-invalid and shakes the row once when it changes.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "autoFocus": {
+      "description": "Focuses the first slot on mount.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables every slot.",
+      "type": "boolean"
+    },
+    "inputMode": {
+      "description": "numeric strips non-digits.",
+      "type": "string",
+      "enum": [
+        "numeric",
+        "text"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

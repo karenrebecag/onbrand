@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/env-variables.schema.json",
+  "title": "Environment variables",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "environments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "sensitive": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "updated": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "updatedBy": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "environments",
+          "sensitive",
+          "updated",
+          "updatedBy"
+        ]
+      },
+      "description": "Rows in any order: { id, key, value, environments, sensitive, updated, updatedBy }. A key can appear on several rows as long as each environment is covered at most once. The block sorts rows by key."
+    },
+    "project": {
+      "description": "Project name shown under the heading.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "sampleDotenv": {
+      "description": "Text the paste area starts with when Import .env opens. Pass an empty string for a blank paste area.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "title": {
+      "description": "Heading text.",
+      "type": "string",
+      "format": "heading"
+    },
+    "onChange": {
+      "description": "Called with every row after each add, import, edit, removal, scope toggle, or copy between environments.",
+      "type": "object"
+    },
+    "onRedeploy": {
+      "description": "Called when Redeploy is pressed with the environments that changed. Return a promise to keep the banner pending until it settles; a rejection shows the failure state and keeps the changes queued. Without it, the deploy is simulated.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "variables",
+    "sampleDotenv"
+  ]
+}

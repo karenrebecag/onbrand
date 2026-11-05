@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/image-compare.schema.json",
+  "title": "Image compare",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "before": {
+      "description": "Original, shown left or top. Pass an image with its own alt text."
+    },
+    "after": {
+      "description": "Result, shown right or bottom."
+    },
+    "position": {
+      "description": "Controlled divider position in percent from the left or top.",
+      "type": "number"
+    },
+    "defaultPosition": {
+      "description": "Initial position when uncontrolled.",
+      "type": "number"
+    },
+    "onPositionChange": {
+      "description": "Called when the divider settles on a new position.",
+      "type": "object"
+    },
+    "orientation": {
+      "description": "Vertical stacks images top and bottom; changing it swings the divider.",
+      "type": "string",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "labels": {
+      "description": "Captions over each side. False hides them.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the divider.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "aspectRatio": {
+      "description": "Frame proportions as a CSS aspect-ratio.",
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "before",
+    "after",
+    "labels"
+  ]
+}

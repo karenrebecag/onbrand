@@ -1,0 +1,159 @@
+{
+  "neutral": {
+    "light": {
+      "--accent": "oklch(33% 0 0)",
+      "--accent-strong": "oklch(24% 0 0)",
+      "--accent-subtle": "oklch(33% 0 0 / .1)",
+      "--control-on": "oklch(23% 0 0)",
+      "--control-thumb-on": "oklch(100% 0 0)",
+      "--control-glyph": "oklch(100% 0 0)"
+    },
+    "dark": {
+      "--accent": "oklch(80% 0 0)",
+      "--accent-strong": "oklch(91% 0 0)",
+      "--accent-subtle": "oklch(80% 0 0 / .13)",
+      "--control-on": "oklch(93% 0 0)",
+      "--control-thumb-on": "oklch(19% 0 0)",
+      "--control-glyph": "oklch(19% 0 0)"
+    }
+  },
+  "violet": {
+    "light": {
+      "--accent": "#7747ff",
+      "--accent-strong": "#5528ce",
+      "--accent-subtle": "rgb(119 71 255 / .13)",
+      "--control-on": "#7747ff",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#a78bff",
+      "--accent-strong": "#c7b7ff",
+      "--accent-subtle": "rgb(119 71 255 / .22)",
+      "--control-on": "#8a66ff",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#8a66ff"
+    }
+  },
+  "blue": {
+    "light": {
+      "--accent": "#0562ef",
+      "--accent-strong": "#074db7",
+      "--accent-subtle": "rgb(5 98 239 / .12)",
+      "--control-on": "#0562ef",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#6ba3ff",
+      "--accent-strong": "#a4c7ff",
+      "--accent-subtle": "rgb(5 98 239 / .22)",
+      "--control-on": "#3b82f6",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#3b82f6"
+    }
+  },
+  "green": {
+    "light": {
+      "--accent": "#0db879",
+      "--accent-strong": "#087c54",
+      "--accent-subtle": "rgb(13 184 121 / .13)",
+      "--accent-foreground": "#102016",
+      "--control-on": "#10a870",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#53dca6",
+      "--accent-strong": "#93efd0",
+      "--accent-subtle": "rgb(13 184 121 / .2)",
+      "--control-on": "#1fae78",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#1fae78"
+    }
+  },
+  "amber": {
+    "light": {
+      "--accent": "#f3ad20",
+      "--accent-strong": "#9c6300",
+      "--accent-subtle": "rgb(243 173 32 / .16)",
+      "--accent-foreground": "#20190d",
+      "--control-on": "#eda11a",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#2a1c03"
+    },
+    "dark": {
+      "--accent": "#ffcb62",
+      "--accent-strong": "#ffe0a1",
+      "--accent-subtle": "rgb(243 173 32 / .2)",
+      "--control-on": "#e8a52a",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#241803",
+      "--control-fill": "#e8a52a"
+    }
+  },
+  "orange": {
+    "light": {
+      "--accent": "#f48120",
+      "--accent-strong": "#aa4700",
+      "--accent-subtle": "rgb(244 129 32 / .13)",
+      "--accent-foreground": "#17130f",
+      "--control-on": "#f07818",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#ffad5e",
+      "--accent-strong": "#ffd0a0",
+      "--accent-subtle": "rgb(244 129 32 / .2)",
+      "--accent-foreground": "#17130f",
+      "--control-on": "#ef873a",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#ef873a"
+    }
+  },
+  "coral": {
+    "light": {
+      "--accent": "#f15f55",
+      "--accent-strong": "#b92c27",
+      "--accent-subtle": "rgb(241 95 85 / .14)",
+      "--accent-foreground": "#21110f",
+      "--control-on": "#ec564b",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#ff9386",
+      "--accent-strong": "#ffc1ba",
+      "--accent-subtle": "rgb(241 95 85 / .2)",
+      "--control-on": "#ec6a60",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#ec6a60"
+    }
+  },
+  "rose": {
+    "light": {
+      "--accent": "#ed4e9d",
+      "--accent-strong": "#ae2570",
+      "--accent-subtle": "rgb(237 78 157 / .14)",
+      "--accent-foreground": "#250f1b",
+      "--control-on": "#e64494",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff"
+    },
+    "dark": {
+      "--accent": "#ff8bc5",
+      "--accent-strong": "#ffc0df",
+      "--accent-subtle": "rgb(237 78 157 / .2)",
+      "--control-on": "#e457a0",
+      "--control-thumb-on": "#fff",
+      "--control-glyph": "#fff",
+      "--control-fill": "#e457a0"
+    }
+  }
+}

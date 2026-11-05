@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/ai-side-panel.schema.json",
+  "title": "AI side panel",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "defaultPage": {
+      "description": "The page the assistant reads and edits: title, status, lead, target, intro, milestones and notes.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "heading"
+        },
+        "project": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "status": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "On track",
+            "At risk"
+          ]
+        },
+        "target": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "lead": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "intro": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "milestones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        },
+        "notes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "project",
+        "status",
+        "target",
+        "lead",
+        "intro",
+        "milestones",
+        "notes"
+      ],
+      "x-empty": "omit"
+    },
+    "onPageChange": {
+      "description": "Called after every applied or undone action.",
+      "type": "object"
+    },
+    "onAsk": {
+      "description": "Answers a question with text and suggested actions. context holds the selected milestone ids. The block streams the text.",
+      "type": "object"
+    },
+    "prompts": {
+      "description": "Suggested prompts in an empty thread.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "tag"
+      },
+      "x-empty": "omit"
+    },
+    "defaultMode": {
+      "description": "Panel state on mount.",
+      "type": "string",
+      "enum": [
+        "closed",
+        "docked",
+        "full"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "defaultPage",
+    "prompts"
+  ]
+}

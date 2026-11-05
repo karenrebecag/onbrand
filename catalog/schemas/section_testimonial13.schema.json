@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/section_testimonial13.schema.json",
+  "title": "Testimonial 13",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "numberOfStars": {
+      "type": "number"
+    },
+    "quote": {
+      "type": "string",
+      "format": "quote"
+    },
+    "image": {
+      "type": "object",
+      "format": "image",
+      "properties": {
+        "src": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "alt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "src"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "format": "person"
+    },
+    "position": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "object",
+      "format": "logo",
+      "properties": {
+        "src": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "alt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "src"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "numberOfStars",
+    "quote",
+    "image",
+    "name",
+    "position",
+    "logo"
+  ]
+}

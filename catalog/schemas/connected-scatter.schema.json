@@ -1,0 +1,490 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/connected-scatter.schema.json",
+  "title": "Connected scatter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "points": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "notes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "points"
+        ]
+      },
+      "description": "Series to switch between: id, name, points in time order ({ label, x, y }) and optional notes ({ index, text, side }) that label key months. Every series needs the same number of points so the path can morph.",
+      "maxItems": 3,
+      "x-empty": "omit"
+    },
+    "defaultSeries": {
+      "description": "Id of the series shown first. Defaults to the first series.",
+      "type": "string"
+    },
+    "xAxis": {
+      "description": "Horizontal axis: short name for the readout, title printed on the axis, min, max and gridline step. The sample is CAC from $200 to $1,800.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "title": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "heading"
+        },
+        "min": {
+          "x-undocumented": true,
+          "type": "number"
+        },
+        "max": {
+          "x-undocumented": true,
+          "type": "number"
+        },
+        "step": {
+          "x-undocumented": true,
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "title",
+        "min",
+        "max",
+        "step"
+      ],
+      "x-empty": "omit"
+    },
+    "yAxis": {
+      "description": "Vertical axis, same shape. The sample is 12 month LTV from $2,000 to $6,000.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "title": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "heading"
+        },
+        "min": {
+          "x-undocumented": true,
+          "type": "number"
+        },
+        "max": {
+          "x-undocumented": true,
+          "type": "number"
+        },
+        "step": {
+          "x-undocumented": true,
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "title",
+        "min",
+        "max",
+        "step"
+      ],
+      "x-empty": "omit"
+    },
+    "targetRatio": {
+      "description": "Slope of the reference line y = targetRatio times x. The region above it is shaded as healthy and the readout says whether the selected month is above or below it.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats values in the readout, the tooltip, the axis ticks and the screen reader table.",
+      "type": "object"
+    },
+    "title": {
+      "description": "Block heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One line under the heading. Defaults to a sentence naming the metrics and the date range.",
+      "type": "string",
+      "format": "description"
+    },
+    "onMonthChange": {
+      "description": "Called with the month index whenever the head settles on a month: a released scrub, a key press, a tap on a point, or the end of playback. Not called on every frame.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "series",
+    "xAxis",
+    "yAxis",
+    "targetRatio"
+  ],
+  "examples": [
+    {
+      "series": [
+        {
+          "name": "Paid search",
+          "points": [
+            {
+              "label": "Jan 2025",
+              "x": 760,
+              "y": 3000
+            },
+            {
+              "label": "Feb 2025",
+              "x": 800,
+              "y": 3060
+            },
+            {
+              "label": "Mar 2025",
+              "x": 850,
+              "y": 3110
+            },
+            {
+              "label": "Apr 2025",
+              "x": 905,
+              "y": 3090
+            },
+            {
+              "label": "May 2025",
+              "x": 960,
+              "y": 3140
+            },
+            {
+              "label": "Jun 2025",
+              "x": 1030,
+              "y": 3120
+            },
+            {
+              "label": "Jul 2025",
+              "x": 1110,
+              "y": 3100
+            },
+            {
+              "label": "Aug 2025",
+              "x": 1190,
+              "y": 3080
+            },
+            {
+              "label": "Sep 2025",
+              "x": 1260,
+              "y": 3060
+            },
+            {
+              "label": "Oct 2025",
+              "x": 1300,
+              "y": 3110
+            },
+            {
+              "label": "Nov 2025",
+              "x": 1320,
+              "y": 3200
+            },
+            {
+              "label": "Dec 2025",
+              "x": 1290,
+              "y": 3380
+            },
+            {
+              "label": "Jan 2026",
+              "x": 1220,
+              "y": 3620
+            },
+            {
+              "label": "Feb 2026",
+              "x": 1150,
+              "y": 3900
+            },
+            {
+              "label": "Mar 2026",
+              "x": 1080,
+              "y": 4150
+            },
+            {
+              "label": "Apr 2026",
+              "x": 1030,
+              "y": 4360
+            },
+            {
+              "label": "May 2026",
+              "x": 990,
+              "y": 4520
+            },
+            {
+              "label": "Jun 2026",
+              "x": 960,
+              "y": 4640
+            }
+          ],
+          "notes": [
+            {
+              "index": 6,
+              "text": "Broad match on",
+              "side": "above"
+            },
+            {
+              "index": 12,
+              "text": "Annual plans",
+              "side": "left"
+            }
+          ]
+        },
+        {
+          "name": "Organic",
+          "points": [
+            {
+              "label": "Jan 2025",
+              "x": 560,
+              "y": 2350
+            },
+            {
+              "label": "Feb 2025",
+              "x": 540,
+              "y": 2410
+            },
+            {
+              "label": "Mar 2025",
+              "x": 565,
+              "y": 2380
+            },
+            {
+              "label": "Apr 2025",
+              "x": 520,
+              "y": 2500
+            },
+            {
+              "label": "May 2025",
+              "x": 495,
+              "y": 2560
+            },
+            {
+              "label": "Jun 2025",
+              "x": 505,
+              "y": 2620
+            },
+            {
+              "label": "Jul 2025",
+              "x": 470,
+              "y": 2700
+            },
+            {
+              "label": "Aug 2025",
+              "x": 450,
+              "y": 2790
+            },
+            {
+              "label": "Sep 2025",
+              "x": 430,
+              "y": 2900
+            },
+            {
+              "label": "Oct 2025",
+              "x": 405,
+              "y": 3150
+            },
+            {
+              "label": "Nov 2025",
+              "x": 420,
+              "y": 3380
+            },
+            {
+              "label": "Dec 2025",
+              "x": 390,
+              "y": 3520
+            },
+            {
+              "label": "Jan 2026",
+              "x": 372,
+              "y": 3610
+            },
+            {
+              "label": "Feb 2026",
+              "x": 385,
+              "y": 3700
+            },
+            {
+              "label": "Mar 2026",
+              "x": 360,
+              "y": 3790
+            },
+            {
+              "label": "Apr 2026",
+              "x": 350,
+              "y": 3860
+            },
+            {
+              "label": "May 2026",
+              "x": 356,
+              "y": 3950
+            },
+            {
+              "label": "Jun 2026",
+              "x": 340,
+              "y": 4020
+            }
+          ],
+          "notes": [
+            {
+              "index": 9,
+              "text": "Docs relaunch",
+              "side": "right"
+            }
+          ]
+        },
+        {
+          "name": "Partners",
+          "points": [
+            {
+              "label": "Jan 2025",
+              "x": 1700,
+              "y": 4200
+            },
+            {
+              "label": "Feb 2025",
+              "x": 1660,
+              "y": 4280
+            },
+            {
+              "label": "Mar 2025",
+              "x": 1630,
+              "y": 4390
+            },
+            {
+              "label": "Apr 2025",
+              "x": 1650,
+              "y": 4340
+            },
+            {
+              "label": "May 2025",
+              "x": 1580,
+              "y": 4520
+            },
+            {
+              "label": "Jun 2025",
+              "x": 1520,
+              "y": 4650
+            },
+            {
+              "label": "Jul 2025",
+              "x": 1470,
+              "y": 4760
+            },
+            {
+              "label": "Aug 2025",
+              "x": 1490,
+              "y": 4720
+            },
+            {
+              "label": "Sep 2025",
+              "x": 1420,
+              "y": 4910
+            },
+            {
+              "label": "Oct 2025",
+              "x": 1370,
+              "y": 5040
+            },
+            {
+              "label": "Nov 2025",
+              "x": 1330,
+              "y": 5130
+            },
+            {
+              "label": "Dec 2025",
+              "x": 1345,
+              "y": 5200
+            },
+            {
+              "label": "Jan 2026",
+              "x": 1290,
+              "y": 5330
+            },
+            {
+              "label": "Feb 2026",
+              "x": 1240,
+              "y": 5420
+            },
+            {
+              "label": "Mar 2026",
+              "x": 1210,
+              "y": 5510
+            },
+            {
+              "label": "Apr 2026",
+              "x": 1225,
+              "y": 5560
+            },
+            {
+              "label": "May 2026",
+              "x": 1180,
+              "y": 5660
+            },
+            {
+              "label": "Jun 2026",
+              "x": 1150,
+              "y": 5740
+            }
+          ],
+          "notes": [
+            {
+              "index": 5,
+              "text": "Referral tiers",
+              "side": "right"
+            }
+          ]
+        }
+      ],
+      "xAxis": {
+        "name": "CAC",
+        "title": "Customer acquisition cost",
+        "min": 200,
+        "max": 1800,
+        "step": 200
+      },
+      "yAxis": {
+        "name": "LTV",
+        "title": "12 month lifetime value",
+        "min": 2000,
+        "max": 6000,
+        "step": 1000
+      },
+      "targetRatio": 3
+    }
+  ]
+}

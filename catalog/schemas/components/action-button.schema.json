@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/action-button.schema.json",
+  "title": "Action button",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Idle label and accessible name.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "successLabel": {
+      "description": "Label after onAction resolves.",
+      "type": "string",
+      "format": "label"
+    },
+    "pendingLabel": {
+      "description": "Label while onAction runs.",
+      "type": "string",
+      "format": "label"
+    },
+    "onAction": {
+      "description": "Runs on press. The pending state lasts until the promise settles.",
+      "type": "object"
+    },
+    "resetAfterMs": {
+      "description": "Delay before returning to idle after success. 0 keeps the success state.",
+      "type": "number"
+    },
+    "onActionError": {
+      "description": "Called when onAction rejects; the button returns to idle.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "onAction"
+  ]
+}

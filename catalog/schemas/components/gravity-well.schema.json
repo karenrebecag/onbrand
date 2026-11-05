@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/gravity-well.schema.json",
+  "title": "Gravity well",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "One tile per child. Photos, avatars, icons, or any small content."
+    },
+    "columns": {
+      "description": "Fixed column count. Leave it out to fit as many columns as minTileSize allows.",
+      "type": "number"
+    },
+    "minTileSize": {
+      "description": "Smallest tile width in px when columns is not set.",
+      "type": "number"
+    },
+    "gap": {
+      "description": "Gap between tiles in px.",
+      "type": "number"
+    },
+    "radius": {
+      "description": "Reach of the well in px.",
+      "type": "number"
+    },
+    "strength": {
+      "description": "Pull strength from 0 to about 1.5.",
+      "type": "number"
+    },
+    "onPulse": {
+      "description": "Called when a click or key sends a shockwave, with its origin in px from the top left of the grid.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name for the grid.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

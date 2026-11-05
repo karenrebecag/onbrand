@@ -1,0 +1,7 @@
+{
+  "summary": "Nimbus: copiloto de IA para equipos de producto. Súmate a la lista de espera para el early access. Logos de equipos que ya lo prueban, qué hace, métricas de beta.",
+  "goal": "unirse a la waitlist",
+  "tone": "bold",
+  "maxStrips": 5,
+  "sections": ["hero", "logos", "features", "stats", "cta"]
+}

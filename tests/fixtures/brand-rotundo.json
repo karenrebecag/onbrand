@@ -1,0 +1,6 @@
+{
+  "name": "Rotundo",
+  "theme": { "scale": 1.15, "roundness": 1.6 },
+  "overrides": { "--text-5xl": "5.5rem" },
+  "composition": { "density": "spacious" }
+}

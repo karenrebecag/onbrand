@@ -1,0 +1,365 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/comment-thread.schema.json",
+  "title": "Comment thread",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "comments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "author": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "person"
+          },
+          "body": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "createdAt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "edited": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "deleted": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "reactions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "replies": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "author",
+          "body",
+          "createdAt"
+        ]
+      },
+      "description": "The comment tree (controlled)."
+    },
+    "defaultComments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "author": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "person"
+          },
+          "body": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "createdAt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "edited": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "deleted": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "reactions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "replies": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "author",
+          "body",
+          "createdAt"
+        ]
+      },
+      "description": "Initial tree when uncontrolled."
+    },
+    "onCommentsChange": {
+      "description": "Called with the full next tree and what changed: reply, edit, delete, or react.",
+      "type": "object"
+    },
+    "currentUser": {
+      "description": "The person writing. Their comments can be edited and deleted.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "avatar": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "image"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "people": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "People who can be mentioned. Defaults to everyone in the thread."
+    },
+    "resolved": {
+      "description": "Resolved state (controlled).",
+      "type": "boolean"
+    },
+    "defaultResolved": {
+      "description": "Initial resolved state.",
+      "type": "boolean"
+    },
+    "onResolvedChange": {
+      "description": "Called on Resolve and Reopen.",
+      "type": "object"
+    },
+    "title": {
+      "description": "What the thread is about, shown in the header, such as \"Hero headline\"."
+    },
+    "reactions": {
+      "description": "Emoji offered by the reaction picker.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "placeholder": {
+      "description": "Composer placeholder.",
+      "type": "string",
+      "format": "label"
+    },
+    "maxDepth": {
+      "description": "Replies deeper than this attach to the deepest allowed parent.",
+      "type": "number"
+    },
+    "nowLabel": {
+      "description": "createdAt label for comments written now.",
+      "type": "string",
+      "format": "label"
+    },
+    "labels": {
+      "description": "Words for localization, every visible word and accessible name: reply, edit, delete, cancel, send, save, resolve, resolved, reopen, empty, edited, deleteConfirm, deletedText, deletedComment, editComment, hideReplies, cancelReply, addReaction, closeReactions, reactions, mentions and thread. Words with a count or a name are functions: commentCount, peopleCount, showReplies, replyingTo, reactWith and reactionCount. Any key left out keeps its English default.",
+      "type": "object",
+      "properties": {
+        "thread": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "commentCount": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "peopleCount": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "resolve": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "resolved": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reopen": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "empty": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reply": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "edit": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "delete": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "cancel": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "send": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "save": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "editComment": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "edited": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "deleteConfirm": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "deletedText": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "deletedComment": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "replyingTo": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "cancelReply": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "showReplies": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "hideReplies": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "addReaction": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "closeReactions": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reactions": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reactWith": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "reactionCount": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "mentions": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "currentUser"
+  ]
+}

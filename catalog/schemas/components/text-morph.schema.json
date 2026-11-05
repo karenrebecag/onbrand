@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/text-morph.schema.json",
+  "title": "Text morph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "The current label. Change it to morph.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "as": {
+      "description": "Rendered element.",
+      "type": "string",
+      "enum": [
+        "span",
+        "div",
+        "p",
+        "strong",
+        "h1",
+        "h2",
+        "h3"
+      ]
+    },
+    "id": {
+      "description": "Forwarded to the rendered element.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

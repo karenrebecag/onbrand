@@ -1,0 +1,361 @@
+{
+  "version": 1,
+  "rules": {
+    "hero-signup": {
+      "people": []
+    },
+    "site-footer": {
+      "status": null,
+      "socials": [],
+      "newsletter": null,
+      "legal": [],
+      "tagline": "",
+      "brand.mark": ""
+    },
+    "newsletter-signup": {
+      "publication": null,
+      "readers": null,
+      "privacyLink": null,
+      "privacyNote": ""
+    },
+    "site-header": {
+      "secondaryAction": null,
+      "brand.mark": ""
+    },
+    "faq-section": {
+      "contact": null
+    },
+    "cta-section": {
+      "faces": [],
+      "visual": {
+        "fill": [
+          "illustration"
+        ],
+        "else": null
+      }
+    },
+    "feature-bento": {
+      "description": "",
+      "visuals": {
+        "fill": [
+          "metric"
+        ],
+        "from": "stats",
+        "else": "",
+        "keys": "features[].id"
+      }
+    },
+    "logo-marquee": {
+      "brands[].icon": ""
+    },
+    "cta3_shell": {
+      "image": "media"
+    },
+    "header30_shell": {
+      "image": "media"
+    },
+    "layout255_shell": {
+      "image": "media"
+    },
+    "ai-chat": {
+      "defaultConversations": "omit",
+      "models": "omit",
+      "suggestions": "omit",
+      "user": "omit",
+      "notice": "omit"
+    },
+    "ai-side-panel": {
+      "defaultPage": "omit",
+      "prompts": "omit"
+    },
+    "budget-variance": {
+      "departments": "omit",
+      "periods": "omit"
+    },
+    "choropleth-explorer": {
+      "maps": "omit",
+      "regions": "omit",
+      "metrics": "omit",
+      "areaName": "omit",
+      "regionNoun": "omit"
+    },
+    "comparison-table": {
+      "columns": "omit",
+      "sections": "omit",
+      "cta": "omit"
+    },
+    "connected-scatter": {
+      "series": "omit",
+      "xAxis": "omit",
+      "yAxis": "omit"
+    },
+    "contact-section": {
+      "topics": "omit",
+      "channels[].icon": {
+        "fill": [
+          "icon"
+        ],
+        "else": ""
+      }
+    },
+    "kpi-drilldown": {
+      "kpis": "omit",
+      "dimensions": "omit"
+    },
+    "line-replay": {
+      "data": "omit",
+      "moments": "omit",
+      "seriesLabel": "omit",
+      "baselineLabel": "omit",
+      "valueLabel": "omit"
+    },
+    "market-terminal": {
+      "symbols": "omit",
+      "holdings": "omit",
+      "orders": "omit"
+    },
+    "small-multiples": {
+      "series": "omit",
+      "periods": "omit"
+    },
+    "wallet-card": {
+      "initialBalanceCents": "omit"
+    },
+    "week-calendar": {
+      "defaultEvents": "omit",
+      "calendars": "omit"
+    },
+    "hero-section": {
+      "media": {
+        "fill": [
+          "media"
+        ],
+        "else": null
+      }
+    },
+    "header1_shell": {
+      "image": "media"
+    },
+    "faq7_shell": {
+      "footerHeading": "",
+      "footerDescription": "",
+      "button": null
+    },
+    "pricing10_block": {
+      "tagline": "",
+      "description": ""
+    },
+    "testimonial3_block": {
+      "description": ""
+    }
+  },
+  "exceptions": {
+    "hero-signup": {
+      "shortButtonLabel": "cta: lo pone el binding (#28) cuando hay primaryCta; sin copy no hay bloque",
+      "hue": "config: tono del mesh, sin default visible como texto",
+      "onSubscribe": "handler",
+      "onStateChange": "handler",
+      "count": "fork ADR 0005: sin count no hay prueba social; el brief no trae cifra real",
+      "proof": "render-prop atada a count: sin count no se renderiza",
+      "labels": "chrome del bloque (ADR 0006): default en inglés que el composer traduce desde el schema; foreign-text mide lo que quede"
+    },
+    "site-footer": {
+      "links": "solo variante minimal; usamos columns",
+      "onNavigate": "handler",
+      "brand.markIncludesName": "config: el mark ya es el wordmark (lo fija el brand pack, brand-skill.ts:149); default false, no es copy"
+    },
+    "newsletter-signup": {
+      "onSubscribe": "handler"
+    },
+    "site-header": {
+      "current": "estado controlado",
+      "defaultCurrent": "estado inicial",
+      "onCurrentChange": "handler",
+      "onNavigate": "handler",
+      "sticky": "config",
+      "scrollContainer": "config",
+      "scrollThreshold": "config",
+      "label": "chrome a11y en inglés (nombre del landmark); fase i18n",
+      "openMenuLabel": "chrome a11y en inglés; fase i18n",
+      "closeMenuLabel": "chrome a11y en inglés; fase i18n",
+      "brand.markIncludesName": "config: el mark ya es el wordmark (lo fija el brand pack, brand-skill.ts:149); default false, no es copy"
+    },
+    "hero-section": {
+      "animateIn": "config",
+      "secondaryAction": "contenido opcional: lo pone el binding si el copy lo trae; default undefined, no se renderiza",
+      "announcement": "contenido opcional, default undefined",
+      "install": "contenido opcional, default undefined",
+      "meta": "contenido opcional, default undefined",
+      "highlight": "contenido opcional, default undefined"
+    },
+    "cta-section": {
+      "note": "contenido opcional: lo pone el binding si el copy lo trae; default undefined",
+      "points": "solo variante split; usamos centered",
+      "onDismiss": "solo variante banner",
+      "setup": "solo variante split; usamos centered (y sin faces por defecto, ADR 0006)",
+      "labels": "chrome de estado y a11y en inglés; fase i18n"
+    },
+    "faq-section": {
+      "description": "contenido opcional: lo pone el binding si el copy lo trae; default undefined",
+      "multiple": "config",
+      "value": "estado controlado",
+      "defaultValue": "estado inicial",
+      "onValueChange": "handler",
+      "category": "estado de la variante columns; usamos accordion",
+      "onCategoryChange": "handler",
+      "query": "estado de la variante search",
+      "onQueryChange": "handler"
+    },
+    "stats-band": {
+      "description": "contenido opcional, default undefined",
+      "duration": "config",
+      "locale": "config: formato numérico; lo pone la fase E desde lang"
+    },
+    "contact-section": {
+      "onSubmit": "handler",
+      "channels": "solo variante channels; usamos form",
+      "channel": "estado de la variante channels",
+      "defaultChannel": "estado de la variante channels",
+      "onChannelChange": "handler",
+      "offices": "solo variante offices"
+    },
+    "ai-chat": {
+      "onConversationsChange": "handler",
+      "activeId": "estado controlado",
+      "defaultActiveId": "estado inicial",
+      "onActiveChange": "handler",
+      "model": "estado controlado",
+      "defaultModel": "estado inicial",
+      "onModelChange": "handler",
+      "sidebarOpen": "estado controlado",
+      "defaultSidebarOpen": "estado inicial",
+      "onSidebarOpenChange": "handler",
+      "respond": "handler: sin él el bloque simula la respuesta (demo de app, cubierto por defaultConversations:omit)"
+    },
+    "ai-side-panel": {
+      "onPageChange": "handler",
+      "onAsk": "handler",
+      "defaultMode": "estado inicial"
+    },
+    "budget-variance": {
+      "defaultPeriod": "estado inicial",
+      "defaultExpanded": "estado inicial",
+      "ranges": "config",
+      "onPlanThreshold": "config",
+      "currency": "config: símbolo; sin dato en el brief",
+      "onPeriodChange": "handler",
+      "onDepartmentToggle": "handler"
+    },
+    "choropleth-explorer": {
+      "defaultMap": "estado inicial",
+      "defaultMetric": "estado inicial",
+      "viewBox": "config",
+      "onRegionOpen": "handler",
+      "onMetricChange": "handler",
+      "onMapChange": "handler"
+    },
+    "comparison-table": {
+      "differencesOnly": "estado controlado",
+      "defaultDifferencesOnly": "estado inicial",
+      "onDifferencesOnlyChange": "handler",
+      "compareWith": "estado controlado",
+      "onCompareWithChange": "handler",
+      "stickyTop": "config",
+      "maxHeight": "config",
+      "stackBelow": "config"
+    },
+    "connected-scatter": {
+      "defaultSeries": "estado inicial",
+      "targetRatio": "config",
+      "formatValue": "config: formateador",
+      "onMonthChange": "handler"
+    },
+    "kpi-drilldown": {
+      "end": "estado: fecha del último valor, va con kpis",
+      "defaultRange": "estado inicial",
+      "selected": "estado controlado",
+      "onSelectedChange": "handler"
+    },
+    "line-replay": {
+      "formatTime": "config: formateador",
+      "formatTick": "config: formateador",
+      "formatValue": "config: formateador",
+      "duration": "config",
+      "defaultSpeed": "estado inicial",
+      "defaultPosition": "estado inicial",
+      "autoPlay": "config",
+      "onMomentReached": "handler"
+    },
+    "market-terminal": {
+      "buyingPower": "estado de app, va con holdings",
+      "defaultTicker": "estado inicial",
+      "defaultRange": "estado inicial",
+      "defaultAverages": "estado inicial",
+      "live": "config",
+      "tickInterval": "config",
+      "onPlaceOrder": "handler",
+      "onCancelOrder": "handler"
+    },
+    "small-multiples": {
+      "defaultSort": "estado inicial",
+      "defaultScale": "estado inicial",
+      "defaultDimFlat": "estado inicial",
+      "flatThreshold": "config",
+      "growthLag": "config",
+      "formatValue": "config: formateador",
+      "formatTick": "config: formateador",
+      "onSortChange": "handler",
+      "onScaleChange": "handler",
+      "onIndexChange": "handler"
+    },
+    "week-calendar": {
+      "events": "estado controlado",
+      "onEventsChange": "handler",
+      "onCreate": "handler",
+      "onUpdate": "handler",
+      "onDelete": "handler",
+      "defaultDate": "estado inicial",
+      "defaultView": "estado inicial",
+      "onViewChange": "handler",
+      "weekStartsOn": "config",
+      "startHour": "config",
+      "endHour": "config",
+      "timeZone": "config",
+      "locale": "config: formato de fechas; fase i18n"
+    },
+    "footer12_component": {
+      "socialMediaLinks": "icono ReactNode por red; el binding no lo pone y el composer lo llena con href plausible y provenance"
+    },
+    "footer14_component": {
+      "socialMediaLinks": "icono ReactNode por red; el binding no lo pone y el composer lo llena con href plausible y provenance"
+    },
+    "footer7_component": {
+      "footerLinks": "columnas de enlaces: anclas de la página (HREF_RULE), las pone el composer, no el copy"
+    },
+    "section_pricing12": {
+      "periodLabel": "texto de UI con default (ADR 0006): \"/mo\"; el composer lo traduce"
+    },
+    "section_pricing18": {
+      "periodLabel": "texto de UI con default (ADR 0006): \"/mo\"; el composer lo traduce"
+    },
+    "section_pricing4": {
+      "periodLabel": "texto de UI con default (ADR 0006): \"/mo\"; el composer lo traduce",
+      "includesLabel": "texto de UI con default (ADR 0006); el composer lo traduce"
+    },
+    "section_testimonial13": {
+      "numberOfStars": "config: calificación por defecto del bloque, no es copy"
+    },
+    "plan-comparison": {
+      "plans": "contenido del brief: lo escribe el agente (ADR 0011); sin él pinta la demo de <slug>-data.ts",
+      "features": "contenido del brief: lo escribe el agente (ADR 0011); sin él pinta la demo de <slug>-data.ts",
+      "description": "contenido del brief: lo escribe el agente (ADR 0011); sin él pinta la demo de <slug>-data.ts",
+      "footnote": "contenido del brief: lo escribe el agente (ADR 0011); sin él pinta la demo de <slug>-data.ts",
+      "currency": "config: símbolo de moneda del brief, default $",
+      "labels": "chrome del bloque (ADR 0006): default en inglés que el composer traduce desde el schema"
+    },
+    "testimonial-stage": {
+      "labels": "chrome del bloque (ADR 0006): default en inglés que el composer traduce desde el schema",
+      "onPerspectiveChange": "handler"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/user-menu.schema.json",
+  "title": "User menu",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "user": {
+      "description": "{ name, email, plan?, avatarSrc?, avatarSrcSet? }. Falls back to initials without a photo. plan shows as a small accent badge.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "email": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "plan": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "avatarSrc": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "avatarSrcSet": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "email"
+      ]
+    },
+    "status": {
+      "description": "Controlled presence status. Passing status or onStatusChange adds the presence dot and an inline status switch.",
+      "type": "string",
+      "enum": [
+        "available",
+        "busy",
+        "away"
+      ]
+    },
+    "defaultStatus": {
+      "description": "Initial status when uncontrolled.",
+      "type": "string",
+      "enum": [
+        "available",
+        "busy",
+        "away"
+      ]
+    },
+    "onStatusChange": {
+      "description": "Called when a status is chosen. The menu stays open.",
+      "type": "object"
+    },
+    "theme": {
+      "description": "Controlled theme preference.",
+      "type": "string",
+      "enum": [
+        "light",
+        "dark",
+        "system"
+      ]
+    },
+    "defaultTheme": {
+      "description": "Initial theme when uncontrolled.",
+      "type": "string",
+      "enum": [
+        "light",
+        "dark",
+        "system"
+      ]
+    },
+    "onThemeChange": {
+      "description": "Reports the choice. Applying it to the page is up to the app. The menu stays open.",
+      "type": "object"
+    },
+    "showTheme": {
+      "description": "Shows the inline light, dark, and system switch.",
+      "type": "boolean"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "keys": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          },
+          "onSelect": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Account destinations: { label, icon?, keys?, onSelect? }. Keep it to three or four. keys show quiet shortcut hints such as [\"⌘\", \",\"]."
+    },
+    "onSignOut": {
+      "description": "Sign out handler. A returned promise keeps the menu open with a spinner until it settles.",
+      "type": "object"
+    },
+    "signOutKeys": {
+      "description": "Shortcut hint for the sign out item.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "align": {
+      "description": "Panel alignment against the trigger.",
+      "type": "string",
+      "enum": [
+        "start",
+        "center",
+        "end"
+      ]
+    },
+    "showName": {
+      "description": "Shows the name and a chevron beside the avatar from 640px up. Phones always show the avatar alone.",
+      "type": "boolean"
+    },
+    "open": {
+      "description": "Controlled open state.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Initial open state when uncontrolled. A menu that starts open does not take focus.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called when the menu opens or closes.",
+      "type": "object"
+    },
+    "portal": {
+      "description": "Renders the desktop panel on the body. Pass false to keep it inside the trigger wrapper, for example in a contained preview. The mobile sheet always uses the body.",
+      "type": "boolean"
+    },
+    "ref": {
+      "description": "The trigger button, for returning focus.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "user"
+  ]
+}

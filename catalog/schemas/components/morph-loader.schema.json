@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/morph-loader.schema.json",
+  "title": "Morph loader",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "Loading shape. Changing it while loading morphs the strokes into the new shape.",
+      "type": "string",
+      "enum": [
+        "dots",
+        "bars",
+        "ring",
+        "square"
+      ]
+    },
+    "status": {
+      "description": "success folds the strokes into a check, error into a cross, loading gathers them back.",
+      "type": "string",
+      "enum": [
+        "loading",
+        "success",
+        "error"
+      ]
+    },
+    "size": {
+      "description": "Rendered size in px. The drawing uses a 24 unit grid.",
+      "type": "number"
+    },
+    "strokeWidth": {
+      "description": "Stroke thickness in grid units for ring, square, check, and cross.",
+      "type": "number"
+    },
+    "tone": {
+      "description": "Colors the check with --success and the cross with --danger. Off keeps currentColor.",
+      "type": "boolean"
+    },
+    "label": {
+      "description": "Announced while loading.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "successLabel": {
+      "description": "Announced on success.",
+      "type": "string",
+      "format": "label"
+    },
+    "errorLabel": {
+      "description": "Announced on error.",
+      "type": "string",
+      "format": "label"
+    },
+    "decorative": {
+      "description": "Drops the status role and text, for loaders inside a control that announces its own state.",
+      "type": "boolean"
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "x-variants": [
+    "dots",
+    "bars",
+    "ring",
+    "square"
+  ]
+}

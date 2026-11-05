@@ -1,0 +1,253 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/site-footer.schema.json",
+  "title": "Site Footer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "columns` pairs a newsletter with link columns, `minimal` is one quiet row, `logo` ends in a large fading mark.",
+      "type": "string",
+      "enum": [
+        "columns",
+        "minimal",
+        "logo"
+      ]
+    },
+    "brand": {
+      "description": "Brand shown with the tagline.",
+      "type": "object",
+      "format": "logo",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "mark": {
+          "x-undocumented": true,
+          "x-empty": ""
+        },
+        "markIncludesName": {
+          "x-undocumented": true,
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "tagline": {
+      "description": "One short line under the brand.",
+      "type": "string",
+      "format": "tagline",
+      "x-empty": ""
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "links": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "links"
+        ]
+      },
+      "description": "Link columns."
+    },
+    "links": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "external": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Links for the minimal variant. Defaults to the first link of each column."
+    },
+    "legal": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "external": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Small links beside the copyright, such as Privacy and Terms.",
+      "x-empty": []
+    },
+    "socials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "external": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Social links.",
+      "x-empty": []
+    },
+    "newsletter": {
+      "x-nullable": true,
+      "description": "Newsletter signup. Throw or reject in onSubscribe to show an error. Pass null to hide it.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "heading"
+        },
+        "description": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "description"
+        },
+        "placeholder": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "buttonLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "cta"
+        },
+        "doneLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "fieldLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "emptyEmail": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "invalidEmail": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "failed": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "confirm": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "onSubscribe": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "x-empty": null
+    },
+    "status": {
+      "x-nullable": true,
+      "description": "A system status link. Pass null to hide it.",
+      "type": "object",
+      "x-empty": null
+    },
+    "year": {
+      "description": "Year in the copyright line.",
+      "type": "number"
+    },
+    "onNavigate": {
+      "description": "Called for every pressed link. Links without an href render as buttons and only call this.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "brand",
+    "columns",
+    "legal",
+    "socials",
+    "newsletter",
+    "status"
+  ]
+}

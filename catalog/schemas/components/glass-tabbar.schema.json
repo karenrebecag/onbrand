@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/glass-tabbar.schema.json",
+  "title": "Glass tab bar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "badge": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label",
+          "icon"
+        ]
+      },
+      "description": "Tabs with value, label, icon, and an optional badge."
+    },
+    "value": {
+      "description": "Controlled active tab. A value that matches no tab, or the action, hides the lens.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Initial active tab when uncontrolled. Defaults to the first item.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called when a tab or the action is chosen by tap, drag, or keyboard.",
+      "type": "object"
+    },
+    "action": {
+      "description": "A separate round glass tab beside the bar, such as search. It takes part in selection and keyboard order like any tab.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "icon": {
+          "x-undocumented": true
+        },
+        "badge": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "label",
+        "icon"
+      ]
+    },
+    "compact": {
+      "description": "Controlled compact state.",
+      "type": "boolean"
+    },
+    "defaultCompact": {
+      "description": "Initial compact state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onCompactChange": {
+      "description": "Called when the bar shrinks or grows.",
+      "type": "object"
+    },
+    "scrollRef": {
+      "description": "Scroll container to watch. Leave it out to watch the window.",
+      "type": "object"
+    },
+    "collapseOnScroll": {
+      "description": "Shrink on scroll down and grow on scroll up.",
+      "type": "boolean"
+    },
+    "label": {
+      "description": "Accessible name of the navigation and its tab list.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "style": {
+      "description": "Inline style on the nav.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items"
+  ]
+}

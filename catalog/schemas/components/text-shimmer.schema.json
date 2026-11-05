@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/text-shimmer.schema.json",
+  "title": "Text shimmer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "children": {
+      "description": "The status text. Keep it to one short line. A new value rises in place.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "active": {
+      "description": "Sweep while work is ongoing.",
+      "type": "boolean"
+    },
+    "duration": {
+      "description": "Seconds for one sweep across the text.",
+      "type": "number"
+    },
+    "as": {
+      "description": "Rendered element.",
+      "type": "string",
+      "enum": [
+        "span",
+        "p",
+        "div",
+        "h2",
+        "h3",
+        "h4"
+      ]
+    },
+    "id": {
+      "description": "Forwarded to the rendered element.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

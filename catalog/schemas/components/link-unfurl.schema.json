@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/link-unfurl.schema.json",
+  "title": "Link unfurl",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Accessible name of the message field.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "placeholder": {
+      "description": "Shown while the message is empty.",
+      "type": "string",
+      "format": "label"
+    },
+    "defaultValue": {
+      "description": "Starting text of the message.",
+      "type": "string"
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "site": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "image": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          },
+          "imageAlt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "favicon": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "icon"
+          },
+          "duration": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "site",
+          "title"
+        ]
+      },
+      "description": "Sample links offered as buttons under the field; the built in resolver answers with their previews. Once a sample is in the message its button shows or collapses its card. Pass an empty array to hide them."
+    },
+    "resolve": {
+      "description": "Fetches the preview for a pasted address, usually from your own unfurl endpoint. Return null when there is none; the link then stays in the text without a card and can be clicked to try again. Without it, samples resolve by address and other links get a plain preview built from the address after a 1.15s simulated fetch.",
+      "type": "object"
+    },
+    "autoExpand": {
+      "description": "Unfurls a card as soon as its preview resolves. When false the link only gains its favicon and title, and opens on click.",
+      "type": "boolean"
+    },
+    "autoPlay": {
+      "description": "Pastes the first sample the first time the composer scrolls into view, unless someone has already interacted.",
+      "type": "boolean"
+    },
+    "speed": {
+      "description": "Multiplier for the morph and the simulated fetch.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Opens and folds cards instantly without the morph and turns autoplay off.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Color of an unfurled link and its tie to its card. Defaults to the accent.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "sendLabel": {
+      "description": "Accessible name of the send button.",
+      "type": "string",
+      "format": "label"
+    },
+    "onSend": {
+      "description": "Called on Enter or the send button with the text (links written out as addresses) and the resolved previews. Return a promise to hold the composer while it is pending; a rejection shows its message under the composer. On success the composer clears and the button confirms with a check.",
+      "type": "object"
+    },
+    "style": {
+      "description": "Inline styles on the root element.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "samples"
+  ]
+}

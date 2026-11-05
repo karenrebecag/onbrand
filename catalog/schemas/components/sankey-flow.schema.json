@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sankey-flow.schema.json",
+  "title": "Sankey flow",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "column": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Nodes in the order they stack within each column. Columns default to each node's distance from a source."
+    },
+    "links": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "target": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "target",
+          "value"
+        ]
+      },
+      "description": "Flows between node ids. A node's value is the larger of what flows in and out."
+    },
+    "label": {
+      "description": "Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "columns": {
+      "description": "Stage names printed above each column. Hidden when a name would not fit, and in the upright layout.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "unit": {
+      "description": "Unit after values in the tooltip and table, such as \"people\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "totalLabel": {
+      "description": "What the first column adds up to, used in shares such as \"21% of signups\".",
+      "type": "string",
+      "format": "label"
+    },
+    "formatValue": {
+      "description": "Formats node values, the tooltip, and the table.",
+      "type": "object"
+    },
+    "height": {
+      "description": "Plot height in pixels. The upright layout below 420px wide uses at least 480.",
+      "type": "number"
+    },
+    "particles": {
+      "description": "Controlled particles along the ribbons.",
+      "type": "boolean"
+    },
+    "defaultParticles": {
+      "description": "Initial particles state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onParticlesChange": {
+      "description": "Called when the built in toggle is pressed.",
+      "type": "object"
+    },
+    "particleToggle": {
+      "description": "Shows the Flow toggle under the plot.",
+      "type": "boolean"
+    },
+    "emptyLabel": {
+      "description": "Shown when there are no positive links.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "nodes",
+    "links",
+    "label"
+  ]
+}

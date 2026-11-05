@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/toast.schema.json",
+  "title": "Toast",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Headline. Changes crossfade while shown.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting line.",
+      "type": "string",
+      "format": "description"
+    },
+    "open": {
+      "description": "Whether the toast is shown. Setting it true again after a dismiss re-raises it.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called with false on close, swipe, or timeout. Auto-dismiss only runs when this is provided.",
+      "type": "object"
+    },
+    "duration": {
+      "description": "Milliseconds before auto-dismiss. 0 or less disables it.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title"
+  ]
+}

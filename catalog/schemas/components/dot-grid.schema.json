@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/dot-grid.schema.json",
+  "title": "Dot grid",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gap": {
+      "description": "Distance between dots in px. Lower is denser.",
+      "type": "number"
+    },
+    "dotSize": {
+      "description": "Dot radius in px at rest.",
+      "type": "number"
+    },
+    "radius": {
+      "description": "Lens radius around the pointer in px.",
+      "type": "number"
+    },
+    "strength": {
+      "description": "How far dots are pushed at the strongest point of the lens, in px.",
+      "type": "number"
+    },
+    "ripple": {
+      "description": "Clicks and taps send a ripple through the field.",
+      "type": "boolean"
+    },
+    "fade": {
+      "description": "Fades the field toward its edges.",
+      "type": "boolean"
+    },
+    "color": {
+      "description": "Dot color at rest. Defaults to the strong border token.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "activeColor": {
+      "description": "Color dots take under the lens and in ripples. Defaults to the accent token.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "children": {
+      "description": "Content drawn over the field, such as a hero headline."
+    },
+    "style": {
+      "description": "Inline style on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

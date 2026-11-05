@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/money-input.schema.json",
+  "title": "Money input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Field label.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "hideLabel": {
+      "description": "Keeps the label for screen readers only.",
+      "type": "boolean"
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Controlled amount in minor units (cents for USD, yen for JPY). null is empty.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Starting amount in minor units when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Called with minor units and { currency, major, formatted }.",
+      "type": "object"
+    },
+    "currency": {
+      "description": "Controlled ISO 4217 code, such as \"USD\".",
+      "type": "string"
+    },
+    "defaultCurrency": {
+      "description": "Starting currency when uncontrolled.",
+      "type": "string"
+    },
+    "onCurrencyChange": {
+      "description": "Called when a currency is picked. The major amount carries over.",
+      "type": "object"
+    },
+    "currencies": {
+      "description": "Codes in the currency menu. Pass one code to hide the menu.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "min": {
+      "description": "Lowest amount in minor units. Checked when the field loses focus.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Highest amount in minor units. Typing past it is refused with a nudge.",
+      "type": "number"
+    },
+    "quickAdd": {
+      "description": "Quick add chips in major units. Pass an empty array to hide them.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "step": {
+      "description": "Arrow keys move by this many minor units. Defaults to one major unit; Shift moves ten times as far.",
+      "type": "number"
+    },
+    "locale": {
+      "description": "Formatting locale. Fixed by default so server and client render the same digits.",
+      "type": "string"
+    },
+    "description": {
+      "description": "Hint under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "error": {
+      "description": "Replaces the built-in range message.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "disabled": {
+      "description": "Disables the field, menu, and chips.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Adds a hidden input carrying the amount in minor units.",
+      "type": "string",
+      "format": "person"
+    },
+    "id": {
+      "description": "Id of the input.",
+      "type": "string"
+    },
+    "onBlur": {
+      "description": "Called when the input loses focus, after the fraction settles.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

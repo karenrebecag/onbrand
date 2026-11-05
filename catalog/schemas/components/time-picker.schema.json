@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/time-picker.schema.json",
+  "title": "Time picker",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled time as \"HH:mm\" (24-hour).",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Initial time when uncontrolled.",
+      "type": "string"
+    },
+    "onChange": {
+      "description": "Called with the new \"HH:mm\" value.",
+      "type": "object"
+    },
+    "description": {
+      "description": "Helper copy under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "placeholder": {
+      "description": "Shown when the value is empty.",
+      "type": "string",
+      "format": "label"
+    },
+    "minuteStep": {
+      "description": "Spacing between options.",
+      "type": "object"
+    },
+    "format": {
+      "description": "Display format. Values stay 24-hour.",
+      "type": "string",
+      "enum": [
+        "12h",
+        "24h"
+      ]
+    },
+    "disabled": {
+      "description": "Disables the trigger.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

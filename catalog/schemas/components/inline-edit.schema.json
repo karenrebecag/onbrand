@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/inline-edit.schema.json",
+  "title": "Inline edit",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "The saved value. Outside changes replace the text while not editing.",
+      "type": "string"
+    },
+    "onSave": {
+      "description": "Persists the value. Return a promise to show saving; reject it to roll back with a retry.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name, for example \"Project name\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "validate": {
+      "description": "Returns an error message to block saving.",
+      "type": "object",
+      "format": "date"
+    },
+    "placeholder": {
+      "description": "Shown when the value is empty.",
+      "type": "string",
+      "format": "label"
+    },
+    "multiline": {
+      "description": "Wraps and grows in height; Shift+Enter adds a line break.",
+      "type": "boolean"
+    },
+    "variant": {
+      "description": "Type style: title for names and headings, body for descriptions.",
+      "type": "string",
+      "enum": [
+        "title",
+        "body"
+      ]
+    },
+    "as": {
+      "description": "Element that holds the text, so a title can stay a heading.",
+      "type": "string",
+      "enum": [
+        "span",
+        "p",
+        "h1",
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value",
+    "onSave",
+    "label"
+  ],
+  "x-variants": [
+    "title",
+    "body"
+  ]
+}

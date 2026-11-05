@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/waffle-chart.schema.json",
+  "title": "Waffle chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "description": "Categories in fill order: { key, label, value, color? }. The first fills from the bottom-left corner, column by column. Shares come from the total."
+    },
+    "label": {
+      "description": "What the whole is, such as \"Electricity generation, 2023\". Names the chart, the summary, and the table.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after raw values in the tooltip and table, such as \"TWh\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "formatValue": {
+      "description": "Formats raw values. Shares are always percentages.",
+      "type": "object"
+    },
+    "rows": {
+      "description": "Grid rows. rows × columns cells make the whole.",
+      "type": "number"
+    },
+    "columns": {
+      "description": "Grid columns. 10 × 10 means one cell per percent.",
+      "type": "number"
+    },
+    "accentKey": {
+      "x-nullable": true,
+      "description": "The category painted in the first series hue, derived from the accent. The next three take the supporting series and later ones fall back to neutral steps.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "activeKey": {
+      "x-nullable": true,
+      "description": "Controlled focused category. Other cells dim while one is focused.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultActiveKey": {
+      "x-nullable": true,
+      "description": "Initial focused category when uncontrolled.",
+      "type": "string"
+    },
+    "onActiveChange": {
+      "description": "Called when a legend item is pinned or released.",
+      "type": "object"
+    },
+    "legend": {
+      "description": "Category list with rolling shares. It sits beside the grid from 420px and below it on narrower containers.",
+      "type": "boolean"
+    },
+    "decimals": {
+      "description": "Decimal places for shares.",
+      "type": "number"
+    },
+    "emptyLabel": {
+      "description": "Message when the data is empty or sums to zero.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "description": "Forwarded to the figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label"
+  ]
+}

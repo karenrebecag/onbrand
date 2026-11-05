@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/cookie-consent.schema.json",
+  "title": "Cookie consent",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "required": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "defaultEnabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Groups: { id, label, description?, required?, defaultEnabled? }. Required ones are always on."
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Controlled saved choice (category id to allowed). null means the visitor has not decided.",
+      "type": "object"
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Starting choice when uncontrolled.",
+      "type": "object"
+    },
+    "onChange": {
+      "description": "Called on accept-all, reject-all, save, or reset. Load optional scripts from here.",
+      "type": "object"
+    },
+    "storageKey": {
+      "description": "Remembers the choice in localStorage under this key. Read it elsewhere with readCookieConsent.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "version": {
+      "description": "Bump when categories or policy change; a stored choice for another version is ignored and the bar asks again.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "preferencesOpen": {
+      "description": "Controlled open state of the preferences panel.",
+      "type": "boolean"
+    },
+    "defaultPreferencesOpen": {
+      "description": "Opens the panel on first render when uncontrolled.",
+      "type": "boolean"
+    },
+    "onPreferencesOpenChange": {
+      "description": "Called when the panel opens or closes.",
+      "type": "object"
+    },
+    "policy": {
+      "description": "Link to the full policy, shown in the bar and panel. Renders a button when href is missing.",
+      "type": "object"
+    },
+    "position": {
+      "description": "Where the bar sits along the bottom edge.",
+      "type": "string",
+      "enum": [
+        "bottom",
+        "bottom-left",
+        "bottom-right"
+      ]
+    },
+    "strategy": {
+      "description": "fixed pins to the viewport; absolute fills the nearest positioned ancestor, for previews.",
+      "type": "string",
+      "enum": [
+        "fixed",
+        "absolute"
+      ]
+    },
+    "showReopenButton": {
+      "description": "Keeps a 44px cookie button after a choice so visitors can change their mind.",
+      "type": "boolean"
+    },
+    "reopenSide": {
+      "description": "Corner for the reopen button. Defaults to the bar's side, or left when centered.",
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "labels": {
+      "description": "Overrides for message, customize, acceptAll, rejectAll, save, preferencesTitle, preferencesDescription, reopen, alwaysOn, and close.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "x-undocumented": true
+        },
+        "customize": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "acceptAll": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "rejectAll": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "save": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "preferencesTitle": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "preferencesDescription": {
+          "x-undocumented": true
+        },
+        "reopen": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "alwaysOn": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "close": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "categories"
+  ]
+}

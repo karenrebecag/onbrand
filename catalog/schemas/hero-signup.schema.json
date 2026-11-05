@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/hero-signup.schema.json",
+  "title": "Hero Signup",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Headline. A string rises in word by word on load."
+    },
+    "description": {
+      "description": "One supporting line under the headline."
+    },
+    "placeholder": {
+      "description": "Email field placeholder.",
+      "type": "string",
+      "format": "label"
+    },
+    "buttonLabel": {
+      "description": "Submit label.",
+      "type": "string",
+      "format": "cta"
+    },
+    "shortButtonLabel": {
+      "description": "Submit label on very narrow layouts.",
+      "type": "string",
+      "format": "cta"
+    },
+    "footnote": {
+      "description": "Quiet line under the field. Validation, a typo fix, a failure with retry, and the confirmation replace it in place."
+    },
+    "count": {
+      "description": "People already on the list. Omit it to hide the social proof. The count rolls up by one when the visitor joins.",
+      "type": "number"
+    },
+    "people": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Portraits in the social proof stack. Up to five are shown.",
+      "x-empty": []
+    },
+    "labels": {
+      "x-undocumented": true,
+      "type": "object",
+      "properties": {
+        "proof": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "proofAnnouncement": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "fieldLabel": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "label"
+        },
+        "submitting": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "submittingAnnouncement": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "joined": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "joinedAt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "joinedAtAnnouncement": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "emailSoon": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "preview": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "previewAnnouncement": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "changeEmail": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "retry": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "failed": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "didYouMean": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "emptyEmail": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "hasSpaces": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "missingAt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "missingName": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "missingDomain": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "extraAt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "unfinishedDomain": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hue": {
+      "description": "Mesh hue in degrees. Defaults to the hue of the page accent, or a calm blue violet for the neutral accent. The palette stays pale and low in chroma in light mode and deep and calm in dark mode.",
+      "type": "number"
+    },
+    "onSubscribe": {
+      "description": "Adds the email to the list. Resolve with the visitor's place in line, or nothing to use count + 1. Reject with an Error to show its message with Try again. Without it the preview simulates the request.",
+      "type": "object"
+    },
+    "onStateChange": {
+      "description": "Called on every state change, for analytics.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

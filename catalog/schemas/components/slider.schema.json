@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/slider.schema.json",
+  "title": "Slider",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label; names the thumbs unless thumbLabels is set.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled value. A pair renders a range with two thumbs.",
+      "type": "object"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "object"
+    },
+    "onValueChange": {
+      "description": "Called on every step while dragging or pressing keys.",
+      "type": "object"
+    },
+    "onValueCommit": {
+      "description": "Called once when a drag is released or a key changes the value.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lower bound.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Upper bound.",
+      "type": "number"
+    },
+    "step": {
+      "description": "Increment.",
+      "type": "number"
+    },
+    "largeStep": {
+      "description": "Distance for PageUp, PageDown, and Shift with an arrow.",
+      "type": "number"
+    },
+    "marks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Ticks on the track; labelled marks print under it and are clickable."
+    },
+    "minStepsBetweenThumbs": {
+      "description": "Closest two range thumbs may sit, in steps.",
+      "type": "number"
+    },
+    "format": {
+      "description": "Formats the readout, bubble, and spoken value.",
+      "type": "object"
+    },
+    "showValue": {
+      "description": "Show the readout beside the label.",
+      "type": "boolean"
+    },
+    "thumbLabels": {
+      "description": "Accessible names for the two range thumbs.",
+      "type": "object"
+    },
+    "start": {
+      "description": "Content before the track, such as an icon."
+    },
+    "end": {
+      "description": "Content after the track."
+    },
+    "name": {
+      "description": "Submits the value with a form, one hidden input per thumb.",
+      "type": "string",
+      "format": "person"
+    },
+    "disabled": {
+      "description": "Disables dragging and keys.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

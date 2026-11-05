@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/skeleton.schema.json",
+  "title": "Skeleton",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "aria-label of the loading status.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "lines": {
+      "description": "Number of text lines, clamped to 1-6.",
+      "type": "number"
+    },
+    "avatar": {
+      "description": "Adds a round avatar placeholder.",
+      "type": "boolean"
+    },
+    "children": {
+      "description": "Content to reveal once loading finishes. With children the placeholder crossfades into them."
+    },
+    "loading": {
+      "description": "Keeps the placeholder visible while true. Only used with children.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2
+}

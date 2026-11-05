@@ -1,0 +1,324 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/comparison-table.schema.json",
+  "title": "Comparison table",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Section heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Line under the heading.",
+      "type": "string",
+      "format": "description"
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "caption": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "highlight": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "Products to compare. Mark yours with highlight: true.",
+      "maxItems": 4,
+      "x-empty": "omit"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "rows": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "rows"
+        ]
+      },
+      "description": "Grouped feature rows. Values: true, false, \"partial\", a string, or { value, note }.",
+      "maxItems": 4,
+      "x-empty": "omit"
+    },
+    "differencesOnly": {
+      "description": "Hide rows where all visible columns match (controlled).",
+      "type": "boolean"
+    },
+    "defaultDifferencesOnly": {
+      "description": "Initial switch state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onDifferencesOnlyChange": {
+      "description": "Called when the switch flips.",
+      "type": "object"
+    },
+    "compareWith": {
+      "description": "Competitor shown beside yours in the stacked phone view (controlled).",
+      "type": "string"
+    },
+    "onCompareWithChange": {
+      "description": "Called when a competitor is picked on phones.",
+      "type": "object"
+    },
+    "cta": {
+      "description": "Button at the foot of your column. doneLabel morphs in after a click.",
+      "type": "object",
+      "format": "cta",
+      "x-empty": "omit"
+    },
+    "stickyTop": {
+      "description": "Offset for the sticky header, such as a fixed site header height.",
+      "type": "number"
+    },
+    "maxHeight": {
+      "description": "Caps the table height and scrolls it inside the block with the header pinned.",
+      "type": "object"
+    },
+    "stackBelow": {
+      "description": "Block width below which the phone view takes over.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "columns",
+    "sections"
+  ],
+  "examples": [
+    {
+      "columns": [
+        {
+          "name": "Relay",
+          "caption": "$10 per seat",
+          "highlight": true
+        },
+        {
+          "name": "Legacy suite",
+          "caption": "$24 per seat"
+        },
+        {
+          "name": "Spreadsheets",
+          "caption": "Free"
+        },
+        {
+          "name": "Point tools",
+          "caption": "$16 per seat"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Planning",
+          "rows": [
+            {
+              "feature": "Projects",
+              "values": {
+                "relay": "Unlimited",
+                "suite": "Up to 50",
+                "sheets": "Unlimited",
+                "point": "Up to 10"
+              }
+            },
+            {
+              "feature": "Timelines and roadmaps",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": false,
+                "point": {
+                  "value": "partial",
+                  "note": "Timeline only"
+                }
+              }
+            },
+            {
+              "feature": "Dependencies",
+              "hint": "Blocked work moves when its blocker does",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": false,
+                "point": false
+              }
+            },
+            {
+              "feature": "Templates",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": {
+                  "value": "partial",
+                  "note": "Manual copies"
+                },
+                "point": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "Collaboration",
+          "rows": [
+            {
+              "feature": "Real time editing",
+              "values": {
+                "relay": true,
+                "suite": false,
+                "sheets": true,
+                "point": true
+              }
+            },
+            {
+              "feature": "Free guest access",
+              "values": {
+                "relay": true,
+                "suite": false,
+                "sheets": true,
+                "point": {
+                  "value": "partial",
+                  "note": "Five guests"
+                }
+              }
+            },
+            {
+              "feature": "Comments and mentions",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": true,
+                "point": true
+              }
+            },
+            {
+              "feature": "Offline mode",
+              "hint": "Edits sync when you reconnect",
+              "values": {
+                "relay": true,
+                "suite": false,
+                "sheets": {
+                  "value": "partial",
+                  "note": "Desktop app only"
+                },
+                "point": false
+              }
+            }
+          ]
+        },
+        {
+          "title": "Automation",
+          "rows": [
+            {
+              "feature": "Rules and triggers",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": false,
+                "point": {
+                  "value": "partial",
+                  "note": "Paid add on"
+                }
+              }
+            },
+            {
+              "feature": "AI summaries",
+              "values": {
+                "relay": true,
+                "suite": false,
+                "sheets": false,
+                "point": false
+              }
+            },
+            {
+              "feature": "Public API",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": true,
+                "point": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "Security",
+          "rows": [
+            {
+              "feature": "SAML single sign on",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": {
+                  "value": "partial",
+                  "note": "Enterprise plan"
+                },
+                "point": false
+              }
+            },
+            {
+              "feature": "Audit log",
+              "values": {
+                "relay": true,
+                "suite": true,
+                "sheets": false,
+                "point": false
+              }
+            },
+            {
+              "feature": "EU data residency",
+              "values": {
+                "relay": true,
+                "suite": {
+                  "value": "partial",
+                  "note": "Enterprise plan"
+                },
+                "sheets": true,
+                "point": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

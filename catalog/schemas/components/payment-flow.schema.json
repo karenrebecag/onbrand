@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/payment-flow.schema.json",
+  "title": "Payment flow",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nodes": {
+      "description": "The five stops. Each one you pass replaces the default for that stop. A node is { label, meta?, detail?, icon?, color? }: meta is the resting second line, detail is the hover tag, icon is SVG path data on a 24 by 24 viewBox painted in color, an image URL, or any ReactNode. The merchant's second line always shows the balance.",
+      "type": "object",
+      "properties": {
+        "terminal": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "processor": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "network": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "issuer": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "merchant": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "amount": {
+      "description": "The charge, shown on the chip that travels to the bank.",
+      "type": "number"
+    },
+    "fee": {
+      "description": "What the processor keeps at settlement. The payout is amount minus fee.",
+      "type": "number"
+    },
+    "balance": {
+      "description": "Merchant balance before the first payout. It grows by the payout on every loop.",
+      "type": "number"
+    },
+    "currency": {
+      "description": "ISO currency code for every amount.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "Locale for money formatting. Keep it fixed so the server and the browser agree.",
+      "type": "string"
+    },
+    "authorizationMs": {
+      "description": "Authorization time the step row counts to, in milliseconds.",
+      "type": "number"
+    },
+    "labels": {
+      "description": "Phase names in the step row, when settlement happens, and the text on the approval chip.",
+      "type": "object",
+      "properties": {
+        "authorization": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "settlement": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "settlementTime": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "approved": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hideSteps": {
+      "description": "Hides the step row and shows only the diagram.",
+      "type": "boolean"
+    },
+    "speed": {
+      "description": "Multiplies the pace. At 1 one payment takes about 15 seconds. 0 holds still.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Holds the diagram still where it is, easing to rest instead of stopping in one frame.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Color of the moving amount, the active path, the settlement rail, and hovered wires. Defaults to the accent token. Approval and settled states stay semantic success.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible description of the diagram. Built from the nodes and amounts when left out.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "caption": {
+      "description": "Optional visible caption under the diagram, rendered as a figcaption."
+    },
+    "style": {
+      "description": "Inline styles on the root figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

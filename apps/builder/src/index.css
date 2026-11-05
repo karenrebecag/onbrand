@@ -1,0 +1,9 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/inter";
+
+/* Arc es la única fuente de tokens: foundation.css define tamaños, espacios y color; aquí solo el reset. */
+html, body, #root { height: 100%; margin: 0; }
+/* Arc asume un reset de controles (lo daba el preflight de Tailwind); :where deja ganar a los módulos de Arc. */
+:where(button, input, textarea, select) { font: inherit; color: inherit; margin: 0; }
+:where(button) { border: 0; background: none; padding: 0; }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }

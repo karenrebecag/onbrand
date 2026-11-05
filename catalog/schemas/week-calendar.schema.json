@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/week-calendar.schema.json",
+  "title": "Week calendar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "start": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "end": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "calendarId": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "allDay": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "location": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "attendees": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "start",
+          "end",
+          "calendarId"
+        ]
+      },
+      "description": "Controlled events: { id, title, start: Date, end: Date, calendarId, allDay?, location?, attendees? }. Pair with onEventsChange."
+    },
+    "defaultEvents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "start": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "end": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "calendarId": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "allDay": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "location": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "attendees": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "start",
+          "end",
+          "calendarId"
+        ]
+      },
+      "description": "Starting events when uncontrolled. Without events or defaultEvents the calendar shows the sample week from week-calendar-data.ts.",
+      "x-empty": "omit"
+    },
+    "onEventsChange": {
+      "description": "Called with the full list after every change: create, move, resize, edit, delete and undo.",
+      "type": "object"
+    },
+    "onCreate": {
+      "description": "Called when someone saves a new event, and when an undo restores a deleted one.",
+      "type": "object"
+    },
+    "onUpdate": {
+      "description": "Called after a move, resize or edit in the details popover, with the event before the change.",
+      "type": "object"
+    },
+    "onDelete": {
+      "description": "Called when an event is deleted. The undo toast calls onCreate if the person restores it.",
+      "type": "object"
+    },
+    "calendars": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "hidden": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "color"
+        ]
+      },
+      "description": "Calendars as { id, name, color, hidden? }. color is blue, green, violet, amber, rose, teal or any CSS color; built in names are tuned for light and dark.",
+      "x-empty": "omit"
+    },
+    "defaultDate": {
+      "description": "The day to open on. Defaults to today, or to the sample week when showing sample events.",
+      "type": "object"
+    },
+    "defaultView": {
+      "description": "Starting view. Below a 640px container week views show three days, and agenda is offered instead of work week.",
+      "type": "string",
+      "enum": [
+        "week",
+        "workweek",
+        "day",
+        "3day",
+        "agenda"
+      ]
+    },
+    "onViewChange": {
+      "description": "Called when the view changes.",
+      "type": "object"
+    },
+    "weekStartsOn": {
+      "description": "First day of the week; 0 is Sunday.",
+      "type": "object"
+    },
+    "startHour": {
+      "description": "First hour shown in the day grid.",
+      "type": "number"
+    },
+    "endHour": {
+      "description": "Hour the day grid ends at.",
+      "type": "number"
+    },
+    "timeZone": {
+      "description": "IANA zone the grid runs in, such as \"America/New_York\". Times are converted and formatted with Intl. Defaults to the browser's zone.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "Locale for dates and times.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2
+}

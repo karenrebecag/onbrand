@@ -1,0 +1,185 @@
+{
+  "sections": [
+    {
+      "role": "features",
+      "width": "wide",
+      "surface": "base",
+      "padding": "lg",
+      "children": [
+        {
+          "component": "feature-bento",
+          "props": {
+            "title": "Un copiloto que trabaja con tu equipo de producto",
+            "description": "Nimbus lee tus documentos, tickets y datos de uso para que pases menos tiempo ordenando y más tiempo decidiendo. Únete a la lista de espera para el early access.",
+            "features": [
+              {
+                "id": "docs",
+                "title": "Documentos que se escriben contigo",
+                "description": "Nimbus redacta PRDs, notas de lanzamiento y resúmenes de investigación a partir de tus fuentes, y tú los editas en vivo. En la beta, los equipos reducen 38% el tiempo de redacción.",
+                "visual": {
+                  "type": "doc"
+                },
+                "size": {
+                  "type": "wide"
+                }
+              },
+              {
+                "id": "commands",
+                "title": "Pregunta lo que necesites",
+                "description": "Abre el menú de comandos y pide un resumen de feedback, un borrador de roadmap o el estado de un lanzamiento.",
+                "visual": {
+                  "type": "command-menu"
+                },
+                "size": {
+                  "type": "regular"
+                }
+              },
+              {
+                "id": "metrics",
+                "title": "Métricas sin esperar al analista",
+                "description": "Cruza adopción, retención y tickets en una sola vista. Más de 4,000 consultas respondidas durante la beta.",
+                "visual": {
+                  "type": "bar-chart"
+                },
+                "size": {
+                  "type": "regular"
+                }
+              },
+              {
+                "id": "automations",
+                "title": "Rutinas que se encargan solas",
+                "description": "Automatiza el resumen semanal, la priorización del backlog y los avisos a stakeholders sin salir de tu flujo.",
+                "visual": {
+                  "type": "automation"
+                },
+                "size": {
+                  "type": "half"
+                }
+              },
+              {
+                "id": "roles",
+                "title": "Cada rol ve lo suyo",
+                "description": "Producto, diseño e ingeniería cambian de vista con un clic, con los permisos que definas para cada equipo.",
+                "visual": {
+                  "type": "role-switches"
+                },
+                "size": {
+                  "type": "half"
+                }
+              },
+              {
+                "id": "versions",
+                "title": "Historial de cada decisión",
+                "description": "Recorre las versiones de un documento y recupera por qué se tomó cada decisión. 92% de los equipos beta lo usa cada semana.",
+                "visual": {
+                  "type": "version-scrubber"
+                },
+                "size": {
+                  "type": "wide"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "provenance": {
+        "children[0].props.description": "plausible",
+        "children[0].props.features[0].description": "plausible",
+        "children[0].props.features[0].visual": "plausible",
+        "children[0].props.features[0].size": "plausible",
+        "children[0].props.features[1].title": "plausible",
+        "children[0].props.features[1].description": "plausible",
+        "children[0].props.features[1].visual": "plausible",
+        "children[0].props.features[1].size": "plausible",
+        "children[0].props.features[2].title": "plausible",
+        "children[0].props.features[2].description": "plausible",
+        "children[0].props.features[2].visual": "plausible",
+        "children[0].props.features[2].size": "plausible",
+        "children[0].props.features[3].title": "plausible",
+        "children[0].props.features[3].description": "plausible",
+        "children[0].props.features[3].visual": "plausible",
+        "children[0].props.features[3].size": "plausible",
+        "children[0].props.features[4].title": "plausible",
+        "children[0].props.features[4].description": "plausible",
+        "children[0].props.features[4].visual": "plausible",
+        "children[0].props.features[4].size": "plausible",
+        "children[0].props.features[5].title": "plausible",
+        "children[0].props.features[5].description": "plausible",
+        "children[0].props.features[5].visual": "plausible",
+        "children[0].props.features[5].size": "plausible"
+      }
+    }
+  ],
+  "agent": {
+    "suggestions": [
+      { "title": "Integraciones", "message": "Agrega una sección de integraciones con logos" },
+      { "title": "Hero con video", "message": "Haz una variante del hero con video del producto" },
+      { "title": "Precios en USD y MXN", "message": "Muestra los precios en USD y MXN" }
+    ],
+    "sectionSuggestions": {
+      "01-hero": [
+        { "title": "Video de fondo", "message": "Cambia la imagen del hero por un video corto del producto" },
+        { "title": "Titular más corto", "message": "Acorta el titular del hero a una línea en escritorio" },
+        { "title": "Prueba social", "message": "Añade debajo del CTA del hero una línea con logos de clientes" }
+      ]
+    },
+    "images": {
+      "filled": [],
+      "pending": [
+        "/images/01-hero.png"
+      ]
+    },
+    "plan": {
+      "header": [
+        "Negocio: Nimbus, gestión de proyectos para equipos remotos",
+        "Acción principal: Unirse a la waitlist",
+        "Idioma: es"
+      ],
+      "sections": [
+        {
+          "slug": "01-hero",
+          "role": "hero",
+          "anchor": "inicio",
+          "fields": {
+            "titular": "Planifica sin reuniones de estado",
+            "apoyo": "Tableros, hitos y avances en un solo lugar, para equipos en cualquier huso.",
+            "cta": "Unirme a la waitlist",
+            "conteo": "ninguno",
+            "focal": "captura del tablero de proyecto",
+            "superficie": "base",
+            "inventado": "nada"
+          }
+        },
+        {
+          "slug": "03-features",
+          "role": "features",
+          "anchor": "funciones",
+          "fields": {
+            "titular": "Todo el equipo al día sin preguntar",
+            "apoyo": "Cada cambio llega a quien le toca, en su horario.",
+            "cta": "ninguno",
+            "conteo": "4 tarjetas",
+            "focal": "icono por tarjeta",
+            "detalle": "dato al pie de cada tarjeta",
+            "superficie": "muted",
+            "inventado": "38 % menos reuniones"
+          }
+        },
+        {
+          "slug": "06-pricing",
+          "role": "pricing",
+          "anchor": "precios",
+          "fields": {
+            "titular": "Precios simples",
+            "apoyo": "Paga por equipo, no por función.",
+            "cta": "Empezar gratis",
+            "conteo": "3 planes",
+            "focal": "ninguno",
+            "superficie": "base",
+            "inventado": "precios de ejemplo"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "_doc": "Follow-up de referencia del bench. Cambio ACOTADO sobre la página del T1: solo el token de acento. Ejercita el camino de identidad/DS en un follow-up (regla globalIdentity ya en main) con mínima variación. parentId apunta al T1: el transport reusa el MISMO workspace del padre (transport.ts POST /runs: ws = parent.ws) y edita la página en disco, así que NO hay que pasar parentPage. Requiere que el T1 ya tenga versión commiteada (si no, 409).",
+  "prompt": "Cambia el color de acento a azul en toda la página.",
+  "messageId": "bench-f1",
+  "parentId": "bench-t1",
+  "model": "sonnet",
+  "tools": { "webSearch": false },
+  "registryPin": "5d265553eb13cc91"
+}

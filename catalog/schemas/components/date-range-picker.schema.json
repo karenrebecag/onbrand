@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/date-range-picker.schema.json",
+  "title": "Date range picker",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "x-nullable": true,
+      "description": "Controlled value, { start, end } as inclusive whole days. Pass null for no selection.",
+      "type": "object",
+      "properties": {
+        "start": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "end": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ]
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Uncontrolled starting value.",
+      "type": "object",
+      "properties": {
+        "start": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "end": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ]
+    },
+    "onChange": {
+      "description": "Called with the range on Apply.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the trigger and the dialog.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "placeholder": {
+      "description": "Trigger text with no selection.",
+      "type": "string",
+      "format": "label"
+    },
+    "presets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "range": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "range"
+        ]
+      },
+      "description": "Shortcuts: { label, range: (today) => DateRange }. Defaults to Today through Year to date."
+    },
+    "minDate": {
+      "description": "Earliest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "maxDate": {
+      "description": "Latest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "weekStartsOn": {
+      "description": "0 is Sunday, 1 is Monday.",
+      "type": "object"
+    },
+    "locale": {
+      "description": "Locale for Intl.DateTimeFormat labels and month titles.",
+      "type": "string"
+    },
+    "months": {
+      "description": "Force one or two months. auto shows two when the boundary is at least 712px wide.",
+      "type": "object"
+    },
+    "boundary": {
+      "x-nullable": true,
+      "description": "Element the panel should stay inside. Defaults to the viewport.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "presets"
+  ]
+}

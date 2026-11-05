@@ -1,0 +1,28 @@
+{
+  "light": {
+    "--neutral-0": 100,
+    "--neutral-1": 99,
+    "--neutral-2": 97.2,
+    "--neutral-3": 94.8,
+    "--neutral-4": 90.9,
+    "--neutral-5": 83.8,
+    "--neutral-6": 70.7,
+    "--neutral-7": 48.4,
+    "--neutral-8": 43.2,
+    "--neutral-9": 30.2,
+    "--neutral-10": 17.5,
+    "--neutral-11": 7.7
+  },
+  "dark": {
+    "--background": 5.5,
+    "--surface": 9.3,
+    "--surface-raised": 13.2,
+    "--surface-muted": 15.2,
+    "--foreground": 95.5,
+    "--text-secondary": 76.6,
+    "--text-muted": 65.1,
+    "--border": 21.2,
+    "--border-subtle": 17.1,
+    "--border-strong": 65.1
+  }
+}

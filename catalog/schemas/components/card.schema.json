@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/card.schema.json",
+  "title": "Card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Card heading. Becomes the dialog trigger when details is set.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting line under the title.",
+      "type": "string",
+      "format": "description"
+    },
+    "media": {
+      "description": "Image or visual at the top. Zooms slightly on hover."
+    },
+    "action": {
+      "description": "Trailing footer control, such as a button."
+    },
+    "avatar": {
+      "description": "Small leading visual in the footer, such as the owner's avatar."
+    },
+    "meta": {
+      "description": "Who the card belongs to, shown in the byline."
+    },
+    "status": {
+      "description": "Short status under the meta, such as \"Updated 2 hours ago\". Changes roll in word by word and are announced politely.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "details": {
+      "description": "Quick look content. When set, the card opens into a larger Radix dialog."
+    },
+    "open": {
+      "description": "Controlled quick look state.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Initial quick look state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called when the quick look opens or closes.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title"
+  ]
+}

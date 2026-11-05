@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/ridgeline.schema.json",
+  "title": "Ridgeline",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "values": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "values"
+        ]
+      },
+      "description": "One ridge per series, drawn top to bottom. Values are raw observations; the ridge is their kernel density."
+    },
+    "label": {
+      "description": "What is measured. Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after each value, such as \"°\" or \" ms\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "formatValue": {
+      "description": "Formats values. Overrides unit.",
+      "type": "object"
+    },
+    "domain": {
+      "description": "Value range of the axis. Fix it to keep the axis still across datasets. Defaults to the data with room on each side.",
+      "type": "object"
+    },
+    "overlap": {
+      "description": "How far the tallest ridge rises into the rows above, in row heights.",
+      "type": "number"
+    },
+    "rowHeight": {
+      "description": "Height of one row in pixels.",
+      "type": "number"
+    },
+    "bandwidth": {
+      "description": "Smoothing in value units. Defaults to Silverman's rule per series.",
+      "type": "number"
+    },
+    "tint": {
+      "description": "Shades each ridge by its median, from a light tint to the full first series color, with a stepped scale under the axis.",
+      "type": "boolean"
+    },
+    "active": {
+      "x-nullable": true,
+      "description": "Controlled id of the lifted ridge.",
+      "type": "string"
+    },
+    "defaultActive": {
+      "x-nullable": true,
+      "description": "Initial lifted ridge when uncontrolled.",
+      "type": "string"
+    },
+    "onActiveChange": {
+      "description": "Called when the lifted ridge changes.",
+      "type": "object"
+    },
+    "emptyLabel": {
+      "description": "Shown when there are no values.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "series",
+    "label"
+  ]
+}

@@ -1,0 +1,74 @@
+/* Primitivas de layout del modo v0: solo posición y espaciado, todo por token. Las escribe el
+   equipo, no el agente; el agente solo elige primitiva y valores de la escala. */
+
+.l-section {
+  background: var(--l-surface, transparent);
+  padding-block: var(--l-pad, var(--space-16));
+  padding-inline: var(--space-4);
+}
+.l-section > .l-container {
+  margin-inline: auto;
+  max-width: var(--l-width, 72rem);
+}
+/* Media a sangre: ocupa toda la sección detrás del contenedor, con un velo del fondo de la sección para que el texto
+   se lea; el contenedor queda donde está en las demás secciones. */
+.l-bare { background: var(--l-surface, var(--background)); }
+.l-section--backdrop { position: relative; isolation: isolate; overflow: hidden; }
+.l-section--backdrop > .l-container { position: relative; }
+.l-backdrop { position: absolute; inset: 0; z-index: -1; }
+.l-backdrop::after { content: ''; position: absolute; inset: 0; background: var(--background); opacity: .72; }
+.l-backdrop > .l-image, .l-backdrop img { width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 0; box-shadow: none; }
+
+.l-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--l-gap, var(--space-4));
+  align-items: var(--l-align, stretch);
+}
+
+.l-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--l-gap, var(--space-3));
+  justify-content: var(--l-justify, flex-start);
+  align-items: var(--l-align, center);
+}
+
+.l-grid {
+  display: grid;
+  gap: var(--l-gap, var(--space-6));
+  align-items: var(--l-align, stretch);
+  grid-template-columns: repeat(var(--l-cols, 1), minmax(0, 1fr));
+}
+@media (min-width: 768px) {
+  .l-grid { grid-template-columns: repeat(var(--l-cols-md, var(--l-cols, 1)), minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .l-grid { grid-template-columns: repeat(var(--l-cols-lg, var(--l-cols-md, var(--l-cols, 1))), minmax(0, 1fr)); }
+}
+
+.l-split {
+  display: grid;
+  gap: var(--l-gap, var(--space-10));
+  align-items: var(--l-align, center);
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 1024px) {
+  .l-split { grid-template-columns: var(--l-ratio, 1fr 1fr); }
+}
+
+.l-text { margin: 0; text-align: var(--l-text-align, start); color: var(--foreground); }
+.l-text--display { font-family: var(--font-display); font-size: var(--text-5xl); line-height: var(--leading-display); }
+.l-text--title { font-family: var(--font-display); font-size: var(--text-3xl); line-height: var(--leading-display); }
+.l-text--subtitle { font-family: var(--font-body); font-size: var(--text-lg); line-height: var(--leading-body); color: var(--text-secondary); }
+.l-text--body { font-family: var(--font-body); font-size: var(--text-base); line-height: var(--leading-body); }
+.l-text--caption { font-family: var(--font-body); font-size: var(--text-sm); line-height: var(--leading-body); color: var(--text-muted); }
+
+.l-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-raised);
+}

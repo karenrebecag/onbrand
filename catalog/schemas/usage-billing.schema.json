@@ -1,0 +1,257 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/usage-billing.schema.json",
+  "title": "Usage billing",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "period": {
+      "description": "The current billing period and which day it is.",
+      "type": "object"
+    },
+    "daily": {
+      "description": "Usage charges per day so far. Its length is the number of days elapsed.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "budget": {
+      "description": "Monthly budget drawn on the chart.",
+      "type": "number"
+    },
+    "meters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "unit": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "requests",
+              "gigabytes",
+              "minutes",
+              "invocations",
+              "seats"
+            ]
+          },
+          "used": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "limit": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "overage": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "unit",
+          "used",
+          "limit",
+          "overage"
+        ]
+      },
+      "description": "Metered resources: id, name, unit (requests, gigabytes, minutes, invocations, seats), used, limit, and an overage price label."
+    },
+    "plan": {
+      "description": "The current plan: name, monthly price, limits keyed by meter id, and perks.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "price": {
+          "x-undocumented": true,
+          "type": "number",
+          "x-format-confidence": "low"
+        },
+        "perks": {
+          "x-undocumented": true,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "price",
+        "perks"
+      ]
+    },
+    "upgrade": {
+      "x-nullable": true,
+      "description": "The plan offered in the upgrade card. Pass null to hide the offer.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "price": {
+          "x-undocumented": true,
+          "type": "number",
+          "x-format-confidence": "low"
+        },
+        "perks": {
+          "x-undocumented": true,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "price",
+        "perks"
+      ]
+    },
+    "defaultAlerts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "amount": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "email": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "slack": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "amount",
+          "email",
+          "slack"
+        ]
+      },
+      "description": "Initial alerts: amount, email, and slack."
+    },
+    "onAlertsChange": {
+      "description": "Called whenever alerts are added, edited, or removed.",
+      "type": "object"
+    },
+    "invoices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "number": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "period": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "issued": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "amount": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "status": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "paid",
+              "refunded",
+              "failed"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "number",
+          "period",
+          "issued",
+          "amount",
+          "status"
+        ]
+      },
+      "description": "Past invoices with number, period, issue date, amount, and status."
+    },
+    "payment": {
+      "description": "Card shown on the plan card, the invoices header, and the confirm sheet.",
+      "type": "object"
+    },
+    "onUpgrade": {
+      "description": "Runs the upgrade. Resolve to switch plans, reject to show a declined message. Without it the upgrade is simulated.",
+      "type": "object"
+    },
+    "onDownloadInvoice": {
+      "description": "Fetches an invoice PDF. Without it the download is simulated.",
+      "type": "object"
+    },
+    "currency": {
+      "description": "ISO currency code for every amount.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "period",
+    "daily",
+    "budget",
+    "meters",
+    "plan",
+    "upgrade",
+    "defaultAlerts",
+    "invoices",
+    "payment"
+  ]
+}

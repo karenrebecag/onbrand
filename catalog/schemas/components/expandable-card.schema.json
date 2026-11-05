@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/expandable-card.schema.json",
+  "title": "Expandable card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Card heading, shown in the toggle.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Summary line. Changed words roll in when it updates.",
+      "type": "string",
+      "format": "description"
+    },
+    "children": {
+      "description": "Details revealed when expanded."
+    },
+    "defaultExpanded": {
+      "description": "Starts expanded.",
+      "type": "boolean"
+    },
+    "width": {
+      "description": "Collapsed width cap in px. The card is centered and never wider than its container. Fills the container when omitted.",
+      "type": "number"
+    },
+    "expandedWidth": {
+      "description": "Expanded width cap in px, so the card grows sideways into more room when opened. Defaults to width.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "children"
+  ]
+}

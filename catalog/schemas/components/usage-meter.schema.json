@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/usage-meter.schema.json",
+  "title": "Usage meter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "What is measured, such as \"Workspace storage\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "description": "Used amounts in display order. Keep ids stable so segments re-flow. Up to four read clearly."
+    },
+    "limit": {
+      "description": "The plan limit, in the same unit as the segments.",
+      "type": "number"
+    },
+    "unit": {
+      "description": "Unit shown after numbers, such as \"GB\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "decimals": {
+      "description": "Digits after the decimal point.",
+      "type": "number"
+    },
+    "freeLabel": {
+      "description": "Legend label for remaining space.",
+      "type": "string",
+      "format": "label"
+    },
+    "overLabel": {
+      "description": "Legend label for the overage.",
+      "type": "string",
+      "format": "label"
+    },
+    "warnAt": {
+      "description": "Share of the limit at which the badge warns that it is almost full.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "segments",
+    "limit"
+  ]
+}

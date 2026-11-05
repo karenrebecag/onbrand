@@ -1,0 +1,8 @@
+{
+  "_doc": "T1 de referencia del bench de performance (perf/audit). Brief 'atom' de briefs.json (= la corrida local 999ea0e0). CLI local, sonnet, sin Gateway. Imagen de producto OMITIDA a propósito para aislar la palanca D (contexto del DS): sin el paso de imagen no entra la latencia/cuota de flux ni variación ajena a D. Mismo pin de registry en todas las corridas. parentPage/parentId no aplican en el T1.",
+  "prompt": "Quiero una landing para Atom (atomchat.io), una plataforma de agentes de IA que venden y atienden clientes por WhatsApp, Instagram y webchat. Público: gerentes de ventas y marketing de pymes en LATAM. Objetivo: que agenden una demo por WhatsApp. Incluye beneficios, cómo funciona, casos de éxito con métricas, precios y preguntas frecuentes.",
+  "messageId": "bench-t1",
+  "model": "sonnet",
+  "tools": { "webSearch": false },
+  "registryPin": "5d265553eb13cc91"
+}

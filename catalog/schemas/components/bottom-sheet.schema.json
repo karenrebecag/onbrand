@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/bottom-sheet.schema.json",
+  "title": "Bottom sheet",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "trigger": {
+      "description": "Control that opens the sheet. Rendered with asChild; focus returns to it on close."
+    },
+    "open": {
+      "description": "Controlled open state.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Initial open state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called when the sheet opens or closes.",
+      "type": "object"
+    },
+    "title": {
+      "description": "Sheet title, rendered as Dialog.Title.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting line, rendered as Dialog.Description.",
+      "type": "string",
+      "format": "description"
+    },
+    "detents": {
+      "description": "Resting heights as fractions of the viewport height.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "initialDetent": {
+      "description": "Index into the sorted detents the sheet opens at.",
+      "type": "number"
+    },
+    "onDetentChange": {
+      "description": "Called when the sheet settles on a different detent.",
+      "type": "object"
+    },
+    "closeLabel": {
+      "description": "aria-label of the close button.",
+      "type": "string",
+      "format": "label"
+    },
+    "children": {
+      "description": "Scrollable sheet content."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "children"
+  ]
+}

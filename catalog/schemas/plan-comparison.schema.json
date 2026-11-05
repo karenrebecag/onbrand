@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/plan-comparison.schema.json",
+  "title": "Plan Comparison",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Section heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting line under the heading.",
+      "type": "string",
+      "format": "description"
+    },
+    "plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "tagline": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "price": {
+            "x-undocumented": true,
+            "type": "object",
+            "x-format-confidence": "low"
+          },
+          "action": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "price"
+        ]
+      },
+      "description": "Plans to compare: id, name, tagline, price {monthly, yearly}, action {label, href}."
+    },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "shared": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Feature rows with a value per plan id."
+    },
+    "currency": {
+      "description": "Currency symbol before prices.",
+      "type": "string"
+    },
+    "footnote": {
+      "description": "Note under the table.",
+      "type": "string",
+      "format": "description"
+    },
+    "labels": {
+      "x-undocumented": true,
+      "type": "object",
+      "properties": {
+        "compare": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "differencesOnly": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "featureColumn": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "included": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "notIncluded": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "billing": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "monthly": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "yearly": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "monthlyNote": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "yearlyNote": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "period": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "select": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "selected": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "of": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "features": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "plans",
+    "features"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/file-dropzone.schema.json",
+  "title": "File dropzone",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "accept": {
+      "description": "Accepted types, as in the native accept attribute (\".pdf\", \"image/*\"). Others are rejected with an error.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "multiple": {
+      "description": "Allow several files.",
+      "type": "boolean"
+    },
+    "maxFiles": {
+      "description": "Most files the list holds.",
+      "type": "number"
+    },
+    "onFilesChange": {
+      "description": "Called with the selected File objects whenever the list changes.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Main prompt on the drop target.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "description": {
+      "description": "Secondary prompt.",
+      "type": "string",
+      "format": "description"
+    },
+    "defaultItems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "size": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "status": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "uploading",
+              "uploaded",
+              "failed"
+            ]
+          },
+          "progress": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "error": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "retryable": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "file": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "preview": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "size"
+        ]
+      },
+      "description": "Rows present at mount, such as earlier uploads. They render without an entrance."
+    },
+    "onUpload": {
+      "description": "Uploads each added file. Report progress, resolve on success, reject with an Error whose message becomes the row's reason. Removing a row aborts the signal.",
+      "type": "object"
+    },
+    "maxSize": {
+      "description": "Bytes. Larger files fail with a size reason and never upload.",
+      "type": "number"
+    },
+    "listPlacement": {
+      "description": "Render the list under the target or inside its edge.",
+      "type": "string",
+      "enum": [
+        "below",
+        "inside"
+      ]
+    },
+    "note": {
+      "description": "Replaces the small line under the description (defaults to accepted types or the file limit).",
+      "type": "string",
+      "format": "description"
+    },
+    "dropLabel": {
+      "description": "Label while files hover over the target.",
+      "type": "string",
+      "format": "label"
+    },
+    "compactAt": {
+      "description": "Once the list holds this many files, the prompt folds to a slim bar.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2
+}

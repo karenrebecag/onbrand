@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/ai-chat.schema.json",
+  "title": "AI chat",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "defaultConversations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "group": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "messages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "group",
+          "messages"
+        ]
+      },
+      "description": "Initial conversations. The block owns them afterwards.",
+      "maxItems": 4,
+      "x-empty": "omit"
+    },
+    "onConversationsChange": {
+      "description": "Called after every change, including each streamed chunk. Not called on mount.",
+      "type": "object"
+    },
+    "activeId": {
+      "x-nullable": true,
+      "description": "Controlled open conversation id; null shows a new chat.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultActiveId": {
+      "x-nullable": true,
+      "description": "Open conversation on mount when uncontrolled.",
+      "type": "string"
+    },
+    "onActiveChange": {
+      "description": "Called when a conversation is opened or a new chat starts.",
+      "type": "object"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description"
+        ]
+      },
+      "description": "Options in the model switcher.",
+      "maxItems": 3,
+      "x-empty": "omit"
+    },
+    "model": {
+      "description": "Controlled model id.",
+      "type": "string"
+    },
+    "defaultModel": {
+      "description": "Starting model id when uncontrolled.",
+      "type": "string"
+    },
+    "onModelChange": {
+      "description": "Called when a model is chosen.",
+      "type": "object"
+    },
+    "sidebarOpen": {
+      "description": "Controlled sidebar state on wide layouts.",
+      "type": "boolean"
+    },
+    "defaultSidebarOpen": {
+      "description": "Starting sidebar state on wide layouts.",
+      "type": "boolean"
+    },
+    "onSidebarOpenChange": {
+      "description": "Called when the wide sidebar opens or closes.",
+      "type": "object"
+    },
+    "suggestions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "prompt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "attachments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "prompt"
+        ]
+      },
+      "description": "Prompts offered on an empty chat.",
+      "maxItems": 4,
+      "x-empty": "omit"
+    },
+    "respond": {
+      "description": "(request, signal) => AsyncIterable<ChatStreamEvent>. Streams thinking, tool, sources, and text events. The default plays scripted samples.",
+      "type": "object"
+    },
+    "greeting": {
+      "description": "Heading on an empty chat.",
+      "type": "string",
+      "format": "description"
+    },
+    "notice": {
+      "description": "Small note in the header. Pass null to hide it.",
+      "x-empty": "omit"
+    },
+    "user": {
+      "description": "Account shown at the bottom of the sidebar.",
+      "type": "object",
+      "x-empty": "omit"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "defaultConversations",
+    "models",
+    "suggestions",
+    "user"
+  ],
+  "examples": [
+    {
+      "defaultConversations": [
+        {
+          "title": "Annual discount test",
+          "group": "Today",
+          "messages": [
+            {
+              "role": "user",
+              "text": "Summarize the annual discount test so far."
+            },
+            {
+              "role": "assistant",
+              "current": 0,
+              "versions": [
+                {
+                  "model": "atlas",
+                  "status": "done",
+                  "thoughtFor": 3,
+                  "thinking": "Two weeks of data. Compare annual share, refunds, and revenue per visitor between control and the 20% discount.",
+                  "text": "After 14 days, the 20% annual discount lifts annual plan share without hurting refunds.\n\n| | Control | Discount |\n| --- | --- | --- |\n| Annual share | 29% | 38% |\n| Refund requests | 1.2% | 1.1% |\n| Revenue per visitor | $4.10 | $4.06 |\n\nRevenue per visitor has not moved yet, because more people pick Starter. Offering the discount only on Team and above should keep the lift without the downgrade."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Onboarding checklist copy",
+          "group": "Today",
+          "messages": [
+            {
+              "role": "user",
+              "text": "Make these onboarding steps shorter: connect your calendar so we can suggest meeting times, invite at least two teammates to your workspace, create your first project from a template."
+            },
+            {
+              "role": "assistant",
+              "current": 0,
+              "versions": [
+                {
+                  "model": "atlas-swift",
+                  "status": "done",
+                  "text": "Here are shorter versions that still say what happens:\n\n1. **Connect your calendar** to get suggested times\n2. **Invite two teammates**\n3. **Start a project** from a template\n\nEach one starts with the action, so the list scans in a second."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Churn interview themes",
+          "group": "Previous 7 days",
+          "messages": [
+            {
+              "role": "user",
+              "text": "What came up most in the September churn interviews?"
+            },
+            {
+              "role": "assistant",
+              "current": 0,
+              "versions": [
+                {
+                  "model": "atlas",
+                  "status": "done",
+                  "thoughtFor": 5,
+                  "tools": [
+                    {
+                      "kind": "read",
+                      "running": "Reading interviews.md",
+                      "done": "Read 14 interviews",
+                      "status": "done",
+                      "detail": "september-interviews.md"
+                    }
+                  ],
+                  "text": "Three themes came up across the 14 interviews.\n\n- **Setup took longer than the trial.** Seven teams never connected their calendar.\n- **Managers had no shared view**, so the tool stayed with one person.\n- **Budget freezes** ended two accounts that would not have stayed at any price.\n\nFix setup first. Every team that finished it within two days is still paying."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Status page incident draft",
+          "group": "Previous 7 days",
+          "messages": [
+            {
+              "role": "user",
+              "text": "Draft a status update for the sync delay this morning."
+            },
+            {
+              "role": "assistant",
+              "current": 0,
+              "versions": [
+                {
+                  "model": "atlas-swift",
+                  "status": "done",
+                  "text": "**Resolved: delayed sync on mobile**\n\nBetween 8:12 and 8:47 AM Eastern, changes made on mobile took up to 20 minutes to appear on other devices. No data was lost. A queue worker stopped after a configuration change, and we have added an alert so a stalled queue pages the on call engineer within two minutes."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "models": [
+        {
+          "name": "Atlas 4 Deep",
+          "description": "Thinks longer for analysis and code"
+        },
+        {
+          "name": "Atlas 4",
+          "description": "Balanced for everyday work"
+        },
+        {
+          "name": "Atlas 4 Swift",
+          "description": "Fastest answers, no reasoning"
+        }
+      ],
+      "suggestions": [
+        {
+          "label": "Compare Postgres and SQLite for offline sync",
+          "prompt": "Should our mobile app use Postgres or SQLite for offline sync?"
+        },
+        {
+          "label": "Write a query for weekly active teams",
+          "prompt": "Write a SQL query for weekly active teams over the last 12 weeks."
+        },
+        {
+          "label": "Draft a launch email for offline mode",
+          "prompt": "Draft a short launch email for offline mode. Keep it plain."
+        },
+        {
+          "label": "Suggest a palette for this room",
+          "prompt": "Suggest a color palette for this room."
+        }
+      ],
+      "user": {
+        "name": "Emma Collins",
+        "detail": "Team plan"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/icon-morph.schema.json",
+  "title": "Icon morph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Which icon to render.",
+      "type": "string",
+      "enum": [
+        "menu",
+        "play",
+        "plus",
+        "copy",
+        "theme",
+        "chevron",
+        "bell",
+        "heart"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "name"
+  ]
+}

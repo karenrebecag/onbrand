@@ -1,0 +1,7 @@
+{
+  "summary": "Acme Pulse: agente de IA que responde el WhatsApp de un e-commerce, recupera carritos y convierte chats en ventas. Logos trusted by, features, cómo funciona, métricas.",
+  "goal": "agendar una demo",
+  "tone": "clean",
+  "maxStrips": 8,
+  "sections": ["hero", "logos", "features", "stats", "cta"]
+}

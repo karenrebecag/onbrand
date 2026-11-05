@@ -1,0 +1,57 @@
+name: Release
+
+# Triggered by a vX.Y.Z tag (or manually). Creates the GitHub Release with that version's notes
+# taken from the CHANGELOG.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to publish (vX.Y.Z); must already exist in the repo.
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Resolve tag and version
+        id: ver
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Extract CHANGELOG notes
+        id: notes
+        run: |
+          version="${{ steps.ver.outputs.version }}"
+          # Take the "## [version]" block up to the next "## [".
+          awk -v v="$version" '
+            $0 ~ "^## \\[" v "\\]" { grab=1; next }
+            grab && /^## \[/ { exit }
+            grab { print }
+          ' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then
+            echo "No [$version] section in the CHANGELOG. Cut it before tagging (docs/governance.md)." >&2
+            exit 1
+          fi
+          echo "Notes for v$version:"; cat notes.md
+
+      - name: Create the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          args=(gh release create "${{ steps.ver.outputs.tag }}"
+            --title "${{ steps.ver.outputs.tag }}"
+            --notes-file notes.md
+            --verify-tag)
+          "${args[@]}"

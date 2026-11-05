@@ -1,0 +1,113 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section",
+  "type": "registry:block",
+  "title": "Hero section",
+  "description": "Three full screen SaaS heroes: a live dashboard rising from the bottom edge over a drifting mesh, a workflow graph that routes sample events node by node, and editorial type over a mesh gradient.",
+  "categories": [
+    "blocks"
+  ],
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://example.com/r/uikit-motion-tokens.json",
+    "https://example.com/r/avatar.json",
+    "https://example.com/r/button.json",
+    "https://example.com/r/copy-button.json",
+    "https://example.com/r/line-chart.json",
+    "https://example.com/r/segmented-control.json",
+    "https://example.com/r/sparkline.json"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/hero-section/hero-section.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-section.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-section.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-section.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-content.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-content.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-content.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-content.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-motion.ts",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-motion.ts"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-mesh.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-mesh.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-mesh.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-mesh.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-cadence.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-cadence.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-cadence.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-cadence.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-relay.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-relay.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-relay.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-relay.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-lumen.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-lumen.tsx"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-lumen.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-lumen.module.css"
+    },
+    {
+      "path": "registry/blocks/hero-section/hero-lumen-data.ts",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/hero-section/hero-lumen-data.ts"
+    },
+    {
+      "path": "lib/media.ts",
+      "type": "registry:lib",
+      "target": "@components/uikit/lib/media.ts"
+    }
+  ],
+  "docs": "Use this as the first section of a landing page and replace the sample copy and data with your own. Events in the workflow preview are simulated.",
+  "meta": {
+    "tier": "free",
+    "kind": "block",
+    "builtFrom": [
+      "Button",
+      "Line chart",
+      "Sparkline",
+      "Segmented control",
+      "Avatar",
+      "Gradient mesh"
+    ]
+  }
+}

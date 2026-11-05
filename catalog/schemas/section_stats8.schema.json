@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/section_stats8.schema.json",
+  "title": "Stats 8",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "heading": {
+      "type": "string",
+      "format": "heading"
+    },
+    "stats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "percentage": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "heading": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "percentage",
+          "heading"
+        ]
+      }
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "heading",
+    "stats"
+  ]
+}

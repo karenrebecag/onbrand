@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/orbit-logos.schema.json",
+  "title": "Orbit logos",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "logos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Logos to show. icon is SVG path data on a 24 by 24 viewBox (the Simple Icons format) painted in color, an image URL for a full color mark, or any ReactNode. Leave color out for black and white brands so the mark follows the text color. category builds the filter chips, description is the line in the card, connected sets the starting status, and href adds a Docs link."
+    },
+    "center": {
+      "description": "Content of the center disc, such as your product mark. Defaults to a simple mark in the accent color."
+    },
+    "onSelect": {
+      "description": "Called when a logo opens, when previous or next steps to another, and with null and -1 when the card closes.",
+      "type": "object"
+    },
+    "onConnect": {
+      "description": "Called by the Connect button. Return a promise to hold the connecting state until it settles; a rejection shows Try again. Without a promise the card simulates a short connection.",
+      "type": "object"
+    },
+    "defaultSelected": {
+      "x-nullable": true,
+      "description": "Id (or name) of the logo open on first render.",
+      "type": "string"
+    },
+    "selected": {
+      "x-nullable": true,
+      "description": "Controlled id (or name) of the open logo; null closes the card. Pair it with onSelect.",
+      "type": "string"
+    },
+    "speed": {
+      "description": "Multiplies the rotation speed. At 1 the inner ring turns once every 64s and the outer ring every 88s. 0 holds the orbit still.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Holds the orbit still, for a page level motion control.",
+      "type": "boolean"
+    },
+    "allLabel": {
+      "description": "Label of the first category chip.",
+      "type": "string",
+      "format": "label"
+    },
+    "label": {
+      "description": "Accessible name of the logo list and the idle panel title.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "logos"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/progress.schema.json",
+  "title": "Progress",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Current value, clamped between 0 and max.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Value that counts as complete.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Visible label and aria-label. Falls back to \"Progress\" for assistive tech.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "showValue": {
+      "description": "Shows the counted percentage and a check at 100%.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2
+}

@@ -1,0 +1,287 @@
+/* Anatomía de Stitch: lienzo con puntos a pantalla completa y todo el chrome flotando encima. */
+.app { position: relative; height: 100dvh; overflow: hidden; background: var(--background); color: var(--foreground); font-family: var(--font-body); font-size: var(--text-sm); --gap: 16px; --agent-w: 280px; --rail-w: 44px; }
+.stage { position: absolute; inset: 0; }
+.canvas { position: absolute; inset: 0; overflow: hidden; touch-action: none; background-color: var(--stitch-canvas, var(--background)); background-image: radial-gradient(var(--stitch-dot, var(--border)) 1px, transparent 1.2px); background-size: 20px 20px; }
+.canvas[data-tool="hand"] { cursor: grab; }
+.canvas[data-dragging] { cursor: grabbing; }
+.world { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
+.artboard { position: absolute; top: 0; overflow: hidden; border-radius: 12px; background: #fff; }
+.artboard[data-placeholder] { background: transparent; box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1); }
+.artboard[data-selected] { outline: calc(2px / var(--zoom, 1)) solid var(--stitch-accent, var(--accent)); }
+/* El preview no recibe el puntero: sobre el lienzo, arrastrar y la rueda son de la cámara; se interactúa en otra pestaña. */
+.artboardFrame { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
+/* Con el lápiz la página recibe el puntero para elegir elementos; la rueda vuelve al lienzo por wt:wheel. */
+.artboard[data-editing] .artboardFrame { pointer-events: auto; }
+.artboardEmpty { display: grid; height: 100%; place-items: center; background: var(--surface); color: var(--text-muted); font-size: 48px; }
+.artboardChrome { position: absolute; pointer-events: none; }
+.artboardLabel { position: absolute; bottom: 6px; left: 0; max-width: 100%; overflow: hidden; color: var(--text-secondary); font-size: 12px; white-space: nowrap; text-overflow: ellipsis; }
+.sizeBadge { position: absolute; left: 50%; transform: translateX(-50%); padding: 1px 6px; border-radius: 4px; background: var(--stitch-accent, var(--accent)); color: #fff; font-size: 12px; white-space: nowrap; }
+.screen { position: absolute; z-index: 1; top: 72px; left: calc(var(--agent-w) + var(--gap) * 3); right: calc(var(--rail-w) + var(--gap) * 3); bottom: 168px; overflow: hidden; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--surface); }
+
+.topBar { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-3); padding: var(--gap) var(--gap) 0 28px; pointer-events: none; }
+.topBar > * { pointer-events: auto; }
+/* Como la franja superior de Stitch: un degradado del color del lienzo para que el título se lea sobre los frames. */
+.topBar::before { content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; background: linear-gradient(var(--stitch-canvas, var(--background)) 40%, transparent); pointer-events: none; }
+.topLeft { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.topRight { position: relative; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); }
+.title { min-width: 0; max-width: 32ch; font-family: var(--font-display); font-size: 15px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.actionPill { display: flex; white-space: nowrap; align-items: center; gap: var(--space-1); height: 44px; padding: 0 var(--space-2); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); background: var(--surface); }
+/* El tamaño sm de Arc fija el alto; el doble selector le gana sin !important. */
+.topLeft .menuIcon { width: 46px; height: 46px; }
+.roundIcon { width: 36px; height: 36px; padding: 0; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); }
+.pillLabel { display: inline; }
+.topRight .pillButton { height: 32px; min-height: 32px; }
+.exportTrigger { display: inline-flex; align-items: center; gap: var(--space-2); background: transparent; color: var(--foreground); cursor: pointer; }
+.exportTrigger:hover { background: var(--surface-muted); }
+.pillButton { height: 32px; padding: 0 var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: 15px; }
+.offWrap { display: inline-flex; border-radius: var(--radius-pill); }
+.spacer { flex: 1; }
+
+.chat { --hover: color-mix(in oklab, var(--foreground) 6%, transparent); --press: color-mix(in oklab, var(--foreground) 10%, transparent); display: contents; }
+.agentPanel { position: absolute; z-index: 2; top: 80px; left: var(--gap); width: var(--agent-w); max-height: calc(100% - 80px - 84px); display: flex; flex-direction: column; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--surface); }
+.agentPanel[hidden] { display: none; }
+/* Con el registro abierto el panel termina encima de su lista, como en Stitch. */
+.agentPanel[data-expanded] { max-height: calc(100% - 80px - 84px - 248px); }
+.contextChip svg { flex: none; }
+/* Fila dentro del flex del composer: sin min-width 0 crece al ancho del título y el 70% del chip no lo corta. */
+.contextRow { display: flex; flex-wrap: wrap; gap: var(--space-2); min-width: 0; max-width: 100%; }
+.contextChipRemove { display: grid; width: 20px; height: 20px; margin-right: calc(var(--space-1) * -1); place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--text-secondary); cursor: pointer; }
+.contextChipRemove:hover { background: var(--hover); color: var(--foreground); }
+.contextChip { display: inline-flex; align-items: center; gap: var(--space-2); min-width: 0; max-width: 70%; height: 32px; padding: 0 var(--space-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); background: var(--surface); color: var(--foreground); }
+.contextChipText { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.contextChipSource { flex: none; color: var(--text-secondary); font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--text-xs); }
+/* Las rutas y el código no parten línea: sin min-width 0 los hijos del hilo empujan más allá del panel de 280px. */
+.composerDock { container: composer / inline-size; position: absolute; z-index: 2; left: 50%; bottom: var(--gap); width: min(580px, calc(100% - var(--agent-w) * 2 - var(--gap) * 4)); transform: translateX(-50%); }
+
+.rail { position: absolute; z-index: 2; right: var(--gap); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 3px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); background: var(--surface); }
+.railTool { width: 36px; height: 36px; padding: 0; border-radius: var(--radius-pill); }
+.railTool[data-active] { background: var(--foreground); color: var(--accent-foreground); }
+.themeHead { padding: var(--space-2) 11px var(--space-1); color: var(--text-secondary); font-size: var(--text-xs); }
+.themeEmpty { margin: 0; padding: var(--space-2) 11px; color: var(--text-secondary); font-size: var(--text-xs); }
+.themeItem[data-disabled] { cursor: default; opacity: .55; }
+.themeItem[data-disabled][data-state="checked"] { opacity: 1; }
+.themeSwatches { display: inline-flex; flex: none; }
+.themeSwatch { width: 14px; height: 14px; margin-left: -4px; border: 1px solid var(--border); border-radius: var(--radius-pill); }
+.themeSwatch:first-child { margin-left: 0; }
+.themeSwatch[data-empty] { background: var(--surface-muted); }
+.railRule { width: 20px; height: 1px; margin: var(--space-1) 0; background: var(--border); }
+.zoomBar { position: absolute; z-index: 2; right: var(--gap); bottom: var(--gap); display: flex; align-items: center; gap: var(--space-2); }
+.zoomGroup .railTool { width: 30px; height: 30px; min-height: 30px; }
+.zoomValue { cursor: pointer; }
+.zoomValue:hover, .zoomValue[data-state="open"] { color: var(--foreground); }
+.zoomGroup, .zoomValue { display: inline-flex; align-items: center; height: 36px; padding: 0 var(--space-1); border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); }
+.zoomValue { gap: var(--space-2); padding: 0 var(--space-4); color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+.workspace { height: 100%; display: flex; flex-direction: column; min-width: 0; background: var(--surface-muted); }
+.previewBar { display: flex; align-items: center; gap: var(--space-1); height: 40px; padding-inline: var(--space-2); border-bottom: 1px solid var(--border-subtle); background: var(--surface); }
+.url { flex: 1; min-width: 0; height: 28px; display: flex; align-items: center; padding-inline: var(--space-3); border-radius: var(--radius-pill); background: var(--surface-muted); color: var(--text-secondary); font-size: var(--text-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.frame { flex: 1; width: 100%; border: 0; background: #fff; }
+
+/* Stitch no tiene editor móvil; aquí el lienzo ocupa todo y el agente se abre desde la barra de abajo. */
+@media (max-width: 760px) {
+  .app { --gap: 12px; --agent-w: calc(100vw - 24px); }
+  .topBar { grid-template-columns: 1fr auto; padding-left: var(--gap); }
+  /* Las pestañas y los dos menús no caben en una fila de 375: el segundo renglón evita esconder controles tras un scroll. */
+  .actionPill { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; flex-wrap: wrap; justify-content: space-between; height: auto; padding: var(--space-1) var(--space-2); border-radius: 22px; }
+  .actionPill > * { flex-shrink: 0; }
+  .title { max-width: 18ch; }
+  .pillButton { width: 40px; height: 40px; padding: 0; }
+  .pillLabel { display: none; }
+  .screen { top: 176px; left: var(--gap); right: var(--gap); bottom: 220px; }
+  .agentPanel { top: 176px; max-height: calc(100% - 176px - 220px); }
+  .agentPanel:not([data-expanded]) { display: none; }
+  /* En móvil el registro abierto ocupa el sitio del composer: el panel y la lista son la vista de ese momento. */
+  .agentPanel[data-expanded] { max-height: calc(100% - 176px - 320px); }
+  .chat:has([data-log-open]) .composerDock { display: none; }
+  .composerDock { width: calc(100% - var(--gap) * 2); bottom: calc(var(--gap) + 60px); }
+  .rail, .zoomBar { display: none; }
+}
+
+
+.spacer { flex: 1; }
+
+.diffLine[data-kind="del"] { background: color-mix(in oklch, var(--danger) 9%, transparent); }
+.diffLine[data-kind="ctx"] { background: transparent; }
+.repairRow { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3); margin: 0 0 var(--space-2); }
+.repairNote { color: var(--text-secondary); font-size: var(--text-xs); }
+.repairRow[data-wt-autofix] { gap: var(--space-2); color: var(--text-secondary); }
+.contrastNotice { margin: 0 0 var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-panel); background: var(--surface); }
+.contrastNotice .repairRow { margin: 0; }
+.contrastList { display: grid; gap: var(--space-2); margin: var(--space-2) 0 0; padding: 0; list-style: none; }
+.contrastList[hidden] { display: none; }
+.contrastItem { display: flex; align-items: center; gap: var(--space-2); min-width: 0; }
+.contrastSample { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-control); font-size: var(--text-xs); }
+.contrastText { display: grid; min-width: 0; }
+.contrastQuote { overflow: hidden; color: var(--foreground); font-size: var(--text-sm); white-space: nowrap; text-overflow: ellipsis; }
+@media (prefers-reduced-motion: reduce) { .repairRow[data-wt-autofix] .railSpin { animation: none; } }
+.notice { margin: 0 0 var(--space-2); color: var(--text-secondary); font-size: var(--text-xs); }
+
+.changed { margin: 0; color: var(--text-secondary); font-size: var(--text-sm); }
+/* Acciones a la derecha, como el resto del panel. */
+.resumeRow { display: flex; justify-content: flex-end; }
+.empty { flex: 1; display: grid; place-items: center; color: var(--text-muted); font-size: var(--text-sm); }
+
+.pane { height: 100%; overflow: auto; padding: var(--space-3); box-sizing: border-box; }
+.treePane { height: 100%; overflow: auto; padding: var(--space-2); box-sizing: border-box; background: var(--background); border-right: 1px solid var(--border-subtle); }
+
+.diffHead { margin: 0 0 var(--space-1); font-family: var(--font-display); font-size: var(--text-base); font-weight: 500; }
+.diffMeta { margin: 0 0 var(--space-4); color: var(--text-secondary); }
+.added { color: var(--success); }
+.removed { color: var(--danger); }
+.diffLines { margin: 0; overflow: auto; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--text-xs); line-height: 1.6; }
+.diffLine { display: flex; background: color-mix(in oklch, var(--success) 9%, transparent); }
+.lineNo { width: 3rem; flex-shrink: 0; padding-right: var(--space-2); text-align: right; color: var(--text-muted); user-select: none; }
+.lineText { white-space: pre; color: var(--foreground); }
+
+.menuMeta { margin-left: auto; padding-left: var(--space-3); color: var(--text-secondary); font-size: var(--text-xs); }
+.menuItemOff { color: var(--text-secondary); cursor: default; }
+.menuItemTall { height: auto; padding-block: var(--space-2); }
+.menuItemText { display: grid; gap: 2px; }
+.menuItemHint { color: var(--text-secondary); font-size: var(--text-xs); }
+.rulesForm { display: flex; flex-direction: column; gap: var(--space-4); }
+.rulesList { display: flex; flex-direction: column; gap: var(--space-3); max-height: 50vh; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
+.ruleRow { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: var(--space-2); }
+.ruleRow > :last-child { margin-top: 28px; }
+.ruleInput { min-height: 64px; }
+.rulesScope { margin-bottom: var(--space-4); }
+.rulesNote { margin: 0; color: var(--text-secondary); font-size: var(--text-sm); }
+.rulesError { margin: 0; color: var(--danger); font-size: var(--text-sm); }
+.rulesActions { display: flex; align-items: center; gap: var(--space-2); }
+
+.versionsTrigger { display: inline-flex; align-items: center; gap: var(--space-2); height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-control, 8px); color: var(--text-secondary); font-size: var(--text-sm); cursor: pointer; }
+.versionsTrigger:hover, .versionsTrigger[data-state="open"] { background: var(--surface-muted); color: var(--foreground); }
+.versionsMenu { width: min(22rem, var(--radix-dropdown-menu-content-available-width)); max-height: 60vh; overflow-y: auto; }
+.versionItem { min-height: 48px; }
+.versionItem[data-disabled] { cursor: default; }
+.versionItem:not([data-highlighted]):not([data-disabled]) .menuMeta { visibility: hidden; }
+.versionText { display: flex; min-width: 0; flex-direction: column; }
+.versionTitle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.versionDate { color: var(--text-secondary); font-size: var(--text-xs); }
+
+.connectors { display: flex; flex-direction: column; gap: var(--space-4); }
+.connectorList { display: flex; max-height: 50vh; scrollbar-gutter: stable; flex-direction: column; margin: 0; padding: 0 var(--space-2) 0 0; overflow-y: auto; list-style: none; }
+.connectorRow { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid var(--border); }
+.connectorRow:last-child { border-bottom: 0; }
+.connectorIcon { display: inline-grid; width: 32px; height: 32px; place-items: center; border-radius: 8px; background: var(--surface-muted); color: var(--text-secondary); object-fit: contain; }
+.connectorText { display: flex; min-width: 0; flex-direction: column; }
+.connectorName { font-weight: 500; }
+.connectorMeta { overflow: hidden; color: var(--text-secondary); font-size: var(--text-xs); text-overflow: ellipsis; white-space: nowrap; }
+.connectorsEmpty { padding: var(--space-4) 0; color: var(--text-secondary); text-align: center; }
+.connectors input { box-sizing: border-box; max-width: 100%; }
+
+/* Debajo de la barra, alineada a la derecha: en la fila no hay ancho sin pisar el grupo central. */
+.exportNote { position: absolute; top: calc(100% + var(--space-2)); right: 0; display: flex; align-items: center; gap: var(--space-2); width: max-content; max-width: 360px; padding: var(--space-2) var(--space-3); border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); color: var(--text-secondary); font-size: var(--text-xs); text-align: right; }
+.exportNote[data-error] { color: var(--danger); }
+.planSection { padding: var(--space-3) 0; border-top: 1px solid var(--border); }
+.planFields { display: grid; gap: var(--space-1); margin: 0; }
+.planField { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: var(--space-3); font-size: var(--text-sm); }
+.planField dt { color: var(--text-secondary); }
+.planField dd { margin: 0; text-wrap: pretty; }
+
+/* Estados de generación, de la captura dinámica de Stitch (re-iteracion/stitch-ui/dinamico-carga.md). */
+@property --wt-glow-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.agentPanel[data-busy]::before { content: ""; position: absolute; inset: -1px; z-index: -1; padding: 1px; border-radius: inherit; background: conic-gradient(from var(--wt-glow-angle), transparent 0 55%, rgb(113 104 246 / .9) 70%, rgb(94 155 255 / .8) 80%, transparent 92%); -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: wt-glow-spin 3s linear infinite; pointer-events: none; }
+.agentPanel { isolation: isolate; }
+@keyframes wt-glow-spin { to { --wt-glow-angle: 360deg; } }
+.staged { display: flex; flex-direction: column; gap: var(--space-2); margin: 0 0 var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md, 10px); background: var(--surface); }
+.stagedToggle { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0; border: 0; background: none; color: var(--foreground); font: inherit; font-size: var(--text-sm); cursor: pointer; }
+.stagedList { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.stagedRow { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
+.stagedText { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stagedTarget, .stagedMore { color: var(--text-secondary); }
+.stagedMore { font-size: var(--text-xs); }
+.stagedActions { display: flex; justify-content: flex-end; gap: var(--space-2); }
+.notifyButton { align-self: center; margin: 0 0 var(--space-2); }
+.tip { margin: 0 0 var(--space-2); overflow: hidden; color: var(--text-muted); font-size: var(--text-xs); text-align: center; white-space: nowrap; text-overflow: ellipsis; }
+/* Marco y velo copiados de los bundles de Stitch (static-loading-animations.md): placeholder gris con barrido, y sobre
+   la página que ya se escribe, un conic de cuatro colores que gira: desenfocado en los bordes y como línea de 1 px. */
+.artboard { --wt-aurora: conic-gradient(from 0deg, transparent 0%, #9154e7 10%, #6056f0 16.25%, #40d9c6 22.5%, #4285f4 28.75%, #9154e7 35%, transparent 45%); }
+.artboardGenerating { position: relative; display: flex; height: 100%; align-items: flex-end; justify-content: center; background: rgb(111 111 111 / .5); }
+/* Con url, el placeholder tapa el scaffold vacío hasta la primera sección. Tapa con fondo opaco (el mismo gris sobre el
+   lienzo) en vez de ocultar el iframe: Chrome deja de renderizar un iframe cross-origin con visibility:hidden, su
+   ResizeObserver no corre y el puente nunca reportaba la sección (regresión de c0d326b en c7c7ec26). */
+.artboardGenerating[data-over-preview] { position: absolute; inset: 0; z-index: 1; background: linear-gradient(rgb(111 111 111 / .5), rgb(111 111 111 / .5)), var(--stitch-canvas, var(--background)); }
+.shimmer { position: absolute; inset: 0; background: linear-gradient(95deg, transparent 0%, rgb(145 84 231 / .01) 8%, rgb(145 84 231 / .04) 15%, rgb(145 84 231 / .08) 22%, rgb(96 86 240 / .14) 38%, rgb(64 217 198 / .18) 54%, rgb(66 133 244 / .14) 70%, rgb(66 133 244 / .05) 82%, rgb(66 133 244 / .01) 91%, transparent 100%); background-size: 200% 100%; animation: wt-shimmer-sweep 2.5s linear infinite, wt-shimmer-breath 2.5s ease-in-out infinite; }
+@keyframes wt-shimmer-sweep { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes wt-shimmer-breath { 0%, 100% { opacity: .3; } 50% { opacity: .85; } }
+/* Skeleton de Stitch: base Mh (DesignPage deob l.6444-6446, neutral 400 a 700) y encima el gradiente de Nh (neutral 500,
+   l.6450) a 400 % que corre con skeleton-fade de 2.5 s (host-css index-tYuWDmAJ.css). Valores de neutral: Icon-DXXLRtSz
+   deob l.5186-5189. Las medidas se dividen por el zoom, como el aviso. */
+.skeleton { position: absolute; top: calc(48px / var(--zoom, 1)); right: calc(48px / var(--zoom, 1)); left: calc(48px / var(--zoom, 1)); display: flex; flex-direction: column; gap: calc(10px / var(--zoom, 1)); }
+.skeletonBar { position: relative; height: calc(12px / var(--zoom, 1)); border-radius: 9999px; background: linear-gradient(-90deg, #757575 0%, #353535 100%); overflow: hidden; }
+.skeletonBar:last-child { width: 66%; }
+.skeletonBar::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(-90deg, transparent 0%, #656565 20%, #656565 50%, transparent 100%); background-size: 400% 400%; transform: scaleX(1.01); animation: wt-skeleton-fade 2.5s ease-in-out infinite; animation-delay: var(--d, 0s); }
+/* Barra de carga del preview de Lovable (CX): 3 px arriba, width en 0.15 s; al terminar, opacidad a 0 en 0.3 s tras 0.2 s. */
+.previewProgress { position: absolute; top: 0; right: 0; left: 0; z-index: 2; height: calc(3px / var(--zoom, 1)); overflow: hidden; pointer-events: none; }
+.previewProgressBar { height: 100%; background: var(--accent); transition: width .15s; }
+.previewProgressBar[data-done] { opacity: 0; transition: width .15s, opacity .3s .2s; }
+@keyframes wt-skeleton-fade { 0% { background-position: 0 0; } to { background-position: -135% 0; } }
+/* El aviso vive dentro del frame escalado: se divide por el zoom para que se lea igual a cualquier distancia. */
+.generatingBanner { position: relative; display: flex; align-items: center; gap: calc(12px / var(--zoom, 1)); margin: 0; padding: calc(12px / var(--zoom, 1)) calc(16px / var(--zoom, 1)); border-radius: calc(12px / var(--zoom, 1)) calc(12px / var(--zoom, 1)) 0 0; background: rgb(17 24 39 / .9); color: #fff; font-size: calc(16px / var(--zoom, 1)); font-weight: 500; white-space: nowrap; }
+.generatingSpinner { width: calc(20px / var(--zoom, 1)); height: calc(20px / var(--zoom, 1)); box-sizing: border-box; border: calc(2px / var(--zoom, 1)) solid rgb(255 255 255 / .3); border-top-color: #fff; border-radius: 50%; animation: wt-spin 1s linear infinite; }
+@keyframes wt-spin { to { transform: rotate(360deg); } }
+.aurora { position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none; }
+.auroraSpin { position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: var(--wt-aurora); animation: wt-aurora-rotate 3.4s linear infinite; }
+@keyframes wt-aurora-rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+.auroraGlow { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; opacity: .25; animation: wt-aurora-glow 3s ease-in-out infinite;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 300px), linear-gradient(to top, #000, transparent 300px), linear-gradient(to right, #000, transparent 300px), linear-gradient(to left, #000, transparent 300px);
+  mask-image: linear-gradient(to bottom, #000, transparent 300px), linear-gradient(to top, #000, transparent 300px), linear-gradient(to right, #000, transparent 300px), linear-gradient(to left, #000, transparent 300px); }
+.auroraBlur { position: absolute; inset: -100px; filter: blur(100px); }
+/* Stitch dibuja la línea a 1 px del mundo; a zoom de encaje desaparece, así que aquí se mantiene en 1 px de pantalla. */
+.auroraBorder { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; padding: calc(1px / var(--zoom, 1)); animation: wt-aurora-border 3s ease-in-out infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+@keyframes wt-aurora-glow { 50% { opacity: .1625; } }
+@keyframes wt-aurora-border { 50% { opacity: .44; } }
+.readyToast { position: absolute; z-index: 3; right: var(--gap); bottom: calc(var(--gap) + 52px); display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-floating); }
+@media (prefers-reduced-motion: reduce) {
+  .agentPanel[data-busy]::before, .shimmer, .skeletonBar::after, .generatingSpinner, .auroraSpin, .auroraGlow, .auroraBorder { animation: none; }
+}
+@media (max-width: 760px) { .readyToast { left: var(--gap); bottom: calc(var(--gap) + 60px + 180px); } .app:has([data-log-open]) .readyToast { display: none; } }
+
+/* Imagen suelta del lienzo con la piel del node-screen de Stitch (DesignPage l.32236-32240, l.32510-32531). Vive en el
+   mundo escalado: lo que en Stitch va en px de pantalla se divide por el zoom. */
+/* .react-flow__selection de editor-xyflow-CHpVij2M.css (tema oscuro), que Stitch no sobrescribe. */
+.selectionRect { position: absolute; z-index: 6; pointer-events: none; background: #c8c8dc14; border: 1px dotted #c8c8dccc; }
+/* Ancla invisible del menú del lienzo en el punto del clic derecho. */
+.menuAnchor { position: fixed; width: 0; height: 0; pointer-events: none; }
+.imageNode { position: absolute; z-index: 1; touch-action: none; }
+.imageNode[data-interactive] { cursor: grab; }
+/* elevateNodesOnSelect de React Flow (default de la librería que usa Stitch): lo elegido pasa al frente. */
+.imageNode[data-selected] { z-index: 2; }
+.imageNode[data-dragging] { cursor: grabbing; }
+.imageNodeBody { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 0 0 calc(1px / var(--zoom, 1)) var(--border); }
+.imageNode[data-selected] .imageNodeBody { border-radius: 0; }
+.imageNodeImg { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.imageNodePlate { position: absolute; z-index: -1; inset: calc(-2px / var(--zoom, 1)); background: var(--stitch-accent, var(--accent)); }
+.imageNode[data-dragging] .imageNodePlate { border: calc(2px / var(--zoom, 1)) dashed var(--stitch-accent, var(--accent)); background: transparent; }
+.imageNodeLabel { position: absolute; bottom: 100%; left: 0; max-width: 100%; padding-bottom: calc(6px / var(--zoom, 1)); overflow: hidden; color: var(--text-secondary); font-size: calc(12px / var(--zoom, 1)); white-space: nowrap; text-overflow: ellipsis; pointer-events: none; }
+.imageNodeSize { position: absolute; bottom: -12px; left: 50%; padding: 0 4px; border-radius: 2px; background: var(--stitch-accent, var(--accent)); color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap; transform: translate(-50%, 150%) scale(calc(1 / var(--zoom, 1))); transform-origin: top; pointer-events: none; }
+.imageNodeHandle { position: absolute; width: calc(10px / var(--zoom, 1)); height: calc(10px / var(--zoom, 1)); border: calc(2px / var(--zoom, 1)) solid var(--stitch-accent, var(--accent)); background: #fff; transform: translate(-50%, -50%); }
+.imageNodeHandle[data-corner='nw'] { top: 0; left: 0; cursor: nwse-resize; }
+.imageNodeHandle[data-corner='ne'] { top: 0; left: 100%; cursor: nesw-resize; }
+.imageNodeHandle[data-corner='sw'] { top: 100%; left: 0; cursor: nesw-resize; }
+.imageNodeHandle[data-corner='se'] { top: 100%; left: 100%; cursor: nwse-resize; }
+.uploadToast { position: absolute; z-index: 3; right: var(--gap); bottom: calc(var(--gap) + 52px); display: grid; gap: var(--space-1); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-floating); }
+.uploadToast[data-error] { color: var(--danger); }
+.uploadToastRow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.railSpin { animation: wt-spin 1s linear infinite; }
+
+/* Marcos de variante (S5): detener una variante en curso desde su etiqueta, y el desenlace si no terminó bien. */
+.variantStop { position: absolute; right: 0; bottom: 2px; pointer-events: auto; }
+.variantOutcome { position: absolute; inset: 0; display: grid; place-content: center; gap: var(--space-2); padding: var(--space-6); background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--text-secondary); font-size: 48px; text-align: center; }
+/* Sin versión que mostrar no hay página que tapar: Stitch no crea la pantalla (I18nStore deob :22630-22632). El marco
+   queda transparente y el aviso es una tarjeta compacta arriba, no un bloque del alto del marco. */
+.artboard[data-empty] { background: transparent; }
+.artboard[data-empty] .variantOutcome { inset: 0 0 auto; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); }
+/* Con la última versión detrás, el aviso va abajo y deja ver la página. */
+.variantOutcome[data-over-preview] { inset: auto 0 0; place-content: initial; padding: var(--space-6) var(--space-8); background: color-mix(in srgb, var(--surface) 94%, transparent); font-size: 36px; }
+.variantOutcomeDetail { display: -webkit-box; max-width: 40ch; margin-inline: auto; overflow: hidden; color: var(--text-muted); font-size: 28px; -webkit-box-orient: vertical; -webkit-line-clamp: 6; white-space: pre-line; }
+.variantStop[data-on] { color: var(--foreground); }
+.artboardChrome:has(.variantStop) .artboardLabel { max-width: calc(100% - 28px); }
+.canvas[data-tool="mark"] { cursor: crosshair; }
+.markBox { position: absolute; z-index: 2; box-sizing: border-box; border: calc(1.5px / var(--zoom, 1)) dashed var(--stitch-accent, var(--accent)); border-radius: calc(4px / var(--zoom, 1)); background: color-mix(in srgb, var(--stitch-accent, var(--accent)) 8%, transparent); pointer-events: none; }
+.dsUpdateItem { color: var(--accent); }
+.dsUpdateItem svg { color: var(--accent); }
+/* Dueño de la sesión arriba del menú: dato, no acción (Menu.Label). */
+.sessionOwner { display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 11px; color: var(--text-muted); font-size: var(--text-xs); overflow-wrap: anywhere; }
+.sessionError { margin: 4px 11px 6px; color: var(--danger); font-size: var(--text-xs); }

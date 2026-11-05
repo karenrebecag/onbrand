@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/mention-input.schema.json",
+  "title": "Mention input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Controlled value: { text, mentions }. Each mention has kind, id, label, start, and end offsets into text.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "mentions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "mentions"
+      ]
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled. Defaults to empty text and no mentions.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "mentions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "mentions"
+      ]
+    },
+    "onChange": {
+      "description": "Called on every edit with the new text and the mentions moved or dropped to match it.",
+      "type": "object"
+    },
+    "people": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "role": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "role"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "People offered after @. Each has id, name, and optional role and avatar. Leave it out to turn person mentions off."
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "members": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "Channels offered after #. Each has id, name, and optional description and members count. Leave it out to turn channel mentions off."
+    },
+    "onMentionAdd": {
+      "description": "Called when a suggestion is chosen and becomes a mention.",
+      "type": "object"
+    },
+    "onSubmit": {
+      "description": "Called on Enter when submitOnEnter is set and the text is not blank.",
+      "type": "object"
+    },
+    "submitOnEnter": {
+      "description": "Enter submits and Shift+Enter adds a line. Enter during IME composition never submits.",
+      "type": "boolean"
+    },
+    "placeholder": {
+      "description": "Placeholder text for the empty field.",
+      "type": "string",
+      "format": "label"
+    },
+    "minRows": {
+      "description": "Starting height in rows.",
+      "type": "number"
+    },
+    "maxRows": {
+      "description": "The field grows to this many rows, then scrolls.",
+      "type": "number"
+    },
+    "placement": {
+      "description": "Where suggestions open. auto flips above the caret when there is less than 300px below it and more room above.",
+      "type": "string",
+      "enum": [
+        "auto",
+        "top",
+        "bottom"
+      ]
+    },
+    "maxSuggestions": {
+      "description": "Most suggestions shown at once, best matches first.",
+      "type": "number"
+    },
+    "disabled": {
+      "description": "Disables the textarea and dims the field.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Forwarded to the textarea. The form value is the plain text; use serializeMentions to keep ids.",
+      "type": "string",
+      "format": "person"
+    },
+    "id": {
+      "description": "Forwarded to the textarea, for an external label.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2
+}

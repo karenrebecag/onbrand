@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/avatar.schema.json",
+  "title": "Avatar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Full name. Used for the accessible label and the first two initials.",
+      "type": "string",
+      "format": "person"
+    },
+    "src": {
+      "description": "Image URL. Renders a plain img, or the image component set with UikitProvider (such as next/image). Falls back to initials if it fails to load.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "size": {
+      "description": "Diameter, from 28px to 88px.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "status": {
+      "description": "Adds a presence dot and appends the status to the label.",
+      "type": "string",
+      "enum": [
+        "online",
+        "offline"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "name"
+  ]
+}

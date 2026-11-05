@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/action-swap.schema.json",
+  "title": "Action swap",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "tone": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "neutral",
+              "accent",
+              "success",
+              "warning",
+              "quiet"
+            ]
+          },
+          "pendingLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "holdFor": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Ordered states. Each press moves to the next and wraps around. Needs at least two to be enabled."
+    },
+    "value": {
+      "description": "Controlled state id.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Initial state id when uncontrolled. Defaults to the first state.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called when the control commits to a new state.",
+      "type": "object"
+    },
+    "onAction": {
+      "description": "Runs on press. Return a promise to show a working phase; a rejection shows failureLabel and stays put.",
+      "type": "object"
+    },
+    "failureLabel": {
+      "description": "Label shown for 1.8s after onAction rejects or throws.",
+      "type": "string",
+      "format": "label"
+    },
+    "size": {
+      "description": "Height and padding.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "states"
+  ]
+}

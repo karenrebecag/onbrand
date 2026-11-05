@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/tree-table.schema.json",
+  "title": "Tree table",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Top level rows: { id, data, children?, hasChildren? }."
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Columns: { id, header, cell(data, context), sortValue?, width?, align?, hideBelow? }. The first shown column holds the tree."
+    },
+    "label": {
+      "description": "Accessible name of the table.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "expanded": {
+      "description": "Controlled ids of expanded rows.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultExpanded": {
+      "description": "Rows expanded at first when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onExpandedChange": {
+      "description": "Called when rows expand or collapse.",
+      "type": "object"
+    },
+    "selectable": {
+      "description": "Adds a checkbox column. Checking a parent checks everything under it.",
+      "type": "boolean"
+    },
+    "selected": {
+      "description": "Controlled ids of selected rows.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultSelected": {
+      "description": "Rows selected at first when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onSelectedChange": {
+      "description": "Called with the new selection. Parents are added or removed to match their children.",
+      "type": "object"
+    },
+    "sort": {
+      "x-nullable": true,
+      "description": "Controlled sort: { columnId, direction: \"ascending\" | \"descending\" }.",
+      "type": "object",
+      "properties": {
+        "columnId": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "direction": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "ascending",
+            "descending"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "columnId",
+        "direction"
+      ]
+    },
+    "defaultSort": {
+      "x-nullable": true,
+      "description": "Starting sort when uncontrolled.",
+      "type": "object",
+      "properties": {
+        "columnId": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "direction": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "ascending",
+            "descending"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "columnId",
+        "direction"
+      ]
+    },
+    "onSortChange": {
+      "description": "Called as a header cycles ascending, descending, and off.",
+      "type": "object"
+    },
+    "loadChildren": {
+      "description": "Loads children of a row with hasChildren on first expand. A rejection shows a retry row.",
+      "type": "object"
+    },
+    "rowLabel": {
+      "description": "Names a row for its checkbox, such as the file or team name.",
+      "type": "object",
+      "x-format-confidence": "low"
+    },
+    "onRowActivate": {
+      "description": "Called when a row without children is clicked or gets Enter. Parent rows toggle instead.",
+      "type": "object"
+    },
+    "maxHeight": {
+      "description": "Caps the height; the header stays pinned while the body scrolls.",
+      "type": "object"
+    },
+    "emptyState": {
+      "description": "Shown when there are no rows."
+    },
+    "ref": {
+      "description": "The root element.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "rows",
+    "columns",
+    "label"
+  ]
+}

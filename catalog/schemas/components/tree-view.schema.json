@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/tree-view.schema.json",
+  "title": "Tree view",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "children": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "icon": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Root nodes. Nodes with children are folders."
+    },
+    "defaultExpandedIds": {
+      "description": "Folders open on first render when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expandedIds": {
+      "description": "Controlled open folders.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "onExpandedChange": {
+      "description": "Called with the new open set.",
+      "type": "object"
+    },
+    "onSelect": {
+      "description": "Called when a row is clicked or activated.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "nodes"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "newsletter-signup",
+  "type": "registry:block",
+  "dependencies": ["lucide-react", "motion"],
+  "registryDependencies": [
+    "https://example.com/r/uikit-motion-tokens.json",
+    "https://example.com/r/animated-counter.json",
+    "https://example.com/r/segmented-control.json",
+    "https://example.com/r/switch.json"
+  ],
+  "files": [
+    { "path": "registry/blocks/newsletter-signup/newsletter-signup.tsx", "type": "registry:component" },
+    { "path": "registry/blocks/newsletter-signup/newsletter-signup-data.ts", "type": "registry:component" },
+    { "path": "lib/media.ts", "type": "registry:lib" },
+    { "path": "registry/blocks/newsletter-signup/newsletter-signup.module.css", "type": "registry:component" }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/site-header.schema.json",
+  "title": "Site Header",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "simple` puts links beside the brand, `centered` centers them in a quiet capsule, `mega` opens panels for items with links.",
+      "type": "string",
+      "enum": [
+        "simple",
+        "centered",
+        "mega"
+      ]
+    },
+    "brand": {
+      "description": "Brand at the start of the bar.",
+      "type": "object",
+      "format": "logo",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "mark": {
+          "x-undocumented": true,
+          "x-empty": ""
+        },
+        "markIncludesName": {
+          "x-undocumented": true,
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "links": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "feature": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "Top level destinations: { value, label, href?, links?, feature? }. Items with links open a panel in the mega variant."
+    },
+    "current": {
+      "description": "Value of the item that holds the current page (controlled).",
+      "type": "string"
+    },
+    "defaultCurrent": {
+      "description": "Initial current item when uncontrolled.",
+      "type": "string"
+    },
+    "onCurrentChange": {
+      "description": "Called when a destination inside an item is chosen, with that item's value.",
+      "type": "object"
+    },
+    "onNavigate": {
+      "description": "Called for every destination: items, panel links, the brand, and actions with an href.",
+      "type": "object"
+    },
+    "secondaryAction": {
+      "x-nullable": true,
+      "description": "A quiet action before the primary one. Pass null to hide it.",
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "onClick": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ],
+      "x-empty": null
+    },
+    "primaryAction": {
+      "x-nullable": true,
+      "description": "The one primary action. Pass null to hide it.",
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "onClick": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "sticky": {
+      "description": "Sticks to the top of its scroll container.",
+      "type": "boolean"
+    },
+    "scrollContainer": {
+      "description": "The element that scrolls, when it is not the window.",
+      "type": "object"
+    },
+    "scrollThreshold": {
+      "description": "Pixels of scroll before the background turns solid.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Accessible name of the navigation landmark.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "openMenuLabel": {
+      "x-undocumented": true,
+      "type": "string",
+      "format": "label"
+    },
+    "closeMenuLabel": {
+      "x-undocumented": true,
+      "type": "string",
+      "format": "label"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "brand",
+    "items",
+    "secondaryAction",
+    "primaryAction"
+  ]
+}

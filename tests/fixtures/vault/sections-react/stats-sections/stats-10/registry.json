@@ -1,0 +1,14 @@
+{
+  "name": "stats-10",
+  "title": "Stats 10",
+  "description": "",
+  "categories": [
+    "stats-sections"
+  ],
+  "dependencies": [],
+  "files": [
+    "stats-10.tsx"
+  ],
+  "source_slug": "stats-sections/section_stats10",
+  "preview": "https://cdn.prod.website-files.com/61789b489343c8242282a0ae/65681f38ba2cd38b1f9caec8_section_stats10.png"
+}

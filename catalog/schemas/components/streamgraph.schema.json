@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/streamgraph.schema.json",
+  "title": "Streamgraph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "axisLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Points in time. Datasets of any length morph into each other."
+    },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Layers from the centre out: the first runs through the middle and the rest alternate above and below it."
+    },
+    "label": {
+      "description": "Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after each value.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "height": {
+      "description": "Plot height in pixels.",
+      "type": "number"
+    },
+    "offset": {
+      "description": "Wiggle minimises layer slopes, silhouette centres the stack, zero stacks from a flat baseline.",
+      "type": "string",
+      "enum": [
+        "wiggle",
+        "silhouette",
+        "zero"
+      ]
+    },
+    "formatValue": {
+      "description": "Formats values in the tooltip and table.",
+      "type": "object"
+    },
+    "hiddenSeries": {
+      "description": "Controlled hidden layers. A hidden layer thins to nothing and the rest reflow.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "series"
+      }
+    },
+    "defaultHiddenSeries": {
+      "description": "Initial hidden layers when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onHiddenSeriesChange": {
+      "description": "Called when a legend toggle is pressed.",
+      "type": "object"
+    },
+    "onActiveChange": {
+      "description": "Called as the reading moves between points and layers.",
+      "type": "object"
+    },
+    "legend": {
+      "description": "Layer toggles above the plot.",
+      "type": "boolean"
+    },
+    "directLabels": {
+      "description": "Names each layer at its thickest stretch when the text fits.",
+      "type": "boolean"
+    },
+    "categoryLabel": {
+      "description": "Header of the first column in the screen reader table.",
+      "type": "string",
+      "format": "label"
+    },
+    "emptyLabel": {
+      "description": "Shown when there are no points.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "series",
+    "label"
+  ]
+}

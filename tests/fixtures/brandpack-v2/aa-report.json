@@ -1,0 +1,170 @@
+{
+  "repo-base": {
+    "light": {
+      "--foreground / --background": 17.93,
+      "--text-secondary / --background": 5.74,
+      "--text-muted / --background": 4.74,
+      "--foreground / --surface": 17.93,
+      "--text-secondary / --surface": 5.74,
+      "--foreground / --surface-muted": 16.73,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 12.27,
+      "--accent / --background": 12.27,
+      "--foreground / --accent-subtle": 14.9,
+      "--border-strong / --background": 4.74
+    },
+    "dark": {
+      "--foreground / --background": 16.73,
+      "--text-secondary / --background": 9.97,
+      "--text-muted / --background": 6.99,
+      "--foreground / --surface": 15.55,
+      "--text-secondary / --surface": 9.26,
+      "--foreground / --surface-muted": 13.52,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 10.05,
+      "--accent / --background": 10.06,
+      "--foreground / --accent-subtle": 13.21,
+      "--border-strong / --background": 6.99
+    }
+  },
+  "repo-ejemplo": {
+    "light": {
+      "--foreground / --background": 16.12,
+      "--text-secondary / --background": 5.29,
+      "--text-muted / --background": 4.37,
+      "--foreground / --surface": 17.49,
+      "--text-secondary / --surface": 5.74,
+      "--foreground / --surface-muted": 16.32,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 5.18,
+      "--accent / --background": 4.77,
+      "--foreground / --accent-subtle": 14,
+      "--border-strong / --background": 4.37
+    },
+    "dark": {
+      "--foreground / --background": 15.99,
+      "--text-secondary / --background": 9.71,
+      "--text-muted / --background": 6.81,
+      "--foreground / --surface": 14.69,
+      "--text-secondary / --surface": 8.92,
+      "--foreground / --surface-muted": 13.27,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 8.06,
+      "--accent / --background": 8.06,
+      "--foreground / --accent-subtle": 12.26,
+      "--border-strong / --background": 6.81
+    }
+  },
+  "sint-preset": {
+    "light": {
+      "--foreground / --background": 17.93,
+      "--text-secondary / --background": 5.74,
+      "--text-muted / --background": 4.74,
+      "--foreground / --surface": 17.93,
+      "--text-secondary / --surface": 5.74,
+      "--foreground / --surface-muted": 16.73,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 5.25,
+      "--accent / --background": 5.25,
+      "--foreground / --accent-subtle": 15.04,
+      "--border-strong / --background": 4.74
+    },
+    "dark": {
+      "--foreground / --background": 16.73,
+      "--text-secondary / --background": 9.97,
+      "--text-muted / --background": 6.99,
+      "--foreground / --surface": 15.55,
+      "--text-secondary / --surface": 9.26,
+      "--foreground / --surface-muted": 13.52,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 7.41,
+      "--accent / --background": 7.41,
+      "--foreground / --accent-subtle": 13.88,
+      "--border-strong / --background": 6.99
+    }
+  },
+  "sint-accent-propio": {
+    "light": {
+      "--foreground / --background": 17.81,
+      "--text-secondary / --background": 5.5,
+      "--text-muted / --background": 4.54,
+      "--foreground / --surface": 18.59,
+      "--text-secondary / --surface": 5.74,
+      "--foreground / --surface-muted": 17.35,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 9.63,
+      "--accent / --background": 9.23,
+      "--foreground / --accent-subtle": 15,
+      "--border-strong / --background": 4.54
+    },
+    "dark": {
+      "--foreground / --background": 16.66,
+      "--text-secondary / --background": 9.93,
+      "--text-muted / --background": 6.96,
+      "--foreground / --surface": 15.55,
+      "--text-secondary / --surface": 9.26,
+      "--foreground / --surface-muted": 13.52,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 9.11,
+      "--accent / --background": 9.5,
+      "--foreground / --accent-subtle": 15.95,
+      "--border-strong / --background": 6.96
+    }
+  },
+  "sint-highlight": {
+    "light": {
+      "--foreground / --background": 18.97,
+      "--text-secondary / --background": 7.49,
+      "--text-muted / --background": 4.54,
+      "--foreground / --surface": 19.8,
+      "--text-secondary / --surface": 7.81,
+      "--foreground / --surface-muted": 18.48,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 18.97,
+      "--accent / --background": 18.97,
+      "--foreground / --accent-subtle": 16.76,
+      "--border-strong / --background": 4.54
+    },
+    "dark": {
+      "--foreground / --background": 18.97,
+      "--text-secondary / --background": 7.49,
+      "--text-muted / --background": 2.57,
+      "--foreground / --surface": 19.8,
+      "--text-secondary / --surface": 7.81,
+      "--foreground / --surface-muted": 1.31,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 18.97,
+      "--accent / --background": 18.97,
+      "--foreground / --accent-subtle": 16.76,
+      "--border-strong / --background": 2.57
+    }
+  },
+  "sint-forma": {
+    "light": {
+      "--foreground / --background": 17.93,
+      "--text-secondary / --background": 5.74,
+      "--text-muted / --background": 4.74,
+      "--foreground / --surface": 17.93,
+      "--text-secondary / --surface": 5.74,
+      "--foreground / --surface-muted": 16.73,
+      "--text-muted / --surface-muted": 4.43,
+      "--accent-foreground / --accent": 12.27,
+      "--accent / --background": 12.27,
+      "--foreground / --accent-subtle": 14.9,
+      "--border-strong / --background": 4.74
+    },
+    "dark": {
+      "--foreground / --background": 16.73,
+      "--text-secondary / --background": 9.97,
+      "--text-muted / --background": 6.99,
+      "--foreground / --surface": 15.55,
+      "--text-secondary / --surface": 9.26,
+      "--foreground / --surface-muted": 13.52,
+      "--text-muted / --surface-muted": 5.65,
+      "--accent-foreground / --accent": 10.05,
+      "--accent / --background": 10.06,
+      "--foreground / --accent-subtle": 13.21,
+      "--border-strong / --background": 6.99
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/race-bar-chart.schema.json",
+  "title": "Race bar chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "group": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "The things being ranked. A stable id keeps each bar's identity across frames."
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Names and order of the groups. The first four take the series hues and a legend appears; without groups every bar takes the first hue."
+    },
+    "frames": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "x-undocumented": true,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "period"
+        ]
+      },
+      "description": "One frame per period, in order. Missing ids count as zero."
+    },
+    "label": {
+      "description": "What is ranked. Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "formatValue": {
+      "description": "Formats values on bars, in the tooltip, and in the table. Defaults to a compact number.",
+      "type": "object"
+    },
+    "formatTick": {
+      "description": "Formats the value axis.",
+      "type": "object"
+    },
+    "bars": {
+      "description": "Bars shown at once. Items below the cut slide out of view.",
+      "type": "number"
+    },
+    "frame": {
+      "description": "Controlled frame index. A new value glides the race there.",
+      "type": "number"
+    },
+    "defaultFrame": {
+      "description": "Initial frame when uncontrolled.",
+      "type": "number"
+    },
+    "onFrameChange": {
+      "description": "Called when the shown period changes.",
+      "type": "object"
+    },
+    "playing": {
+      "description": "Controlled playback.",
+      "type": "boolean"
+    },
+    "defaultPlaying": {
+      "description": "Initial playback when uncontrolled.",
+      "type": "boolean"
+    },
+    "onPlayingChange": {
+      "description": "Called when playback starts or stops.",
+      "type": "object"
+    },
+    "autoPlay": {
+      "description": "Starts playing the first time the chart scrolls into view. Ignored with reduced motion.",
+      "type": "boolean"
+    },
+    "frameDuration": {
+      "description": "Milliseconds per period while playing.",
+      "type": "number"
+    },
+    "loop": {
+      "description": "Rewinds to the first period after the last and keeps playing.",
+      "type": "boolean"
+    },
+    "highlight": {
+      "description": "Item id whose name and value are emphasized, such as your own product.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "ref": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "frames",
+    "label"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/confirm-morph.schema.json",
+  "title": "Confirm morph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "The resting label, such as \"Delete\"."
+    },
+    "icon": {
+      "description": "A plain icon before the resting label."
+    },
+    "prompt": {
+      "description": "The question while confirming, such as \"Delete 3 files?\". Defaults to the label with a question mark."
+    },
+    "confirmLabel": {
+      "description": "Confirm button label.",
+      "type": "string",
+      "format": "label"
+    },
+    "cancelLabel": {
+      "description": "Cancel button label.",
+      "type": "string",
+      "format": "label"
+    },
+    "pendingLabel": {
+      "description": "Shown beside the spinner while onConfirm resolves.",
+      "type": "string",
+      "format": "label"
+    },
+    "doneLabel": {
+      "description": "Result label.",
+      "type": "string",
+      "format": "label"
+    },
+    "errorLabel": {
+      "description": "Error label.",
+      "type": "string",
+      "format": "label"
+    },
+    "retryLabel": {
+      "description": "Retry button label on the error face.",
+      "type": "string",
+      "format": "label"
+    },
+    "undoLabel": {
+      "description": "Undo button label.",
+      "type": "string",
+      "format": "label"
+    },
+    "undoingLabel": {
+      "description": "Shown beside the spinner while onUndo resolves.",
+      "type": "string",
+      "format": "label"
+    },
+    "tone": {
+      "description": "danger colours the resting label and confirm button red; neutral uses the foreground.",
+      "type": "string",
+      "enum": [
+        "danger",
+        "neutral"
+      ]
+    },
+    "confirmMode": {
+      "x-undocumented": true,
+      "type": "string",
+      "enum": [
+        "press",
+        "hold",
+        "countdown"
+      ]
+    },
+    "holdDuration": {
+      "x-undocumented": true,
+      "type": "number"
+    },
+    "countdown": {
+      "x-undocumented": true,
+      "type": "number"
+    },
+    "countdownLabel": {
+      "x-undocumented": true,
+      "type": "string",
+      "format": "label"
+    },
+    "onConfirm": {
+      "description": "Runs on confirm. Return a promise to show the pending face; a rejection shows the error face with Retry.",
+      "type": "object"
+    },
+    "onUndo": {
+      "description": "Adds Undo to the result. Return a promise to show a pending face while it runs.",
+      "type": "object"
+    },
+    "onCancel": {
+      "description": "Called when the question is cancelled, including by Escape, outside press, or timeout.",
+      "type": "object"
+    },
+    "state": {
+      "description": "Controlled state. Pair it with onStateChange.",
+      "type": "string",
+      "enum": [
+        "idle",
+        "confirming",
+        "pending",
+        "done",
+        "error"
+      ]
+    },
+    "defaultState": {
+      "description": "Starting state when uncontrolled.",
+      "type": "string",
+      "enum": [
+        "idle",
+        "confirming",
+        "pending",
+        "done",
+        "error"
+      ]
+    },
+    "onStateChange": {
+      "description": "Called on every state change.",
+      "type": "object"
+    },
+    "confirmTimeout": {
+      "description": "Milliseconds before an unanswered question returns to rest. Hovering pauses it; 0 turns it off.",
+      "type": "number"
+    },
+    "resultTimeout": {
+      "description": "Milliseconds a result stays before returning to rest. Hovering pauses it; 0 turns it off.",
+      "type": "number"
+    },
+    "cancelOnOutsidePress": {
+      "description": "A press outside the control cancels an open question.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables the resting button.",
+      "type": "boolean"
+    },
+    "ref": {
+      "description": "The root element, which also takes focus while the action is pending.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

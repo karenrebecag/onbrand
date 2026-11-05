@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/activity-rings.schema.json",
+  "title": "Activity rings",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "unit": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "goal": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "unit",
+          "goal"
+        ]
+      },
+      "description": "One ring per metric, from the outside in. color falls back to the built in indigo, amber, and sage."
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "short": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "short"
+        ]
+      },
+      "description": "Days with values keyed by metric id. label is the full date for assistive technology; short is shown under the day."
+    },
+    "day": {
+      "description": "Controlled selected day id.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultDay": {
+      "description": "Initial day when uncontrolled. Defaults to the last day.",
+      "type": "string"
+    },
+    "onDayChange": {
+      "description": "Called when a day is picked.",
+      "type": "object"
+    },
+    "focused": {
+      "x-nullable": true,
+      "description": "Controlled isolated metric id.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultFocused": {
+      "x-nullable": true,
+      "description": "Initial isolated metric when uncontrolled.",
+      "type": "string"
+    },
+    "onFocusedChange": {
+      "description": "Called when a goal is selected or cleared from the legend.",
+      "type": "object"
+    },
+    "onRingClose": {
+      "description": "Called when a value on the same day crosses its goal.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the section.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "metrics",
+    "days"
+  ]
+}

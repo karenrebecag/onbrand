@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-expand-faq.schema.json",
+  "title": "Smooth Expand Accordion",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Preguntas y respuestas del acordeón.",
+      "maxItems": 4
+    },
+    "title": {
+      "description": "Titular sobre el acordeón.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Texto de apoyo bajo el titular.",
+      "type": "string",
+      "format": "description"
+    },
+    "defaultOpenIndex": {
+      "x-nullable": true,
+      "description": "Índice abierto al montar; null = todo cerrado.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "title",
+    "description"
+  ],
+  "examples": [
+    {
+      "items": [
+        {
+          "question": "Design",
+          "answer": "We craft pixel-perfect interfaces that blend aesthetics with functionality, creating memorable digital experiences."
+        },
+        {
+          "question": "Development",
+          "answer": "Building robust, scalable solutions with modern technologies that stand the test of time and traffic."
+        },
+        {
+          "question": "Strategy",
+          "answer": "Data-driven insights and creative thinking combine to position your brand for lasting success."
+        },
+        {
+          "question": "Growth",
+          "answer": "Sustainable scaling strategies that transform startups into industry leaders through measurable results."
+        }
+      ],
+      "title": "What we do",
+      "description": "Transforming ideas into exceptional digital experiences."
+    }
+  ]
+}

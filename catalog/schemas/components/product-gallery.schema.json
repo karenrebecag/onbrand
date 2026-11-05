@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/product-gallery.schema.json",
+  "title": "Product gallery",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "colors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "swatch": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "images": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "soldOut": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label",
+          "swatch",
+          "images"
+        ]
+      },
+      "description": "Colors: { value, label, swatch, images, soldOut? }. Each carries its own images: { src, alt, srcSet? }."
+    },
+    "sizes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "soldOut": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "Sizes: { value, label, soldOut? }. soldOut is true for every color or a list of color values."
+    },
+    "color": {
+      "description": "Controlled color value.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultColor": {
+      "description": "Starting color when uncontrolled. Defaults to the first color.",
+      "type": "string"
+    },
+    "onColorChange": {
+      "description": "Called when a swatch is chosen.",
+      "type": "object"
+    },
+    "size": {
+      "x-nullable": true,
+      "description": "Controlled size value, or null for none.",
+      "type": "string"
+    },
+    "defaultSize": {
+      "x-nullable": true,
+      "description": "Starting size when uncontrolled.",
+      "type": "string"
+    },
+    "onSizeChange": {
+      "description": "Called when a size is chosen or cleared, including when a color change sells it out.",
+      "type": "object"
+    },
+    "index": {
+      "description": "Controlled index of the photo on show.",
+      "type": "number"
+    },
+    "defaultIndex": {
+      "description": "Starting photo when uncontrolled.",
+      "type": "number"
+    },
+    "onIndexChange": {
+      "description": "Called when the photo changes.",
+      "type": "object"
+    },
+    "zoom": {
+      "description": "Magnification of the hover lens and the fullscreen zoom.",
+      "type": "number"
+    },
+    "magnifier": {
+      "description": "Turns the hover lens on or off.",
+      "type": "boolean"
+    },
+    "aspectRatio": {
+      "description": "Aspect ratio of the main photo and thumbnails, as width / height.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Product name, used to name the gallery and its viewer.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "header": {
+      "description": "Content above the picker, such as the name and price."
+    },
+    "footer": {
+      "description": "Content under the picker, such as add to bag."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "colors"
+  ]
+}

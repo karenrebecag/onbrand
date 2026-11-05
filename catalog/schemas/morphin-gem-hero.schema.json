@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-gem-hero.schema.json",
+  "title": "3D Work Showcase with Three.js & Framer Motion",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Headline under the gem.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting text under the headline.",
+      "type": "string",
+      "format": "description"
+    },
+    "primaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "secondaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Up to 8 cards that fly out when the gem is hovered or tapped. Without it, color blocks stand in."
+    },
+    "gemColor": {
+      "description": "Gem color. Defaults to the DS accent token, resolved at runtime.",
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2
+}

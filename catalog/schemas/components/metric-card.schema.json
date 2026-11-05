@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/metric-card.schema.json",
+  "title": "Metric card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "What is measured.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "The number. Rolls up from zero on first view, then between values.",
+      "type": "number"
+    },
+    "suffix": {
+      "description": "Text after the number, such as \"%\" or \" ms\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "context": {
+      "description": "Line under the number, such as \"vs last week\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "change": {
+      "description": "Chip in the top corner, such as \"+12%\". Omit to hide it.",
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "value",
+    "context"
+  ]
+}

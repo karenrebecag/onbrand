@@ -1,0 +1,6 @@
+{
+  "name": "uikit-chip",
+  "type": "registry:ui",
+  "dependencies": [],
+  "files": [{ "path": "registry/components/uikit-chip/uikit-chip.tsx", "type": "registry:component" }]
+}

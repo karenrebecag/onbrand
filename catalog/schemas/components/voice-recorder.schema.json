@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/voice-recorder.schema.json",
+  "title": "Voice recorder",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "defaultMessages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "duration": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "peaks": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "from": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          },
+          "meta": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tag"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "duration",
+          "peaks"
+        ]
+      },
+      "description": "Messages already in the thread, oldest first. peaks are bar heights from 0 to 1 (the exported voicePeaks makes deterministic data); from and avatar mark incoming messages."
+    },
+    "onSend": {
+      "description": "Called with each sent take. Recording is simulated, so wire this to real audio capture.",
+      "type": "object"
+    },
+    "onCancel": {
+      "description": "Called when a take is discarded with the trash button or Escape.",
+      "type": "object"
+    },
+    "maxDuration": {
+      "description": "Seconds before recording stops on its own and moves to review.",
+      "type": "number"
+    },
+    "sentMeta": {
+      "description": "Meta line under messages you send.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible name of the whole recorder.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-shaders-hero.schema.json",
+  "title": "Shaders Hero Section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Headline.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Supporting text under the headline.",
+      "type": "string",
+      "format": "description"
+    },
+    "badge": {
+      "description": "Small pill above the headline. Pass an empty string to hide it.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "primaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "secondaryAction": {
+      "type": "object",
+      "format": "cta",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "href": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "link"
+        },
+        "variant": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger",
+            "whatsapp"
+          ]
+        },
+        "cta": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "agendar_demo",
+            "hablar_asesor",
+            "demo_5min",
+            "consultar_precio"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ]
+    },
+    "orbitText": {
+      "description": "Text that orbits the pulsing circle. The circle shows without text when omitted.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "colors": {
+      "description": "Shader colors (up to 5 reach the pulsing circle). Defaults to the DS tokens, resolved at runtime so they follow the theme.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      },
+      "maxItems": 5
+    }
+  },
+  "x-formats-version": 2,
+  "examples": [
+    {
+      "colors": [
+        "#ffffff",
+        "#474747",
+        "#d0d0d0",
+        "#f4f4f4",
+        "#262626"
+      ]
+    }
+  ]
+}

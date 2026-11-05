@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/code-block.schema.json",
+  "title": "Code block",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "description": "Source shown and copied.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "filename": {
+      "description": "File name in the header. Defaults to \"Source code\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "language": {
+      "description": "Header label and highlighter mode.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "maxLines": {
+      "description": "Collapses longer sources to this many lines with a Show all toggle.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "code"
+  ]
+}

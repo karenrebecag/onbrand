@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/expanding-button-group.schema.json",
+  "title": "Expanding button group",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "The actions, in order. label is shown when the button expands and is always its accessible name. With doneLabel, a successful onSelect turns the icon into a check and the label into that word, such as \"Archived\". Return false or reject to skip it; a promise keeps the button busy until it settles."
+    },
+    "label": {
+      "description": "Accessible name of the toolbar, such as \"Message actions\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "size": {
+      "description": "Button height of 28 or 36px, with 14 or 16px icons.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md"
+      ]
+    },
+    "defaultExpanded": {
+      "x-nullable": true,
+      "description": "Id of the action whose label shows at rest, usually the primary one. One action is always expanded: pointing at or focusing another moves the expansion there, and the group returns to this one when the pointer and focus leave.",
+      "type": "string"
+    },
+    "onAction": {
+      "description": "Called with the item id whenever an action runs, before the item's own onSelect.",
+      "type": "object"
+    },
+    "confirmDuration": {
+      "description": "How long the confirmation stays, in milliseconds.",
+      "type": "number"
+    },
+    "style": {
+      "description": "Inline styles on the toolbar.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "label"
+  ]
+}

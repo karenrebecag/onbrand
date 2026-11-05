@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/funnel-chart.schema.json",
+  "title": "Funnel chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Ordered steps: { key, label, value? , values? }. Use value without segments, values keyed by segment with them."
+    },
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Parts of every step, such as devices: { key, label }. Leave it out for one total per step."
+    },
+    "label": {
+      "description": "What is counted. Names the chart, the summary, and the table.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Noun after counts in the tooltip and table, such as \"sessions\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "view": {
+      "description": "\"total\" draws one band, \"split\" stacks every segment with a gap, and a segment key isolates it and rescales the band to fill the height.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "flow": {
+      "description": "Dots that stream through the band. Each decides up front where it leaves, so the falling share matches the real drop-off.",
+      "type": "boolean"
+    },
+    "orientation": {
+      "description": "Auto turns the funnel vertical below 420px of container width, with steps listed down the side.",
+      "type": "string",
+      "enum": [
+        "auto",
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "height": {
+      "description": "Band area thickness in pixels when horizontal.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats counts. Defaults to compact numbers in headings and full numbers in the tooltip.",
+      "type": "object"
+    },
+    "activeIndex": {
+      "x-nullable": true,
+      "description": "Controlled step in focus.",
+      "type": "number"
+    },
+    "onActiveChange": {
+      "description": "Called as the step in focus changes.",
+      "type": "object"
+    },
+    "emptyLabel": {
+      "description": "Message when the first step is zero.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "description": "Forwarded to the figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "stages",
+    "label"
+  ]
+}

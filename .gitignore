@@ -1,0 +1,19 @@
+node_modules/
+node_modules
+*.log
+out/
+dist/
+
+# output del runner (reproducible: bun scripts/run.ts)
+generated/
+
+# output del porter (reproducible: bun scripts/port.ts)
+catalog/ported.json
+
+# research briefs: trabajo local, no se versionan (Karen 2026-10-21)
+docs/research/
+
+# secretos locales (AI Gateway)
+.env
+.env.local
+.env.*.local

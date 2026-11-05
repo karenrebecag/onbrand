@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/vector-search.schema.json",
+  "title": "Vector search",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "topic": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "source": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "x": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "y": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "topic"
+        ]
+      },
+      "description": "Documents in the index, 6 to 24. topic indexes into topics. source is shown beside a match in the results: icon is Simple Icons path data (painted in color, or the text color when color is left out), an image URL for a full color logo, or a ReactNode. x and y place the point on the plane from -1 to 1; left out, points spiral around their topic's center."
+    },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "Topics the documents cluster by, two to four. Each gets a region of the plane, a dashed cluster, and a name chip. color overrides the chart series color."
+    },
+    "query": {
+      "description": "The search query, typed into the readout before it is embedded.",
+      "type": "string"
+    },
+    "queryAt": {
+      "description": "Where the query lands on the plane, from -1 to 1. Defaults to beside the first document of the second topic.",
+      "type": "object"
+    },
+    "k": {
+      "description": "How many nearest documents are returned, from 1 to 5.",
+      "type": "number"
+    },
+    "dimensions": {
+      "description": "Embedding size shown in the readout heading.",
+      "type": "number"
+    },
+    "labels": {
+      "description": "Stage names in the step bar, the three counter names, the readout headings, the results heading, and the chip on the falling query.",
+      "type": "object",
+      "properties": {
+        "embed": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "index": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "query": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "rank": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "embedded": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "links": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "hops": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "embedding": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "queryHeading": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "heading"
+        },
+        "results": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "queryChip": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    },
+    "speed": {
+      "description": "Multiplies the pace. At 1 the whole story takes about 18 seconds. 0 holds still.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Holds the diagram still where it is, easing to rest instead of stopping in one frame.",
+      "type": "boolean"
+    },
+    "controls": {
+      "description": "Shows the step bar with play and pause above the diagram.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Color of the query, the search path and signal, the ring, the match lines, and the score bars. Defaults to the accent token.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible description of the diagram. Built from the topics, the query, the hop count, and the real matches with their scores when left out.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "caption": {
+      "description": "Optional visible caption under the diagram, rendered as a figcaption."
+    },
+    "style": {
+      "description": "Inline styles on the root figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "documents",
+    "topics"
+  ]
+}

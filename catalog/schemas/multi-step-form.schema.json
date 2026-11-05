@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/multi-step-form.schema.json",
+  "title": "Multi-step form",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "content": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "content"
+        ]
+      },
+      "description": "Steps in order. Renders nothing when empty."
+    },
+    "onComplete": {
+      "description": "Called when the last step is submitted.",
+      "type": "object"
+    },
+    "nextLabel": {
+      "description": "Submit label on every step except the last.",
+      "type": "string",
+      "format": "label"
+    },
+    "completeLabel": {
+      "description": "Submit label on the last step.",
+      "type": "string",
+      "format": "label"
+    },
+    "initialStep": {
+      "description": "Zero-based starting step, clamped to the range.",
+      "type": "number"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "steps"
+  ]
+}

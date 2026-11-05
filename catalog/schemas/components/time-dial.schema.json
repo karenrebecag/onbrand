@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/time-dial.schema.json",
+  "title": "Time dial",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "code": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "offset": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "code",
+          "offset"
+        ]
+      },
+      "description": "Two to five cities. offset is minutes from UTC in steps of 15; code is two or three letters shown on the dial."
+    },
+    "value": {
+      "description": "Controlled time in UTC minutes from midnight on the reference day. May leave 0 to 1439 to reach adjacent days.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Initial time when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Fires with the destination as soon as the dial is released or stepped, before it comes to rest.",
+      "type": "object"
+    },
+    "homeId": {
+      "description": "Controlled id of the city the dial reads in. Defaults to the first city.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultHomeId": {
+      "description": "Initial home city when uncontrolled.",
+      "type": "string"
+    },
+    "onHomeChange": {
+      "description": "Called when a city is chosen from the list.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Earliest time in UTC minutes. The dial stretches past it and springs back.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Latest time in UTC minutes.",
+      "type": "number"
+    },
+    "weekday": {
+      "description": "Weekday of the reference day in UTC, 0 for Sunday.",
+      "type": "number"
+    },
+    "hourCycle": {
+      "description": "Clock for the readout: 12 reads 9:30 AM, 24 reads 09:30.",
+      "type": "object"
+    },
+    "workingHours": {
+      "description": "Local working hours in minutes from midnight, drawn as a band on the dial. A city inside the band is at work. Defaults to 9:00 to 18:00.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the dial.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "cities"
+  ]
+}

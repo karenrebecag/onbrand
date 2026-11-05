@@ -1,0 +1,31 @@
+/* Contrato del DS base + identidad de la marca. La identidad la escribe el emit en identity.css desde el brand pack;
+   vacía, la página queda con el contrato neutro. */
+@import './theme/tokens.css';
+@import './identity.css';
+
+/* Sin este reset una imagen con width fijo estira su columna y el contenido desborda el frame móvil. */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}

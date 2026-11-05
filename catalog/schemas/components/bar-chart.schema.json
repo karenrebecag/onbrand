@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/bar-chart.schema.json",
+  "title": "Bar chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "axisLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "description": "Bars in order. A surviving key keeps its bar, so range switches morph."
+    },
+    "label": {
+      "description": "What is measured, such as \"Active minutes\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "period": {
+      "description": "Range on show, under the headline.",
+      "type": "string"
+    },
+    "unit": {
+      "description": "Unit after each value, such as \"min\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "averageLabel": {
+      "description": "Headline label at rest.",
+      "type": "string",
+      "format": "label"
+    },
+    "valueLabel": {
+      "description": "Headline label while a bar is scrubbed.",
+      "type": "string",
+      "format": "label"
+    },
+    "categoryLabel": {
+      "description": "First column header in the screen reader table.",
+      "type": "string",
+      "format": "label"
+    },
+    "showAverage": {
+      "description": "Draws the average as a reference line.",
+      "type": "boolean"
+    },
+    "height": {
+      "description": "Plot height in pixels.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats values and ticks. Defaults to a grouped number.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label",
+    "period"
+  ]
+}

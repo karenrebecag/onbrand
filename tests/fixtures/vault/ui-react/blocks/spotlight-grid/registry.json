@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-grid",
+  "type": "registry:block",
+  "title": "Spotlight grid",
+  "description": "A feature grid where light follows the pointer, cards play live demos, and a click morphs a card into its detail.",
+  "categories": [
+    "blocks"
+  ],
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://example.com/r/uikit-motion-tokens.json",
+    "https://example.com/r/animated-counter.json"
+  ],
+  "files": [
+    {
+      "path": "registry/blocks/spotlight-grid/spotlight-grid.tsx",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/spotlight-grid/spotlight-grid.tsx"
+    },
+    {
+      "path": "registry/blocks/spotlight-grid/spotlight-grid.module.css",
+      "type": "registry:component",
+      "target": "@components/uikit/blocks/spotlight-grid/spotlight-grid.module.css"
+    },
+    {
+      "path": "lib/media.ts",
+      "type": "registry:lib",
+      "target": "@components/uikit/lib/media.ts"
+    }
+  ],
+  "docs": "Use this as a starting point and replace the sample data with your own.",
+  "meta": {
+    "tier": "pro",
+    "kind": "block",
+    "builtFrom": [
+      "Motion"
+    ]
+  }
+}

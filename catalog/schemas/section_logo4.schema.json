@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/section_logo4.schema.json",
+  "title": "Logo 4",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "heading": {
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "type": "string",
+      "format": "description"
+    },
+    "buttons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "variant": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "primary",
+              "secondary",
+              "ghost",
+              "danger",
+              "whatsapp"
+            ]
+          },
+          "size": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "sm",
+              "md",
+              "lg"
+            ]
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "iconRight": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title"
+        ]
+      }
+    },
+    "logos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "src": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "alt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "src"
+        ]
+      }
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "heading",
+    "description",
+    "buttons",
+    "logos"
+  ]
+}

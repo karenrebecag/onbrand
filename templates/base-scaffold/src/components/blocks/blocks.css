@@ -1,0 +1,14 @@
+/* Solo lo que la gramática de layout no cubre: la barra superior y las cifras grandes. */
+.b-navbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-4); }
+.b-navbar__brand { font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); color: var(--foreground); text-decoration: none; }
+.b-navbar__links { display: flex; flex-wrap: wrap; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
+.b-navbar__links a { color: var(--text-secondary); text-decoration: none; }
+.b-navbar__links a:hover { color: var(--foreground); }
+@media (max-width: 767px) { .b-navbar__links { display: none; } }
+.b-stat__value { font-family: var(--font-display); font-size: var(--text-4xl); line-height: var(--leading-display); color: var(--foreground); }
+.b-plan__price { font-family: var(--font-display); font-size: var(--text-3xl); color: var(--foreground); }
+.b-list { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; padding: 0; list-style: none; color: var(--text-secondary); }
+.b-list li { display: flex; gap: var(--space-2); align-items: center; }
+.b-step__n { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: var(--radius-pill); background: var(--accent-subtle); color: var(--accent-strong); font-weight: 600; }
+.b-footer__links { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.b-footer__links a { color: var(--text-secondary); text-decoration: none; }

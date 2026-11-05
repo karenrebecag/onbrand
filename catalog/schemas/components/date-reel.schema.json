@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/date-reel.schema.json",
+  "title": "Date reel",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "description": "Which reels to show: day, hour, minute and AM or PM; month, day and year; or time only.",
+      "type": "string",
+      "enum": [
+        "datetime",
+        "date",
+        "time"
+      ]
+    },
+    "value": {
+      "description": "Controlled value. When it changes from outside, every reel spins to it along the short way around.",
+      "type": "object"
+    },
+    "defaultValue": {
+      "description": "Starting value when uncontrolled. Pass a fixed date so the first render matches on server and client.",
+      "type": "object"
+    },
+    "onChange": {
+      "description": "Called once when the reels come to rest on a new moment, not on every frame.",
+      "type": "object"
+    },
+    "today": {
+      "description": "Start of today, used for the Today entry and relative words such as Tomorrow or In 12 days. Pass new Date() after mount in an app.",
+      "type": "object"
+    },
+    "minDate": {
+      "description": "Earliest selectable day. The day and year reels stop here with a rubber band.",
+      "type": "object",
+      "format": "date"
+    },
+    "maxDate": {
+      "description": "Latest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "minuteStep": {
+      "description": "Minutes between entries on the minute reel.",
+      "type": "object"
+    },
+    "hourCycle": {
+      "description": "12 hour clock with an AM or PM reel, or a 24 hour clock.",
+      "type": "object"
+    },
+    "locale": {
+      "description": "BCP 47 locale for day and month names, the time format, the AM and PM words and relative phrases.",
+      "type": "string"
+    },
+    "presets": {
+      "description": "Quick picks under the reels. Choosing one spins every reel to it with a small stagger. The chip that matches the current value is marked pressed. false hides them.",
+      "type": "object"
+    },
+    "title": {
+      "description": "Optional heading above the summary, such as \"Send later\".",
+      "type": "string",
+      "format": "heading"
+    },
+    "onConfirm": {
+      "description": "Adds a primary button. Return a promise to show pending, success and failure in place without changing its width.",
+      "type": "object"
+    },
+    "labels": {
+      "description": "Words for localization: reel names (day, month, date, year, hour, minute, period), the at joiner, the quick picks group name and the confirm button states.",
+      "type": "object",
+      "properties": {
+        "day": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "month": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "date": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "date"
+        },
+        "year": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "hour": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "minute": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "period": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "at": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "presets": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "confirm": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "pending": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "done": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "failed": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false
+    },
+    "intro": {
+      "description": "Spins the reels into place, one after another, the first time the picker scrolls into view.",
+      "type": "boolean"
+    },
+    "speed": {
+      "description": "Multiplies the speed of glides, snaps and the intro.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Stops automatic motion. Reels still follow a drag and land on the nearest entry at once.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Any CSS color for the active reel in the lens and the chosen quick pick. Defaults to the theme accent.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible name of the picker group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "style": {
+      "description": "Inline styles on the root element.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "presets"
+  ]
+}

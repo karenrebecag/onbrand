@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrandFacts",
+  "description": "Hechos reales de la marca (facts.json del pack, opcional). El agente los usa como datos verdaderos y no los marca como ejemplo: no pongas valores inventados. Textos de hasta 300 caracteres y listas de hasta 12 entradas.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Ruta a este schema, para que el editor valide y autocomplete facts.json."
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)+$",
+      "maxLength": 300,
+      "description": "Dominio de la marca, sin protocolo (example.com)."
+    },
+    "whatsapp": {
+      "type": "string",
+      "pattern": "^\\+?[0-9]{8,15}$",
+      "description": "Número con prefijo de país, solo dígitos (+5215512345678); el agente arma el wa.me."
+    },
+    "channels": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      },
+      "description": "Canales en los que está la marca."
+    },
+    "clients": {
+      "type": "array",
+      "maxItems": 12,
+      "description": "Clientes, con su resultado y la fuente si la hay.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "result": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "logo": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "maxItems": 12,
+      "description": "Cifras: sin fuente no son un hecho, por eso source es obligatorio.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "value",
+          "source"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "testimonials": {
+      "type": "array",
+      "maxItems": 12,
+      "description": "Reseñas reales: la cita y quién la dijo.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "quote",
+          "person"
+        ],
+        "properties": {
+          "quote": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "person": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "company": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "photo": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "prices": {
+      "type": "array",
+      "maxItems": 12,
+      "description": "Planes y precios.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "plan",
+          "price"
+        ],
+        "properties": {
+          "plan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "price": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "includes": {
+            "type": "array",
+            "maxItems": 12,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    }
+  }
+}

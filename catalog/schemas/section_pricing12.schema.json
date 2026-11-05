@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/section_pricing12.schema.json",
+  "title": "Pricing 12",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tagline": {
+      "type": "string",
+      "format": "tagline"
+    },
+    "heading": {
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "type": "string",
+      "format": "description"
+    },
+    "periodLabel": {
+      "x-undocumented": true,
+      "type": "string",
+      "format": "label"
+    },
+    "pricingPlans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "planName": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "monthlyPrice": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "price"
+          },
+          "yearlyNote": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "features": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          },
+          "button": {
+            "x-undocumented": true,
+            "type": "object",
+            "properties": {
+              "variant": {
+                "x-undocumented": true,
+                "type": "string",
+                "enum": [
+                  "primary",
+                  "secondary",
+                  "ghost",
+                  "danger",
+                  "whatsapp"
+                ]
+              },
+              "size": {
+                "x-undocumented": true,
+                "type": "string",
+                "enum": [
+                  "sm",
+                  "md",
+                  "lg"
+                ]
+              },
+              "href": {
+                "x-undocumented": true,
+                "type": "string",
+                "format": "link"
+              },
+              "title": {
+                "x-undocumented": true,
+                "type": "string",
+                "format": "heading"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "title"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "planName",
+          "description",
+          "monthlyPrice",
+          "yearlyNote",
+          "features",
+          "button"
+        ]
+      }
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "tagline",
+    "heading",
+    "description",
+    "periodLabel",
+    "pricingPlans"
+  ]
+}

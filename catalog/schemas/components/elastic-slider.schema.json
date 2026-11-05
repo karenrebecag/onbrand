@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/elastic-slider.schema.json",
+  "title": "Elastic slider",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label. It also names the thumb.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled value. Leave it out for uncontrolled use.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Called on every change while dragging or pressing keys.",
+      "type": "object"
+    },
+    "onValueCommit": {
+      "description": "Called once a drag is released, a key changes the value, or a mark label is clicked.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lowest value.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Highest value.",
+      "type": "number"
+    },
+    "step": {
+      "description": "Value increment. Values snap to it.",
+      "type": "number"
+    },
+    "largeStep": {
+      "description": "Distance for PageUp, PageDown, and Shift with an arrow. Defaults to a tenth of the range.",
+      "type": "number"
+    },
+    "marks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Detents. A dragged thumb clicks into each one and holds for about 7px. Labelled marks print under the track and can be clicked."
+    },
+    "format": {
+      "description": "Formats the readout, the value tag, and aria-valuetext.",
+      "type": "object"
+    },
+    "showValue": {
+      "description": "Shows the value beside the label. The tag over the thumb still appears while dragging or using keys.",
+      "type": "boolean"
+    },
+    "startIcon": {
+      "description": "Icon before the track. It is pushed outward when the track is pulled past the start."
+    },
+    "endIcon": {
+      "description": "Icon after the track. It is pushed outward when the track is pulled past the end."
+    },
+    "name": {
+      "description": "Submits the value with a form through a hidden input.",
+      "type": "string",
+      "format": "person"
+    },
+    "disabled": {
+      "description": "Blocks pointer and keyboard input and removes the thumb from the tab order.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

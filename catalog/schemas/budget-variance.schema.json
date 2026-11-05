@@ -1,0 +1,585 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/budget-variance.schema.json",
+  "title": "Budget variance",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "departments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "owner": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "owner",
+          "lines"
+        ]
+      },
+      "description": "Departments with an id, a name, an owner ({ name, avatar? }) and budget lines. Each line has an id, a name, and budget and actual amounts keyed by period id. Department figures and the total are summed from the lines.",
+      "maxItems": 7,
+      "x-empty": "omit"
+    },
+    "periods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "phrase": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "description",
+          "phrase"
+        ]
+      },
+      "description": "Reporting windows for the switch, each with an id, a short label, a description shown under the title and a phrase for screen reader sentences (\"in the third quarter\").",
+      "maxItems": 3,
+      "x-empty": "omit"
+    },
+    "defaultPeriod": {
+      "description": "Id of the window shown first. Defaults to the first period.",
+      "type": "string"
+    },
+    "defaultExpanded": {
+      "x-nullable": true,
+      "description": "Id of the department open on first render. Pass null to start with every department closed.",
+      "type": "string"
+    },
+    "ranges": {
+      "description": "Qualitative band edges as shares of budget. Spend between them is within tolerance; the bands step darker past the upper edge.",
+      "type": "object"
+    },
+    "onPlanThreshold": {
+      "description": "Variance smaller than this share of budget reads as on plan and stays neutral.",
+      "type": "number"
+    },
+    "currency": {
+      "description": "Symbol placed before every amount. Amounts shorten to k and M.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Heading of the block.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Replaces the period description under the title.",
+      "type": "string",
+      "format": "description"
+    },
+    "onPeriodChange": {
+      "description": "Called when the reporting window changes.",
+      "type": "object"
+    },
+    "onDepartmentToggle": {
+      "description": "Called when a department opens or closes. Opening one closes the one that was open, which is reported first.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "departments",
+    "periods"
+  ],
+  "examples": [
+    {
+      "departments": [
+        {
+          "name": "Engineering",
+          "owner": {
+            "name": "Nathan Cole"
+          },
+          "lines": [
+            {
+              "name": "Salaries and benefits",
+              "budget": {
+                "month": 1035000,
+                "quarter": 3090000,
+                "ytd": 9075000
+              },
+              "actual": {
+                "month": 993600,
+                "quarter": 2956050,
+                "ytd": 8791200
+              }
+            },
+            {
+              "name": "Cloud infrastructure",
+              "budget": {
+                "month": 182000,
+                "quarter": 546000,
+                "ytd": 1638000
+              },
+              "actual": {
+                "month": 216580,
+                "quarter": 633360,
+                "ytd": 1785420
+              }
+            },
+            {
+              "name": "Contractors",
+              "budget": {
+                "month": 96000,
+                "quarter": 288000,
+                "ytd": 864000
+              },
+              "actual": {
+                "month": 93120,
+                "quarter": 300480,
+                "ytd": 872640
+              }
+            },
+            {
+              "name": "Software and tools",
+              "budget": {
+                "month": 48000,
+                "quarter": 144000,
+                "ytd": 432000
+              },
+              "actual": {
+                "month": 50880,
+                "quarter": 151680,
+                "ytd": 444480
+              }
+            },
+            {
+              "name": "Travel",
+              "budget": {
+                "month": 12000,
+                "quarter": 36000,
+                "ytd": 108000
+              },
+              "actual": {
+                "month": 14880,
+                "quarter": 32640,
+                "ytd": 88080
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sales",
+          "owner": {
+            "name": "Tyler Hayes"
+          },
+          "lines": [
+            {
+              "name": "Salaries and commissions",
+              "budget": {
+                "month": 612000,
+                "quarter": 1836000,
+                "ytd": 5508000
+              },
+              "actual": {
+                "month": 667080,
+                "quarter": 1891080,
+                "ytd": 5550840
+              }
+            },
+            {
+              "name": "Travel and client events",
+              "budget": {
+                "month": 64000,
+                "quarter": 192000,
+                "ytd": 576000
+              },
+              "actual": {
+                "month": 75520,
+                "quarter": 185600,
+                "ytd": 566400
+              }
+            },
+            {
+              "name": "Sales tools",
+              "budget": {
+                "month": 38000,
+                "quarter": 114000,
+                "ytd": 342000
+              },
+              "actual": {
+                "month": 38380,
+                "quarter": 115140,
+                "ytd": 344280
+              }
+            },
+            {
+              "name": "Partner referrals",
+              "budget": {
+                "month": 42000,
+                "quarter": 126000,
+                "ytd": 378000
+              },
+              "actual": {
+                "month": 52920,
+                "quarter": 137760,
+                "ytd": 337260
+              }
+            }
+          ]
+        },
+        {
+          "name": "Marketing",
+          "owner": {
+            "name": "Ava Mitchell"
+          },
+          "lines": [
+            {
+              "name": "Paid acquisition",
+              "budget": {
+                "month": 240000,
+                "quarter": 720000,
+                "ytd": 2160000
+              },
+              "actual": {
+                "month": 216000,
+                "quarter": 628800,
+                "ytd": 1975200
+              }
+            },
+            {
+              "name": "Salaries and benefits",
+              "budget": {
+                "month": 186000,
+                "quarter": 558000,
+                "ytd": 1674000
+              },
+              "actual": {
+                "month": 180420,
+                "quarter": 541260,
+                "ytd": 1646100
+              }
+            },
+            {
+              "name": "Events and sponsorships",
+              "budget": {
+                "month": 140000,
+                "quarter": 260000,
+                "ytd": 700000
+              },
+              "actual": {
+                "month": 130200,
+                "quarter": 235800,
+                "ytd": 633000
+              }
+            },
+            {
+              "name": "Content and design",
+              "budget": {
+                "month": 58000,
+                "quarter": 174000,
+                "ytd": 522000
+              },
+              "actual": {
+                "month": 51620,
+                "quarter": 160080,
+                "ytd": 486040
+              }
+            },
+            {
+              "name": "Marketing tools",
+              "budget": {
+                "month": 22000,
+                "quarter": 66000,
+                "ytd": 198000
+              },
+              "actual": {
+                "month": 22880,
+                "quarter": 68640,
+                "ytd": 202400
+              }
+            }
+          ]
+        },
+        {
+          "name": "Customer success",
+          "owner": {
+            "name": "Hannah Walsh"
+          },
+          "lines": [
+            {
+              "name": "Salaries and benefits",
+              "budget": {
+                "month": 292000,
+                "quarter": 876000,
+                "ytd": 2628000
+              },
+              "actual": {
+                "month": 303680,
+                "quarter": 905200,
+                "ytd": 2668880
+              }
+            },
+            {
+              "name": "Onboarding services",
+              "budget": {
+                "month": 44000,
+                "quarter": 132000,
+                "ytd": 396000
+              },
+              "actual": {
+                "month": 56760,
+                "quarter": 163240,
+                "ytd": 466840
+              }
+            },
+            {
+              "name": "Support tooling",
+              "budget": {
+                "month": 26000,
+                "quarter": 78000,
+                "ytd": 234000
+              },
+              "actual": {
+                "month": 28080,
+                "quarter": 84240,
+                "ytd": 242320
+              }
+            },
+            {
+              "name": "Training",
+              "budget": {
+                "month": 9000,
+                "quarter": 27000,
+                "ytd": 81000
+              },
+              "actual": {
+                "month": 7380,
+                "quarter": 16740,
+                "ytd": 55260
+              }
+            }
+          ]
+        },
+        {
+          "name": "Product and design",
+          "owner": {
+            "name": "Jasmine Brooks"
+          },
+          "lines": [
+            {
+              "name": "Salaries and benefits",
+              "budget": {
+                "month": 342000,
+                "quarter": 1026000,
+                "ytd": 3078000
+              },
+              "actual": {
+                "month": 345420,
+                "quarter": 1032840,
+                "ytd": 3054060
+              }
+            },
+            {
+              "name": "Research panels",
+              "budget": {
+                "month": 18000,
+                "quarter": 54000,
+                "ytd": 162000
+              },
+              "actual": {
+                "month": 15840,
+                "quarter": 49140,
+                "ytd": 149040
+              }
+            },
+            {
+              "name": "Design tools",
+              "budget": {
+                "month": 11000,
+                "quarter": 33000,
+                "ytd": 99000
+              },
+              "actual": {
+                "month": 10560,
+                "quarter": 31680,
+                "ytd": 97680
+              }
+            }
+          ]
+        },
+        {
+          "name": "Finance and legal",
+          "owner": {
+            "name": "Andre Williams"
+          },
+          "lines": [
+            {
+              "name": "Salaries and benefits",
+              "budget": {
+                "month": 152000,
+                "quarter": 456000,
+                "ytd": 1368000
+              },
+              "actual": {
+                "month": 153520,
+                "quarter": 460560,
+                "ytd": 1372560
+              }
+            },
+            {
+              "name": "Legal counsel",
+              "budget": {
+                "month": 55000,
+                "quarter": 165000,
+                "ytd": 495000
+              },
+              "actual": {
+                "month": 74800,
+                "quarter": 212300,
+                "ytd": 556050
+              }
+            },
+            {
+              "name": "Audit and tax",
+              "budget": {
+                "month": 30000,
+                "quarter": 90000,
+                "ytd": 330000
+              },
+              "actual": {
+                "month": 27000,
+                "quarter": 80400,
+                "ytd": 313200
+              }
+            },
+            {
+              "name": "Insurance",
+              "budget": {
+                "month": 31000,
+                "quarter": 93000,
+                "ytd": 279000
+              },
+              "actual": {
+                "month": 31930,
+                "quarter": 95790,
+                "ytd": 281790
+              }
+            }
+          ]
+        },
+        {
+          "name": "People",
+          "owner": {
+            "name": "Sofia Ramirez"
+          },
+          "lines": [
+            {
+              "name": "Recruiting",
+              "budget": {
+                "month": 68000,
+                "quarter": 204000,
+                "ytd": 612000
+              },
+              "actual": {
+                "month": 39440,
+                "quarter": 129200,
+                "ytd": 448800
+              }
+            },
+            {
+              "name": "Offsites and culture",
+              "budget": {
+                "month": 70000,
+                "quarter": 106000,
+                "ytd": 266000
+              },
+              "actual": {
+                "month": 75600,
+                "quarter": 101880,
+                "ytd": 234080
+              }
+            },
+            {
+              "name": "Benefits administration",
+              "budget": {
+                "month": 21000,
+                "quarter": 63000,
+                "ytd": 189000
+              },
+              "actual": {
+                "month": 21000,
+                "quarter": 63000,
+                "ytd": 189000
+              }
+            },
+            {
+              "name": "Learning budget",
+              "budget": {
+                "month": 14000,
+                "quarter": 42000,
+                "ytd": 126000
+              },
+              "actual": {
+                "month": 11760,
+                "quarter": 31920,
+                "ytd": 91560
+              }
+            }
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "label": "Month",
+          "description": "September 2026",
+          "phrase": "in September"
+        },
+        {
+          "label": "Quarter",
+          "description": "Q3 2026, July to September",
+          "phrase": "in the third quarter"
+        },
+        {
+          "label": "Year to date",
+          "description": "January to September 2026",
+          "phrase": "so far this year"
+        }
+      ]
+    }
+  ]
+}

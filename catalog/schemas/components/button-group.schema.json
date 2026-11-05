@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/button-group.schema.json",
+  "title": "Button group",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "reserve": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "iconOnly": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "content": {
+            "x-undocumented": true
+          },
+          "onSelect": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "href": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "link"
+          },
+          "disabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "The segments in order. label is the visible text and the accessible name; changing it right after a press (\"Share\" to \"Copied\") crossfades in place and is announced. reserve lists every other label the segment can show, so it is sized to the widest and never resizes; a label nobody reserved springs the width instead. iconOnly shows only the icon and moves the label to aria-label and the tooltip. content replaces the visible label with a live value, such as a zoom level. href renders a link."
+    },
+    "menu": {
+      "description": "Adds a trailing chevron segment that opens more actions. menu.label names the chevron, such as \"More actions\". The menu aligns to the group's end edge (start edge when vertical).",
+      "type": "object",
+      "properties": {
+        "label": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "tagline"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "items"
+      ]
+    },
+    "label": {
+      "description": "Accessible name of the group, such as \"Document actions\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "variant": {
+      "description": "outline sits on a neutral surface with a quiet border. solid takes the primary button's fill, for the main actions of a view.",
+      "type": "string",
+      "enum": [
+        "outline",
+        "solid"
+      ]
+    },
+    "size": {
+      "description": "Matches the small and medium button heights.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md"
+      ]
+    },
+    "orientation": {
+      "description": "Vertical stacks the segments, such as zoom controls on a canvas; arrow up and down then move between them.",
+      "type": "string",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "collapseLabels": {
+      "description": "When a horizontal row no longer fits its container, segments with an icon drop their label and keep the icon (the label moves to aria-label and the tooltip). Labels return once the container is wide enough again.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables every segment and the menu.",
+      "type": "boolean"
+    },
+    "style": {
+      "description": "Inline styles on the group.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "items",
+    "label"
+  ],
+  "x-variants": [
+    "outline",
+    "solid"
+  ]
+}

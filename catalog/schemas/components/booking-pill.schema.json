@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/booking-pill.schema.json",
+  "title": "Booking pill",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "venue": {
+      "description": "Venue name printed on the ticket.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "venueDetail": {
+      "description": "Second ticket line, such as the address.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "startDate": {
+      "description": "First day on the strip as an ISO date. Pass it from data so server and client agree.",
+      "type": "string",
+      "format": "date"
+    },
+    "days": {
+      "description": "Days on the strip.",
+      "type": "number"
+    },
+    "times": {
+      "description": "Seating times as \"HH:MM\", in order, shown four to a row. The default runs every half hour from 17:00 to 22:30.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "isAvailable": {
+      "description": "Whether a time is free. Everything is free by default.",
+      "type": "object"
+    },
+    "preferredTime": {
+      "description": "Preselected when free, otherwise the nearest free time, as \"HH:MM\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "minPartySize": {
+      "description": "Smallest party.",
+      "type": "number"
+    },
+    "maxPartySize": {
+      "description": "Largest party.",
+      "type": "number"
+    },
+    "defaultPartySize": {
+      "description": "Starting party size.",
+      "type": "number"
+    },
+    "onConfirm": {
+      "description": "Books the table. Resolve to show the booked state, reject to keep the ticket open with an error. Defaults to a short simulated wait.",
+      "type": "object"
+    },
+    "onStepChange": {
+      "description": "Called on every step, for example to let the page recede while the pill is open.",
+      "type": "object"
+    },
+    "hourCycle": {
+      "description": "Clock used for displayed times, such as 7:30 PM or 19:30. times, preferredTime, and onConfirm always use \"HH:MM\".",
+      "type": "object"
+    },
+    "label": {
+      "description": "Label of the closed pill.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "venue",
+    "startDate"
+  ]
+}

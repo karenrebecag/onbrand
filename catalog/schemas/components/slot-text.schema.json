@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/slot-text.schema.json",
+  "title": "Slot text",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "The value to show. Numbers pass through format.",
+      "type": "string"
+    },
+    "format": {
+      "description": "Formats number values. Defaults to en-US grouping (12,480).",
+      "type": "object"
+    },
+    "duration": {
+      "description": "Seconds the first reel spins.",
+      "type": "number"
+    },
+    "stagger": {
+      "description": "Seconds between reels stopping, left to right.",
+      "type": "number"
+    },
+    "spins": {
+      "description": "Extra full turns before landing. 0 rolls straight to the new digit.",
+      "type": "number"
+    },
+    "align": {
+      "description": "Which end reels are matched from when the length changes. Numbers default to end, strings to start.",
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "announce": {
+      "description": "Announces new values politely to screen readers.",
+      "type": "boolean"
+    },
+    "style": {
+      "x-undocumented": true,
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value"
+  ]
+}

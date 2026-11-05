@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/input.schema.json",
+  "title": "Input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label, tied to the input with htmlFor.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "description": {
+      "description": "Helper copy under the field, linked through aria-describedby.",
+      "type": "string",
+      "format": "description"
+    },
+    "error": {
+      "description": "Error copy. Sets aria-invalid and renders in a role=\"alert\" row.",
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

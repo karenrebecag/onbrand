@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/toast-stack.schema.json",
+  "title": "Toast stack",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Accessible name of the region.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "position": {
+      "description": "Corner of the viewport.",
+      "type": "string",
+      "enum": [
+        "bottom-right",
+        "bottom-center",
+        "bottom-left"
+      ]
+    },
+    "contained": {
+      "description": "Pins the stack inside the nearest positioned ancestor instead of the window.",
+      "type": "boolean"
+    },
+    "visibleToasts": {
+      "description": "How many toasts show at once.",
+      "type": "number"
+    },
+    "hotkey": {
+      "description": "Alt+T moves focus into the stack.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2
+}

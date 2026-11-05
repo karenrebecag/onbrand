@@ -1,0 +1,37 @@
+/* Popover de edición directa de Stitch: tarjeta de vidrio con borde, ítems de 44 px y Delete en rojo (r-05-edit-b.png). */
+.connector { position: absolute; z-index: 4; height: 0; border-top: 1.5px solid var(--stitch-accent, var(--accent)); pointer-events: none; }
+.connector[data-side='top'], .connector[data-side='bottom'] { width: 0; border-top: 0; border-left: 1.5px solid var(--stitch-accent, var(--accent)); }
+/* El punto va sobre el elemento: al principio de la línea a la derecha y abajo, al final a la izquierda y arriba. */
+.connector i { position: absolute; left: -4px; top: -4.75px; width: 8px; height: 8px; border-radius: 50%; background: var(--stitch-accent, var(--accent)); }
+.connector i[data-at='left'] { left: auto; right: -4px; }
+.connector i[data-at='bottom'] { top: -4px; left: -4.75px; }
+.connector i[data-at='top'] { top: auto; bottom: -4px; left: -4.75px; }
+.popover { position: absolute; z-index: 5; width: 200px; transform-origin: center; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-floating); font-size: var(--text-sm); }
+.head { display: flex; height: 44px; align-items: center; justify-content: space-between; padding: 0 var(--space-2) 0 var(--space-4); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+.source { min-width: 0; margin-left: auto; margin-right: var(--space-2); overflow: hidden; color: var(--text-secondary); font-size: var(--text-xs); text-overflow: ellipsis; white-space: nowrap; }
+.close { display: grid; width: 28px; height: 28px; place-items: center; border: 0; border-radius: 8px; background: transparent; color: var(--text-secondary); cursor: pointer; }
+.close:hover { background: var(--hover); color: var(--foreground); }
+.items { display: flex; flex-direction: column; padding: var(--space-1); }
+.items > span { display: flex; }
+.item { display: flex; width: 100%; height: 44px; align-items: center; gap: var(--space-3); padding: 0 var(--space-3); border: 0; border-radius: 10px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.item:hover:not(:disabled) { background: var(--hover); }
+.item:disabled { color: var(--text-muted); cursor: not-allowed; }
+.item[data-danger] { color: var(--danger); }
+.item[data-danger]:disabled { color: color-mix(in oklab, var(--danger) 55%, transparent); }
+.items[data-group='section'] { border-top: 1px solid var(--border-subtle); }
+.groupLabel { padding: var(--space-2) var(--space-3) var(--space-1); color: var(--text-secondary); font-size: var(--text-xs); }
+/* Enter URL de Stitch (i-08/i-09): pastilla con globo, el src seleccionado y ✓; en error, borde y aviso en rojo. */
+.popover:has(.urlForm) { width: 320px; }
+.urlForm { padding: var(--space-2); }
+.urlField { display: flex; height: 40px; align-items: center; gap: var(--space-2); padding: 0 var(--space-1) 0 var(--space-3); border: 1px solid var(--border); border-radius: 999px; color: var(--text-secondary); }
+.urlField:focus-within { border-color: var(--stitch-accent, var(--accent)); }
+.urlField[data-error] { border-color: var(--danger); }
+.urlField input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--foreground); font: inherit; outline: none; }
+.urlOk { display: grid; width: 32px; height: 32px; place-items: center; border: 0; border-radius: 999px; background: transparent; color: var(--foreground); cursor: pointer; }
+.urlOk:hover:not(:disabled) { background: var(--hover); }
+.urlOk:disabled { color: var(--text-muted); cursor: progress; }
+.urlError { margin: var(--space-2) var(--space-3) 0; color: var(--danger); font-size: var(--text-xs); }
+/* Chips de Stitch por pantalla (_Component66): pastillas apiladas a la izquierda, máximo 5. */
+.suggestions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-2) var(--space-3) var(--space-3); border-top: 1px solid var(--border-subtle); }
+.suggestion { min-height: 32px; padding: var(--space-1) var(--space-3); border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--text-secondary); font: inherit; font-size: var(--text-xs); text-align: start; cursor: pointer; }
+.suggestion:hover { background: var(--hover); color: var(--foreground); }

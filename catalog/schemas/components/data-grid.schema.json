@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/data-grid.schema.json",
+  "title": "Data grid",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Column definitions in definition order. Pinned columns are drawn first."
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Controlled rows. Pair with onRowsChange."
+    },
+    "defaultRows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Starting rows when uncontrolled."
+    },
+    "onRowsChange": {
+      "description": "Called with the full row list after every edit, fill, paste, cut, clear, delete, undo, or redo.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name for the grid. Also names the exported CSV file.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "maxHeight": {
+      "description": "Tallest the scrolling area grows before it scrolls, in px.",
+      "type": "number"
+    },
+    "sort": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Controlled sort keys in priority order."
+    },
+    "defaultSort": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Starting sort keys when uncontrolled."
+    },
+    "onSortChange": {
+      "description": "Called when a header click, Shift-click, or header menu changes the sort.",
+      "type": "object"
+    },
+    "filters": {
+      "description": "Controlled column filters, keyed by column key.",
+      "type": "object"
+    },
+    "defaultFilters": {
+      "description": "Starting filters when uncontrolled. The filter row starts open when any filter is set.",
+      "type": "object"
+    },
+    "onFiltersChange": {
+      "description": "Called when a filter changes or all filters are cleared.",
+      "type": "object"
+    },
+    "selectedRowIds": {
+      "description": "Controlled checked row ids.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultSelectedRowIds": {
+      "description": "Starting checked row ids when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onSelectedRowIdsChange": {
+      "description": "Called with checked ids in data order.",
+      "type": "object"
+    },
+    "hiddenColumns": {
+      "description": "Controlled hidden column keys.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultHiddenColumns": {
+      "description": "Starting hidden keys. Defaults to columns with hidden: true.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onHiddenColumnsChange": {
+      "description": "Called when the columns menu or a header menu hides or shows a column.",
+      "type": "object"
+    },
+    "pinnedColumns": {
+      "description": "Controlled pinned column keys.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultPinnedColumns": {
+      "description": "Starting pinned keys. Defaults to columns with pinned: true, or the first column when no column sets pinned.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onPinnedColumnsChange": {
+      "description": "Called when a header menu pins or unpins a column.",
+      "type": "object"
+    },
+    "density": {
+      "description": "Controlled row density: 32, 40, or 48px rows.",
+      "type": "string",
+      "enum": [
+        "compact",
+        "standard",
+        "comfortable"
+      ]
+    },
+    "defaultDensity": {
+      "description": "Starting density when uncontrolled.",
+      "type": "string",
+      "enum": [
+        "compact",
+        "standard",
+        "comfortable"
+      ]
+    },
+    "onDensityChange": {
+      "description": "Called when the density menu changes.",
+      "type": "object"
+    },
+    "rowSelection": {
+      "description": "Shows the row gutter with row numbers and checkboxes.",
+      "type": "boolean"
+    },
+    "rowNumbers": {
+      "description": "Shows the row number in the gutter. When false the gutter narrows to 40px and its checkboxes always show. With rowSelection off there is no gutter either way.",
+      "type": "boolean"
+    },
+    "selectionStats": {
+      "description": "Shows the active cell address and the Count, Sum, and Average of the selected cells in the status bar. Status messages, such as Undo after a delete, show either way.",
+      "type": "boolean"
+    },
+    "toolbar": {
+      "description": "Shows the toolbar with search, undo and redo, filters, columns, density, and export.",
+      "type": "boolean"
+    },
+    "totals": {
+      "description": "Shows the sticky totals row. It always covers every row the filters keep, including rows inside collapsed groups.",
+      "type": "boolean"
+    },
+    "groupBy": {
+      "description": "Controlled group-by column keys, outermost first. Each group row shows a toggle, its value and row count, and a subtotal under every column whose aggregate is not none.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultGroupBy": {
+      "description": "Starting group-by keys when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onGroupByChange": {
+      "description": "Called when a header menu starts or stops grouping by a column.",
+      "type": "object"
+    },
+    "exportFormats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Formats Export offers. With more than one, Export opens a menu. xlsx keeps number, currency, percent, and date formats, column widths, a frozen header and pinned columns, bold totals, and groups as outlined rows with SUBTOTAL formulas."
+    },
+    "dataSource": {
+      "description": "Loads rows from a server one block at a time as people scroll, instead of rows. Sort, filters, and search are sent with each request. Keep it stable with useMemo. A grid with a data source is read only, does not group, hides select all, and exports only checked rows.",
+      "type": "object",
+      "properties": {
+        "getRows": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "blockSize": {
+          "x-undocumented": true,
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "getRows"
+      ]
+    },
+    "bulkActions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "tone": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "onAction": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "onAction"
+        ]
+      },
+      "description": "Extra actions for checked rows, shown between Export and Delete."
+    },
+    "canDeleteRows": {
+      "description": "Shows Delete for checked rows. Deleting can be undone.",
+      "type": "boolean"
+    },
+    "exportFileName": {
+      "description": "Export file name without the extension. Defaults to a slug of label.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "loading": {
+      "description": "Shows six placeholder rows and sets aria-busy.",
+      "type": "boolean"
+    },
+    "emptyMessage": {
+      "description": "Shown when there are no rows at all. Filtered-out rows show \"No rows match\" with Clear filters.",
+      "type": "string",
+      "format": "chatMessage"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "columns",
+    "label"
+  ]
+}

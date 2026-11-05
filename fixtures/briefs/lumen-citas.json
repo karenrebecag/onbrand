@@ -1,0 +1,7 @@
+{
+  "summary": "Lumen: software de agenda para clínicas dentales que confirma citas por WhatsApp, reduce las ausencias y llena los huecos de último minuto. Landing con beneficios, cómo funciona, testimonios, planes y preguntas frecuentes.",
+  "goal": "empezar la prueba gratis",
+  "tone": "clean",
+  "maxStrips": 8,
+  "sections": ["hero", "features", "steps", "testimonials", "pricing", "faq", "cta"]
+}

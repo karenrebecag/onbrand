@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/dropdown-menu.schema.json",
+  "title": "Dropdown menu",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Trigger text. A new label rises in while the trigger width springs.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "onSelect": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "disabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "destructive": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "separatorBefore": {
+            "x-undocumented": true,
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Items: { label, onSelect?, disabled?, icon?, destructive?, separatorBefore? }. Labels double as keys, so keep them unique."
+    },
+    "icon": {
+      "description": "Leading icon in the trigger."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "items"
+  ]
+}

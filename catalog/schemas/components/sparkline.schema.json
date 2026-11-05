@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sparkline.schema.json",
+  "title": "Sparkline",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "description": "Points in order, oldest first.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "label": {
+      "description": "What is measured. Names the chart.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Headline value at rest. While scrubbing it shows the point under the cursor.",
+      "type": "string"
+    },
+    "change": {
+      "description": "Aside text at rest, such as \"+4.1%\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "tone": {
+      "description": "Line and change color.",
+      "type": "string",
+      "enum": [
+        "accent",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "width": {
+      "description": "Drawing width in SVG units.",
+      "type": "number"
+    },
+    "height": {
+      "description": "Drawing height in SVG units.",
+      "type": "number"
+    },
+    "labels": {
+      "description": "One label per point, such as a date, shown while scrubbing.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "formatValue": {
+      "description": "Formats a scrubbed point. Defaults to a grouped number.",
+      "type": "object"
+    },
+    "area": {
+      "description": "Quiet fill under the line.",
+      "type": "boolean"
+    },
+    "interactive": {
+      "description": "Enables pointer and keyboard scrubbing.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label"
+  ]
+}

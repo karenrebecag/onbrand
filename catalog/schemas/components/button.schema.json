@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/button.schema.json",
+  "title": "Button",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "Visual weight. Use one primary action per surface.",
+      "type": "string",
+      "enum": [
+        "primary",
+        "secondary",
+        "ghost",
+        "danger",
+        "whatsapp"
+      ]
+    },
+    "size": {
+      "description": "Height and padding.",
+      "type": "string",
+      "enum": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "loading": {
+      "description": "Shows a spinner, sets aria-busy, and swallows clicks while keeping focus.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "x-variants": [
+    "primary",
+    "secondary",
+    "ghost",
+    "danger",
+    "whatsapp"
+  ]
+}

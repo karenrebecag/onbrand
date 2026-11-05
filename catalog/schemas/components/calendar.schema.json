@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/calendar.schema.json",
+  "title": "Calendar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Selected date.",
+      "type": "object"
+    },
+    "onChange": {
+      "description": "Called when a day is picked.",
+      "type": "object"
+    },
+    "month": {
+      "description": "Controlled visible month.",
+      "type": "object"
+    },
+    "onMonthChange": {
+      "description": "Called with the first of the new month when navigating.",
+      "type": "object"
+    },
+    "minDate": {
+      "description": "Earliest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "maxDate": {
+      "description": "Latest selectable day.",
+      "type": "object",
+      "format": "date"
+    },
+    "disabledDates": {
+      "description": "Return true to block a day, such as weekends.",
+      "type": "object"
+    },
+    "locale": {
+      "description": "Month, weekday, and day names.",
+      "type": "string"
+    },
+    "showToday": {
+      "description": "Adds a Today button that returns to the current month and selects today when allowed.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2
+}

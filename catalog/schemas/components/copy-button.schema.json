@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/copy-button.schema.json",
+  "title": "Copy button",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "The text to copy.",
+      "type": "string"
+    },
+    "label": {
+      "description": "Idle label and accessible name.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "iconOnly": {
+      "description": "Hides the text and shows only the icon.",
+      "type": "boolean"
+    },
+    "variant": {
+      "description": "Bordered or borderless.",
+      "type": "string",
+      "enum": [
+        "outline",
+        "plain"
+      ]
+    },
+    "disabled": {
+      "description": "Disables the button.",
+      "type": "boolean"
+    },
+    "onCopied": {
+      "description": "Called after a successful copy.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value"
+  ],
+  "x-variants": [
+    "outline",
+    "plain"
+  ]
+}

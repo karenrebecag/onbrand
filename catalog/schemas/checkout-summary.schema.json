@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/checkout-summary.schema.json",
+  "title": "Checkout summary",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "item": {
+      "description": "The product: name, price, and optional description, period, and media. Omit it to render the built-in sample order.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "description": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "description"
+        },
+        "price": {
+          "x-undocumented": true,
+          "type": "number",
+          "x-format-confidence": "low"
+        },
+        "period": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "media": {
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "price"
+      ]
+    },
+    "adjustments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "amount": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "note": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "amount"
+        ]
+      },
+      "description": "Automatic lines, each with id, label, amount (negative for a discount), and optional note."
+    },
+    "coupon": {
+      "description": "Enables the promo code field. onApply resolves { ok: true, code, label?, amount } or { ok: false, message }. Validate on your server.",
+      "type": "object"
+    },
+    "tax": {
+      "description": "Tax line. With rate the amount is computed from the discounted subtotal; without it note, or Calculated at checkout, is shown.",
+      "type": "object"
+    },
+    "currency": {
+      "description": "Symbol before amounts.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Heading, also the section's accessible name.",
+      "type": "string",
+      "format": "heading"
+    },
+    "payLabel": {
+      "description": "Pay button label. Receives the formatted total.",
+      "type": "object",
+      "x-format-confidence": "low"
+    },
+    "onPay": {
+      "description": "Client-side payment. Resolve to show success, reject to show an error and Try again.",
+      "type": "object"
+    },
+    "form": {
+      "description": "Posts a native form instead, such as to a route that creates a hosted checkout session. fields become hidden inputs.",
+      "type": "object"
+    },
+    "secureNote": {
+      "description": "Line beside the lock under the button."
+    },
+    "successLabel": {
+      "description": "Button label once onPay resolves.",
+      "type": "string",
+      "format": "label"
+    },
+    "disabled": {
+      "description": "Shows the button but blocks payment, such as before checkout opens.",
+      "type": "boolean"
+    },
+    "footnote": {
+      "description": "Small print under the button."
+    }
+  },
+  "x-formats-version": 2
+}

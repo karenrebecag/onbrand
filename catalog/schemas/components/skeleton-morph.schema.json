@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/skeleton-morph.schema.json",
+  "title": "Skeleton morph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "loading": {
+      "description": "While true, blocks show their skeletons and the region is aria-busy.",
+      "type": "boolean"
+    },
+    "children": {
+      "description": "The loaded layout, with each visible piece wrapped in a MorphBlock."
+    },
+    "stagger": {
+      "description": "Seconds between blocks as they resolve in reading order.",
+      "type": "number"
+    },
+    "loadingLabel": {
+      "description": "Status text read by screen readers while loading.",
+      "type": "string",
+      "format": "label"
+    },
+    "as": {
+      "description": "The root element. Style it as the card so its border follows the eased height.",
+      "type": "object"
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "loading",
+    "children"
+  ]
+}

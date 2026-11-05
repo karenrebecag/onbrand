@@ -1,0 +1,38 @@
+name: CI
+# Corre en el runner propio (Mac de Karen, sin cuota de minutos) y solo en push a main y a mano: los PRs se
+# validan en local antes del merge y las versiones (tags) van por release.yml en los runners de GitHub.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: [self-hosted, onbrand]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
+      # El DS base trae el typescript fijado (6.0.3) que usa el paso de tsc y react para los tests que montan sus bloques.
+      - run: cd templates/base-scaffold && bun install --frozen-lockfile
+      # Hay tests que importan código del builder (run-client, use-builder, bloques de agent-run): sin sus deps fallan
+      # con "Cannot find package 'react'".
+      - run: cd apps/builder && bun install --frozen-lockfile
+      # Los tests *.browser, preview-check y los sensores lanzan chromium por playwright. En el runner propio el
+      # navegador persiste entre corridas (~/Library/Caches/ms-playwright), así que no hace falta cache ni --with-deps.
+      - run: bunx playwright install chromium
+      # bun test no tipa: un import roto o una firma vieja en src/ pasa si ningún test la ejercita (#776).
+      # El tsc del DS base y no `bun x tsc`: la raíz no tiene typescript y bun x bajaría la última versión en cada corrida.
+      - run: templates/base-scaffold/node_modules/.bin/tsc --noEmit
+      # Los *.browser lanzan chromium y en la suite junta agotan sus plazos bajo carga (5 s / 60 s), cada vez en otro archivo
+      # (preview-viewport en B3, preview-broken-image en main, 2026-11-05); aislados pasan. Van en un paso aparte y en serie.
+      - run: bun test --path-ignore-patterns='**/*.browser.test.ts'
+      - run: bun test --max-concurrency=1 browser.test

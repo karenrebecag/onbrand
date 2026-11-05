@@ -1,0 +1,10 @@
+{
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": ["@radix-ui/react-switch", "motion"],
+  "registryDependencies": ["https://example.com/r/uikit-motion-tokens.json"],
+  "files": [
+    { "path": "registry/components/switch/switch.tsx", "type": "registry:component" },
+    { "path": "registry/components/switch/switch.module.css", "type": "registry:component" }
+  ]
+}

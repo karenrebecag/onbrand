@@ -1,0 +1,14 @@
+{
+  "atom": {
+    "lang": "es",
+    "brief": "Quiero una landing para Atom (atomchat.io), una plataforma de agentes de IA que venden y atienden clientes por WhatsApp, Instagram y webchat. Público: gerentes de ventas y marketing de pymes en LATAM. Objetivo: que agenden una demo por WhatsApp. Incluye beneficios, cómo funciona, casos de éxito con métricas, precios y preguntas frecuentes."
+  },
+  "lumbre": {
+    "lang": "en",
+    "brief": "Landing page for Café Lumbre, a neighborhood coffee roaster in Mexico City. Include a hero with a photo, a logo for the brand in the header, 3 features with icons, customer testimonials with avatars, and a CTA to order online."
+  },
+  "clinica": {
+    "lang": "es",
+    "brief": "Landing para Clínica Dental Sonríe, en Guadalajara. Queremos que los pacientes nuevos agenden su primera valoración por WhatsApp. Muestra los tratamientos (limpieza, ortodoncia, implantes, blanqueamiento), el equipo de doctores, cómo es la primera visita, opiniones de pacientes y la ubicación con horarios."
+  }
+}

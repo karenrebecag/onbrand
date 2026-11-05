@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sand-text.schema.json",
+  "title": "Sand text",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "text": {
+      "description": "The text to form. Keep it to one short line. Changing it collapses the old word and pours the new one.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "grain": {
+      "description": "Grain size in CSS px.",
+      "type": "number"
+    },
+    "radius": {
+      "description": "Radius the pointer digs through, in CSS px.",
+      "type": "number"
+    },
+    "palette": {
+      "description": "Grain colors. Each grain picks one and varies it slightly. Defaults to the text color.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "as": {
+      "description": "Element for the visually hidden text.",
+      "type": "string",
+      "enum": [
+        "h1",
+        "h2",
+        "h3",
+        "p"
+      ]
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "text"
+  ]
+}

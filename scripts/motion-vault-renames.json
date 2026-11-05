@@ -1,0 +1,173 @@
+{
+ "noise-image-reveal": {
+  "data-anm-start": "data-anm-noise-image-reveal-start",
+  "data-anm-scrub": "data-anm-noise-image-reveal-scrub",
+  "data-anm-roughness": "data-anm-noise-image-reveal-roughness",
+  "data-anm-grain": "data-anm-noise-image-reveal-grain"
+ },
+ "multi-flip": {
+  "data-anm-stagger": "data-anm-multi-flip-stagger",
+  "data-anm-start": "data-anm-multi-flip-start",
+  "data-anm-end": "data-anm-multi-flip-end",
+  "data-anm-scrub": "data-anm-multi-flip-scrub"
+ },
+ "mask-reveal": {
+  "data-anm-mask": "data-anm-mask-reveal-mask",
+  "data-anm-direction": "data-anm-mask-reveal-direction",
+  "data-anm-toward": "data-anm-mask-reveal-toward",
+  "data-anm-clip-path": "data-anm-mask-reveal-clip-path",
+  "data-anm-origin": "data-anm-mask-reveal-origin",
+  "data-anm-start": "data-anm-mask-reveal-start",
+  "data-anm-end": "data-anm-mask-reveal-end",
+  "data-anm-scrub": "data-anm-mask-reveal-scrub",
+  "data-anm-pin": "data-anm-mask-reveal-pin"
+ },
+ "text-split-zoom": {
+  "data-anm-scale-start": "data-anm-text-split-zoom-scale-start",
+  "data-anm-scale-end": "data-anm-text-split-zoom-scale-end",
+  "data-anm-border-radius-start": "data-anm-text-split-zoom-border-radius-start",
+  "data-anm-border-radius-end": "data-anm-text-split-zoom-border-radius-end",
+  "data-anm-width-start": "data-anm-text-split-zoom-width-start",
+  "data-anm-width-end": "data-anm-text-split-zoom-width-end",
+  "data-anm-aspect-ratio": "data-anm-text-split-zoom-aspect-ratio",
+  "data-anm-start": "data-anm-text-split-zoom-start",
+  "data-anm-end": "data-anm-text-split-zoom-end",
+  "data-anm-scrub": "data-anm-text-split-zoom-scrub"
+ },
+ "flip-zone": {
+  "data-anm-start": "data-anm-flip-zone-start",
+  "data-anm-end": "data-anm-flip-zone-end",
+  "data-anm-scrub": "data-anm-flip-zone-scrub"
+ },
+ "text-reveal": {
+  "data-anm-type": "data-anm-scroll-text-reveal-type",
+  "data-anm-stagger": "data-anm-scroll-text-reveal-stagger",
+  "data-anm-y-percent": "data-anm-scroll-text-reveal-y-percent",
+  "data-anm-start": "data-anm-scroll-text-reveal-start"
+ },
+ "character-appear": {
+  "data-anm-stagger": "data-anm-scroll-character-appear-stagger",
+  "data-anm-random": "data-anm-scroll-character-appear-random",
+  "data-anm-start": "data-anm-scroll-character-appear-start",
+  "data-anm-end": "data-anm-scroll-character-appear-end",
+  "data-anm-scrub": "data-anm-scroll-character-appear-scrub"
+ },
+ "background-color": {
+  "data-anm-bg-zone": "data-anm-bg-section-zone",
+  "data-anm-bg": "data-anm-bg-section-bg",
+  "data-anm-text": "data-anm-bg-section-text",
+  "data-anm-start": "data-anm-bg-section-start"
+ },
+ "folding-text": {
+  "data-anm-direction": "data-anm-folding-text-direction",
+  "data-anm-rotation": "data-anm-folding-text-rotation",
+  "data-anm-perspective": "data-anm-folding-text-perspective",
+  "data-anm-start": "data-anm-folding-text-start",
+  "data-anm-end": "data-anm-folding-text-end",
+  "data-anm-scrub": "data-anm-folding-text-scrub"
+ },
+ "text-scramble": {
+  "data-anm-trigger": "data-anm-text-scramble-trigger",
+  "data-anm-charset": "data-anm-text-scramble-charset",
+  "data-anm-custom-charset": "data-anm-text-scramble-custom-charset",
+  "data-anm-text": "data-anm-text-scramble-text",
+  "data-anm-start": "data-anm-text-scramble-start"
+ },
+ "popping-text": {
+  "data-anm-rotation-range": "data-anm-popping-text-rotation-range",
+  "data-anm-start": "data-anm-popping-text-start",
+  "data-anm-end": "data-anm-popping-text-end",
+  "data-anm-scrub": "data-anm-popping-text-scrub"
+ },
+ "text-fill-wave": {
+  "data-anm-stagger": "data-anm-text-fill-wave-stagger",
+  "data-anm-color-from": "data-anm-text-fill-wave-color-from",
+  "data-anm-color-to": "data-anm-text-fill-wave-color-to",
+  "data-anm-color-accent": "data-anm-text-fill-wave-color-accent",
+  "data-anm-angle": "data-anm-text-fill-wave-angle",
+  "data-anm-wave-width": "data-anm-text-fill-wave-wave-width",
+  "data-anm-wave-gap": "data-anm-text-fill-wave-wave-gap",
+  "data-anm-start": "data-anm-text-fill-wave-start",
+  "data-anm-end": "data-anm-text-fill-wave-end",
+  "data-anm-scrub": "data-anm-text-fill-wave-scrub",
+  "data-anm-tfw-headline": "data-anm-text-fill-wave-item"
+ },
+ "svg-draw-path": {
+  "data-anm-trigger": "data-anm-svg-draw-path-trigger",
+  "data-anm-draw-from": "data-anm-svg-draw-path-draw-from",
+  "data-anm-draw-to": "data-anm-svg-draw-path-draw-to",
+  "data-anm-start": "data-anm-svg-draw-path-start",
+  "data-anm-end": "data-anm-svg-draw-path-end",
+  "data-anm-scrub": "data-anm-svg-draw-path-scrub"
+ },
+ "velocity-clip": {
+  "data-anm-intensity": "data-anm-velocity-clip-intensity",
+  "data-anm-smoothing": "data-anm-velocity-clip-smoothing",
+  "data-anm-scale": "data-anm-velocity-clip-scale",
+  "data-anm-scale-intensity": "data-anm-velocity-clip-scale-intensity",
+  "data-anm-start": "data-anm-velocity-clip-start",
+  "data-anm-end": "data-anm-velocity-clip-end",
+  "data-anm-scrub": "data-anm-velocity-clip-scrub"
+ },
+ "parallax": {
+  "data-anm-speed": "data-anm-parallax-speed",
+  "data-anm-direction": "data-anm-parallax-direction",
+  "data-anm-rotation": "data-anm-parallax-rotation",
+  "data-anm-start": "data-anm-parallax-start",
+  "data-anm-end": "data-anm-parallax-end",
+  "data-anm-scrub": "data-anm-parallax-scrub"
+ },
+ "inline-image-headline": {
+  "data-anm-iih-image": "data-anm-inline-image-headline-image",
+  "data-anm-stagger": "data-anm-inline-image-headline-stagger",
+  "data-anm-start": "data-anm-inline-image-headline-start",
+  "data-anm-scrub": "data-anm-inline-image-headline-scrub",
+  "data-anm-once": "data-anm-inline-image-headline-once",
+  "data-anm-slot-width": "data-anm-inline-image-headline-slot-width",
+  "data-anm-parallax": "data-anm-inline-image-headline-parallax"
+ },
+ "element-reveal": {
+  "data-anm-stagger": "data-anm-scroll-reveal-stagger",
+  "data-anm-distance": "data-anm-scroll-reveal-distance",
+  "data-anm-scale": "data-anm-scroll-reveal-scale",
+  "data-anm-rotate": "data-anm-scroll-reveal-rotate",
+  "data-anm-blur": "data-anm-scroll-reveal-blur",
+  "data-anm-start": "data-anm-scroll-reveal-start",
+  "data-anm-scrub": "data-anm-scroll-reveal-scrub"
+ },
+ "cinematic-text": {
+  "data-anm-split": "data-anm-cinematic-text-split",
+  "data-anm-direction": "data-anm-cinematic-text-direction",
+  "data-anm-stagger": "data-anm-cinematic-text-stagger",
+  "data-anm-distance": "data-anm-cinematic-text-distance",
+  "data-anm-start": "data-anm-cinematic-text-start",
+  "data-anm-end": "data-anm-cinematic-text-end",
+  "data-anm-scrub": "data-anm-cinematic-text-scrub"
+ },
+ "horizontal-scrolling-sections": {
+  "data-horizontal-scroll-panel": "data-horizontal-scroll-wrap-panel",
+  "data-horizontal-scroll-disable": "data-horizontal-scroll-wrap-disable"
+ },
+ "looping-words-with-selector": {
+  "data-looping-words-selector": "data-looping-words-list-selector"
+ },
+ "magnetic-hover-effect": {
+  "data-magnetic-inner-target": "data-magnetic-strength-inner-target"
+ },
+ "elastic-pulse-button": {
+  "data-elastic-pulse-target": "data-elastic-pulse-btn-target"
+ },
+ "3d-perspective-hover": {
+  "data-3d-hover-inner": "data-3d-hover-target-inner"
+ },
+ "parallax-image-layers": {
+  "data-parallax-layer": "data-parallax-layers-layer"
+ },
+ "queued-scroll-reveal": {
+  "data-queued-reveal-item": "data-queued-reveal-group-item",
+  "data-queued-reveal-children": "data-queued-reveal-group-children"
+ },
+ "stacking-image-trail": {
+  "data-stacked-trail-item": "data-stacked-trail-area-item"
+ }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/ruler-slider.schema.json",
+  "title": "Ruler slider",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label. It also names the control.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled value. Leave it out for uncontrolled use.",
+      "type": "number"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "number"
+    },
+    "onValueChange": {
+      "description": "Called whenever a tick passes the needle, including while coasting.",
+      "type": "object"
+    },
+    "onValueCommit": {
+      "description": "Called once the tape comes to rest after a drag, flick, tap, scroll, or key.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lowest value.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Highest value.",
+      "type": "number"
+    },
+    "step": {
+      "description": "Value of one small tick. The tape always rests on a tick.",
+      "type": "number"
+    },
+    "largeStep": {
+      "description": "Distance for PageUp, PageDown, and Shift with an arrow. Defaults to one labelled tick (step × majorEvery).",
+      "type": "number"
+    },
+    "majorEvery": {
+      "description": "Small ticks between labelled ticks.",
+      "type": "number"
+    },
+    "spacing": {
+      "description": "Pixels between small ticks. Wider spacing gives finer control.",
+      "type": "number"
+    },
+    "format": {
+      "description": "Formats the readout, the tick labels, and aria-valuetext.",
+      "type": "object"
+    },
+    "unit": {
+      "description": "Unit shown after the readout and spoken with the value, such as \"cm\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "name": {
+      "description": "Submits the value with a form through a hidden input.",
+      "type": "string",
+      "format": "person"
+    },
+    "disabled": {
+      "description": "Blocks input and removes the control from the tab order.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

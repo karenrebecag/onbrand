@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/hold-to-confirm.schema.json",
+  "title": "Hold to confirm",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Instruction and action, such as \"Hold to delete project\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "confirmedLabel": {
+      "description": "Label after the hold completes.",
+      "type": "string",
+      "format": "label"
+    },
+    "onConfirm": {
+      "description": "Called once when the hold completes.",
+      "type": "object"
+    },
+    "duration": {
+      "description": "Hold length in milliseconds.",
+      "type": "number"
+    },
+    "icon": {
+      "description": "Leading icon. Replaced by a drawn check when done."
+    },
+    "tone": {
+      "description": "Fill color.",
+      "type": "string",
+      "enum": [
+        "accent",
+        "danger",
+        "neutral"
+      ]
+    },
+    "confirmed": {
+      "description": "Controls the done state. Set back to false to reset; leave undefined to let the button manage it.",
+      "type": "boolean"
+    },
+    "onHoldChange": {
+      "description": "Reports when a hold starts and ends, for hints like \"Keep holding\".",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "onConfirm"
+  ]
+}

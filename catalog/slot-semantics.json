@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "components": {
+    "animated-counter": ["metric"],
+    "metric-card": ["metric"],
+    "gauge": ["metric"],
+    "avatar-group": ["avatar"],
+    "badge": ["badge"],
+    "button": ["action"],
+    "button-group": ["action"],
+    "data-flow": ["illustration"],
+    "dot-grid": ["illustration"],
+    "image-compare": ["media"],
+    "photo-grid": ["media"],
+    "orbit-logos": ["logo"]
+  }
+}

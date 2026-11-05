@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/signature-pad.schema.json",
+  "title": "Signature pad",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "signer": {
+      "description": "Printed under the baseline, such as the signer's name.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "hint": {
+      "description": "Resting hint on the baseline before the first stroke.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultColor": {
+      "description": "Starting ink color.",
+      "type": "string",
+      "enum": [
+        "black",
+        "blue",
+        "violet"
+      ]
+    },
+    "defaultWidth": {
+      "description": "Starting nib width.",
+      "type": "string",
+      "enum": [
+        "fine",
+        "medium",
+        "bold"
+      ]
+    },
+    "onChange": {
+      "description": "Receives the strokes after every change, including undo, redo, and clear.",
+      "type": "object"
+    },
+    "fileName": {
+      "description": "File name for exports, without extension.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible name of the drawing surface.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2
+}

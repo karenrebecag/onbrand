@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/announcement-bar.schema.json",
+  "title": "Announcement bar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "messages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "message": {
+            "x-undocumented": true
+          },
+          "action": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "countdown": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "message"
+        ]
+      },
+      "description": "Messages: { id, message, action?, countdown? }. action is { label, href?, onClick? }; countdown is { to, label? }."
+    },
+    "id": {
+      "description": "Remembers dismissal in localStorage under uikit-announcement:<id>. Change it to show a new campaign again.",
+      "type": "string"
+    },
+    "open": {
+      "description": "Controlled visibility. Stored dismissal is ignored when set.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Starting visibility when uncontrolled.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called with false when the visitor dismisses the bar.",
+      "type": "object"
+    },
+    "index": {
+      "description": "Controlled index of the visible message.",
+      "type": "number"
+    },
+    "defaultIndex": {
+      "description": "Starting message when uncontrolled.",
+      "type": "number"
+    },
+    "onIndexChange": {
+      "description": "Called when rotation or the arrows change the message.",
+      "type": "object"
+    },
+    "interval": {
+      "description": "Milliseconds each message stays before the next one.",
+      "type": "number"
+    },
+    "autoPlay": {
+      "description": "Rotates automatically. Off when the visitor prefers reduced motion.",
+      "type": "boolean"
+    },
+    "controls": {
+      "description": "Shows previous, next, and the pause ring when there are several messages. Off by default: only the close button shows and messages still rotate.",
+      "type": "boolean"
+    },
+    "dismissible": {
+      "description": "Shows the dismiss button.",
+      "type": "boolean"
+    },
+    "tone": {
+      "description": "Muted surface, or foreground-colored bar with background text.",
+      "type": "string",
+      "enum": [
+        "neutral",
+        "inverted"
+      ]
+    },
+    "onAction": {
+      "description": "Called when a message's call to action is pressed, after its own onClick.",
+      "type": "object"
+    },
+    "onCountdownEnd": {
+      "description": "Called once when a message's countdown reaches zero.",
+      "type": "object"
+    },
+    "label": {
+      "description": "Accessible name of the region.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "messages"
+  ]
+}

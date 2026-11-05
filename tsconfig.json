@@ -1,0 +1,31 @@
+{
+  // Tipado del core (src, scripts, tests, tools). Config raíz aprobada por Karen el 2026-11-05 para que
+  // `bun x tsc --noEmit` corra en CI: bun test no atrapa un import roto si ningún test lo ejercita (#776).
+  // apps/builder y templates/* tienen su propio tsconfig; los tests que importan el builder resuelven @/ y @engine/ aquí.
+  // tools/porter se tipa con templates/arc-scaffold (importa typescript de ahí) y sale con él (spec B9).
+  // "typescript" resuelve al node_modules de base-scaffold (B9 paso 3a): un clon necesita `bun install` ahí para tsc.
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["bun"],
+    "paths": {
+      "@/*": ["./apps/builder/src/*"],
+      "@engine/*": ["./src/*"],
+      "typescript": ["./templates/base-scaffold/node_modules/typescript"]
+    },
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "allowArbitraryExtensions": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", "scripts", "tests", "tools", "types"],
+  "exclude": ["node_modules", "apps", "templates", "fixtures", "generated", "registry", "**/node_modules", "tests/fixtures", "tools/porter"]
+}

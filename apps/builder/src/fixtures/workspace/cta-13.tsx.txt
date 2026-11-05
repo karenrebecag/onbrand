@@ -1,0 +1,48 @@
+// PORTADO desde el vault (sections-react/cta-sections/cta-13) por scripts/tailwind-to-modules.ts
+// (ADR 0001 §3) y revisado a mano como BLOQUE con props (lote 2, variedad de cta: dos columnas,
+// titular a la izquierda y descripción + botones a la derecha; contrasta con el cta centrado de Arc
+// y con la banda de cta-3). Revisión aplicada:
+// - `Button`/`ButtonProps` de @kit/ui -> Button de Arc.
+// - px-[5%]: arbitrario aceptado.
+// - El titular era <h1>; pasa a <h2> (el h1 es el hero).
+import type { ComponentPropsWithoutRef } from "react";
+import { Button, type ButtonProps } from "../../../arc/button/button";
+import styles from "./cta-13.module.css";
+
+export type Cta13Button = Pick<ButtonProps, "variant" | "size"> & { title: string };
+
+type Props = {
+  heading: string;
+  description: string;
+  buttons: Cta13Button[];
+};
+
+export type Cta13Props = ComponentPropsWithoutRef<"section"> & Partial<Props>;
+
+export const Cta13 = (props: Cta13Props) => {
+  const { heading, description, buttons, className, ...rest } = { ...Cta13Defaults, ...props };
+  return (
+    <section {...rest} className={[styles.section, className].filter(Boolean).join(" ")}>
+      <div className={styles.div}>
+        <h2 className={styles.h1}>{heading}</h2>
+        <div>
+          <p className={styles.p}>{description}</p>
+          <div className={styles.div2}>
+            {buttons.map((button, index) => (
+              <Button key={index} variant={button.variant} size={button.size}>
+                {button.title}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const Cta13Defaults: Props = {
+  heading: "Medium length heading goes here",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+  buttons: [{ title: "Button" }, { title: "Button", variant: "secondary" }],
+};

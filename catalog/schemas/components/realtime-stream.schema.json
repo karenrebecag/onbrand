@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/realtime-stream.schema.json",
+  "title": "Realtime stream",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "anomaly": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "t",
+          "value"
+        ]
+      },
+      "description": "Append-only feed in ascending time: { t, value, anomaly? }. A string anomaly becomes the marker tag."
+    },
+    "label": {
+      "description": "What is measured. Names the chart, the current value, and the table.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after values, such as \"ms\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "windowMs": {
+      "description": "Visible span of time.",
+      "type": "number"
+    },
+    "interval": {
+      "description": "Typical time between points. The view trails the newest point by this much.",
+      "type": "number"
+    },
+    "height": {
+      "description": "Plot height in pixels.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats values in the readout, tooltip, and table.",
+      "type": "object"
+    },
+    "formatTime": {
+      "description": "Formats times in the tooltip and table.",
+      "type": "object"
+    },
+    "paused": {
+      "description": "Controlled pause.",
+      "type": "boolean"
+    },
+    "defaultPaused": {
+      "description": "Initial pause when uncontrolled.",
+      "type": "boolean"
+    },
+    "onPausedChange": {
+      "description": "Called when the status button or Space toggles the pause.",
+      "type": "object"
+    },
+    "pauseOnHover": {
+      "description": "Holds the view while the pointer is over the plot.",
+      "type": "boolean"
+    },
+    "min": {
+      "description": "Fixed bottom of the value axis. Leave it out to follow the data.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Fixed top of the value axis.",
+      "type": "number"
+    },
+    "emptyLabel": {
+      "description": "Shown before the first point.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "description": "Forwarded to the figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "points",
+    "label"
+  ]
+}

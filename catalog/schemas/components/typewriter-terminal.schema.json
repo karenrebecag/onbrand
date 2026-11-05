@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/typewriter-terminal.schema.json",
+  "title": "Typewriter terminal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "The session in order. cwd changes the working directory shown in this prompt and every later one. pause is the rest in seconds after the output."
+    },
+    "title": {
+      "description": "Window title in the title bar.",
+      "type": "string",
+      "format": "heading"
+    },
+    "cwd": {
+      "description": "Working directory shown in the prompt until a step sets its own.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "symbol": {
+      "description": "Prompt symbol after the working directory.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "speed": {
+      "description": "Multiplies the playback pace. At 1 the default session takes about sixteen seconds. The cadence itself is seeded from the commands, so it is identical in every replay and on the server.",
+      "type": "number"
+    },
+    "paused": {
+      "description": "Holds playback where it is, easing to rest instead of stopping in one frame.",
+      "type": "boolean"
+    },
+    "loop": {
+      "description": "After a short rest the screen clears upward and the session plays again while the scrubber glides back to the start. When false, playback stops on the final prompt and the play button replays.",
+      "type": "boolean"
+    },
+    "rows": {
+      "description": "Visible rows. The window keeps this height and older lines scroll up as the session grows.",
+      "type": "number"
+    },
+    "copyable": {
+      "description": "Shows a copy button in the title bar that copies every command, one per line.",
+      "type": "boolean"
+    },
+    "accent": {
+      "description": "Color of the caret, progress fills, spinners, links, and the scrubber. Defaults to the accent token.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "label": {
+      "description": "Accessible name of the figure.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "caption": {
+      "description": "Optional visible caption under the terminal, rendered as a figcaption."
+    },
+    "style": {
+      "description": "Inline styles on the root figure.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "steps"
+  ]
+}

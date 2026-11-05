@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/chat-thread.schema.json",
+  "title": "Chat thread",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "participants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ]
+      },
+      "description": "Everyone in the thread: id, name, and optional avatar URL. Initials show without an avatar."
+    },
+    "currentUserId": {
+      "description": "Id of the viewer. Their messages sit on the right in the accent color.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "messages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "authorId": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "text": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "createdAt": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "attachments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "reactions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "status": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "sending",
+              "sent",
+              "delivered",
+              "read",
+              "failed"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "authorId",
+          "createdAt"
+        ]
+      },
+      "description": "Controlled messages, oldest first. Leave it out to let the thread keep its own list."
+    },
+    "defaultMessages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "authorId": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "text": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "createdAt": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "attachments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "reactions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "status": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "sending",
+              "sent",
+              "delivered",
+              "read",
+              "failed"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "authorId",
+          "createdAt"
+        ]
+      },
+      "description": "Initial messages when uncontrolled."
+    },
+    "typing": {
+      "description": "Participant ids currently typing. The current user is ignored.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "onSend": {
+      "description": "Called with the composer's text and files. Uncontrolled threads also append the message themselves with status sent.",
+      "type": "object"
+    },
+    "onReact": {
+      "description": "Called when a reaction is picked or toggled. Uncontrolled threads update counts themselves.",
+      "type": "object"
+    },
+    "onRetry": {
+      "description": "Shows a Retry button under the last own message when its status is failed.",
+      "type": "object"
+    },
+    "reactions": {
+      "description": "Emoji offered by the reaction picker.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "placeholder": {
+      "description": "Composer placeholder, also its accessible name.",
+      "type": "string",
+      "format": "label"
+    },
+    "composer": {
+      "description": "Show the composer. Turn it off for a read-only transcript.",
+      "type": "boolean"
+    },
+    "allowAttachments": {
+      "description": "Allow files by button, paste, or drop in the composer.",
+      "type": "boolean"
+    },
+    "accept": {
+      "description": "File types the attach button offers, as for <input accept>.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "groupWindow": {
+      "description": "Messages from one person closer together than this, in ms, share a group. Defaults to five minutes.",
+      "type": "number"
+    },
+    "locale": {
+      "description": "Locale for times and day labels.",
+      "type": "string"
+    },
+    "label": {
+      "description": "Accessible name of the message log.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "labels": {
+      "description": "Words for localization: sending, sent, delivered, read, failed, retry, today, yesterday, jumpToLatest, unknownAuthor, addReaction, reactions, and the composer's send, attach and attachments. Words with a count or names are functions: readBy, typing, newMessages, reactWith, reactionCount and removeFile. Any key left out keeps its English default; today and yesterday default to the locale's own words.",
+      "type": "object",
+      "properties": {
+        "sending": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "sent": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "delivered": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "read": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "failed": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "retry": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "readBy": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "today": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "yesterday": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "typing": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "newMessages": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "jumpToLatest": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "unknownAuthor": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "addReaction": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reactions": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "reactWith": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "reactionCount": {
+          "x-undocumented": true,
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "participants",
+    "currentUserId"
+  ]
+}

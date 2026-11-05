@@ -1,0 +1,473 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/small-multiples.schema.json",
+  "title": "Small multiples",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "values": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "values"
+        ]
+      },
+      "description": "One panel per series: a stable id, a name for the panel heading and one value per period.",
+      "maxItems": 8,
+      "x-empty": "omit"
+    },
+    "periods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "short": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "long": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "short",
+          "long"
+        ]
+      },
+      "description": "Periods on the shared x axis, oldest first, each with a short label (\"Sep 2025\") and a long label (\"September 2025\") for the readout and screen readers.",
+      "maxItems": 24,
+      "x-empty": "omit"
+    },
+    "title": {
+      "description": "Heading of the block.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Line under the title. Pass an empty string to hide it.",
+      "type": "string",
+      "format": "description"
+    },
+    "defaultSort": {
+      "description": "Opening panel order.",
+      "type": "string",
+      "enum": [
+        "latest",
+        "growth",
+        "name"
+      ]
+    },
+    "defaultScale": {
+      "description": "Opening y scale. Independent fits each series to its own range so panels compare shape; shared starts every panel at zero on one range so panels compare size.",
+      "type": "string",
+      "enum": [
+        "shared",
+        "independent"
+      ]
+    },
+    "defaultDimFlat": {
+      "description": "Whether panels with a flat trend start dimmed.",
+      "type": "boolean"
+    },
+    "flatThreshold": {
+      "description": "Growth below this absolute share counts as flat (0.05 is 5 percent).",
+      "type": "number"
+    },
+    "growthLag": {
+      "description": "Periods between the latest value and the value growth is measured against. 12 compares monthly data with the same month last year.",
+      "type": "number"
+    },
+    "formatValue": {
+      "description": "Formats values for panel headings, the readout and screen readers. The default reads values as thousands of US dollars ($412k, $1.71M).",
+      "type": "object"
+    },
+    "formatTick": {
+      "description": "Formats compact axis ticks in the right gutter of each panel.",
+      "type": "object"
+    },
+    "onSortChange": {
+      "description": "Called after the panel order changes.",
+      "type": "object"
+    },
+    "onScaleChange": {
+      "description": "Called after the y scale switches between independent and shared.",
+      "type": "object"
+    },
+    "onIndexChange": {
+      "description": "Called when the synced crosshair moves to a period, or with null when it leaves the panels.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "series",
+    "periods",
+    "title",
+    "description"
+  ],
+  "examples": [
+    {
+      "series": [
+        {
+          "name": "North America",
+          "values": [
+            1216,
+            1263,
+            1296,
+            1306,
+            1311,
+            1279,
+            1240,
+            1252,
+            1264,
+            1288,
+            1341,
+            1422,
+            1466,
+            1535,
+            1572,
+            1556,
+            1549,
+            1533,
+            1517,
+            1506,
+            1528,
+            1540,
+            1629,
+            1705
+          ]
+        },
+        {
+          "name": "United Kingdom",
+          "values": [
+            544,
+            559,
+            580,
+            574,
+            570,
+            558,
+            556,
+            560,
+            558,
+            549,
+            581,
+            589,
+            606,
+            645,
+            652,
+            644,
+            645,
+            618,
+            617,
+            616,
+            626,
+            616,
+            650,
+            656
+          ]
+        },
+        {
+          "name": "Germany",
+          "values": [
+            624,
+            641,
+            630,
+            638,
+            622,
+            616,
+            598,
+            601,
+            593,
+            595,
+            606,
+            622,
+            626,
+            644,
+            650,
+            647,
+            639,
+            616,
+            610,
+            603,
+            591,
+            600,
+            605,
+            626
+          ]
+        },
+        {
+          "name": "France",
+          "values": [
+            397,
+            400,
+            404,
+            400,
+            396,
+            383,
+            377,
+            365,
+            359,
+            367,
+            375,
+            380,
+            389,
+            402,
+            399,
+            394,
+            388,
+            382,
+            373,
+            362,
+            358,
+            363,
+            367,
+            378
+          ]
+        },
+        {
+          "name": "Nordics",
+          "values": [
+            240,
+            260,
+            260,
+            274,
+            264,
+            266,
+            258,
+            265,
+            266,
+            280,
+            291,
+            312,
+            328,
+            346,
+            359,
+            359,
+            351,
+            358,
+            343,
+            348,
+            353,
+            372,
+            389,
+            412
+          ]
+        },
+        {
+          "name": "Japan",
+          "values": [
+            441,
+            433,
+            432,
+            424,
+            413,
+            408,
+            395,
+            384,
+            382,
+            373,
+            379,
+            377,
+            384,
+            378,
+            374,
+            370,
+            366,
+            350,
+            343,
+            338,
+            334,
+            329,
+            326,
+            332
+          ]
+        },
+        {
+          "name": "Australia",
+          "values": [
+            264,
+            275,
+            275,
+            271,
+            272,
+            262,
+            255,
+            253,
+            252,
+            254,
+            258,
+            263,
+            271,
+            273,
+            279,
+            278,
+            273,
+            267,
+            266,
+            257,
+            255,
+            261,
+            263,
+            272
+          ]
+        },
+        {
+          "name": "Brazil",
+          "values": [
+            152,
+            158,
+            171,
+            173,
+            174,
+            178,
+            179,
+            184,
+            186,
+            194,
+            213,
+            226,
+            243,
+            243,
+            269,
+            270,
+            279,
+            280,
+            285,
+            291,
+            294,
+            306,
+            331,
+            345
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "short": "Oct 2024",
+          "long": "October 2024"
+        },
+        {
+          "short": "Nov 2024",
+          "long": "November 2024"
+        },
+        {
+          "short": "Dec 2024",
+          "long": "December 2024"
+        },
+        {
+          "short": "Jan 2025",
+          "long": "January 2025"
+        },
+        {
+          "short": "Feb 2025",
+          "long": "February 2025"
+        },
+        {
+          "short": "Mar 2025",
+          "long": "March 2025"
+        },
+        {
+          "short": "Apr 2025",
+          "long": "April 2025"
+        },
+        {
+          "short": "May 2025",
+          "long": "May 2025"
+        },
+        {
+          "short": "Jun 2025",
+          "long": "June 2025"
+        },
+        {
+          "short": "Jul 2025",
+          "long": "July 2025"
+        },
+        {
+          "short": "Aug 2025",
+          "long": "August 2025"
+        },
+        {
+          "short": "Sep 2025",
+          "long": "September 2025"
+        },
+        {
+          "short": "Oct 2025",
+          "long": "October 2025"
+        },
+        {
+          "short": "Nov 2025",
+          "long": "November 2025"
+        },
+        {
+          "short": "Dec 2025",
+          "long": "December 2025"
+        },
+        {
+          "short": "Jan 2026",
+          "long": "January 2026"
+        },
+        {
+          "short": "Feb 2026",
+          "long": "February 2026"
+        },
+        {
+          "short": "Mar 2026",
+          "long": "March 2026"
+        },
+        {
+          "short": "Apr 2026",
+          "long": "April 2026"
+        },
+        {
+          "short": "May 2026",
+          "long": "May 2026"
+        },
+        {
+          "short": "Jun 2026",
+          "long": "June 2026"
+        },
+        {
+          "short": "Jul 2026",
+          "long": "July 2026"
+        },
+        {
+          "short": "Aug 2026",
+          "long": "August 2026"
+        },
+        {
+          "short": "Sep 2026",
+          "long": "September 2026"
+        }
+      ],
+      "title": "Revenue by region",
+      "description": "Monthly net revenue, October 2024 to September 2026"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/animated-counter.schema.json",
+  "title": "Animated counter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "The number to show.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Small label above the number.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "prefix": {
+      "description": "Text before the number, such as \"$\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "suffix": {
+      "description": "Text after the number, such as \"%\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "decimals": {
+      "description": "Fixed fraction digits.",
+      "type": "number"
+    },
+    "animateOnView": {
+      "description": "Rolls every digit up from zero the first time it scrolls into view.",
+      "type": "boolean"
+    },
+    "locale": {
+      "description": "Formatting locale. Fixed by default so server and client match.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value"
+  ]
+}

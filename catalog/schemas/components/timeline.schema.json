@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/timeline.schema.json",
+  "title": "Timeline",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "at": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "actor": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "meta": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tag"
+          },
+          "detail": {
+            "x-undocumented": true
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "image"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "tone": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "neutral",
+              "success",
+              "danger"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "at",
+          "title"
+        ]
+      },
+      "description": "Updates in any order; newest shows first. Rows with detail are expandable."
+    },
+    "now": {
+      "description": "Reference time in epoch ms for relative labels and day groups. Pass a ticking clock to keep labels fresh.",
+      "type": "number"
+    },
+    "label": {
+      "description": "Accessible name for the feed.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "timeZone": {
+      "description": "Time zone for day groups and clock times.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "Formatting locale.",
+      "type": "string"
+    },
+    "maxHeight": {
+      "description": "Height of the scrolling area. Without it the feed grows with the page.",
+      "type": "object"
+    },
+    "scrollToNew": {
+      "description": "Scrolls back to the top when a new update arrives.",
+      "type": "boolean"
+    },
+    "defaultExpanded": {
+      "description": "Event ids expanded on mount.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "headingLevel": {
+      "description": "Heading level for day labels.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "events",
+    "now",
+    "label"
+  ]
+}

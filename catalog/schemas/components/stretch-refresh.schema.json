@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/stretch-refresh.schema.json",
+  "title": "Stretch refresh",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Heading above the feed.",
+      "type": "string",
+      "format": "heading"
+    },
+    "subtitle": {
+      "description": "Short status under the heading, such as \"Updated 14 min ago\". A change rises in.",
+      "type": "string",
+      "format": "description"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Rows in the feed."
+    },
+    "getKey": {
+      "description": "Stable key for each row.",
+      "type": "object"
+    },
+    "onRefresh": {
+      "description": "Runs after a pull past the threshold or a press of the refresh button. Update items before it resolves; resolve with a short result such as \"3 new updates\".",
+      "type": "object"
+    },
+    "threshold": {
+      "description": "Pull distance in px, after resistance, that arms a refresh.",
+      "type": "number"
+    },
+    "doneLabel": {
+      "description": "Result shown when onRefresh resolves without one.",
+      "type": "string",
+      "format": "label"
+    },
+    "errorLabel": {
+      "description": "Result shown when onRefresh rejects.",
+      "type": "string",
+      "format": "label"
+    },
+    "refreshLabel": {
+      "description": "Accessible name of the refresh button.",
+      "type": "string",
+      "format": "label"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "items",
+    "getKey",
+    "onRefresh"
+  ]
+}

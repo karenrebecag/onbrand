@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/in-view-title.schema.json",
+  "title": "In-view title",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "text": {
+      "description": "The title copy.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "variant": {
+      "description": "Reveal style. blur suits most headings; word and line rise from a clip; tracking opens letter spacing; wipe uncovers left to right.",
+      "type": "string",
+      "enum": [
+        "word",
+        "line",
+        "blur",
+        "tracking",
+        "wipe"
+      ]
+    },
+    "as": {
+      "description": "Heading level.",
+      "type": "string",
+      "enum": [
+        "h1",
+        "h2",
+        "h3"
+      ]
+    },
+    "lines": {
+      "description": "Explicit line breaks for the line variant. Falls back to one line of text.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "id": {
+      "description": "Forwarded to the heading.",
+      "type": "string"
+    },
+    "once": {
+      "description": "Set false to replay the reveal on every entry.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "text"
+  ],
+  "x-variants": [
+    "word",
+    "line",
+    "blur",
+    "tracking",
+    "wipe"
+  ]
+}

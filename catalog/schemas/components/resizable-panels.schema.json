@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/resizable-panels.schema.json",
+  "title": "Resizable panels",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "aria-label for the group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "children": {
+      "description": "ResizablePanel elements in order. The set of panes should stay stable."
+    },
+    "onLayoutChange": {
+      "description": "Called with each pane's share in percent after a resize settles.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "children"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "layout-237",
+  "title": "Layout 237",
+  "description": "",
+  "categories": [
+    "feature-sections-3-col"
+  ],
+  "dependencies": [
+    "@kit/ui",
+    "react-icons/rx"
+  ],
+  "files": [
+    "layout-237.tsx"
+  ],
+  "source_slug": "feature-sections-3-col/section_layout237",
+  "preview": "https://cdn.prod.website-files.com/61789b489343c8242282a0ae/618f418a27949bea94cc5fa8_6185030dd57818009d8fd9a7_section-layout237.png"
+}

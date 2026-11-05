@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/wallet-card.schema.json",
+  "title": "Wallet card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "initialBalanceCents": {
+      "description": "Starting balance of the main wallet in cents. The reserve wallet starts at 285,000 cents.",
+      "type": "number",
+      "x-empty": "omit"
+    }
+  },
+  "x-formats-version": 2
+}

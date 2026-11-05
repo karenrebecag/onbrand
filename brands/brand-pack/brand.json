@@ -1,0 +1,7 @@
+{
+  "$schema": "../brandpack-v2.schema.json",
+  "name": "Base",
+  "theme": {
+    "preset": "neutral"
+  }
+}

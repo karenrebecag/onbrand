@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/combobox.schema.json",
+  "title": "Combobox",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label, also used to name the listbox.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "disabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "keywords": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "{ value, label, disabled?, keywords? }. Keywords also match the query."
+    },
+    "value": {
+      "description": "Controlled selected value. Empty string means none.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Initial value when uncontrolled.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called with the new value, or an empty string when cleared.",
+      "type": "object"
+    },
+    "description": {
+      "description": "Helper copy under the field, linked through aria-describedby.",
+      "type": "string",
+      "format": "description"
+    },
+    "placeholder": {
+      "description": "Shown when nothing is selected. While searching, the chosen label shows here instead.",
+      "type": "string",
+      "format": "label"
+    },
+    "emptyMessage": {
+      "description": "Shown in a status row when the filter matches nothing.",
+      "type": "string",
+      "format": "chatMessage"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "options"
+  ]
+}

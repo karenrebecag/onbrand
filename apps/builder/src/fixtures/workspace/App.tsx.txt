@@ -1,0 +1,266 @@
+// GENERADO por el runner (scripts/run.ts) desde un brief — NO editar a mano.
+// Brief: Nimbus: copiloto de IA para equipos de producto. Súmate a la lista de espera para el early access. Logos de equipos que ya lo prueban, qué hace, métricas de beta.
+// Copy inyectado por la capa de copy (pasada 2). Imágenes y tema fino siguen como hueco.
+import { Banner1 } from '@/components/relume/banners/banner-1/banner-1';
+import { SiteHeader } from '@/components/arc/blocks/site-header/site-header';
+import { HeroSignup } from '@/components/arc/blocks/hero-signup/hero-signup';
+import { LogoMarquee } from '@/components/arc/blocks/logo-marquee/logo-marquee';
+import { Layout255Shell } from '@/components/relume/feature-sections-3-col/layout-255/layout-255-shell';
+import { FeatureBento } from '@/components/arc/blocks/feature-bento/feature-bento';
+import { StatsBand } from '@/components/arc/blocks/stats-band/stats-band';
+import { NewsletterSignup } from '@/components/arc/blocks/newsletter-signup/newsletter-signup';
+import { SiteFooter } from '@/components/arc/blocks/site-footer/site-footer';
+
+const props0 = {
+  "heading": "Entra al early access de Nimbus",
+  "description": "Déjanos tu correo y te avisamos en cuanto abramos.",
+  "logo": {
+    "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%2296%22%20viewBox%3D%220%200%20240%2096%22%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f59e0b%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ef4444%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20x%3D%2216%22%20y%3D%2224%22%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2212%22%20fill%3D%22url(%23g)%22%2F%3E%20%3Ctext%20x%3D%2240%22%20y%3D%2248%22%20dy%3D%220.35em%22%20text-anchor%3D%22middle%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%3EN%3C%2Ftext%3E%20%3Ctext%20x%3D%2276%22%20y%3D%2248%22%20dy%3D%220.35em%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%20fill%3D%22%2352525b%22%3ENimbus%3C%2Ftext%3E%20%3C%2Fsvg%3E",
+    "alt": "Logo de Nimbus"
+  },
+  "inputPlaceholder": "Tu correo",
+  "button": {
+    "title": "Unirme a la lista"
+  }
+} as const;
+
+const props1 = {
+  "variant": "simple",
+  "brand": {
+    "name": "Nimbus",
+    "href": "#"
+  },
+  "items": [
+    {
+      "value": "producto",
+      "label": "Producto",
+      "href": "#"
+    },
+    {
+      "value": "cómo-funciona",
+      "label": "Cómo funciona",
+      "href": "#"
+    },
+    {
+      "value": "early-access",
+      "label": "Early access",
+      "href": "#"
+    }
+  ],
+  "primaryAction": {
+    "label": "Unirme a la lista",
+    "href": "#"
+  },
+  "secondaryAction": {
+    "label": "Iniciar sesión",
+    "href": "#"
+  }
+} as const;
+
+const props2 = {
+  "title": "El copiloto de IA para tu equipo de producto",
+  "description": "Nimbus resume research, redacta specs y conecta los puntos entre Linear, Figma y Notion. Súmate a la lista de espera del early access.",
+  "buttonLabel": "Unirme a la lista de espera",
+  "placeholder": "Tu correo",
+  "footnote": "Un solo correo cuando tu acceso esté listo."
+} as const;
+
+const props3 = {
+  "title": "Equipos de producto que ya lo prueban en beta",
+  "description": "",
+  "tone": "mono",
+  "brands": [
+    {
+      "name": "Linear",
+      "icon": ""
+    },
+    {
+      "name": "Vercel",
+      "icon": ""
+    },
+    {
+      "name": "Retool",
+      "icon": ""
+    },
+    {
+      "name": "Ramp",
+      "icon": ""
+    },
+    {
+      "name": "Loom",
+      "icon": ""
+    },
+    {
+      "name": "Pitch",
+      "icon": ""
+    }
+  ]
+} as const;
+
+const inner4 = {
+  "title": "De la señal al spec, sin cambiar de pestaña",
+  "description": "Nimbus vive donde ya trabaja tu equipo y convierte el ruido de research en decisiones de producto.",
+  "features": [
+    {
+      "id": "f0",
+      "title": "Resume el research",
+      "description": "Entrevistas, tickets y encuestas condensados en los temas que importan.",
+      "visual": "sync",
+      "size": "wide"
+    },
+    {
+      "id": "f1",
+      "title": "Redacta el spec",
+      "description": "Un borrador de PRD con contexto real, listo para editar.",
+      "visual": "command",
+      "size": "tall"
+    },
+    {
+      "id": "f2",
+      "title": "Conecta tus tools",
+      "description": "Linear, Figma y Notion en un solo hilo de contexto.",
+      "visual": "chart",
+      "size": "regular"
+    },
+    {
+      "id": "f3",
+      "title": "Prioriza con datos",
+      "description": "Señales de uso y feedback ponderadas, no corazonadas.",
+      "visual": "flow",
+      "size": "regular"
+    },
+    {
+      "id": "f4",
+      "title": "Tu proceso, tu lenguaje",
+      "description": "Se adapta a cómo tu equipo nombra y mide las cosas.",
+      "visual": "permissions",
+      "size": "half"
+    },
+    {
+      "id": "f5",
+      "title": "Memoria del producto",
+      "description": "Cada decisión queda trazada y buscable.",
+      "visual": "history",
+      "size": "half"
+    }
+  ]
+} as const;
+
+const props5 = {
+  "layout": "divided",
+  "title": "Lo que ven los equipos en la beta privada",
+  "stats": [
+    {
+      "value": 6,
+      "suffix": "h",
+      "label": "Ahorradas por semana",
+      "detail": "en síntesis de research"
+    },
+    {
+      "value": 3,
+      "suffix": "×",
+      "label": "Specs más rápidos",
+      "detail": "del insight al PRD"
+    },
+    {
+      "value": 200,
+      "prefix": "+",
+      "label": "Equipos en lista",
+      "detail": "esperando el early access"
+    }
+  ]
+} as const;
+
+const props6 = {
+  "variant": "inline",
+  "title": "Entra al early access de Nimbus",
+  "description": "Déjanos tu correo y te avisamos en cuanto abramos tu cupo. Sin spam, solo el lanzamiento.",
+  "buttonLabel": "Unirme a la lista de espera",
+  "placeholder": "Tu correo",
+  "publication": null,
+  "readers": null,
+  "privacyLink": null,
+  "privacyNote": "Cupos limitados por semana."
+} as const;
+
+const props7 = {
+  "variant": "columns",
+  "brand": {
+    "name": "Nimbus",
+    "href": "#"
+  },
+  "tagline": "El copiloto de IA para equipos de producto.",
+  "newsletter": null,
+  "year": 2026,
+  "columns": [
+    {
+      "title": "Producto",
+      "links": [
+        {
+          "label": "Nimbus",
+          "href": "#"
+        },
+        {
+          "label": "Integraciones",
+          "href": "#"
+        },
+        {
+          "label": "Early access",
+          "href": "#"
+        },
+        {
+          "label": "Seguridad",
+          "href": "#"
+        }
+      ]
+    },
+    {
+      "title": "Empresa",
+      "links": [
+        {
+          "label": "Sobre nosotros",
+          "href": "#"
+        },
+        {
+          "label": "Blog",
+          "href": "#"
+        },
+        {
+          "label": "Changelog",
+          "href": "#"
+        },
+        {
+          "label": "Contacto",
+          "href": "#"
+        }
+      ]
+    }
+  ],
+  "legal": [
+    {
+      "label": "Política de Privacidad",
+      "href": "#"
+    },
+    {
+      "label": "Términos del Servicio",
+      "href": "#"
+    }
+  ]
+} as const;
+
+export default function App() {
+  return (
+    <>
+      <Banner1 {...props0} />  {/* banner: banner1_component */}
+      <SiteHeader {...props1} />  {/* navbar: site-header */}
+      <HeroSignup {...props2} />  {/* hero: hero-signup */}
+      <LogoMarquee {...props3} />  {/* logos: logo-marquee */}
+      <Layout255Shell>  {/* features: layout255_shell (layout) */}
+        <FeatureBento {...inner4} />  {/* inner: feature-bento */}
+      </Layout255Shell>
+      <StatsBand {...props5} />  {/* stats: stats-band */}
+      <NewsletterSignup {...props6} />  {/* cta: newsletter-signup */}
+      <SiteFooter {...props7} />  {/* footer: site-footer */}
+    </>
+  );
+}

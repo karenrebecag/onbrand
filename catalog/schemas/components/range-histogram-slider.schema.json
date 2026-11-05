@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/range-histogram-slider.schema.json",
+  "title": "Range histogram slider",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label. The thumbs are named from it unless thumbLabels is set.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "data": {
+      "description": "Raw values the histogram counts, such as every listing's price.",
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "value": {
+      "description": "Controlled range. Leave it out for uncontrolled use.",
+      "type": "object"
+    },
+    "defaultValue": {
+      "description": "Initial range when uncontrolled.",
+      "type": "object"
+    },
+    "onValueChange": {
+      "description": "Called on every change while dragging or pressing keys.",
+      "type": "object"
+    },
+    "onValueCommit": {
+      "description": "Called once a drag is released or a key changes the range.",
+      "type": "object"
+    },
+    "min": {
+      "description": "Lower bound. Defaults to the smallest data value (or 0).",
+      "type": "number"
+    },
+    "max": {
+      "description": "Upper bound. Defaults to the largest data value.",
+      "type": "number"
+    },
+    "step": {
+      "description": "Value increment.",
+      "type": "number"
+    },
+    "bins": {
+      "description": "How many bars the histogram draws.",
+      "type": "number"
+    },
+    "snapToBins": {
+      "description": "A released thumb near a bar edge settles on it, so the range never cuts a bar in half.",
+      "type": "boolean"
+    },
+    "minStepsBetweenThumbs": {
+      "description": "Closest the two thumbs may sit, in steps.",
+      "type": "number"
+    },
+    "format": {
+      "description": "Formats the readout and aria-valuetext.",
+      "type": "object"
+    },
+    "thumbLabels": {
+      "description": "Accessible names for the two thumbs. Defaults to \"<label>, minimum\" and \"<label>, maximum\".",
+      "type": "object"
+    },
+    "name": {
+      "description": "Submits the range with a form, one hidden input per thumb.",
+      "type": "string",
+      "format": "person"
+    },
+    "disabled": {
+      "description": "Blocks input and removes the thumbs from the tab order.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "data"
+  ]
+}

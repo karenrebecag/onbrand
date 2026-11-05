@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-tilt-scroll-cards.schema.json",
+  "title": "Stacked Scroll Cards with 3D Tilt Animation | React & GSAP",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Titular de la sección; \"\" lo oculta.",
+      "type": "string",
+      "format": "heading"
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Tarjetas que se apilan al hacer scroll.",
+      "maxItems": 5
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "cards"
+  ],
+  "examples": [
+    {
+      "title": "What kind of website do you need",
+      "cards": [
+        {
+          "title": "Landing Page",
+          "description": "A single page for one service or product: people make it to the end and leave a request."
+        },
+        {
+          "title": "Corporate Website",
+          "description": "When a client googles you before signing a deal: services, team, case studies, no doubts left."
+        },
+        {
+          "title": "Online Store",
+          "description": "A catalog where it's easy to find what you need and check out in a couple of clicks."
+        },
+        {
+          "title": "Portfolio Website",
+          "description": "When your work sells better than words: it shows your level and brings in new clients."
+        },
+        {
+          "title": "Blog & Media",
+          "description": "Articles that bring readers in from search and turn them into clients."
+        }
+      ]
+    }
+  ]
+}

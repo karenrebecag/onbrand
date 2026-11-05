@@ -1,0 +1,23 @@
+{
+  "brand": "Nimbus",
+  "cta": { "label": "Start free trial", "href": "#cta" },
+  "figures": [
+    { "value": "4,000+", "claim": "remote teams shipping with Nimbus" },
+    { "value": "38%", "claim": "fewer status meetings in the first month" },
+    { "value": "6.5 hrs", "claim": "saved per person, every week" },
+    { "value": "99.99%", "claim": "uptime over the last 12 months" },
+    { "value": "80+", "claim": "integrations" },
+    { "value": "14 days", "claim": "free trial, no credit card required" }
+  ],
+  "companies": ["Northwind", "Hexabyte", "Lattice Labs", "Solstice", "Tidewater", "Summit"],
+  "people": [
+    { "name": "Priya Raman", "role": "VP Engineering", "company": "Hexabyte" },
+    { "name": "Marcus Oyelaran", "role": "Head of Product", "company": "Solstice" },
+    { "name": "Lena Vogt", "role": "Operations Lead", "company": "Tidewater" }
+  ],
+  "prices": [
+    { "plan": "Starter", "monthly": "$0" },
+    { "plan": "Team", "monthly": "$12", "yearly": "$10" },
+    { "plan": "Business", "monthly": "$24", "yearly": "$20" }
+  ]
+}

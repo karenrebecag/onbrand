@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/segmented-control.schema.json",
+  "title": "Segmented control",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "accessory": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "Segments in order. An accessory, such as a badge, renders after the label."
+    },
+    "value": {
+      "description": "Selected value.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called with the chosen segment's value, from a click or the arrow, Home and End keys.",
+      "type": "object"
+    },
+    "label": {
+      "description": "aria-label for the group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "onOptionIntent": {
+      "description": "Called when the pointer or focus reaches a segment before it is chosen, to start loading what it shows.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "options",
+    "value",
+    "onValueChange"
+  ]
+}

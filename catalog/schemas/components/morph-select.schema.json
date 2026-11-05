@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/morph-select.schema.json",
+  "title": "Morph select",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label, also the accessible name of the trigger and the list.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "hideLabel": {
+      "description": "Keeps the label for assistive technology only.",
+      "type": "boolean"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Options { value, label, icon?, meta?, keywords?, disabled? } or groups { label, options }, in display order."
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Controlled selected value.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Uncontrolled starting value.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called with the new value and its option.",
+      "type": "object"
+    },
+    "placeholder": {
+      "description": "Trigger text with no selection.",
+      "type": "string",
+      "format": "label"
+    },
+    "searchable": {
+      "description": "Shows a search field in place of the trigger when open. auto turns it on above eight options.",
+      "type": "object"
+    },
+    "searchPlaceholder": {
+      "description": "Search field placeholder. Defaults to the selected label, then \"Search\".",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "panelWidth": {
+      "description": "Width of the open surface in px. Never narrower than the trigger.",
+      "type": "number"
+    },
+    "maxListHeight": {
+      "description": "Tallest the option list gets before it scrolls, in px.",
+      "type": "number"
+    },
+    "align": {
+      "description": "Which edge of the trigger stays put while the surface grows.",
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "name": {
+      "description": "Adds a hidden input for native form submission.",
+      "type": "string",
+      "format": "person"
+    },
+    "disabled": {
+      "description": "Disables the trigger.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "items"
+  ]
+}

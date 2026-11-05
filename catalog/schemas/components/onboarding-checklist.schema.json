@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/onboarding-checklist.schema.json",
+  "title": "Onboarding checklist",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Card title while steps remain.",
+      "type": "string",
+      "format": "heading"
+    },
+    "doneTitle": {
+      "description": "Title once every step is done.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "actionLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "onAction": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title"
+        ]
+      },
+      "description": "Steps in order. onAction resolving checks the step; throwing an Error keeps it open and shows the message."
+    },
+    "defaultCompleted": {
+      "description": "Step ids that start completed.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onCompletedChange": {
+      "description": "Called with completed ids in step order whenever they change.",
+      "type": "object"
+    },
+    "defaultHidden": {
+      "description": "Starts with the body collapsed.",
+      "type": "boolean"
+    },
+    "onHiddenChange": {
+      "description": "Called when the Hide or Show toggle is used.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title",
+    "steps"
+  ]
+}

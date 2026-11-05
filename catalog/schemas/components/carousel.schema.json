@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/carousel.schema.json",
+  "title": "Carousel",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Names the carousel for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "children": {
+      "description": "One child per slide."
+    },
+    "index": {
+      "description": "Controlled active slide. Pair with onIndexChange.",
+      "type": "number"
+    },
+    "defaultIndex": {
+      "description": "Initial slide when uncontrolled.",
+      "type": "number"
+    },
+    "onIndexChange": {
+      "description": "Called when the active slide changes.",
+      "type": "object"
+    },
+    "slideSize": {
+      "description": "Width of one slide as a CSS length.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "slideLabel": {
+      "description": "Names each slide and its indicator.",
+      "type": "object",
+      "x-format-confidence": "low"
+    },
+    "interval": {
+      "description": "Milliseconds per slide. Adds a play control for rotation.",
+      "type": "number"
+    },
+    "autoplay": {
+      "description": "Starts rotating on mount.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "children"
+  ]
+}

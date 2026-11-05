@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/section_testimonial6.schema.json",
+  "title": "Testimonial 6",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "heading": {
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "type": "string",
+      "format": "description"
+    },
+    "testimonials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "numberOfStars": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "quote": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "quote"
+          },
+          "avatar": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "image"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "position": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "logo": {
+            "x-undocumented": true,
+            "type": "object",
+            "format": "logo"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "numberOfStars",
+          "quote",
+          "avatar",
+          "name",
+          "position",
+          "logo"
+        ]
+      }
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "heading",
+    "description",
+    "testimonials"
+  ]
+}

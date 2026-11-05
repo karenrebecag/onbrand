@@ -1,0 +1,47 @@
+{
+  "role": "hero",
+  "width": "wide",
+  "padding": "lg",
+  "children": [
+    {
+      "layout": "split",
+      "ratio": "1:1",
+      "gap": "xl",
+      "align": "center",
+      "children": [
+        {
+          "layout": "stack",
+          "gap": "lg",
+          "children": [
+            { "text": "display", "value": "La IA que responde tu WhatsApp y recupera cada venta" },
+            { "text": "subtitle", "value": "Acme Pulse contesta al instante, recupera carritos abandonados y convierte las conversaciones de tu tienda en pedidos, las 24 horas." },
+            {
+              "layout": "cluster",
+              "gap": "sm",
+              "children": [
+                { "component": "button", "props": { "variant": "primary", "size": "lg", "children": "Agendar demo" } },
+                { "component": "button", "props": { "variant": "secondary", "size": "lg", "children": "Ver cómo funciona" } }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "chat-thread",
+          "props": {
+            "label": "Conversación de ejemplo con Acme Pulse",
+            "currentUserId": "cliente",
+            "composer": false,
+            "participants": [
+              { "id": "cliente", "name": "Cliente" },
+              { "id": "pulse", "name": "Acme Pulse" }
+            ],
+            "defaultMessages": [
+              { "id": "m1", "authorId": "cliente", "text": "Hola, dejé unas zapatillas en el carrito. ¿Siguen disponibles?", "createdAt": "2026-10-22T10:00:00Z" },
+              { "id": "m2", "authorId": "pulse", "text": "Sí, quedan en tu talla. Te paso el link de pago para cerrar el pedido aquí mismo.", "createdAt": "2026-10-22T10:00:05Z" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

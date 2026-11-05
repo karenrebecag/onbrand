@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/donut-chart.schema.json",
+  "title": "Donut chart",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "value": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "color": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "description": "Parts: { key, label, value, color? }. Values of zero or less are left out."
+    },
+    "label": {
+      "description": "What the whole is, such as \"Visits by source\". Names the chart for assistive technology.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "unit": {
+      "description": "Unit after values, such as \"visits\". Shown under the total at rest.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "formatValue": {
+      "description": "Formats values in the center, legend, and table.",
+      "type": "object"
+    },
+    "totalLabel": {
+      "description": "Center label at rest, above the total.",
+      "type": "string",
+      "format": "label"
+    },
+    "size": {
+      "description": "Diameter in pixels. The chart scales down to fit narrower containers.",
+      "type": "number"
+    },
+    "thickness": {
+      "description": "Ring thickness in pixels.",
+      "type": "number"
+    },
+    "groupBelow": {
+      "description": "Parts below this share of the total join Other, when at least two would.",
+      "type": "number"
+    },
+    "maxSegments": {
+      "description": "The most segments drawn, counting Other. The smallest parts beyond it are grouped.",
+      "type": "number"
+    },
+    "otherLabel": {
+      "description": "Label of the grouped segment.",
+      "type": "string",
+      "format": "label"
+    },
+    "activeKey": {
+      "x-nullable": true,
+      "description": "Controlled selected segment key. Hover and focus preview other segments without changing it.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "defaultActiveKey": {
+      "x-nullable": true,
+      "description": "Selected segment on first render when uncontrolled.",
+      "type": "string"
+    },
+    "onActiveChange": {
+      "description": "Called when a segment is pinned or unpinned by clicking the ring, or a legend row when legendAction is select.",
+      "type": "object"
+    },
+    "hiddenKeys": {
+      "description": "Controlled hidden segment keys. A hidden segment closes and the rest of the ring redistributes.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultHiddenKeys": {
+      "description": "Hidden segments on first render when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onHiddenKeysChange": {
+      "description": "Called when a legend row shows or hides its segment.",
+      "type": "object"
+    },
+    "legendAction": {
+      "description": "What clicking a legend row does: show or hide its segment, or pin it as the selected segment.",
+      "type": "string",
+      "enum": [
+        "toggle",
+        "select"
+      ]
+    },
+    "legend": {
+      "description": "The synced legend beside or below the ring.",
+      "type": "boolean"
+    },
+    "emptyLabel": {
+      "description": "Center text when the total is zero.",
+      "type": "string",
+      "format": "label"
+    },
+    "ref": {
+      "description": "The figure element.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "data",
+    "label"
+  ]
+}

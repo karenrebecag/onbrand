@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/newsletter-signup.schema.json",
+  "title": "Newsletter Signup",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "variant": {
+      "description": "inline puts the copy and form beside the issue stack; card is a self-contained card with the stack in a tray on top.",
+      "type": "string",
+      "enum": [
+        "inline",
+        "card"
+      ]
+    },
+    "title": {
+      "description": "Heading. Each variant has sample copy.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One sentence on what people get and how often.",
+      "type": "string",
+      "format": "description"
+    },
+    "placeholder": {
+      "description": "Email field placeholder.",
+      "type": "string",
+      "format": "label"
+    },
+    "buttonLabel": {
+      "description": "Submit button label.",
+      "type": "string",
+      "format": "cta"
+    },
+    "privacyNote": {
+      "description": "Line under the form about frequency and privacy.",
+      "x-empty": ""
+    },
+    "privacyLink": {
+      "x-nullable": true,
+      "description": "Link after the note. Pass null to hide it.",
+      "type": "object",
+      "format": "link",
+      "x-empty": null
+    },
+    "readers": {
+      "x-nullable": true,
+      "description": "Reader count and up to three faces, under the stack or at the foot of the card. The count ticks up by one on success. Pass null to hide.",
+      "type": "object",
+      "x-empty": null
+    },
+    "publication": {
+      "x-nullable": true,
+      "description": "The issue stack: { name, upcoming, recent }. Each issue has a number, a date, a subject, and up to three stories with a thumbnail and read time. Pass null for the form alone.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "x-undocumented": true,
+          "type": "string",
+          "format": "person"
+        },
+        "upcoming": {
+          "x-undocumented": true,
+          "type": "object"
+        },
+        "recent": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object"
+          },
+          "x-undocumented": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "upcoming",
+        "recent"
+      ],
+      "x-empty": null
+    },
+    "onSubscribe": {
+      "description": "Called with a valid, trimmed email. Resolve to show success; reject to show an error and keep the email.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "readers",
+    "publication"
+  ],
+  "examples": [
+    {
+      "readers": {
+        "count": 12480,
+        "faces": []
+      },
+      "publication": {
+        "name": "Margins",
+        "upcoming": {
+          "number": 149,
+          "date": "Friday, October 2",
+          "subject": "Designing for the second visit, not the first",
+          "stories": [
+            {
+              "title": "Empty states that invite a first step",
+              "minutes": 5
+            },
+            {
+              "title": "Texture without noise, from a ceramics studio",
+              "minutes": 4
+            },
+            {
+              "title": "How a concert hall seats two thousand people",
+              "minutes": 7
+            }
+          ]
+        },
+        "recent": [
+          {
+            "number": 148,
+            "date": "Friday, September 25",
+            "subject": "Why the best settings pages feel quiet",
+            "stories": [
+              {
+                "title": "What a sunroom teaches about contrast",
+                "minutes": 4
+              },
+              {
+                "title": "The case for a single accent color",
+                "minutes": 3
+              },
+              {
+                "title": "Lisbon tram signs and wayfinding at scale",
+                "minutes": 6
+              }
+            ]
+          },
+          {
+            "number": 147,
+            "date": "Friday, September 18",
+            "subject": "Springs that settle instead of bounce",
+            "stories": [
+              {
+                "title": "Reading the ridge line of an animation curve",
+                "minutes": 5
+              },
+              {
+                "title": "A table lamp and the warmth of dark mode",
+                "minutes": 3
+              },
+              {
+                "title": "Curves in architecture and in corners",
+                "minutes": 4
+              }
+            ]
+          },
+          {
+            "number": 146,
+            "date": "Friday, September 11",
+            "subject": "Copy that sounds like a person",
+            "stories": [
+              {
+                "title": "Error messages that take the blame",
+                "minutes": 4
+              },
+              {
+                "title": "Writing buttons as verbs",
+                "minutes": 3
+              },
+              {
+                "title": "Tone of voice at the dinner table",
+                "minutes": 5
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

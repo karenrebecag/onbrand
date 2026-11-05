@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/sortable-data-table.schema.json",
+  "title": "Sortable data table",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Row objects."
+    },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Column definitions. Columns are sortable unless sortable is false; numeric is detected when every value is a number."
+    },
+    "rowKey": {
+      "description": "Stable key per row.",
+      "type": "object"
+    },
+    "caption": {
+      "description": "Table caption, used as its accessible name.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "emptyMessage": {
+      "description": "Shown when rows is empty.",
+      "type": "string",
+      "format": "chatMessage"
+    },
+    "defaultSort": {
+      "description": "Sort applied on first render.",
+      "type": "object",
+      "properties": {
+        "key": {
+          "x-undocumented": true,
+          "type": "string"
+        },
+        "direction": {
+          "x-undocumented": true,
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "direction"
+      ]
+    },
+    "onSortChange": {
+      "description": "Called when a header is pressed.",
+      "type": "object"
+    },
+    "selectable": {
+      "description": "Adds a checkbox column, row click selection, and a count line with Clear.",
+      "type": "boolean"
+    },
+    "selectedKeys": {
+      "description": "Controlled selection.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultSelectedKeys": {
+      "description": "Initial selection when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onSelectionChange": {
+      "description": "Called with the new selection.",
+      "type": "object"
+    },
+    "itemName": {
+      "description": "Noun for the count line, as in \"6 projects\".",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "rows",
+    "columns",
+    "rowKey"
+  ]
+}

@@ -1,0 +1,526 @@
+{
+  "$comment": "Clasificacion de los tokens de foundation.css (una vez cada uno). Fundamento: specs/brandpack-v2-v1-spec.md:43-50 (Clasificacion del contrato) y las listas de src/brand.ts:219-231. \"source\" = linea de la primera declaracion en templates/base-scaffold/src/theme/tokens.css (el contrato del core desde B9 paso 4; sin los tokens propios de Arc y de WhatsApp); el test comprueba que siga siendo cierta.",
+  "contract": "templates/base-scaffold/src/theme/tokens.css",
+  "roles": [
+    "invariant",
+    "brand",
+    "derived-from:theme.preset",
+    "derived-from:theme.seed",
+    "derived-from:theme.fonts",
+    "derived-from:theme.roundness",
+    "derived-from:theme.scale",
+    "derived-from:contract"
+  ],
+  "tokens": {
+    "--neutral-0": {
+      "role": "derived-from:theme.seed",
+      "source": 8,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-1": {
+      "role": "derived-from:theme.seed",
+      "source": 9,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-2": {
+      "role": "derived-from:theme.seed",
+      "source": 10,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-3": {
+      "role": "derived-from:theme.seed",
+      "source": 11,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-4": {
+      "role": "derived-from:theme.seed",
+      "source": 12,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-5": {
+      "role": "derived-from:theme.seed",
+      "source": 13,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-6": {
+      "role": "derived-from:theme.seed",
+      "source": 14,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-7": {
+      "role": "derived-from:theme.seed",
+      "source": 15,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-8": {
+      "role": "derived-from:theme.seed",
+      "source": 16,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-9": {
+      "role": "derived-from:theme.seed",
+      "source": 17,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-10": {
+      "role": "derived-from:theme.seed",
+      "source": 18,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--neutral-11": {
+      "role": "derived-from:theme.seed",
+      "source": 19,
+      "why": "rampa neutra: la deriva theme.seed.neutral (src/theme/neutral-tones.json, tonos de tokens.css:8-19); sin semilla queda el contrato y un override la sigue pisando"
+    },
+    "--background": {
+      "role": "brand",
+      "source": 20,
+      "why": "SURFACE_CONTRACT (src/brand.ts:220): identidad del canal surface"
+    },
+    "--surface": {
+      "role": "brand",
+      "source": 21,
+      "why": "SURFACE_CONTRACT (src/brand.ts:220): identidad del canal surface"
+    },
+    "--surface-raised": {
+      "role": "brand",
+      "source": 22,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--surface-muted": {
+      "role": "brand",
+      "source": 23,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--surface-band": {
+      "role": "derived-from:contract",
+      "source": 24,
+      "why": "DERIVED_TOKENS (src/brand.ts:228): color-mix/var de otros tokens (foundation.css:26,30)"
+    },
+    "--brand-highlight": {
+      "role": "derived-from:contract",
+      "source": 25,
+      "why": "DERIVED_TOKENS (src/brand.ts:228): color-mix/var de otros tokens (foundation.css:26,30)"
+    },
+    "--foreground": {
+      "role": "brand",
+      "source": 26,
+      "why": "SURFACE_CONTRACT (src/brand.ts:220): identidad del canal surface"
+    },
+    "--text-secondary": {
+      "role": "brand",
+      "source": 27,
+      "why": "SURFACE_CONTRACT (src/brand.ts:220): identidad del canal surface"
+    },
+    "--text-muted": {
+      "role": "brand",
+      "source": 28,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--border": {
+      "role": "brand",
+      "source": 29,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--border-subtle": {
+      "role": "brand",
+      "source": 30,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--border-strong": {
+      "role": "brand",
+      "source": 31,
+      "why": "superficie y texto: default del contrato salvo overrides (foundation.css:22-43)"
+    },
+    "--accent": {
+      "role": "derived-from:theme.preset",
+      "source": 32,
+      "why": "ACCENT_CONTRACT (src/brand.ts:219): los fija el canal accent, preset por [data-accent] (foundation.css:163-178) o overrides; specs/brandpack-v2-v1-spec.md:46; o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--accent-strong": {
+      "role": "derived-from:theme.preset",
+      "source": 33,
+      "why": "ACCENT_CONTRACT (src/brand.ts:219): los fija el canal accent, preset por [data-accent] (foundation.css:163-178) o overrides; specs/brandpack-v2-v1-spec.md:46; o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--accent-subtle": {
+      "role": "derived-from:theme.preset",
+      "source": 34,
+      "why": "ACCENT_CONTRACT (src/brand.ts:219): los fija el canal accent, preset por [data-accent] (foundation.css:163-178) o overrides; specs/brandpack-v2-v1-spec.md:46; o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--accent-foreground": {
+      "role": "derived-from:theme.preset",
+      "source": 35,
+      "why": "ACCENT_CONTRACT (src/brand.ts:219): los fija el canal accent, preset por [data-accent] (foundation.css:163-178) o overrides; specs/brandpack-v2-v1-spec.md:46; o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--control-on": {
+      "role": "derived-from:theme.preset",
+      "source": 36,
+      "why": "el contrato los fija por [data-accent] (foundation.css:182-197); con acento propio queda el default neutro (DESVIACION: la spec:44 los lista como invariant, pero el contrato ya los varia por acento); o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--control-glyph": {
+      "role": "derived-from:theme.preset",
+      "source": 37,
+      "why": "el contrato los fija por [data-accent] (foundation.css:182-197); con acento propio queda el default neutro (DESVIACION: la spec:44 los lista como invariant, pero el contrato ya los varia por acento); o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--control-track": {
+      "role": "invariant",
+      "source": 38,
+      "why": "internos de controles de seleccion, no son identidad (specs/brandpack-v2-v1-spec.md:44; foundation.css:48-56)"
+    },
+    "--control-track-hover": {
+      "role": "invariant",
+      "source": 39,
+      "why": "internos de controles de seleccion, no son identidad (specs/brandpack-v2-v1-spec.md:44; foundation.css:48-56)"
+    },
+    "--control-thumb": {
+      "role": "invariant",
+      "source": 40,
+      "why": "internos de controles de seleccion, no son identidad (specs/brandpack-v2-v1-spec.md:44; foundation.css:48-56)"
+    },
+    "--control-thumb-on": {
+      "role": "derived-from:theme.preset",
+      "source": 41,
+      "why": "el contrato los fija por [data-accent] (foundation.css:182-197); con acento propio queda el default neutro (DESVIACION: la spec:44 los lista como invariant, pero el contrato ya los varia por acento); o theme.seed (src/theme/seed.ts modeTokens)"
+    },
+    "--control-thumb-shadow": {
+      "role": "invariant",
+      "source": 42,
+      "why": "internos de controles de seleccion, no son identidad (specs/brandpack-v2-v1-spec.md:44; foundation.css:48-56)"
+    },
+    "--control-on-subtle": {
+      "role": "derived-from:contract",
+      "source": 43,
+      "why": "color-mix / var(--control-on) (foundation.css:57-59)"
+    },
+    "--control-fill": {
+      "role": "derived-from:contract",
+      "source": 44,
+      "why": "color-mix / var(--control-on) (foundation.css:57-59)"
+    },
+    "--focus-ring": {
+      "role": "invariant",
+      "source": 45,
+      "why": "decision de producto: el foco con puntero no dibuja anillo (foundation.css:60-62)"
+    },
+    "--success": {
+      "role": "brand",
+      "source": 53,
+      "why": "colores de estado, alias de la paleta de tonos de Arc (foundation.css:73-75; arc registry/foundation.css:54-57); la marca puede fijarlos"
+    },
+    "--warning": {
+      "role": "brand",
+      "source": 54,
+      "why": "colores de estado, alias de la paleta de tonos de Arc (foundation.css:73-75; arc registry/foundation.css:54-57); la marca puede fijarlos"
+    },
+    "--danger": {
+      "role": "brand",
+      "source": 55,
+      "why": "colores de estado, alias de la paleta de tonos de Arc (foundation.css:73-75; arc registry/foundation.css:54-57); la marca puede fijarlos"
+    },
+    "--shadow-resting": {
+      "role": "brand",
+      "source": 61,
+      "why": "elevacion: default del contrato salvo overrides (foundation.css:77-79)"
+    },
+    "--shadow-raised": {
+      "role": "brand",
+      "source": 62,
+      "why": "elevacion: default del contrato salvo overrides (foundation.css:77-79)"
+    },
+    "--shadow-floating": {
+      "role": "brand",
+      "source": 63,
+      "why": "elevacion: default del contrato salvo overrides (foundation.css:77-79)"
+    },
+    "--scaling": {
+      "role": "derived-from:theme.scale",
+      "source": 65,
+      "why": "FORM_LEVERS (src/brand.ts:225): palanca de forma, default 1; specs/brandpack-v2-v1-spec.md:46 (--scaling <- scale)"
+    },
+    "--radius-factor": {
+      "role": "derived-from:theme.roundness",
+      "source": 66,
+      "why": "FORM_LEVERS (src/brand.ts:225): palanca de forma, default 1; specs/brandpack-v2-v1-spec.md:46 (--radius-factor <- roundness)"
+    },
+    "--space-1": {
+      "role": "derived-from:theme.scale",
+      "source": 67,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-2": {
+      "role": "derived-from:theme.scale",
+      "source": 68,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-3": {
+      "role": "derived-from:theme.scale",
+      "source": 69,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-4": {
+      "role": "derived-from:theme.scale",
+      "source": 70,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-5": {
+      "role": "derived-from:theme.scale",
+      "source": 71,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-6": {
+      "role": "derived-from:theme.scale",
+      "source": 72,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-8": {
+      "role": "derived-from:theme.scale",
+      "source": 73,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-10": {
+      "role": "derived-from:theme.scale",
+      "source": 74,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-12": {
+      "role": "derived-from:theme.scale",
+      "source": 75,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-16": {
+      "role": "derived-from:theme.scale",
+      "source": 76,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-20": {
+      "role": "derived-from:theme.scale",
+      "source": 77,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--space-24": {
+      "role": "derived-from:theme.scale",
+      "source": 78,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--radius-control": {
+      "role": "derived-from:theme.roundness",
+      "source": 79,
+      "why": "calc() sobre --scaling y --radius-factor (foundation.css:97); siguen a la palanca"
+    },
+    "--radius-panel": {
+      "role": "derived-from:theme.roundness",
+      "source": 80,
+      "why": "calc() sobre --scaling y --radius-factor (foundation.css:97); siguen a la palanca"
+    },
+    "--radius-surface": {
+      "role": "derived-from:theme.roundness",
+      "source": 81,
+      "why": "calc() sobre --scaling y --radius-factor (foundation.css:97); siguen a la palanca"
+    },
+    "--radius-pill": {
+      "role": "invariant",
+      "source": 82,
+      "why": "constante 9999px, no escala ni es identidad (foundation.css:97)"
+    },
+    "--control-height-sm": {
+      "role": "derived-from:theme.scale",
+      "source": 83,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--control-height-md": {
+      "role": "derived-from:theme.scale",
+      "source": 84,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--control-height-lg": {
+      "role": "derived-from:theme.scale",
+      "source": 85,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--font-display": {
+      "role": "derived-from:theme.fonts",
+      "source": 86,
+      "why": "FONT_CONTRACT (src/brand.ts:221): los resuelve el canal fonts; specs/brandpack-v2-v1-spec.md:46"
+    },
+    "--font-body": {
+      "role": "derived-from:theme.fonts",
+      "source": 87,
+      "why": "FONT_CONTRACT (src/brand.ts:221): los resuelve el canal fonts; specs/brandpack-v2-v1-spec.md:46"
+    },
+    "--text-xs": {
+      "role": "derived-from:theme.scale",
+      "source": 89,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-sm": {
+      "role": "derived-from:theme.scale",
+      "source": 90,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-base": {
+      "role": "derived-from:theme.scale",
+      "source": 91,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-lg": {
+      "role": "derived-from:theme.scale",
+      "source": 92,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-xl": {
+      "role": "derived-from:theme.scale",
+      "source": 93,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-2xl": {
+      "role": "derived-from:theme.scale",
+      "source": 94,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-3xl": {
+      "role": "derived-from:theme.scale",
+      "source": 95,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-4xl": {
+      "role": "derived-from:theme.scale",
+      "source": 96,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--text-5xl": {
+      "role": "derived-from:theme.scale",
+      "source": 97,
+      "why": "calc() sobre --scaling (foundation.css:94-103); siguen a la palanca"
+    },
+    "--tracking-display": {
+      "role": "brand",
+      "source": 98,
+      "why": "ritmo tipografico: default del contrato salvo overrides (foundation.css:104-105)"
+    },
+    "--tracking-body": {
+      "role": "brand",
+      "source": 99,
+      "why": "ritmo tipografico: default del contrato salvo overrides (foundation.css:104-105)"
+    },
+    "--leading-display": {
+      "role": "brand",
+      "source": 100,
+      "why": "ritmo tipografico: default del contrato salvo overrides (foundation.css:104-105)"
+    },
+    "--leading-body": {
+      "role": "brand",
+      "source": 101,
+      "why": "ritmo tipografico: default del contrato salvo overrides (foundation.css:104-105)"
+    },
+    "--ease-enter": {
+      "role": "invariant",
+      "source": 102,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--ease-standard": {
+      "role": "invariant",
+      "source": 103,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--ease-exit": {
+      "role": "invariant",
+      "source": 104,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--ease-in-out": {
+      "role": "invariant",
+      "source": 105,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--ease-spring": {
+      "role": "invariant",
+      "source": 106,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--duration-instant": {
+      "role": "invariant",
+      "source": 107,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--duration-fast": {
+      "role": "invariant",
+      "source": 108,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--duration-standard": {
+      "role": "invariant",
+      "source": 109,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--duration-considered": {
+      "role": "invariant",
+      "source": 110,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--duration-spring": {
+      "role": "invariant",
+      "source": 111,
+      "why": "motion del contrato; ninguna marca lo fija (specs/brandpack-v2-v1-spec.md:44; foundation.css:106-112)"
+    },
+    "--series-1": {
+      "role": "derived-from:contract",
+      "source": 57,
+      "why": "paleta de series: hex de respaldo y, con soporte de color relativo, derivada de --accent (foundation.css:212-229)"
+    },
+    "--series-2": {
+      "role": "derived-from:contract",
+      "source": 58,
+      "why": "paleta de series: hex de respaldo y, con soporte de color relativo, derivada de --accent (foundation.css:212-229)"
+    },
+    "--series-3": {
+      "role": "derived-from:contract",
+      "source": 59,
+      "why": "paleta de series: hex de respaldo y, con soporte de color relativo, derivada de --accent (foundation.css:212-229)"
+    },
+    "--series-4": {
+      "role": "derived-from:contract",
+      "source": 60,
+      "why": "paleta de series: hex de respaldo y, con soporte de color relativo, derivada de --accent (foundation.css:212-229)"
+    },
+    "--tone-teal": {
+      "role": "invariant",
+      "source": 46,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:65; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-sky": {
+      "role": "invariant",
+      "source": 47,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:66; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-orchid": {
+      "role": "invariant",
+      "source": 48,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:67; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-violet": {
+      "role": "invariant",
+      "source": 49,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:68; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-rose": {
+      "role": "invariant",
+      "source": 50,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:69; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-amber": {
+      "role": "invariant",
+      "source": 51,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:70; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--tone-green": {
+      "role": "invariant",
+      "source": 52,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:71; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    },
+    "--info": {
+      "role": "invariant",
+      "source": 56,
+      "why": "paleta categórica y rol info de Arc tal cual (foundation.css:76; arc registry/foundation.css:44-57 claro, :119-129 oscuro): default del contrato, no lo fija la marca"
+    }
+  }
+}

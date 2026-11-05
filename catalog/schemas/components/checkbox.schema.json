@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/checkbox.schema.json",
+  "title": "Checkbox",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label. Without it, pass aria-label; the fallback name is \"Checkbox\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "description": {
+      "description": "Secondary copy under the label, linked through aria-describedby.",
+      "type": "string",
+      "format": "description"
+    }
+  },
+  "x-formats-version": 2
+}

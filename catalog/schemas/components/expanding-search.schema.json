@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/expanding-search.schema.json",
+  "title": "Expanding search",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Names the button, field, and results, such as \"Search projects and docs\".",
+      "type": "string",
+      "format": "tagline"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "meta": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tag"
+          },
+          "group": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "keywords": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title"
+        ]
+      },
+      "description": "{ id, title, meta?, group?, icon?, keywords? }. Filtered client-side by title and keywords."
+    },
+    "suggestions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "meta": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tag"
+          },
+          "group": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "keywords": {
+            "x-undocumented": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-format-confidence": "low"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title"
+        ]
+      },
+      "description": "Shown before anything is typed, such as recent searches."
+    },
+    "suggestionsLabel": {
+      "description": "Heading for suggestions.",
+      "type": "string",
+      "format": "label"
+    },
+    "placeholder": {
+      "description": "Field placeholder. Defaults to label.",
+      "type": "string",
+      "format": "label"
+    },
+    "onSelect": {
+      "description": "Called when a result is chosen; the field then folds back.",
+      "type": "object"
+    },
+    "onExpandedChange": {
+      "description": "Called when the field opens or folds.",
+      "type": "object"
+    },
+    "expandedWidth": {
+      "description": "Widest the field grows, never past its container.",
+      "type": "number"
+    },
+    "maxResults": {
+      "description": "Most results shown.",
+      "type": "number"
+    },
+    "anchor": {
+      "description": "Edge the button sits on; the field grows away from it.",
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "emptyHint": {
+      "description": "Tip under the empty state.",
+      "type": "string",
+      "x-format-confidence": "low"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label",
+    "items"
+  ]
+}

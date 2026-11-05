@@ -1,0 +1,10 @@
+{
+  "name": "animated-counter",
+  "type": "registry:ui",
+  "dependencies": ["motion"],
+  "registryDependencies": ["https://example.com/r/uikit-motion-tokens.json"],
+  "files": [
+    { "path": "registry/components/animated-counter/animated-counter.tsx", "type": "registry:component" },
+    { "path": "registry/components/animated-counter/animated-counter.module.css", "type": "registry:component" }
+  ]
+}

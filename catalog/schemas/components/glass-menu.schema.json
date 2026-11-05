@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/glass-menu.schema.json",
+  "title": "Glass menu",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "items"
+        ]
+      },
+      "description": "Rows in groups: `{ id, label?, items }`. Groups are separated by a hairline; `label` adds a quiet heading."
+    },
+    "children": {
+      "description": "Trigger content, usually a short label and a chevron or an icon."
+    },
+    "label": {
+      "description": "Accessible name of the menu.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "triggerLabel": {
+      "description": "Accessible name of the trigger when it only shows an icon.",
+      "type": "string",
+      "format": "label"
+    },
+    "open": {
+      "description": "Controlled open state.",
+      "type": "boolean"
+    },
+    "defaultOpen": {
+      "description": "Initial open state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onOpenChange": {
+      "description": "Called when the menu opens or closes.",
+      "type": "object"
+    },
+    "onSelect": {
+      "description": "Called with the chosen row. Rows with `items` open their submenu instead.",
+      "type": "object"
+    },
+    "align": {
+      "description": "Which edge of the trigger the panel grows from.",
+      "type": "string",
+      "enum": [
+        "start",
+        "end"
+      ]
+    },
+    "width": {
+      "description": "Panel width in px, capped to the viewport.",
+      "type": "number"
+    },
+    "style": {
+      "description": "Inline styles on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "groups",
+    "children"
+  ]
+}

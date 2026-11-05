@@ -1,0 +1,16 @@
+{
+  "name": "cta-23",
+  "title": "CTA 23",
+  "description": "",
+  "categories": [
+    "cta-sections"
+  ],
+  "dependencies": [
+    "@kit/ui"
+  ],
+  "files": [
+    "cta-23.tsx"
+  ],
+  "source_slug": "cta-sections/section_cta23",
+  "preview": "https://cdn.prod.website-files.com/61789b489343c8242282a0ae/618f3e33994ffcff8cf93e48_618502c9a5a86406ea9938ca_section-cta23.png"
+}

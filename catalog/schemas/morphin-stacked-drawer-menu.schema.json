@@ -1,0 +1,348 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/morphin-stacked-drawer-menu.schema.json",
+  "title": "Stacked Drawer Navigation Menu in React, Tailwind and GSAP",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "navigation": {
+      "description": "Arbol de navegacion: panel raiz, tarjeta promocional y enlaces secundarios.",
+      "type": "object"
+    },
+    "brandName": {
+      "description": "Texto de marca en el header.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "logo": {
+      "description": "Logo propio; se pinta antes de `brandName`."
+    },
+    "brandHref": {
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "labels": {
+      "description": "Textos de interfaz; lo que no se pasa usa el default.",
+      "type": "object"
+    },
+    "position": {
+      "description": "`fixed` flota sobre la pagina; `sticky` y `static` ocupan su altura en flujo para no tapar la primera seccion.",
+      "type": "string",
+      "enum": [
+        "fixed",
+        "sticky",
+        "static"
+      ]
+    },
+    "children": {
+      "description": "Contenido de la pagina; queda inerte mientras el drawer esta abierto."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "navigation"
+  ],
+  "examples": [
+    {
+      "navigation": {
+        "root": {
+          "title": "Menu",
+          "items": [
+            {
+              "label": "What's new",
+              "href": "#whats-new"
+            },
+            {
+              "label": "Components",
+              "panel": {
+                "title": "Components",
+                "items": [
+                  {
+                    "label": "Navigation",
+                    "panel": {
+                      "title": "Navigation",
+                      "items": [
+                        {
+                          "label": "Stacked drawer",
+                          "href": "#navigation-stacked-drawer"
+                        },
+                        {
+                          "label": "Mega menu",
+                          "href": "#navigation-mega-menu"
+                        },
+                        {
+                          "label": "Sliding tabs",
+                          "href": "#navigation-sliding-tabs"
+                        },
+                        {
+                          "label": "Command palette",
+                          "href": "#navigation-command-palette"
+                        },
+                        {
+                          "label": "Breadcrumbs",
+                          "href": "#navigation-breadcrumbs"
+                        },
+                        {
+                          "label": "Sidebar",
+                          "href": "#navigation-sidebar"
+                        }
+                      ],
+                      "viewAll": {
+                        "label": "Browse all navigation",
+                        "href": "#components-navigation"
+                      }
+                    }
+                  },
+                  {
+                    "label": "Overlays",
+                    "panel": {
+                      "title": "Overlays",
+                      "items": [
+                        {
+                          "label": "Modal",
+                          "href": "#overlays-modal"
+                        },
+                        {
+                          "label": "Dropdown",
+                          "href": "#overlays-dropdown"
+                        },
+                        {
+                          "label": "Tooltip",
+                          "href": "#overlays-tooltip"
+                        },
+                        {
+                          "label": "Toast",
+                          "href": "#overlays-toast"
+                        },
+                        {
+                          "label": "Popover",
+                          "href": "#overlays-popover"
+                        }
+                      ],
+                      "viewAll": {
+                        "label": "Browse all overlays",
+                        "href": "#components-overlays"
+                      }
+                    }
+                  },
+                  {
+                    "label": "Buttons",
+                    "href": "#components-buttons"
+                  },
+                  {
+                    "label": "Forms",
+                    "href": "#components-forms"
+                  },
+                  {
+                    "label": "Cards",
+                    "href": "#components-cards"
+                  },
+                  {
+                    "label": "Loaders",
+                    "href": "#components-loaders"
+                  }
+                ],
+                "featured": [
+                  {
+                    "label": "Most popular",
+                    "href": "#components-most-popular"
+                  },
+                  {
+                    "label": "Recently added",
+                    "href": "#components-recently-added"
+                  },
+                  {
+                    "label": "Free",
+                    "href": "#components-free"
+                  }
+                ],
+                "viewAll": {
+                  "label": "Browse all components",
+                  "href": "#components"
+                }
+              }
+            },
+            {
+              "label": "Templates",
+              "panel": {
+                "title": "Templates",
+                "items": [
+                  {
+                    "label": "Landing pages",
+                    "panel": {
+                      "title": "Landing pages",
+                      "items": [
+                        {
+                          "label": "SaaS",
+                          "href": "#landing-saas"
+                        },
+                        {
+                          "label": "Portfolio",
+                          "href": "#landing-portfolio"
+                        },
+                        {
+                          "label": "Agency",
+                          "href": "#landing-agency"
+                        },
+                        {
+                          "label": "Product launch",
+                          "href": "#landing-product-launch"
+                        }
+                      ],
+                      "viewAll": {
+                        "label": "Browse all landing pages",
+                        "href": "#templates-landing"
+                      }
+                    }
+                  },
+                  {
+                    "label": "Dashboards",
+                    "href": "#templates-dashboards"
+                  },
+                  {
+                    "label": "E-commerce",
+                    "href": "#templates-e-commerce"
+                  },
+                  {
+                    "label": "Blogs",
+                    "href": "#templates-blogs"
+                  }
+                ],
+                "featured": [
+                  {
+                    "label": "New arrivals",
+                    "href": "#templates-new-arrivals"
+                  },
+                  {
+                    "label": "Bestsellers",
+                    "href": "#templates-bestsellers"
+                  },
+                  {
+                    "label": "Free",
+                    "href": "#templates-free"
+                  }
+                ],
+                "viewAll": {
+                  "label": "Browse all templates",
+                  "href": "#templates"
+                }
+              }
+            },
+            {
+              "label": "Docs",
+              "panel": {
+                "title": "Docs",
+                "items": [
+                  {
+                    "label": "Getting started",
+                    "panel": {
+                      "title": "Getting started",
+                      "items": [
+                        {
+                          "label": "Introduction",
+                          "href": "#docs-introduction"
+                        },
+                        {
+                          "label": "Installation",
+                          "href": "#docs-installation"
+                        },
+                        {
+                          "label": "Tailwind setup",
+                          "href": "#docs-tailwind-setup"
+                        },
+                        {
+                          "label": "GSAP setup",
+                          "href": "#docs-gsap-setup"
+                        }
+                      ],
+                      "viewAll": {
+                        "label": "Read the full guide",
+                        "href": "#docs-start"
+                      }
+                    }
+                  },
+                  {
+                    "label": "Motion",
+                    "panel": {
+                      "title": "Motion",
+                      "items": [
+                        {
+                          "label": "Principles",
+                          "href": "#motion-principles"
+                        },
+                        {
+                          "label": "Easing",
+                          "href": "#motion-easing"
+                        },
+                        {
+                          "label": "Durations",
+                          "href": "#motion-durations"
+                        },
+                        {
+                          "label": "Reduced motion",
+                          "href": "#motion-reduced-motion"
+                        }
+                      ],
+                      "viewAll": {
+                        "label": "Read all motion docs",
+                        "href": "#docs-motion"
+                      }
+                    }
+                  },
+                  {
+                    "label": "Changelog",
+                    "href": "#docs-changelog"
+                  }
+                ],
+                "featured": [
+                  {
+                    "label": "Quickstart",
+                    "href": "#docs-quickstart"
+                  },
+                  {
+                    "label": "Recipes",
+                    "href": "#docs-recipes"
+                  },
+                  {
+                    "label": "FAQ",
+                    "href": "#docs-faq"
+                  }
+                ],
+                "viewAll": {
+                  "label": "Open the docs",
+                  "href": "#docs"
+                }
+              }
+            },
+            {
+              "label": "Pricing",
+              "href": "#pricing"
+            }
+          ]
+        },
+        "promo": {
+          "title": "Stacked drawer",
+          "description": "A layered navigation drawer with GSAP motion. Free to copy.",
+          "cta": {
+            "label": "Get the component",
+            "href": "#stacked-drawer"
+          }
+        },
+        "utility": [
+          {
+            "label": "Sign in",
+            "href": "#sign-in"
+          },
+          {
+            "label": "GitHub",
+            "href": "#github"
+          },
+          {
+            "label": "Support",
+            "href": "#support"
+          }
+        ]
+      }
+    }
+  ]
+}

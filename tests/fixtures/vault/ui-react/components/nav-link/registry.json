@@ -1,0 +1,6 @@
+{
+  "name": "nav-link",
+  "type": "registry:ui",
+  "dependencies": [],
+  "files": [{ "path": "registry/components/nav-link/nav-link.tsx", "type": "registry:component" }]
+}

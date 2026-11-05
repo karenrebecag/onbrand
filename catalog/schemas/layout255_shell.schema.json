@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/layout255_shell.schema.json",
+  "title": "Layout 255 (shell)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "image": {
+      "type": "object",
+      "format": "image",
+      "properties": {
+        "src": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        },
+        "alt": {
+          "x-undocumented": true,
+          "type": "string",
+          "x-format-confidence": "low"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "src"
+      ],
+      "x-empty": "media"
+    },
+    "children": {
+      "x-undocumented": true
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "image"
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "navbar": {
+    "brand": "Acme Pulse",
+    "links": [
+      "Producto",
+      "Cómo funciona",
+      "Precios"
+    ],
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Iniciar sesión"
+  },
+  "hero": {
+    "heading": "La IA que responde tu WhatsApp y recupera cada venta",
+    "description": "Acme Pulse contesta al instante, recupera carritos abandonados y convierte las conversaciones de tu tienda en pedidos, las 24 horas.",
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Ver cómo funciona"
+  },
+  "logos": {
+    "heading": "Tiendas que ya venden más con Acme Pulse",
+    "brands": [
+      "Shopify",
+      "Tiendanube",
+      "VTEX",
+      "WooCommerce",
+      "Mercado Shops",
+      "Magento"
+    ]
+  },
+  "features": {
+    "heading": "Convierte cada chat de tu tienda en una venta",
+    "description": "Un solo agente atiende, retoma el carrito abandonado y lleva al cliente hasta el pago, sin plantillas rígidas ni esperas.",
+    "items": [
+      {
+        "title": "Responde al instante",
+        "description": "Cada mensaje de tu tienda recibe respuesta en segundos, con el contexto del cliente y tu catálogo."
+      },
+      {
+        "title": "Recupera carritos",
+        "description": "Detecta el carrito abandonado y retoma la conversación antes de que se enfríe."
+      },
+      {
+        "title": "Cierra la venta",
+        "description": "Resuelve dudas, comparte el link de pago y confirma el pedido sin que tu equipo intervenga."
+      },
+      {
+        "title": "Un solo agente, todo el embudo",
+        "description": "De la primera pregunta al pedido confirmado, sin saltar entre herramientas."
+      },
+      {
+        "title": "Tu marca, tus reglas",
+        "description": "Tono, horarios y respuestas bajo tu control."
+      },
+      {
+        "title": "Cada pedido, rastreado",
+        "description": "Del primer mensaje al pago, sin perder el hilo."
+      }
+    ]
+  },
+  "stats": {
+    "heading": "Los números de vender con un agente que no duerme",
+    "stats": [
+      {
+        "value": 3,
+        "suffix": "×",
+        "label": "Conversaciones resueltas",
+        "detail": "más al mes"
+      },
+      {
+        "value": 24,
+        "suffix": "/7",
+        "label": "Atención",
+        "detail": "sin filas ni esperas"
+      },
+      {
+        "value": 35,
+        "prefix": "+",
+        "suffix": "%",
+        "label": "Ventas recuperadas",
+        "detail": "de carritos abandonados"
+      }
+    ]
+  },
+  "testimonials": {
+    "heading": "Tiendas que dejaron de perder ventas en el chat",
+    "description": "Equipos de e-commerce que pusieron a Acme Pulse a responder su WhatsApp y vieron el cambio en el mismo mes.",
+    "items": [
+      {
+        "quote": "Antes contestábamos al día siguiente y el cliente ya había comprado en otro lado. Ahora Acme Pulse responde en segundos y cierra el pedido con el link de pago.",
+        "name": "Mariana López",
+        "role": "Directora de e-commerce",
+        "company": "Casa Verde"
+      },
+      {
+        "quote": "Los carritos abandonados eran nuestro mayor agujero. Acme Pulse retoma la conversación sola y recuperamos un tercio de esas ventas sin sumar gente al equipo.",
+        "name": "Diego Ferreira",
+        "role": "Fundador",
+        "company": "Ritmo Store"
+      },
+      {
+        "quote": "Lo que más nos sorprendió fue el tono: habla como nuestra marca y sabe cuándo pasar la conversación a una persona. El equipo de soporte respira.",
+        "name": "Valeria Castro",
+        "role": "Head de Customer Care",
+        "company": "Nómada Outdoor"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "¿Listo para recuperar las ventas que se te escapan?",
+    "description": "Agenda una demo y ve a Acme Pulse responder, recuperar carritos y cerrar pedidos en tu propio WhatsApp.",
+    "primaryCta": "Agendar demo",
+    "secondaryCta": "Hablar por WhatsApp",
+    "note": "Sin tarjeta. Listo en minutos."
+  },
+  "footer": {
+    "brand": "Acme Pulse",
+    "tagline": "La IA que vende por WhatsApp.",
+    "columns": [
+      {
+        "title": "Producto",
+        "links": [
+          "Acme Pulse",
+          "Integraciones",
+          "Precios",
+          "Seguridad"
+        ]
+      },
+      {
+        "title": "Empresa",
+        "links": [
+          "Sobre Pulse",
+          "Casos de éxito",
+          "Blog",
+          "Contacto"
+        ]
+      }
+    ],
+    "legal": [
+      "Política de Privacidad",
+      "Términos del Servicio"
+    ]
+  }
+}

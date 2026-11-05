@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/rich-text-editor.schema.json",
+  "title": "Rich text editor",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Controlled HTML. The editor only rewrites its content when this differs from what it last emitted.",
+      "type": "string"
+    },
+    "defaultValue": {
+      "description": "Initial HTML when uncontrolled. Sanitized on load.",
+      "type": "string"
+    },
+    "defaultMarkdown": {
+      "description": "Initial content as Markdown, used when no HTML value is given.",
+      "type": "string"
+    },
+    "onChange": {
+      "description": "Called after each edit with { html, markdown, text, empty }. HTML is clean: canonical tags and only href attributes.",
+      "type": "object"
+    },
+    "onHistoryChange": {
+      "description": "Reports whether undo and redo are available, for your own toolbar.",
+      "type": "object"
+    },
+    "placeholder": {
+      "description": "Shown when the editor is empty.",
+      "type": "string",
+      "format": "label"
+    },
+    "blockHint": {
+      "description": "The hint on an empty line while the caret is in it.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "readOnly": {
+      "description": "Turns off editing, the toolbar, and shortcuts.",
+      "type": "boolean"
+    },
+    "autoFocus": {
+      "description": "Focuses the editor on mount with the caret at the end.",
+      "type": "boolean"
+    },
+    "style": {
+      "description": "Inline style on the root.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/radio-cards.schema.json",
+  "title": "Radio cards",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true
+          },
+          "description": {
+            "x-undocumented": true
+          },
+          "meta": {
+            "x-undocumented": true
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "disabled": {
+            "x-undocumented": true,
+            "type": "boolean"
+          },
+          "disabledReason": {
+            "x-undocumented": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "Choices: { value, label, description?, meta?, icon?, disabled?, disabledReason? }."
+    },
+    "value": {
+      "x-nullable": true,
+      "description": "Selected value (controlled).",
+      "type": "string"
+    },
+    "defaultValue": {
+      "x-nullable": true,
+      "description": "Initial value when uncontrolled.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called when a new card is selected.",
+      "type": "object"
+    },
+    "layout": {
+      "description": "\"grid\" places cards in responsive columns; \"list\" stacks full-width rows with meta at the end.",
+      "type": "string",
+      "enum": [
+        "grid",
+        "list"
+      ]
+    },
+    "minColumnWidth": {
+      "description": "Narrowest a grid column may get before the grid drops a column, in px.",
+      "type": "number"
+    },
+    "name": {
+      "description": "Form field name. Renders a hidden input with the selected value.",
+      "type": "string",
+      "format": "person"
+    },
+    "required": {
+      "description": "Marks the group and hidden input as required.",
+      "type": "boolean"
+    },
+    "disabled": {
+      "description": "Disables every card.",
+      "type": "boolean"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "options"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/feature-bento.schema.json",
+  "title": "Feature Bento",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Section heading.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "One or two sentences under the heading. Pass an empty string to hide it.",
+      "type": "string",
+      "format": "description",
+      "x-empty": ""
+    },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "description": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "description"
+          },
+          "visual": {
+            "description": "Which built-in illustration to draw: a live doc, a command menu, a bar chart, an automation, role switches, or a version scrubber.",
+            "type": "string",
+            "enum": [
+              "sync",
+              "command",
+              "chart",
+              "flow",
+              "permissions",
+              "history"
+            ]
+          },
+          "size": {
+            "description": "On wide screens: wide spans two thirds, tall spans two rows, half spans half a row, regular a third.",
+            "type": "string",
+            "enum": [
+              "regular",
+              "wide",
+              "tall",
+              "half"
+            ]
+          },
+          "href": {
+            "description": "Makes the title a link that covers the whole cell.",
+            "type": "string",
+            "format": "link"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "description",
+          "visual"
+        ]
+      },
+      "description": "The cells, in reading order. Six read best. Each has id, title, description, visual, and optional size and href.",
+      "maxItems": 6
+    },
+    "visuals": {
+      "description": "Replaces an illustration by feature id, for your own screenshot or component.",
+      "x-slot": {
+        "accepts": [
+          "metric"
+        ],
+        "cardinality": "map",
+        "keys": "features[].id"
+      },
+      "x-empty": ""
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "features"
+  ],
+  "examples": [
+    {
+      "features": [
+        {
+          "title": "Edit together in real time",
+          "description": "See who is in the doc, what they selected, and what they are typing.",
+          "visual": "sync",
+          "size": "wide"
+        },
+        {
+          "title": "Everything is a keystroke away",
+          "description": "Jump to any page, person, or setting from one menu.",
+          "visual": "command",
+          "size": "tall"
+        },
+        {
+          "title": "Numbers that explain themselves",
+          "description": "Weekly trends land right next to the work that moved them.",
+          "visual": "chart"
+        },
+        {
+          "title": "Automations that run on their own",
+          "description": "Route new signups, enrich them, and tell the right channel.",
+          "visual": "flow"
+        },
+        {
+          "title": "Access that fits your team",
+          "description": "Roles for every workspace, reviewed and changed in one place.",
+          "visual": "permissions",
+          "size": "half"
+        },
+        {
+          "title": "Every version, one scrub away",
+          "description": "Rewind a page to any moment and bring back what you need.",
+          "visual": "history",
+          "size": "half"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/tag-input.schema.json",
+  "title": "Tag input",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "label": {
+      "description": "Visible label tied to the text input.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "value": {
+      "description": "Controlled tags.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultValue": {
+      "description": "Initial tags when uncontrolled.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onValueChange": {
+      "description": "Called with the full list after each add or remove.",
+      "type": "object"
+    },
+    "placeholder": {
+      "description": "Shown while there are no tags.",
+      "type": "string",
+      "format": "label"
+    },
+    "description": {
+      "description": "Helper copy under the field.",
+      "type": "string",
+      "format": "description"
+    },
+    "id": {
+      "description": "Input id. Generated when omitted.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "label"
+  ]
+}

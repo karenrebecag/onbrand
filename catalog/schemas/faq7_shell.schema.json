@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/faq7_shell.schema.json",
+  "title": "FAQ 7 (shell)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "footerHeading": {
+      "type": "string",
+      "format": "heading",
+      "x-empty": ""
+    },
+    "footerDescription": {
+      "type": "string",
+      "x-format-confidence": "low",
+      "x-empty": ""
+    },
+    "button": {
+      "x-nullable": true,
+      "type": "object",
+      "x-empty": null
+    },
+    "children": {
+      "x-undocumented": true
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "footerHeading",
+    "footerDescription",
+    "button"
+  ]
+}

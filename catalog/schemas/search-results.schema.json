@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/search-results.schema.json",
+  "title": "Search results",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      },
+      "description": "Everything that can be found. Each item is a doc ({ title, path, snippet, body, author, updated, readMinutes }), a person ({ person, title, role, snippet, email, location, owns }), or a file ({ title, ext, size, snippet, owner, updated, photo?, pages? }), all with an id and a team."
+    },
+    "teams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ]
+      },
+      "description": "Team facet options ({ id, label }) in display order."
+    },
+    "recentSearches": {
+      "description": "Recent queries shown first in the suggestions. Runs are added to the front, up to five.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "suggestedSearches": {
+      "description": "Suggested queries shown under recent ones and offered again when nothing matches.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "x-format-confidence": "low"
+      }
+    },
+    "defaultQuery": {
+      "description": "Query shown and run on first render.",
+      "type": "string"
+    },
+    "defaultSort": {
+      "description": "Initial sort: best match, newest first, or A to Z.",
+      "type": "string",
+      "enum": [
+        "relevance",
+        "newest",
+        "title"
+      ]
+    },
+    "today": {
+      "description": "ISO day that relative dates and the edited range are measured from, so the server and client render the same labels.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "workspace": {
+      "description": "Workspace name used in the placeholder and the region label.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "latency": {
+      "description": "Simulated query time in milliseconds while skeletons show. 0 shows results at once.",
+      "type": "number"
+    },
+    "onSearch": {
+      "description": "Called each time a query runs, from Enter, a suggestion, a spelling fix, or an empty state suggestion.",
+      "type": "object"
+    },
+    "onOpen": {
+      "description": "Called when the preview's primary action (Open doc, View profile, Download) completes.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "results",
+    "teams",
+    "recentSearches",
+    "suggestedSearches",
+    "today"
+  ]
+}

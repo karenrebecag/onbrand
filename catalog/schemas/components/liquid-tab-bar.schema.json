@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/liquid-tab-bar.schema.json",
+  "title": "Liquid tab bar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tabs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "icon": {
+            "x-undocumented": true
+          },
+          "activeIcon": {
+            "x-undocumented": true
+          },
+          "badge": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "badgeLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label",
+          "icon"
+        ]
+      },
+      "description": "Tabs in order. activeIcon is drawn inside the lens (defaults to icon filled in); badge is a rolling count and badgeLabel what screen readers hear with it."
+    },
+    "value": {
+      "description": "Selected tab value.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called when a tab is chosen by tap, drag, or keyboard.",
+      "type": "object"
+    },
+    "labels": {
+      "description": "Which tabs show their label: the selected one, every tab, or none.",
+      "type": "string",
+      "enum": [
+        "active",
+        "always",
+        "none"
+      ]
+    },
+    "label": {
+      "description": "Accessible name of the tab list.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "id": {
+      "description": "Base id for tab and panel ids. Defaults to a generated id.",
+      "type": "string"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "tabs",
+    "value",
+    "onValueChange"
+  ]
+}

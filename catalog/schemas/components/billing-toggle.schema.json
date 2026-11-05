@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/billing-toggle.schema.json",
+  "title": "Billing toggle",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Value of the selected option. Controlled only.",
+      "type": "string"
+    },
+    "onValueChange": {
+      "description": "Called with the chosen option's value on click or arrow key.",
+      "type": "object"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "badge": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "activeBadge": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "description": "Options in order. Each has value, label, and optional badge and activeBadge."
+    },
+    "label": {
+      "description": "Accessible name of the radio group.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "size": {
+      "description": "md is 36px tall per option, lg is 44px with larger text.",
+      "type": "string",
+      "enum": [
+        "md",
+        "lg"
+      ]
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value",
+    "onValueChange",
+    "options"
+  ]
+}

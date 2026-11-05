@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/now-playing.schema.json",
+  "title": "Now playing",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "artist": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "duration": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "artwork": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "artworkAlt": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "artist",
+          "duration",
+          "artwork"
+        ]
+      },
+      "description": "The queue. duration is in seconds."
+    },
+    "index": {
+      "description": "Controlled position in the queue.",
+      "type": "number"
+    },
+    "defaultIndex": {
+      "description": "Initial position when uncontrolled.",
+      "type": "number"
+    },
+    "onIndexChange": {
+      "description": "Called when the track changes by skip or when a track ends. The queue wraps at both ends.",
+      "type": "object"
+    },
+    "playing": {
+      "description": "Controlled playback state.",
+      "type": "boolean"
+    },
+    "defaultPlaying": {
+      "description": "Initial playback state when uncontrolled.",
+      "type": "boolean"
+    },
+    "onPlayingChange": {
+      "description": "Called on play and pause.",
+      "type": "object"
+    },
+    "defaultExpanded": {
+      "description": "Starts as the full player.",
+      "type": "boolean"
+    },
+    "label": {
+      "description": "Accessible name of the player section.",
+      "type": "string",
+      "format": "tagline"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "tracks"
+  ]
+}

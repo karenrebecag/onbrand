@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/choropleth-explorer.schema.json",
+  "title": "Choropleth explorer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "maps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "regions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "regionNoun": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "title": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "heading"
+          },
+          "metrics": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object"
+            },
+            "x-undocumented": true
+          },
+          "viewBox": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "regions",
+          "regionNoun"
+        ]
+      },
+      "description": "Areas to switch between, such as countries: an id, a name, its regions, a plural region noun, an optional title, metrics (for a local currency) and view box. A country switch appears when there is more than one. Ignored when regions is set.",
+      "x-empty": "omit"
+    },
+    "defaultMap": {
+      "description": "Id of the area shown first. Defaults to the first one.",
+      "type": "string"
+    },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "name": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "person"
+          },
+          "path": {
+            "x-undocumented": true,
+            "type": "string",
+            "x-format-confidence": "low"
+          },
+          "box": {
+            "x-undocumented": true,
+            "type": "object"
+          },
+          "subregions": {
+            "x-undocumented": true,
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path"
+        ]
+      },
+      "description": "Top level regions of a single area: an id, a name, SVG path data in view box units, an optional bounding box, one value per metric id (null for no data) and optional subregions with their own paths and values.",
+      "x-empty": "omit"
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          },
+          "totalLabel": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "label"
+          },
+          "format": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "currency",
+              "change",
+              "percent"
+            ]
+          },
+          "currency": {
+            "x-undocumented": true,
+            "type": "string"
+          },
+          "scale": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "sequential",
+              "diverging"
+            ]
+          },
+          "aggregate": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "sum",
+              "weighted"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "totalLabel",
+          "format",
+          "scale",
+          "aggregate"
+        ]
+      },
+      "description": "Metrics in the switch. Each has a label, a headline label, a format (\"currency\", \"change\" or \"percent\"), a scale (\"sequential\" or \"diverging\") and how the headline aggregates (\"sum\", or \"weighted\" by the first metric).",
+      "x-empty": "omit"
+    },
+    "defaultMetric": {
+      "description": "Id of the metric shown first. Defaults to the first metric.",
+      "type": "string"
+    },
+    "viewBox": {
+      "description": "Width and height of the view box the region paths are drawn in.",
+      "type": "object"
+    },
+    "areaName": {
+      "description": "Name of the whole area, shown above the map before zooming in.",
+      "type": "string",
+      "format": "label",
+      "x-empty": "omit"
+    },
+    "regionNoun": {
+      "description": "Plural noun for top level regions, used in the list heading, legend and announcements.",
+      "type": "string",
+      "format": "label",
+      "x-empty": "omit"
+    },
+    "title": {
+      "description": "Heading of the block.",
+      "type": "string",
+      "format": "heading"
+    },
+    "description": {
+      "description": "Line under the title. Pass an empty string to hide it.",
+      "type": "string",
+      "format": "description"
+    },
+    "onRegionOpen": {
+      "description": "Called after the map zooms into a region, with its id, or with null when it zooms back out.",
+      "type": "object"
+    },
+    "onMetricChange": {
+      "description": "Called after the metric changes.",
+      "type": "object"
+    },
+    "onMapChange": {
+      "description": "Called after the area changes.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "description"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/alert.schema.json",
+  "title": "Alert",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tone": {
+      "description": "Colour and icon. Danger uses role=\"alert\"; the rest use role=\"status\".",
+      "type": "string",
+      "enum": [
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "title": {
+      "description": "Headline. A new title rises in over the old one.",
+      "type": "string",
+      "format": "heading"
+    },
+    "children": {
+      "description": "Details under the title. String children crossfade when they change."
+    },
+    "open": {
+      "description": "Controls presence. Hiding collapses the height and fades it out.",
+      "type": "boolean"
+    },
+    "onDismiss": {
+      "description": "Shows a dismiss button. Uncontrolled alerts collapse first, then call this.",
+      "type": "object"
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "title"
+  ]
+}

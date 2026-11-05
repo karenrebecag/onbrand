@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "arc/components/gauge.schema.json",
+  "title": "Gauge",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "description": "Current value within min and max.",
+      "type": "number"
+    },
+    "min": {
+      "description": "Lower bound.",
+      "type": "number"
+    },
+    "max": {
+      "description": "Upper bound.",
+      "type": "number"
+    },
+    "label": {
+      "description": "What is measured.",
+      "type": "string",
+      "format": "tagline"
+    },
+    "detail": {
+      "description": "Secondary caption line.",
+      "type": "string",
+      "x-format-confidence": "low"
+    },
+    "tone": {
+      "description": "Ring color when no threshold applies.",
+      "type": "string",
+      "enum": [
+        "accent",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "thresholds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "x-undocumented": true,
+            "type": "number"
+          },
+          "tone": {
+            "x-undocumented": true,
+            "type": "string",
+            "enum": [
+              "accent",
+              "success",
+              "warning",
+              "danger"
+            ]
+          },
+          "label": {
+            "x-undocumented": true,
+            "type": "string",
+            "format": "tagline"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "tone",
+          "label"
+        ]
+      },
+      "description": "Bands by starting value. The highest band reached sets the tone and shows its label."
+    }
+  },
+  "x-formats-version": 2,
+  "required": [
+    "value",
+    "label"
+  ]
+}
